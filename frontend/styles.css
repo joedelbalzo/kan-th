@@ -1,0 +1,57 @@
+/* styles.css */
+:root {
+  --text-color-light: #030712;
+  --bg-color-light: whitesmoke;
+  --text-color-dark: whitesmoke;
+  --bg-color-dark: #030712;
+  font-family: "Rubik", sans-serif;
+  width: 80vw;
+  margin: 2rem auto;
+}
+
+.glasses-logo {
+  background-image: url("./public/glasseslogo.svg");
+}
+
+body[data-theme="light"] {
+  --text-color: var(--text-color-light);
+  --bg-color: var(--bg-color-light);
+}
+
+body[data-theme="dark"] {
+  --text-color: var(--text-color-dark);
+  --bg-color: var(--bg-color-dark);
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.login {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+}
+
+.header-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  margin: auto;
+}
+
+.company-name-and-logo {
+  display: flex;
+  flex-grow: 1;
+  align-items: center;
+  font-size: 24px;
+}
+
+.brand-name {
+  margin: 0 8px;
+}
+
+.theme-toggle {
+  margin: 0 1rem;
+}

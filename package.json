@@ -1,0 +1,22 @@
+{
+  "name": "theo",
+  "version": "1.0.0",
+  "description": "root folder for theo",
+  "main": "spec.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "start": "concurrently \"npm run start-backend\" \"npm run start-frontend\"",
+    "start-frontend": "cd frontend && npm run dev",
+    "start-backend": "cd backend && npm run start:dev"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "concurrently": "^8.2.2",
+    "dotenv": "^16.3.1",
+    "vite": "^4.5.0"
+  }
+}

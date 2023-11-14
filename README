@@ -1,0 +1,42 @@
+Per client:
+-- get domain and dev domain. SHould be short simple sweet male two syllable name. Get and Use are good verbs
+-- 3 pictures is fine. I should probably manage something in there in case there is a fourth
+-- fr
+
+To do:
+
+Specific content to add:
+-- Legal page. Privacy Policy, ToS, I'm not the bible, etc
+
+-- Add "Tags" to the database
+-- make them searchable and therefore list how many are under each tag.
+-- A user should be able to click on a tag and find all relevant posts.
+-- An admin should also be able to see which tags exist, while also having the ability to create new tags.
+-- An admin should be able to edit a tag name and have it fix it everywhere else. There needs to be some sort of warning here too that it'll effect all other articles with this tag name.
+
+-- Documentation for the admin!!
+
+-- Pagination
+
+-- A way to receive feedback from early users.
+
+-- Footer
+--Should include the admin login, socials, dev'd by me, etc, maybe the feedback button goes here
+
+Technical things to add:
+
+-- Figure out the blog uploads.
+-- the current wysiwyg doesn't allow for headings within a post. is my post only text? this obviously matters. it's weird that i can't change the sizes. also, should note then if i do that that titles will be h2's and subtitles will be h3's, so further headings should be at max h3's.
+-- On this note, make sure the API calling the blog posts only calls the "home" images for the main page, and then an individual blog post will call the rest of the images.
+-- one option here would be to figure out how to lazy load, or some other technique, where all of the home images are loaded first and then the content images (of just the blog posts on the current page) load
+
+-- Analytics:
+-- SEO will be important here. It's very important that users can find this blog with ease.
+-- Implement Google Analytics scripts here.
+-- Research more analytics. Things that can be measured can be improved.
+
+-- Content Backups
+-- Figure this out. Should there be a way to automatically upload the content to AWS or a google doc? Some way to truly save the data on top of what goes in the site, in case of a database reset or anything.
+
+Down the pipeline:
+-- Develop a real Nav bar. It's likely that this page will be a part of the whole service, and so when we move beyond the blog, this is likely to be one of the first needs.
