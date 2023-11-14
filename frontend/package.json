@@ -1,7 +1,7 @@
 {
-  "name": "theo",
+  "name": "kaas",
   "version": "0.0.1",
-  "description": "theo frontend",
+  "description": "kaas frontend",
   "main": "index.js",
   "scripts": {
     "dev": "vite",
