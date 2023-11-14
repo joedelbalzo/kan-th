@@ -11,18 +11,21 @@ import "react-quill/dist/quill.snow.css";
 //Store Imports
 import { createBlogpost, editBlogpost } from "../store";
 
+//Component Style Imports
+import "./adminstyles.css";
 const AdminPosts = () => {
   const location = useLocation();
   const dispatch = useDispatch();
   const { post, type } = location.state || {};
   const [title, setTitle] = useState(post?.title || "");
+  const [subtitle, setSubtitle] = useState(post?.subtitle || "");
   const [content, setContent] = useState(post?.content || "");
   const [tags, setTags] = useState(post?.tags || "");
   const [homePicture, setHomePicture] = useState("");
   const [contentPicture, setContentPicture] = useState("");
   const [bannerPicture, setBannerPicture] = useState("");
 
-  console.log("post", post);
+  // console.log("post", post);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -34,6 +37,7 @@ const AdminPosts = () => {
 
     const blogData = {
       title: title,
+      subtitle: subtitle,
       content: content,
       tags: tags,
     };
@@ -111,27 +115,46 @@ const AdminPosts = () => {
   return (
     <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column" }}>
       <div style={{ display: "flex", flexDirection: "column" }}>
-        <label htmlFor="title">
-          Title:
+        <div className="form-field">
+          <label htmlFor="title" className="form-labels">
+            Title:{" "}
+          </label>
           <input
             type="text"
             id="title"
             value={title}
+            className="form-input"
             onChange={(e) => setTitle(e.target.value)}
             required
           />
-        </label>
+        </div>
 
-        <label htmlFor="tags">
-          Tags:
+        <div className="form-field">
+          <label htmlFor="subtitle" className="form-labels">
+            Subtitle:
+          </label>
+          <input
+            type="text"
+            id="subtitle"
+            value={subtitle}
+            className="form-input"
+            onChange={(e) => setSubtitle(e.target.value)}
+            required
+          />
+        </div>
+        <div className="form-field">
+          <label htmlFor="tags" className="form-labels">
+            Tags:
+          </label>
           <input
             type="text"
             id="tags"
             value={tags}
+            className="form-input"
             onChange={(e) => setTags(e.target.value)}
             required
           />
-        </label>
+        </div>
       </div>
       {/* <div style={{ display: "flex", flexDirection: "row", padding: "1rem" }}>
         <button type="button" onClick={() => formatText("bold")}>
@@ -165,15 +188,17 @@ const AdminPosts = () => {
           Line Break
         </button>
       </div> */}
-      <div>
-        <label htmlFor="content">Content:</label>
-        <ReactQuill value={content} onChange={setContent} />
-        <textarea
+      <div className="form-field">
+        <label htmlFor="content" className="form-labels" style={{ alignItems: "flex-start" }}>
+          Content:
+        </label>
+        <ReactQuill value={content} onChange={setContent} style={{ marginBottom: 50 }} />
+        {/* <textarea
           style={{ width: "80vw", height: "35vh" }}
           id="myTextArea"
           value={content}
           onChange={(e) => setContent(e.target.value)}
-        />
+        /> */}
       </div>
       <div style={{ padding: 8 }}>
         <div style={{ paddingBottom: "2vh" }}>

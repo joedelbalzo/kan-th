@@ -7,6 +7,7 @@ import { HashRouter as Router, Routes, Route } from "react-router-dom";
 import Login from "./Login";
 import Nav from "./Nav";
 import Blogposts from "./Blogposts";
+import Blogpost_Single from "./Blogpost_Single";
 import Footer from "./Footer";
 import Search from "./Search";
 import Admin from "./Admin/AdminHome";
@@ -21,17 +22,16 @@ function App() {
 
   useEffect(() => {
     dispatch(fetchBlogposts());
-    // dispatch(loginWithToken());
+    // fetch only this page?
   }, []);
 
   return (
     <div>
       <Nav />
-      <div>
-        <h1>Helping SMBs achieve their full potential.</h1>
-      </div>
+      <hr />
       <Routes>
         <Route path="/" element={<Blogposts />} />
+        <Route path="/posts/:id" element={<Blogpost_Single />} />
         <Route path="/tags/:tag" element={<Search />} />
         {auth.id && <Route path="/admin" element={<Admin />} />}
         {auth.id && <Route path="/admin/posts" element={<AdminPosts />} />}

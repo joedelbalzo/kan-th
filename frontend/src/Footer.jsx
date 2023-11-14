@@ -1,6 +1,7 @@
 //React Imports
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useNavigate, Link } from "react-router-dom";
 
 //Component Imports
 import Login from "./Login";
@@ -9,6 +10,7 @@ import Login from "./Login";
 
 const Footer = () => {
   const [admin, setAdmin] = useState(0);
+  const auth = useSelector((state) => state.auth);
 
   const adminTools = () => {
     setAdmin((prevAdmin) => prevAdmin + 1);
@@ -30,6 +32,18 @@ const Footer = () => {
       >
         <p onClick={() => adminTools()}>&copy; Theo. Email me at jdelbalzo99@gmail.com.</p>
         {admin >= 5 ? <Login /> : ""}
+        {auth.id != null ? (
+          <div>
+            <Link to="/admin" className="theme-toggle">
+              Admin Tools
+            </Link>
+            <button onClick={() => handleLogout()} className="theme-toggle">
+              Admin Logout
+            </button>
+          </div>
+        ) : (
+          ""
+        )}
       </div>
     </>
   );

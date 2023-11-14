@@ -4,6 +4,9 @@ const blogposts = (state = [], action) => {
   if (action.type === "REQUEST_BLOGPOSTS") {
     return action.blogposts;
   }
+  if (action.type === "REQUEST_POST") {
+    return action.blogposts;
+  }
   if (action.type === "CREATE_BLOGPOST") {
     return [action.blogpost, ...state];
   }
@@ -23,9 +26,16 @@ const blogposts = (state = [], action) => {
 export const fetchBlogposts = () => {
   return async (dispatch) => {
     const response = await axios.get("/api/blogposts");
-    console.log("response in store", response);
+    const sorted = response.data.sort((a, b) => new Date(a.publishedAt) - new Date(b.publishedAt));
+    dispatch({ type: "REQUEST_BLOGPOSTS", blogposts: sorted });
+  };
+};
+
+export const fetchBlogByID = () => {
+  return async (dispatch) => {
+    const response = await axios.get(`/api/blogposts/${id}`);
     console.log("response DATA in store", response.data);
-    dispatch({ type: "REQUEST_BLOGPOSTS", blogposts: response.data });
+    dispatch({ type: "REQUEST_POST", blogposts: response.data });
   };
 };
 

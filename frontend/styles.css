@@ -1,11 +1,11 @@
 /* styles.css */
 :root {
-  --text-color-light: #030712;
+  --text-color-light: #030728;
   --bg-color-light: whitesmoke;
   --text-color-dark: whitesmoke;
-  --bg-color-dark: #030712;
+  --bg-color-dark: #030728;
   font-family: "Rubik", sans-serif;
-  width: 80vw;
+  width: 90vw;
   margin: 2rem auto;
 }
 
@@ -29,6 +29,8 @@ body {
   transition: background-color 0.2s, color 0.2s;
 }
 
+/* NAV */
+
 .login {
   background-color: var(--bg-color);
   color: var(--text-color);
@@ -42,8 +44,8 @@ body {
 }
 
 .company-name-and-logo {
-  display: flex;
-  flex-grow: 1;
+  /* display: flex; */
+
   align-items: center;
   font-size: 24px;
 }
@@ -54,4 +56,94 @@ body {
 
 .theme-toggle {
   margin: 0 1rem;
+  background-color: inherit;
+  color: inherit;
+  border: none;
+  font-size: 20px;
+}
+
+/* MAIN PAGE STYLES */
+
+h1 {
+  font-size: calc(24px + 2vw);
+  font-weight: 450;
+  margin-bottom: 2px;
+  padding-bottom: 2px;
+}
+h2 {
+  font-size: calc(14px + 1vw);
+  font-weight: 400;
+  margin-top: 2px;
+  padding-top: 2px;
+}
+
+.post-grid {
+  display: grid;
+  /* width: 80%; */
+  grid-template-columns: 1fr 4fr;
+  margin-bottom: 4rem;
+}
+.post-info {
+  grid-column: 1;
+  border-right: 1px solid;
+}
+.post-content {
+  grid-column: 2;
+  margin-left: 1rem;
+}
+
+.post-title-div {
+  margin: auto;
+  padding: 1rem;
+}
+.post-date {
+  margin: auto;
+  font-size: calc(8px + 0.5vw);
+  color: gray;
+  font-variant: small-caps;
+  /* padding: 1rem; */
+}
+.post-title-div-picture {
+  width: 60%;
+  margin: auto;
+  height: 400px;
+  object-fit: cover;
+}
+.post-body {
+  font-size: calc(12px + 0.5vw);
+  line-height: calc(14px + 1vw);
+  margin: 8px 0;
+}
+
+.post-bottom-border {
+  border-bottom: 1px solid gray;
+  height: 1rem;
+  border-bottom-right-radius: 4rem;
+}
+
+.share-buttons {
+  display: flex;
+  align-items: center;
+}
+.share-buttons > * {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 6px;
+  margin: 4px;
+  background-color: inherit;
+  color: inherit;
+  outline: 1px solid;
+  border: 0;
+  border-radius: 4px;
+  font-variant: small-caps;
+  box-shadow: 1px 1px 1px 1px rgba(100, 100, 100, 1);
+}
+.share-buttons > *:hover {
+  cursor: pointer;
+  background-color: darkgray;
+  color: whitesmoke;
+  outline: 1px solid rgba(100, 100, 100, 1);
+  border-radius: 4px;
+  box-shadow: 1px 1px 1px 1px rgba(100, 100, 100, 1);
 }

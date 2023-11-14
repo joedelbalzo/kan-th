@@ -11,6 +11,9 @@ import Nav from "../Nav";
 import { fetchBlogposts } from "../store";
 import AdminPosts from "./AdminPosts";
 
+//Component Style Imports
+import "./adminstyles.css";
+
 const Admin = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -31,21 +34,32 @@ const Admin = () => {
 
   return (
     <div>
-      <h2>Hey there, boss. Here's where the magic happens:</h2>
+      <h3 className="admin-header">Hey there, boss. Here's where the magic happens:</h3>
 
-      <Link to="/admin/posts" state={{ post: null, type: "create" }}>
-        Create New Post
-      </Link>
-
+      <div className="admin-nav">
+        <Link to="/admin/posts" state={{ post: null, type: "create" }}>
+          Create New Post
+        </Link>
+        <br />
+        <Link to="/admin/posts" state={{ post: null, type: "create" }}>
+          Need Help?
+        </Link>
+      </div>
       {blogposts.map((blogpost) => {
         return (
-          <div key={blogpost.id} style={{ marginBottom: "1rem" }}>
-            Title: {blogpost.title}
-            <br />
-            <button onClick={() => hideArchivePost(blogpost)}>Hide and Archive</button>
-            <Link to="/admin/posts" state={{ post: blogpost, type: "edit" }}>
-              Edit
-            </Link>
+          <div key={blogpost.id} className="admin-blogpost">
+            <ul>
+              <li>Title: {blogpost.title}</li>
+              <li>Subtitle: {blogpost.subtitle}</li>
+              <div className="admin-blogpost-options">
+                <button onClick={() => hideArchivePost(blogpost)}>Hide and Archive</button>
+                <button>
+                  <Link to="/admin/posts" state={{ post: blogpost, type: "edit" }}>
+                    Edit
+                  </Link>
+                </button>
+              </div>
+            </ul>
           </div>
         );
       })}

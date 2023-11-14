@@ -25,22 +25,19 @@ app.get("/", async (req, res, next) => {
     let output = [];
     for (reply of response) {
       if (reply.homePicture) {
-        console.log("call aws for home picture");
+        // console.log("call aws for home picture");
         reply.homePicURL = await getObjectSignedUrl(reply.homePicture);
       }
       if (reply.bannerPicture) {
-        console.log("call aws for banner picture");
+        // console.log("call aws for banner picture");
         reply.bannerPicURL = await getObjectSignedUrl(reply.bannerPicture);
       }
       if (reply.contentPicture) {
-        console.log("call aws for content picture");
+        // console.log("call aws for content picture");
         reply.contentPicURL = await getObjectSignedUrl(reply.contentPicture);
       }
-      // console.log("reply", reply);
       output.push(reply);
     }
-
-    console.log("output", output);
 
     res.send(output);
   } catch (ex) {
@@ -48,31 +45,14 @@ app.get("/", async (req, res, next) => {
   }
 });
 
-// get all the blogposts for a user
-app.get("/:token", async (req, res, next) => {
-  try {
-    const user = await User.findByToken(req.params.token);
-    const blogposts = await Blogpost.findAll({
-      where: {
-        userId: user.id,
-      },
-    });
-    res.send(blogposts);
-  } catch (ex) {
-    next(ex);
-  }
-});
-
 // get a single blogpost
-app.get("/:blogpostId", async (req, res, next) => {
+app.get("/:id", async (req, res, next) => {
   try {
-    const blogpost = await Blogpost.findByPk(req.params.blogpostId, {
-      include: [{ model: Product, attributes: ["id", "name"] }],
-    });
+    const blogpost = await Blogpost.findByPk(req.params.blogpostId, {});
     if (!blogpost) {
       return res.status(404).json({ message: "Blogpost not found" });
     }
-    res.json(blogpost);
+    res.send(blogpost);
   } catch (err) {
     next(err);
   }

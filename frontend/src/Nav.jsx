@@ -1,6 +1,7 @@
 //React Imports
 import React, { useContext, useEffect } from "react";
 import { useNavigate, Link } from "react-router-dom";
+import { FaRegSun, FaRegMoon, FaSearch } from "react-icons/fa";
 
 //Component Imports
 import Login from "./Login";
@@ -15,7 +16,7 @@ import { logout } from "./store";
 
 const Nav = () => {
   const { theme, toggleTheme } = useContext(ThemeContext);
-  const { auth } = useSelector((state) => state);
+  // const { auth } = useSelector((state) => state.auth);
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -30,28 +31,24 @@ const Nav = () => {
 
   return (
     <div className="header-container">
-      <Link to="/" style={{ textDecoration: "none", color: "inherit" }}>
+      <Link to="/" style={{ textDecoration: "none", color: "inherit", flexGrow: 1 }}>
         <div className="company-name-and-logo">
-          <GlassesIcon width="24px" height="20px" />
-          <span className="brand-name">theo</span>
+          <GlassesIcon width="26px" height="20px" />
+          <span className="brand-name">kaas</span>
         </div>
       </Link>
-
-      <button onClick={toggleTheme} className="theme-toggle">
-        Toggle Theme
-      </button>
-      {auth.id != null ? (
-        <div>
-          <Link to="/admin" className="theme-toggle">
-            Admin Tools
-          </Link>
-          <button onClick={() => handleLogout()} className="theme-toggle">
-            Admin Logout
-          </button>
-        </div>
+      {theme == "dark" ? (
+        <button onClick={toggleTheme} className="theme-toggle">
+          <FaRegMoon />
+        </button>
       ) : (
-        ""
+        <button onClick={toggleTheme} className="theme-toggle">
+          <FaRegSun />
+        </button>
       )}
+      <button onClick={toggleTheme} className="theme-toggle">
+        <FaSearch />
+      </button>
     </div>
   );
 };

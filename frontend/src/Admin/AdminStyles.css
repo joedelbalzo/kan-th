@@ -1,0 +1,63 @@
+/* admin home styles */
+.admin-header {
+  display: flex;
+  justify-content: center;
+  font-size: 1rem;
+  margin: 1rem auto;
+  text-align: center;
+}
+
+.admin-nav {
+  display: flex;
+  justify-content: center;
+  font-size: 1rem;
+  margin: 1rem auto;
+  text-align: center;
+}
+.admin-nav > * {
+  padding: 1rem;
+}
+
+.admin-blogpost-options {
+  padding: 0.5rem;
+}
+.admin-blogpost-options > * {
+  border: none;
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  font-size: 1rem;
+  padding: 0.5rem;
+  margin: 0.5rem;
+  outline: 1px solid gray;
+  border-radius: 4px;
+}
+.admin-blogpost-options > * > * {
+  color: inherit;
+  text-decoration: none;
+}
+.admin-blogpost-options > *:hover {
+  color: white;
+  cursor: pointer;
+  background: rgba(0, 50, 206, 0.5);
+}
+
+/* editor styles */
+
+.form-field {
+  display: flex;
+  flex-direction: row;
+  margin: 4px 0;
+}
+.form-labels {
+  display: flex;
+  width: 100px;
+  margin-right: 0.5rem;
+  align-items: center;
+  font-size: 24px;
+}
+.form-input {
+  height: 24px;
+  padding: 4px;
+  width: 400px;
+}
