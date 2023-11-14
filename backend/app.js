@@ -7,7 +7,9 @@ app.use("/dist", express.static(path.join(__dirname, "../../frontend/dist")));
 app.use("/public", express.static(path.join(__dirname, "../../frontend/public")));
 
 app.get("/", (req, res) => {
-  res.render(path.join(__dirname, "../public/index.html"), { client_id: process.env.client_id });
+  res.sendFile(path.join(__dirname, "../frontend/index.html"), {
+    client_id: process.env.client_id,
+  });
 });
 
 app.use("/api/auth/", require("./api/auth"));
