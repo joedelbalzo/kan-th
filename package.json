@@ -2,7 +2,7 @@
   "name": "Kaas",
   "version": "1.0.0",
   "description": "root folder for theo",
-  "main": "spec.js",
+  "main": "index.js",
   "directories": {
     "test": "test"
   },
