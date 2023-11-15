@@ -12,7 +12,7 @@ import { fetchBlogposts } from "../store";
 import AdminPosts from "./AdminPosts";
 
 //Component Style Imports
-import "./adminstyles.css";
+import "./AdminStles.css";
 
 const Admin = () => {
   const navigate = useNavigate();

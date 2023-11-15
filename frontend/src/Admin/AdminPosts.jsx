@@ -12,7 +12,8 @@ import "react-quill/dist/quill.snow.css";
 import { createBlogpost, editBlogpost } from "../store";
 
 //Component Style Imports
-import "./adminstyles.css";
+import "./AdminStles.css";
+
 const AdminPosts = () => {
   const location = useLocation();
   const dispatch = useDispatch();
