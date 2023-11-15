@@ -8,7 +8,7 @@ import Login from "../Login";
 import Nav from "../Nav";
 
 //Store Imports
-import { fetchBlogposts } from "../store";
+import { fetchBlogposts, deleteBlogpost } from "../store";
 import AdminPosts from "./AdminPosts";
 
 //Component Style Imports
@@ -28,6 +28,7 @@ const Admin = () => {
   const hideArchivePost = (blogpost) => {
     console.log("hide and archive");
     console.log(blogpost);
+    dispatch(deleteBlogpost(blogpost));
   };
 
   //posts should never REALLY be gone. They should live in the database and go into an archived folder that we can hide
