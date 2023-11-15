@@ -3,7 +3,7 @@ const app = express();
 const path = require("path");
 app.use(express.json());
 
-app.use(express.static(path.join(__dirname, "../../frontend/dist")));
+app.use(express.static(path.join(__dirname, "../frontend/dist")));
 // app.use("/public", express.static(path.join(__dirname, "../../frontend/public")));
 
 // app.get("/", (req, res) => {
