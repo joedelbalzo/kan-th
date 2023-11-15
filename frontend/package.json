@@ -1,7 +1,7 @@
 {
-  "name": "kaas",
+  "name": "Vali",
   "version": "0.0.1",
-  "description": "kaas frontend",
+  "description": "Vali frontend",
   "main": "index.js",
   "scripts": {
     "dev": "vite",

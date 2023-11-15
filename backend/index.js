@@ -1,4 +1,4 @@
-const { syncAndSeed, User, conn } = require("./db");
+const { syncAndSeed, conn } = require("./db");
 
 const app = require("./app");
 const cors = require("cors");

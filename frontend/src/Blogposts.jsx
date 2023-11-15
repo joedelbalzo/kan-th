@@ -62,7 +62,7 @@ const Blogposts = () => {
   return (
     <div>
       <div>
-        <h1>The Kaas Blog</h1>
+        <h1>The Vali Blog</h1>
       </div>
       <div>
         <h2>Helping SMBs achieve their full potential.</h2>

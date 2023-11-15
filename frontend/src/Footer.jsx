@@ -30,7 +30,7 @@ const Footer = () => {
           paddingBottom: "1rem",
         }}
       >
-        <p onClick={() => adminTools()}>&copy; Theo. Email me at jdelbalzo99@gmail.com.</p>
+        <p onClick={() => adminTools()}>&copy; Vali. Email me at jdelbalzo99@gmail.com.</p>
         {admin >= 5 ? <Login /> : ""}
         {auth.id != null ? (
           <div>

@@ -1,7 +1,6 @@
 const express = require("express");
 const app = express.Router();
-const { Blogpost, User } = require("../db");
-const { Op } = require("sequelize");
+const { Blogpost } = require("../db");
 const AWS = require("aws-sdk");
 AWS.config.update({ region: "us-east-2" });
 
@@ -11,9 +10,7 @@ const crypto = require("crypto");
 
 const storage = multer.memoryStorage();
 const upload = multer({ storage: storage });
-const { uploadFile, deleteFile, getObjectSignedUrl } = require("../s3.js");
-
-const generateFileName = (bytes = 32) => crypto.randomBytes(bytes).toString("hex");
+const { getObjectSignedUrl } = require("../s3.js");
 
 const { isLoggedIn } = require("./middleware.js");
 
@@ -21,19 +18,15 @@ const { isLoggedIn } = require("./middleware.js");
 app.get("/", async (req, res, next) => {
   try {
     let response = await Blogpost.findAll();
-    // console.log("response in the get all", response);
     let output = [];
     for (reply of response) {
       if (reply.homePicture) {
-        // console.log("call aws for home picture");
         reply.homePicURL = await getObjectSignedUrl(reply.homePicture);
       }
       if (reply.bannerPicture) {
-        // console.log("call aws for banner picture");
         reply.bannerPicURL = await getObjectSignedUrl(reply.bannerPicture);
       }
       if (reply.contentPicture) {
-        // console.log("call aws for content picture");
         reply.contentPicURL = await getObjectSignedUrl(reply.contentPicture);
       }
       output.push(reply);
@@ -53,8 +46,9 @@ app.get("/:id", async (req, res, next) => {
       return res.status(404).json({ message: "Blogpost not found" });
     }
     res.send(blogpost);
-  } catch (err) {
-    next(err);
+  } catch (ex) {
+    res.status(404).send({ message: "No blogpost found with the given ID." });
+    next(ex);
   }
 });
 
@@ -63,13 +57,13 @@ app.post("/", isLoggedIn, async (req, res, next) => {
   try {
     res.status(201).send(await Blogpost.create({ ...req.body, userId: req.user.id }));
   } catch (ex) {
+    res.status(404).send({ message: "No blogpost found with the given ID." });
     next(ex);
   }
 });
 
 app.put("/:id", isLoggedIn, async (req, res, next) => {
   try {
-    console.log(req.body);
     let id = req.params.id;
     let request = req.body;
     const [update] = await Blogpost.update(
@@ -92,13 +86,11 @@ app.put("/:id", isLoggedIn, async (req, res, next) => {
 // delete blogpost
 app.delete("/:id", isLoggedIn, async (req, res, next) => {
   try {
-    console.log("This does not work!!!!");
     const blogpost = await Blogpost.findByPk(req.params.id);
-    console.log(blogpost);
     await blogpost.destroy();
     res.sendStatus(204);
-  } catch (err) {
-    next(err);
+  } catch (ex) {
+    next(ex);
   }
 });
 

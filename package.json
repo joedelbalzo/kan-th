@@ -1,7 +1,7 @@
 {
-  "name": "Kaas",
+  "name": "Vali",
   "version": "1.0.0",
-  "description": "root folder for theo",
+  "description": "root folder for Vali",
   "main": "index.js",
   "directories": {
     "test": "test"

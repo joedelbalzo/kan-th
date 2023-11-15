@@ -34,7 +34,7 @@ const Nav = () => {
       <Link to="/" style={{ textDecoration: "none", color: "inherit", flexGrow: 1 }}>
         <div className="company-name-and-logo">
           <GlassesIcon width="26px" height="20px" />
-          <span className="brand-name">kaas</span>
+          <span className="brand-name">Vali</span>
         </div>
       </Link>
       {theme == "dark" ? (
