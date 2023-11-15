@@ -4,7 +4,7 @@
   "description": "theo backend",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
+    "start": "node --max_old_space_size=400 index.js",
     "start:dev": "nodemon index.js"
   },
   "keywords": [],
