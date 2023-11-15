@@ -12,7 +12,7 @@ import "react-quill/dist/quill.snow.css";
 import { createBlogpost, editBlogpost } from "../store";
 
 //Component Style Imports
-import "./AdminStles.css";
+import "./AdminStyles.css";
 
 const AdminPosts = () => {
   const location = useLocation();
