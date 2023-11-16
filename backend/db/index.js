@@ -24,7 +24,7 @@ const syncAndSeed = async () => {
         title: "Understanding Personal Finance: A Beginner's Guide",
         subtitle: "Navigating the Basics of Money Management",
         content:
-          "<strong>the better I can handle the design of the site.</strong> Let's Lorem Ipsum some shit. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.<br/><br/>",
+          "<strong>The more words, the better we can play with the design of the site.</strong>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.<br/><br/>",
         published: false,
         publishedAt: "2021-01-01",
       }),
@@ -32,7 +32,7 @@ const syncAndSeed = async () => {
         title: "Post 2. Smart Investment Strategies for Beginners",
         subtitle: "Making Your Money Work for You",
         content:
-          "<strong>the better I can handle the design of the site.</strong> Let's Lorem Ipsum some shit. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.<br/><br/>",
+          "<strong>This is blog post number 2!</strong>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.<br/><br/>",
         published: true,
         publishedAt: "2022-02-02",
       }),
@@ -40,7 +40,7 @@ const syncAndSeed = async () => {
         title: "Post 3. The Importance of Building an Emergency Fund",
         subtitle: "Secure Your Financial Future with Smart Saving",
         content:
-          "handle the design of the site.</strong> Let's Lorem Ipsum some shit. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.<br/><br/>",
+          "This is blog post number 3! Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.<br/><br/>",
         published: true,
         publishedAt: "2022-02-04",
       }),
