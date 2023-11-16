@@ -58,14 +58,14 @@ const syncAndSeed = async () => {
     const [financeJpg, financeDefinition, topTenJPG] = await Promise.all([
       Image.create({
         position: "home",
-        awsPicID: "8bf1ee47493d6db86b84e19b91f9395995e731fb571fcbcd9249064c3ca66aa8",
+        awsPicID: "top-ten-matter-most-personal-finance-scaled-1-2048x1366.jpg.jpg",
         picNickname: "from-joe-shadi-wedding.jpg",
         // awsPicURL,
         picCaption: "home pic caption",
       }),
       Image.create({
-        position: "content",
-        awsPicID: "a4225d9cab96aeafbe945c05dcd93a8ec77864b3c096f8d9c6cc432d3621605e",
+        position: "home",
+        awsPicID: "finance-financial-performance-concept-illustration_53876-40450.jpg.jpg",
         picNickname: "giphy.gif",
         // awsPicURL,
         picCaption: "content pic caption",
@@ -84,8 +84,8 @@ const syncAndSeed = async () => {
     await samplePost3.addTags([money, smbs, dei]);
 
     await samplePost1.addImages([financeJpg]);
-    await samplePost2.addImages([topTenJPG]);
-    await samplePost3.addImages([financeDefinition]);
+    await samplePost2.addImages([financeDefinition]);
+    await samplePost3.addImages([topTenJPG]);
 
     return {
       users: {

@@ -29,8 +29,6 @@ const AdminPosts = () => {
   const [bannerPicture, setBannerPicture] = useState("");
   const tags = useSelector((state) => state.tags);
 
-  // console.log("post", post);
-
   const handleSubmit = async (event) => {
     event.preventDefault();
 
@@ -43,7 +41,6 @@ const AdminPosts = () => {
       title: title,
       subtitle: subtitle,
       content: content,
-      // tags: tags,
     };
 
     console.log("blog data.", blogData);
@@ -54,8 +51,6 @@ const AdminPosts = () => {
       dispatch(createBlogpost(formData));
     }
   };
-
-  const tagsToSelect = console.log("all of the tags");
 
   // const formatText = (action) => {
   //   const textarea = document.getElementById("myTextArea");
@@ -125,7 +120,8 @@ const AdminPosts = () => {
           <label htmlFor="title" className="form-labels">
             Title:{" "}
           </label>
-          <input
+          <TextField
+            variant="outlined"
             type="text"
             id="title"
             value={title}
@@ -139,26 +135,50 @@ const AdminPosts = () => {
           <label htmlFor="subtitle" className="form-labels">
             Subtitle:
           </label>
-          <input
+          <TextField
             type="text"
             id="subtitle"
+            variant="outlined"
             value={subtitle}
             className="form-input"
             onChange={(e) => setSubtitle(e.target.value)}
             required
           />
         </div>
-        <div className="form-field">
-          <label htmlFor="tags" className="form-labels">
-            Tags:
-          </label>
-          <Autocomplete
-            disablePortal
-            id="combo-box-demo"
-            options={tagsToSelect}
-            sx={{ width: 300 }}
-            renderInput={(params) => <TextField {...params} label="Movie" />}
-          />
+        <div className="tag-fields">
+          <div className="form-field">
+            <label htmlFor="tags" className="form-labels">
+              Tags:
+            </label>
+            <Autocomplete
+              disablePortal
+              id="combo-box-demo"
+              options={tags}
+              getOptionLabel={(option) => option.tagName}
+              sx={{ width: 150 }}
+              renderInput={(params) => <TextField {...params} label="Tag 1" />}
+            />
+          </div>
+          <div className="form-field">
+            <Autocomplete
+              disablePortal
+              id="combo-box-demo"
+              options={tags}
+              getOptionLabel={(option) => option.tagName}
+              sx={{ width: 150 }}
+              renderInput={(params) => <TextField {...params} label="Tag 2" />}
+            />
+          </div>
+          <div className="form-field">
+            <Autocomplete
+              disablePortal
+              id="combo-box-demo"
+              options={tags}
+              getOptionLabel={(option) => option.tagName}
+              sx={{ width: 150 }}
+              renderInput={(params) => <TextField {...params} label="Tag 3" />}
+            />
+          </div>
         </div>
       </div>
       {/* <div style={{ display: "flex", flexDirection: "row", padding: "1rem" }}>
@@ -261,7 +281,9 @@ const AdminPosts = () => {
           )}
         </div>
       </div>
-      <button type="submit">Publish</button>
+      <button type="submit" className="publish-button">
+        Publish
+      </button>
     </form>
   );
 };

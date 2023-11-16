@@ -19,7 +19,7 @@ const Admin = () => {
   const dispatch = useDispatch();
 
   const auth = useSelector((state) => state.auth);
-  const blogposts = useSelector((state) => state.blogposts);
+  const blogposts = useSelector((state) => state.blogposts.allBlogposts);
 
   if (!auth.id) {
     return null;

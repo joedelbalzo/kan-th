@@ -57,7 +57,26 @@
   font-size: 24px;
 }
 .form-input {
-  height: 24px;
   padding: 4px;
-  width: 400px;
+  width: 50%;
+}
+
+.tag-fields {
+  display: flex;
+}
+
+.publish-button {
+  width: 80px;
+  padding: 8px;
+  margin: auto;
+  border: 2px solid inherit;
+  border-radius: 4px;
+}
+.publish-button:hover {
+  width: 80px;
+  padding: 8px;
+  margin: auto;
+  border: 2px solid green;
+  border-radius: 4px;
+  cursor: pointer;
 }
