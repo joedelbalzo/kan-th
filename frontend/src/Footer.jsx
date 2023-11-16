@@ -7,10 +7,12 @@ import { useNavigate, Link } from "react-router-dom";
 import Login from "./Login";
 
 //Store Imports
+import { logout } from "./store";
 
 const Footer = () => {
   const [admin, setAdmin] = useState(0);
   const auth = useSelector((state) => state.auth);
+  const dispatch = useDispatch();
 
   const adminTools = () => {
     setAdmin((prevAdmin) => prevAdmin + 1);
@@ -20,16 +22,37 @@ const Footer = () => {
     setAdmin(0);
   }, []);
 
+  const handleLogout = () => {
+    localStorage.clear();
+    dispatch(logout());
+  };
+
   return (
     <>
       <div
         style={{
           fontSize: "calc(6px + .5vw)",
-          color: "rgb(200,200,200)",
           paddingTop: "2rem",
           paddingBottom: "1rem",
         }}
       >
+        <div className="footer">
+          <Link to="" className="footer-links">
+            About
+          </Link>
+          <Link to="" className="footer-links">
+            Privacy
+          </Link>
+          <Link to="" className="footer-links">
+            Terms{" "}
+          </Link>
+          <Link to="" className="footer-links">
+            Home
+          </Link>
+          <Link to="" className="footer-links">
+            Contact and Feedback
+          </Link>
+        </div>
         <p onClick={() => adminTools()}>&copy; Vali. Email me at jdelbalzo99@gmail.com.</p>
         {admin >= 5 ? <Login /> : ""}
         {auth.id != null ? (

@@ -18,7 +18,6 @@ import { fetchBlogByID } from "./store";
 
 const Blogpost_Single = () => {
   const { id } = useParams();
-  console.log(id);
   const navigate = useNavigate();
   const dispatch = useDispatch();
 

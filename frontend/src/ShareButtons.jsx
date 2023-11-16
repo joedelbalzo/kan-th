@@ -25,19 +25,34 @@ const ShareButtons = () => {
     <div className="share-buttons">
       Share:
       <button onClick={() => share("facebook")}>
-        <FaFacebookF /> <span style={{ margin: 2 }}>Facebook</span>
+        <FaFacebookF />{" "}
+        <span style={{ margin: 2 }} className="share-buttons-text">
+          Facebook
+        </span>
       </button>
       <button onClick={() => share("linkedin")}>
-        <FaLinkedinIn /> <span style={{ margin: 2 }}>LinkedIn</span>
+        <FaLinkedinIn />{" "}
+        <span style={{ margin: 2 }} className="share-buttons-text">
+          LinkedIn
+        </span>
       </button>
       <button onClick={() => share("twitter")}>
-        <FaTwitter /> <span style={{ margin: 2 }}>Twitter</span>
+        <FaTwitter />{" "}
+        <span style={{ margin: 2 }} className="share-buttons-text">
+          Twitter
+        </span>
       </button>
       <button onClick={() => share("email")}>
-        <FaRegEnvelope /> <span style={{ margin: 2 }}>Email</span>
+        <FaRegEnvelope />{" "}
+        <span style={{ margin: 2 }} className="share-buttons-text">
+          Email
+        </span>
       </button>
       <button onClick={() => share("email")}>
-        <FaReddit /> <span style={{ margin: 2 }}>Reddit</span>
+        <FaReddit />{" "}
+        <span style={{ margin: 2 }} className="share-buttons-text">
+          Reddit
+        </span>
       </button>
       {/* Add more buttons for other platforms */}
     </div>

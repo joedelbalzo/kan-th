@@ -15,12 +15,16 @@ export const loginWithToken = () => {
   return async (dispatch) => {
     const token = window.localStorage.getItem("token");
     if (token) {
-      const response = await axios.get("/api/auth", {
-        headers: {
-          authorization: token,
-        },
-      });
-      dispatch({ type: "SET_AUTH", auth: response.data });
+      try {
+        const response = await axios.get("/api/auth", {
+          headers: {
+            authorization: token,
+          },
+        });
+        dispatch({ type: "SET_AUTH", auth: response.data });
+      } catch (ex) {
+        return console.log("Login Invalid");
+      }
     }
   };
 };

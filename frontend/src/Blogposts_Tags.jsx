@@ -1,7 +1,7 @@
 //React Imports
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate, Link, useParams, useLocation } from "react-router-dom";
 import parse from "html-react-parser";
 import DOMPurify from "dompurify";
 
@@ -12,7 +12,7 @@ import ShareButtons from "./ShareButtons";
 import SideNav from "./SideNav";
 
 //Store Imports
-import { fetchBlogposts } from "./store";
+import { fetchBlogpostsByTag } from "./store";
 
 //The is my terrible blog that really needs an overhaul: https://blog.usetheo.com/. I want it to look more consumery and friendly, rounded fonts, subtle colors.
 
@@ -43,14 +43,19 @@ export const readableDate = (date) => {
   return `${month} ${day}, ${year}`;
 };
 
-const Blogposts = () => {
+const Blogposts_Tags = () => {
+  let tag = useParams();
+  tag = tag.id;
+
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const blogposts = useSelector((state) => state.blogposts.allBlogposts);
+  const blogposts = useSelector((state) => state.blogposts.filteredBlogposts);
 
   if (!blogposts) {
     return null;
+  } else {
+    console.log(blogposts);
   }
 
   const sampleText = (content) => {
@@ -126,4 +131,4 @@ const Blogposts = () => {
   );
 };
 
-export default Blogposts;
+export default Blogposts_Tags;

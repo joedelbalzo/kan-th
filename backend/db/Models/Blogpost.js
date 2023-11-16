@@ -41,43 +41,6 @@ const Blogpost = conn.define("blogpost", {
     type: DATEONLY,
     allowNull: true,
   },
-  authorId: {
-    type: INTEGER,
-    allowNull: false,
-  },
-  homePicture: {
-    type: STRING,
-    allowNull: true,
-  },
-  homePictureNickname: {
-    type: STRING,
-    allowNull: true,
-  },
-  bannerPicture: {
-    type: STRING,
-    allowNull: true,
-  },
-  bannerPictureNickname: {
-    type: STRING,
-    allowNull: true,
-  },
-  contentPicture: {
-    type: STRING,
-    allowNull: true,
-  },
-  contentPictureNickname: {
-    type: STRING,
-    allowNull: true,
-  },
-  homePicURL: {
-    type: STRING,
-  },
-  bannerPicURL: {
-    type: STRING,
-  },
-  contentPicURL: {
-    type: STRING,
-  },
 });
 
 module.exports = Blogpost;

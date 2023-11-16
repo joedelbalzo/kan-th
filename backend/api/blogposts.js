@@ -1,6 +1,6 @@
 const express = require("express");
 const app = express.Router();
-const { Blogpost } = require("../db");
+const { Blogpost, Tag, Image } = require("../db");
 const AWS = require("aws-sdk");
 AWS.config.update({ region: "us-east-2" });
 
@@ -17,22 +17,23 @@ const { isLoggedIn } = require("./middleware.js");
 // get all the blogposts
 app.get("/", async (req, res, next) => {
   try {
-    let response = await Blogpost.findAll();
-    let output = [];
-    for (reply of response) {
-      if (reply.homePicture) {
-        reply.homePicURL = await getObjectSignedUrl(reply.homePicture);
-      }
-      if (reply.bannerPicture) {
-        reply.bannerPicURL = await getObjectSignedUrl(reply.bannerPicture);
-      }
-      if (reply.contentPicture) {
-        reply.contentPicURL = await getObjectSignedUrl(reply.contentPicture);
-      }
-      output.push(reply);
-    }
+    let response = await Blogpost.findAll({
+      include: [Image, Tag],
+    });
 
-    res.send(output);
+    await Promise.all(
+      response.map(async (blogpost) => {
+        await Promise.all(
+          blogpost.images.map(async (image) => {
+            if (image.awsPicURL === null) {
+              image.awsPicURL = await getObjectSignedUrl(image.awsPicID);
+            }
+          })
+        );
+      })
+    );
+
+    res.send(response);
   } catch (ex) {
     next(ex);
   }

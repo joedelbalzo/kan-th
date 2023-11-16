@@ -7,6 +7,7 @@ import { HashRouter as Router, Routes, Route } from "react-router-dom";
 import Login from "./Login";
 import Nav from "./Nav";
 import Blogposts from "./Blogposts";
+import Blogposts_Tags from "./Blogposts_Tags";
 import Blogpost_Single from "./Blogpost_Single";
 import Footer from "./Footer";
 import Search from "./Search";
@@ -14,7 +15,7 @@ import Admin from "./Admin/AdminHome";
 import AdminPosts from "./Admin/AdminPosts";
 
 //Store Imports
-import { fetchBlogposts } from "./store";
+import { fetchBlogposts, fetchTags } from "./store";
 
 function App() {
   const dispatch = useDispatch();
@@ -22,21 +23,27 @@ function App() {
 
   useEffect(() => {
     dispatch(fetchBlogposts());
+    dispatch(fetchTags());
     // fetch only this page?
   }, []);
 
   return (
     <div>
       <Nav />
+      <div style={{ display: "flex", flexDirection: "column" }}></div>
       <hr />
-      <Routes>
-        <Route path="/" element={<Blogposts />} />
-        <Route path="/posts/:id" element={<Blogpost_Single />} />
-        <Route path="/tags/:tag" element={<Search />} />
-        {auth.id && <Route path="/admin" element={<Admin />} />}
-        {auth.id && <Route path="/admin/posts" element={<AdminPosts />} />}
-      </Routes>
-      <Footer />
+      <div style={{ flexGrow: 100 }}>
+        <Routes>
+          <Route path="/" element={<Blogposts />} />
+          <Route path="/posts/:id" element={<Blogpost_Single />} />
+          <Route path="/tags/:id" element={<Blogposts_Tags />} />
+          {auth.id && <Route path="/admin" element={<Admin />} />}
+          {auth.id && <Route path="/admin/posts" element={<AdminPosts />} />}
+        </Routes>
+      </div>
+      <div>
+        <Footer />
+      </div>
     </div>
   );
 }

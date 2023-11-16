@@ -1,6 +1,6 @@
 //React Imports
 import React, { useState, useMemo, useCallback } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useLocation, Link } from "react-router-dom";
 import { useDropzone } from "react-dropzone";
 
@@ -13,6 +13,8 @@ import { createBlogpost, editBlogpost } from "../store";
 
 //Component Style Imports
 import "./AdminStyles.css";
+import TextField from "@mui/material/TextField";
+import Autocomplete from "@mui/material/Autocomplete";
 
 const AdminPosts = () => {
   const location = useLocation();
@@ -21,10 +23,11 @@ const AdminPosts = () => {
   const [title, setTitle] = useState(post?.title || "");
   const [subtitle, setSubtitle] = useState(post?.subtitle || "");
   const [content, setContent] = useState(post?.content || "");
-  const [tags, setTags] = useState(post?.tags || "");
+  // const [tags, setTags] = useState("");
   const [homePicture, setHomePicture] = useState("");
   const [contentPicture, setContentPicture] = useState("");
   const [bannerPicture, setBannerPicture] = useState("");
+  const tags = useSelector((state) => state.tags);
 
   // console.log("post", post);
 
@@ -40,7 +43,7 @@ const AdminPosts = () => {
       title: title,
       subtitle: subtitle,
       content: content,
-      tags: tags,
+      // tags: tags,
     };
 
     console.log("blog data.", blogData);
@@ -51,6 +54,8 @@ const AdminPosts = () => {
       dispatch(createBlogpost(formData));
     }
   };
+
+  const tagsToSelect = console.log("all of the tags");
 
   // const formatText = (action) => {
   //   const textarea = document.getElementById("myTextArea");
@@ -147,13 +152,12 @@ const AdminPosts = () => {
           <label htmlFor="tags" className="form-labels">
             Tags:
           </label>
-          <input
-            type="text"
-            id="tags"
-            value={tags}
-            className="form-input"
-            onChange={(e) => setTags(e.target.value)}
-            required
+          <Autocomplete
+            disablePortal
+            id="combo-box-demo"
+            options={tagsToSelect}
+            sx={{ width: 300 }}
+            renderInput={(params) => <TextField {...params} label="Movie" />}
           />
         </div>
       </div>

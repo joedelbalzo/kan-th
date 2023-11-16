@@ -1,23 +1,39 @@
 import axios from "axios";
 
-const blogposts = (state = [], action) => {
+const initialState = {
+  allBlogposts: [],
+  filteredBlogposts: [],
+};
+
+const blogposts = (state = initialState, action) => {
   if (action.type === "REQUEST_BLOGPOSTS") {
-    return action.blogposts;
+    return { ...state, allBlogposts: action.blogposts };
+  }
+  if (action.type === "REQUEST_BLOGPOSTS_BY_TAG") {
+    return { ...state, filteredBlogposts: action.blogposts };
   }
   if (action.type === "REQUEST_POST") {
-    return action.blogposts;
+    return { ...state, allBlogposts: action.blogposts };
   }
+
   if (action.type === "CREATE_BLOGPOST") {
-    return [action.blogpost, ...state];
+    return { ...state, allBlogposts: [action.blogpost, ...state.allBlogposts] };
   }
+
   if (action.type === "EDIT_BLOGPOST") {
-    return state.map((blogpost) =>
-      blogpost.id === action.blogpost.id ? action.blogpost : blogpost
-    );
+    return {
+      ...state,
+      allBlogposts: state.allBlogposts.map((blogpost) =>
+        blogpost.id === action.blogpost.id ? action.blogpost : blogpost
+      ),
+    };
   }
 
   if (action.type === "DELETE_BLOGPOST") {
-    return state.filter((_blogpost) => _blogpost.id !== action.blogpost.id);
+    return {
+      ...state,
+      allBlogposts: state.allBlogposts.filter((blogpost) => blogpost.id !== action.blogpost.id),
+    };
   }
 
   return state;
@@ -31,11 +47,19 @@ export const fetchBlogposts = () => {
   };
 };
 
-export const fetchBlogByID = () => {
+export const fetchBlogByID = (id) => {
   return async (dispatch) => {
     const response = await axios.get(`/api/blogposts/${id}`);
     console.log("response DATA in store", response.data);
     dispatch({ type: "REQUEST_POST", blogposts: response.data });
+  };
+};
+
+export const fetchBlogpostsByTag = (id) => {
+  return async (dispatch) => {
+    const response = await axios.get(`/api/tags/${id}`);
+    const sorted = response.data.sort((a, b) => new Date(a.publishedAt) - new Date(b.publishedAt));
+    dispatch({ type: "REQUEST_BLOGPOSTS_BY_TAG", blogposts: sorted });
   };
 };
 

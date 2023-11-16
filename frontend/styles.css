@@ -29,6 +29,15 @@ body {
   transition: background-color 0.2s, color 0.2s;
 }
 
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
 /* NAV */
 
 .login {
@@ -69,17 +78,23 @@ h1 {
   font-weight: 450;
   margin-bottom: 2px;
   padding-bottom: 2px;
+  word-wrap: normal;
 }
 h2 {
   font-size: calc(14px + 1vw);
   font-weight: 400;
   margin-top: 2px;
   padding-top: 2px;
+  word-wrap: normal;
+}
+h3 {
+  margin-top: 2px;
+  padding-top: 2px;
+  word-wrap: normal;
 }
 
 .post-grid {
   display: grid;
-  /* width: 80%; */
   grid-template-columns: 1fr 4fr;
   margin-bottom: 4rem;
 }
@@ -105,9 +120,10 @@ h2 {
 }
 .post-title-div-picture {
   width: 60%;
-  margin: auto;
+  margin: 2rem auto;
   height: 400px;
   object-fit: cover;
+  display: flex;
 }
 .post-body {
   font-size: calc(12px + 0.5vw);
@@ -146,4 +162,42 @@ h2 {
   outline: 1px solid rgba(100, 100, 100, 1);
   border-radius: 4px;
   box-shadow: 1px 1px 1px 1px rgba(100, 100, 100, 1);
+}
+
+.footer {
+  display: flex;
+  justify-content: center;
+}
+
+.footer-links {
+  margin: 4px;
+}
+
+/*  */
+/*  */
+/*  */
+/*  */
+/*  */
+/*  */
+
+/* BASIC MOBILE STYLES */
+@media screen and (min-width: 300px) and (max-width: 768px) {
+  .post-info {
+    display: none;
+  }
+  .post-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+  .post-title-div {
+    margin: 0;
+    padding: 0;
+    overflow: auto;
+  }
+  .post-content {
+    grid-column: 1;
+  }
+  .share-buttons-text {
+    display: none;
+  }
 }

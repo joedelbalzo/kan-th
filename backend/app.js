@@ -15,5 +15,6 @@ app.use(express.static(path.join(__dirname, "../frontend/dist")));
 app.use("/api/auth/", require("./api/auth"));
 app.use("/api/blogposts/", require("./api/blogposts"));
 app.use("/api/images/", require("./api/images"));
+app.use("/api/tags/", require("./api/tags"));
 
 module.exports = app;
