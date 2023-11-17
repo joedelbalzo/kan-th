@@ -9,6 +9,7 @@ import DOMPurify from "dompurify";
 import Login from "./Login";
 import Nav from "./Nav";
 import ShareButtons from "./ShareButtons";
+import SideNav from "./SideNav";
 import { readableDate } from "./Blogposts";
 
 //Store Imports
@@ -21,27 +22,49 @@ const Blogpost_Single = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const post = useSelector((state) => state.blogposts.find((post) => post.id.toString() === id));
+  const post = useSelector((state) =>
+    state.blogposts.allBlogposts.find((post) => post.id.toString() === id)
+  );
 
   if (!post) {
     return null;
   }
 
-  // console.log(parse(post.content));
+  let homePic;
+  let bannerPic;
+  let contentPic;
 
+  for (let image of post.images) {
+    if (image.position == "home") {
+      homePic = image;
+    } else if (image.position == "content") {
+      contentPic = image;
+    } else if (image.position == "banner") {
+      bannerPic = image;
+    }
+  }
+
+  console.log(homePic);
+
+  // };
   //GOTTA INSERT A WAY TO CREDIT WHOEVER TOOK THE PHOTO. This should go in the database.
   const textReplace = (content) => {
     const bannerRegex = /%% banner picture goes here %%/g;
     const contentRegex = /%% content picture goes here %%/g;
+    console.log(bannerPic);
+    bannerPic
+      ? (content = content.replace(
+          bannerRegex,
+          `<div><img src="${bannerPic.awsPicURL}" style="height: 240px; width: 100%; object-fit: contain;" /></div>`
+        ))
+      : "";
 
-    content = content.replace(
-      bannerRegex,
-      `<img src="${post.bannerPicURL}" style="height: 240px; width: 100%; object-fit: contain;" />`
-    );
-    content = content.replace(
-      contentRegex,
-      `<img src="${post.contentPicURL}" style="height: 240px; width: 180px; object-fit: contain;" />`
-    );
+    contentPic
+      ? (content = content.replace(
+          contentRegex,
+          `<img src="${contentPic.awsPicURL}" style="height: 240px; width: 180px; object-fit: contain;" />`
+        ))
+      : "";
 
     content = DOMPurify.sanitize(content);
     return parse(content);
@@ -77,13 +100,16 @@ const Blogpost_Single = () => {
   return (
     <div>
       <div className="post-grid">
-        <div className="post-info">Tags, Author, Etc</div>
+        <div className="post-info">
+          <SideNav />
+        </div>{" "}
         <div className="post-content">
           <div className="post-title-div">
             <span className="post-date">Date: {readableDate(post.publishedAt)}</span>
-            <h2>{post.title}</h2>
-            <img src={post.homePicURL} className="post-title-div-picture" />
-            <h3 style={{ fontWeight: 400 }}>{post.subtitle}</h3>
+            <h1>{post.title}</h1>
+            <img src={homePic.awsPicURL} className="post-title-div-picture" />
+            <div className="picture-caption">{homePic.picCaption}</div>
+            <h2 style={{ fontWeight: 400 }}>{post.subtitle}</h2>
             {/* tags */}
             <ShareButtons />
           </div>

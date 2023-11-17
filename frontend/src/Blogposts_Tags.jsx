@@ -113,7 +113,7 @@ const Blogposts_Tags = () => {
                   {" "}
                   tags:
                   {blogpost.tags.map((tag) => {
-                    return <Link key={tag.id}>{tag.tagName} </Link>;
+                    return <Link key={tag.id}>{tag.tagName},</Link>;
                   })}
                 </div>
                 <ShareButtons />

@@ -39,8 +39,6 @@ app.get("/:id", async (req, res, next) => {
         );
       })
     );
-    console.log(response);
-
     res.send(response);
   } catch (ex) {
     next(ex);

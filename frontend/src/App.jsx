@@ -13,6 +13,7 @@ import Footer from "./Footer";
 import Search from "./Search";
 import Admin from "./Admin/AdminHome";
 import AdminPosts from "./Admin/AdminPosts";
+import PrivacyPolicy from "./PrivacyPolicy";
 
 //Store Imports
 import { fetchBlogposts, fetchTags } from "./store";
@@ -37,6 +38,8 @@ function App() {
           <Route path="/" element={<Blogposts />} />
           <Route path="/posts/:id" element={<Blogpost_Single />} />
           <Route path="/tags/:id" element={<Blogposts_Tags />} />
+          <Route path="/privacy" element={<PrivacyPolicy />} />
+
           {auth.id && <Route path="/admin" element={<Admin />} />}
           {auth.id && <Route path="/admin/posts" element={<AdminPosts />} />}
         </Routes>

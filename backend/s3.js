@@ -50,16 +50,26 @@ function deleteFile(fileName) {
   return s3Client.send(new DeleteObjectCommand(deleteParams));
 }
 
+//URL CACHING and GETTING NEW URLS
+const urlCache = {};
+
 async function getObjectSignedUrl(key) {
+  if (urlCache[key] && urlCache[key].expiration > Date.now()) {
+    return urlCache[key].url;
+  }
   const params = {
     Bucket: bucketName,
     Key: key,
   };
 
-  // https://aws.amazon.com/blogs/developer/generate-presigned-url-modular-aws-sdk-javascript/
   const command = new GetObjectCommand(params);
-  const seconds = 60;
+  const seconds = 3600;
   const url = await getSignedUrl(s3Client, command, { expiresIn: seconds });
+
+  urlCache[key] = {
+    url: url,
+    expiration: Date.now() + seconds * 1000,
+  };
 
   return url;
 }

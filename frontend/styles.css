@@ -4,6 +4,8 @@
   --bg-color-light: whitesmoke;
   --text-color-dark: whitesmoke;
   --bg-color-dark: #030718;
+  --caption-color-light: rgba(10, 10, 10, 0.6);
+  --caption-color-dark: rgba(245, 245, 245, 0.8);
   font-family: "Rubik", sans-serif;
   width: 90vw;
   margin: 2rem auto;
@@ -16,11 +18,13 @@
 body[data-theme="light"] {
   --text-color: var(--text-color-light);
   --bg-color: var(--bg-color-light);
+  --caption-color: var(--caption-color-light);
 }
 
 body[data-theme="dark"] {
   --text-color: var(--text-color-dark);
   --bg-color: var(--bg-color-dark);
+  --caption-color: var(--caption-color-dark);
 }
 
 body {
@@ -95,12 +99,13 @@ h3 {
 
 .post-grid {
   display: grid;
-  grid-template-columns: 1fr 4fr;
+  grid-template-columns: 175px 4fr;
   margin-bottom: 4rem;
 }
 .post-info {
   grid-column: 1;
   border-right: 1px solid;
+  align-self: stretch;
 }
 .post-content {
   grid-column: 2;
@@ -120,10 +125,16 @@ h3 {
 }
 .post-title-div-picture {
   width: 80%;
-  margin: 2rem auto;
+  margin: 2rem auto 4px;
   height: 400px;
   object-fit: cover;
   display: flex;
+}
+.picture-caption {
+  font-size: 12px;
+  text-align: center;
+  margin-bottom: 1rem;
+  color: var(--caption-color);
 }
 .post-body {
   font-size: calc(12px + 0.5vw);
@@ -135,6 +146,12 @@ h3 {
   border-bottom: 1px solid gray;
   height: 1rem;
   border-bottom-right-radius: 4rem;
+}
+
+.post-tags {
+  font-size: 16px;
+  margin-bottom: 1rem;
+  color: var(--caption-color);
 }
 
 .share-buttons {
@@ -153,13 +170,13 @@ h3 {
   border: 0;
   border-radius: 4px;
   font-variant: small-caps;
-  box-shadow: 1px 1px 1px 1px rgba(100, 100, 100, 1);
+  box-shadow: 1px 1px 1px 1px rgba(50, 50, 50, 1);
 }
 .share-buttons > *:hover {
   cursor: pointer;
-  background-color: darkgray;
+  background-color: rgba(75, 75, 75, 1);
   color: whitesmoke;
-  outline: 1px solid rgba(100, 100, 100, 1);
+  outline: 2px solid rgba(50, 100, 200, 1);
   border-radius: 4px;
   box-shadow: 1px 1px 1px 1px rgba(100, 100, 100, 1);
 }

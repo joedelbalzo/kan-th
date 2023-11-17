@@ -83,7 +83,7 @@ const Blogposts = () => {
       <div>
         <h1>The Vali Blog</h1>
       </div>
-      <div>
+      <div style={{ marginBottom: "2rem" }}>
         <h2>Helping SMBs achieve their full potential.</h2>
       </div>
       <div className="post-grid">
@@ -104,12 +104,19 @@ const Blogposts = () => {
                 </Link>
                 <img src={homePic} className="post-title-div-picture" />
                 <h3 style={{ fontWeight: 400 }}>{blogpost.subtitle}</h3>
-                <div>
-                  {" "}
-                  tags:
-                  {blogpost.tags.map((tag) => {
-                    return <Link key={tag.id}>{tag.tagName} </Link>;
-                  })}
+                <div className="post-tags">
+                  Tags:
+                  <Link key={blogpost.tags[0].id} style={{ marginLeft: 4 }}>
+                    {blogpost.tags[0].tagName}
+                  </Link>
+                  ,
+                  <Link key={blogpost.tags[1].id} style={{ marginLeft: 4 }}>
+                    {blogpost.tags[1].tagName}
+                  </Link>
+                  ,
+                  <Link key={blogpost.tags[2].id} style={{ marginLeft: 4 }}>
+                    {blogpost.tags[2].tagName}{" "}
+                  </Link>
                 </div>
                 <ShareButtons />
                 <div className="post-body">

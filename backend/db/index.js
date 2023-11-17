@@ -19,32 +19,53 @@ const syncAndSeed = async () => {
       }),
     ]);
 
-    const [samplePost1, samplePost2, samplePost3] = await Promise.all([
-      Blogpost.create({
-        title: "Understanding Personal Finance: A Beginner's Guide",
-        subtitle: "Navigating the Basics of Money Management",
-        content:
-          "<strong>The more words, the better we can play with the design of the site.</strong>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.<br/><br/>",
-        published: false,
-        publishedAt: "2021-01-01",
-      }),
-      Blogpost.create({
-        title: "Post 2. Smart Investment Strategies for Beginners",
-        subtitle: "Making Your Money Work for You",
-        content:
-          "<strong>This is blog post number 2!</strong>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.<br/><br/>",
-        published: true,
-        publishedAt: "2022-02-02",
-      }),
-      Blogpost.create({
-        title: "Post 3. The Importance of Building an Emergency Fund",
-        subtitle: "Secure Your Financial Future with Smart Saving",
-        content:
-          "This is blog post number 3! Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.<br/><br/>",
-        published: true,
-        publishedAt: "2022-02-04",
-      }),
-    ]);
+    const [samplePost1, samplePost2, samplePost3, samplePost4, samplePost5, samplePost6] =
+      await Promise.all([
+        Blogpost.create({
+          title: "Understanding Personal Finance: A Beginner's Guide",
+          subtitle: "Navigating the Basics of Money Management",
+          content:
+            "<strong>The more words, the better we can play with the design of the site.</strong>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.<br/><br/>",
+          published: false,
+          publishedAt: "2021-01-01",
+        }),
+        Blogpost.create({
+          title: "Post 2. Smart Investment Strategies for Beginners",
+          subtitle: "Making Your Money Work for You",
+          content:
+            "<strong>This is blog post number 2!</strong>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.<br/><br/>",
+          published: true,
+          publishedAt: "2022-02-02",
+        }),
+        Blogpost.create({
+          title: "Post 3. The Importance of Building an Emergency Fund",
+          subtitle: "Secure Your Financial Future with Smart Saving",
+          content: "This is blog post number 4!",
+          published: true,
+          publishedAt: "2022-02-04",
+        }),
+        Blogpost.create({
+          title: "Post 4. The Importance of Building an Emergency Fund",
+          subtitle: "Secure Your Financial Future with Smart Saving",
+          content: "This is blog post number 4!",
+          published: true,
+          publishedAt: "2022-02-04",
+        }),
+        Blogpost.create({
+          title: "Post 5. The Importance of Building an Emergency Fund",
+          subtitle: "Secure Your Financial Future with Smart Saving",
+          content: "This is blog post number 5!",
+          published: true,
+          publishedAt: "2022-02-05",
+        }),
+        Blogpost.create({
+          title: "Post 6. The Importance of Building an Emergency Fund",
+          subtitle: "Secure Your Financial Future with Smart Saving",
+          content: "This is blog post number 6!",
+          published: true,
+          publishedAt: "2022-02-06",
+        }),
+      ]);
 
     const [trials, errors, money, finances, smbs, dei] = await Promise.all([
       Tag.create({ tagName: "Trials" }),
@@ -55,7 +76,14 @@ const syncAndSeed = async () => {
       Tag.create({ tagName: "Diversity and Inclusion" }),
     ]);
 
-    const [financeJpg, financeDefinition, topTenJPG] = await Promise.all([
+    const [
+      financeJpgHome,
+      financeDefinitionHome,
+      financeJpgBanner,
+      financeDefinitionBanner,
+      financeJpgContent,
+      financeDefinitionContent,
+    ] = await Promise.all([
       Image.create({
         position: "home",
         awsPicID: "top-ten-matter-most-personal-finance-scaled-1-2048x1366.jpg.jpg",
@@ -68,24 +96,93 @@ const syncAndSeed = async () => {
         awsPicID: "finance-financial-performance-concept-illustration_53876-40450.jpg.jpg",
         picNickname: "giphy.gif",
         // awsPicURL,
-        picCaption: "content pic caption",
+        picCaption: "home pic caption",
       }),
       Image.create({
         position: "banner",
-        awsPicID: "6ca87ec9c928d49b1eac0ea14b8d79532f54e07711b18fa3983bd8d66beee404",
-        picNickname: "IMG_4829 (2).JPG",
+        awsPicID: "top-ten-matter-most-personal-finance-scaled-1-2048x1366.jpg.jpg",
+        picNickname: "from-joe-shadi-wedding.jpg",
         // awsPicURL,
         picCaption: "banner pic caption",
       }),
+      Image.create({
+        position: "banner",
+        awsPicID: "finance-financial-performance-concept-illustration_53876-40450.jpg.jpg",
+        picNickname: "giphy.gif",
+        // awsPicURL,
+        picCaption: "banner pic caption",
+      }),
+      Image.create({
+        position: "content",
+        awsPicID: "top-ten-matter-most-personal-finance-scaled-1-2048x1366.jpg.jpg",
+        picNickname: "from-joe-shadi-wedding.jpg",
+        // awsPicURL,
+        picCaption: "content pic caption",
+      }),
+      Image.create({
+        position: "content",
+        awsPicID: "finance-financial-performance-concept-illustration_53876-40450.jpg.jpg",
+        picNickname: "giphy.gif",
+        // awsPicURL,
+        picCaption: "content pic caption",
+      }),
     ]);
 
-    await samplePost1.addTags([trials, errors, money]);
-    await samplePost2.addTags([finances, smbs, dei]);
-    await samplePost3.addTags([money, smbs, dei]);
+    const promises = [
+      samplePost1.addTags([trials, finances, money]),
+      samplePost2.addTags([finances, smbs, dei]),
+      samplePost3.addTags([money, smbs, dei]),
+      samplePost4.addTags([trials, errors, money]),
+      samplePost5.addTags([finances, smbs, dei]),
+      samplePost6.addTags([money, smbs, dei]),
 
-    await samplePost1.addImages([financeJpg]);
-    await samplePost2.addImages([financeDefinition]);
-    await samplePost3.addImages([topTenJPG]);
+      samplePost1.addImages([financeJpgHome]),
+      samplePost2.addImages([financeDefinitionHome]),
+      samplePost3.addImages([financeJpgHome]),
+      samplePost4.addImages([financeDefinitionHome]),
+      samplePost5.addImages([financeJpgHome]),
+      samplePost6.addImages([financeDefinitionHome]),
+
+      samplePost2.addImages([financeJpgBanner]),
+      samplePost1.addImages([financeDefinitionBanner]),
+      samplePost4.addImages([financeJpgBanner]),
+      samplePost3.addImages([financeDefinitionBanner]),
+      samplePost6.addImages([financeJpgBanner]),
+      samplePost5.addImages([financeDefinitionBanner]),
+    ].map((p) => p.catch((e) => ({ error: e.message })));
+
+    const results = await Promise.all(promises);
+
+    results.forEach((result, index) => {
+      if (result.error) {
+        console.log(`Promise ${index + 1} failed with error: ${result.error}`);
+      } else {
+        console.log(`Promise ${index + 1} succeeded`);
+      }
+    });
+
+    // await Promise.all([
+    //   samplePost1.addTags([trials, finances, money]),
+    //   samplePost2.addTags([finances, smbs, dei]),
+    //   samplePost3.addTags([money, smbs, dei]),
+    //   samplePost4.addTags([trials, errors, money]),
+    //   samplePost5.addTags([finances, smbs, dei]),
+    //   samplePost6.addTags([money, smbs, dei]),
+
+    //   samplePost1.addImages([financeJpgHome]),
+    //   samplePost2.addImages([financeDefinitionHome]),
+    //   samplePost3.addImages([financeJpgHome]),
+    //   samplePost4.addImages([financeDefinitionHome]),
+    //   samplePost5.addImages([financeJpgHome]),
+    //   samplePost6.addImages([financeDefinitionHome]),
+
+    //   samplePost2.addImages([financeJpgBanner]),
+    //   samplePost1.addImages([financeDefinitionBanner]),
+    //   samplePost4.addImages([financeJpgBanner]),
+    //   samplePost3.addImages([financeDefinitionBanner]),
+    //   samplePost6.addImages([financeJpgBanner]),
+    //   samplePost5.addImages([financeDefinitionBanner]),
+    // ]);
 
     return {
       users: {
@@ -95,6 +192,9 @@ const syncAndSeed = async () => {
         samplePost1,
         samplePost2,
         samplePost3,
+        samplePost4,
+        samplePost5,
+        samplePost6,
       },
       tags: {
         trials,
@@ -105,9 +205,12 @@ const syncAndSeed = async () => {
         dei,
       },
       images: {
-        financeJpg,
-        financeDefinition,
-        topTenJPG,
+        financeJpgHome,
+        financeDefinitionHome,
+        financeJpgBanner,
+        financeDefinitionBanner,
+        financeJpgContent,
+        financeDefinitionContent,
       },
     };
   } catch (error) {

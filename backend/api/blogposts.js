@@ -17,12 +17,14 @@ const { isLoggedIn } = require("./middleware.js");
 // get all the blogposts
 app.get("/", async (req, res, next) => {
   try {
-    let response = await Blogpost.findAll({
+    let blogposts = await Blogpost.findAll({
       include: [Image, Tag],
     });
 
+    let responseData = blogposts.map((blogpost) => blogpost.get({ plain: true }));
+
     await Promise.all(
-      response.map(async (blogpost) => {
+      responseData.map(async (blogpost) => {
         await Promise.all(
           blogpost.images.map(async (image) => {
             if (image.awsPicURL === null) {
@@ -33,7 +35,7 @@ app.get("/", async (req, res, next) => {
       })
     );
 
-    res.send(response);
+    res.send(responseData);
   } catch (ex) {
     next(ex);
   }

@@ -22,47 +22,24 @@ app.post(
   ]),
   async (req, res, next) => {
     try {
-      let homePic = req.files.homePicture;
-      let bannerPic = req.files.bannerPicture;
-      let contentPic = req.files.contentPicture;
+      const imageTypes = ["homePicture", "bannerPicture", "contentPicture"];
 
-      if (req.files.homePicture && req.files.homePicture[0]) {
-        homePic = await sharp(req.files.homePicture[0].buffer).toFormat("webp").toBuffer();
-        homePicName = generateFileName();
-        await uploadFile(homePic, homePicName, homePic.mimetype);
-        await Image.create({
-          blogpostId: req.params.id,
-          awsPicID: homePicName,
-          position: "home",
-          picNickname: req.files.homePicture[0].originalname,
-          caption: "insert home pic caption here",
-        });
-      }
-      if (req.files.bannerPicture && req.files.bannerPicture[0]) {
-        bannerPic = await sharp(req.files.bannerPicture[0].buffer).toFormat("webp").toBuffer();
-        bannerPicName = generateFileName();
-        await uploadFile(bannerPic, bannerPicName, bannerPic.mimetype);
-        await Image.create({
-          blogpostId: req.params.id,
-          awsPicID: bannerPicName,
-          position: "banner",
-          picNickname: req.files.bannerPicture[0].originalname,
-          caption: "insert banner pic caption here",
-        });
-      }
-      if (req.files.contentPicture && req.files.contentPicture[0]) {
-        contentPic = await sharp(req.files.contentPicture[0].buffer).toFormat("webp").toBuffer();
-        contentPicName = generateFileName();
-        await uploadFile(contentPic, contentPicName, contentPic.mimetype);
-        await Image.create({
-          blogpostId: req.params.id,
-          awsPicID: contentPicName,
-          position: "content",
-          picNickname: req.files.contentPicture[0].originalname,
-          caption: "insert content pic caption here",
-        });
-      }
+      for (const imageType of imageTypes) {
+        if (req.files[imageType] && req.files[imageType][0]) {
+          const image = req.files[imageType][0];
+          const processedImage = await sharp(image.buffer).toFormat("webp").toBuffer();
+          const imageName = generateFileName();
+          await uploadFile(processedImage, imageName, processedImage.mimetype);
 
+          await Image.create({
+            blogpostId: req.params.id,
+            awsPicID: imageName,
+            position: imageType.replace("Picture", ""),
+            picNickname: image.originalname,
+            caption: `insert ${imageType.replace("Picture", "")} pic caption here`,
+          });
+        }
+      }
       res.sendStatus(200);
     } catch (ex) {
       res.status(404).send({ message: "Issue uploading pictures." });
@@ -79,71 +56,54 @@ app.put(
   ]),
   async (req, res, next) => {
     try {
-      let homePic = req.files.homePicture;
-      let bannerPic = req.files.bannerPicture;
-      let contentPic = req.files.contentPicture;
+      const imageTypes = ["homePicture", "bannerPicture", "contentPicture"];
 
-      if (req.files.homePicture && req.files.homePicture[0]) {
-        homePic = await sharp(req.files.homePicture[0].buffer).toFormat("webp").toBuffer();
-        homePicName = generateFileName();
-        await uploadFile(homePic, homePicName, homePic.mimetype);
-        await Image.update(
-          {
-            awsPicID: homePicName,
-            position: "home",
-            picNickname: req.files.homePicture[0].originalname,
-            caption: "insert home pic caption here",
-          },
-          {
+      for (const imageType of imageTypes) {
+        if (req.files[imageType] && req.files[imageType][0]) {
+          const image = req.files[imageType][0];
+          const processedImage = await sharp(image.buffer).toFormat("webp").toBuffer();
+          const imageName = generateFileName();
+          const currentImage = await Image.findOne({
             where: {
               blogpostId: req.params.id,
-              position: "home",
+              position: imageType.replace("Picture", ""),
             },
-          }
-        );
-      }
-      if (req.files.bannerPicture && req.files.bannerPicture[0]) {
-        bannerPic = await sharp(req.files.bannerPicture[0].buffer).toFormat("webp").toBuffer();
-        bannerPicName = generateFileName();
-        await uploadFile(bannerPic, bannerPicName, bannerPic.mimetype);
-        await Image.update(
-          {
-            awsPicID: bannerPicName,
-            position: "banner",
-            picNickname: req.files.bannerPicture[0].originalname,
-            caption: "insert banner pic caption here",
-          },
-          {
-            where: {
-              blogpostId: req.params.id,
-              position: "banner",
+          });
+
+          await uploadFile(processedImage, imageName, processedImage.mimetype);
+
+          await Image.update(
+            {
+              awsPicID: imageName,
+              picNickname: image.originalname,
+              caption: `insert ${imageType.replace("Picture", "")} pic caption here`,
             },
+            {
+              where: {
+                blogpostId: req.params.id,
+                position: imageType.replace("Picture", ""),
+              },
+            }
+          );
+          if (currentImage) {
+            await deleteFile(currentImage.awsPicID);
           }
-        );
-      }
-      if (req.files.contentPicture && req.files.contentPicture[0]) {
-        contentPic = await sharp(req.files.contentPicture[0].buffer).toFormat("webp").toBuffer();
-        contentPicName = generateFileName();
-        await uploadFile(contentPic, contentPicName, contentPic.mimetype);
-        await Image.update(
-          {
-            awsPicID: contentPicName,
-            position: "content",
-            picNickname: req.files.contentPicture[0].originalname,
-            caption: "insert content pic caption here",
-          },
-          {
-            where: {
-              blogpostId: req.params.id,
-              position: "content",
-            },
-          }
-        );
+        }
       }
 
       res.sendStatus(200);
     } catch (ex) {
-      res.status(404).send({ message: "Issue uploading pictures." });
+      console.error(ex);
+      const errorResponse = {
+        message: "An error occurred.",
+        errorType: ex.name || "UnknownError",
+        details: ex.message || "No additional details available.",
+      };
+      if (process.env.NODE_ENV === "development") {
+        errorResponse.stack = ex.stack;
+      }
+
+      res.status(404).send(errorResponse);
       next(ex);
     }
   }

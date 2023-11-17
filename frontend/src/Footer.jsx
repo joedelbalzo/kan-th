@@ -40,7 +40,7 @@ const Footer = () => {
           <Link to="" className="footer-links">
             About
           </Link>
-          <Link to="" className="footer-links">
+          <Link to="/privacy" className="footer-links">
             Privacy
           </Link>
           <Link to="" className="footer-links">

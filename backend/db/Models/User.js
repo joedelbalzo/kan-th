@@ -2,7 +2,16 @@ const conn = require("../conn");
 const { STRING, UUID, UUIDV4, BOOLEAN, INTEGER } = conn.Sequelize;
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
-const JWT = process.env.JWT || "shhh";
+
+require("dotenv").config();
+
+const JWT_SECRET =
+  process.env.JWT ||
+  (process.env.NODE_ENV === "development" ? "itsadevsecretbaby12302398#$" : null);
+
+if (!JWT_SECRET) {
+  throw new Error("JWT secret not set. Please set the JWT environment variable.");
+}
 
 const User = conn.define("user", {
   id: {
@@ -51,7 +60,7 @@ User.addHook("beforeSave", async (user) => {
 
 User.prototype.generateToken = function () {
   return {
-    token: jwt.sign({ id: this.id }, process.env.JWT || "shhh"),
+    token: jwt.sign({ id: this.id }, JWT_SECRET),
   };
 };
 
@@ -62,7 +71,7 @@ User.register = async function (credentials) {
 
 User.findByToken = async function (token) {
   try {
-    const { id } = jwt.verify(token, process.env.JWT || "shhh");
+    const { id } = jwt.verify(token, JWT_SECRET);
     const user = await this.findByPk(id);
     if (user) {
       return user;
