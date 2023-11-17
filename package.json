@@ -16,7 +16,7 @@
     "start-backend": "cd backend && npm run start:dev",
     "start": "concurrently \"npm run start-backend\" \"npm run start-frontend\"",
     "start:prod": "npm run build-frontend && cd backend && npm start",
-    "build:prod": "npm run install && npm run install-frontend && npm run install-backend"
+    "build:prod": "npm run install-root && npm run install-frontend && npm run install-backend"
   },
   "keywords": [],
   "author": "",
