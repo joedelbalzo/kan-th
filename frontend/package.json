@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "vite",
-    "build": "vite build --production=false",
+    "build": "vite build --mode development",
     "serve": "vite preview",
     "start:dev": "nodemon server --ignore dist/ --ignore src/"
   },
