@@ -10,13 +10,13 @@
     "install-root": "npm install",
     "install-frontend": "cd frontend && npm install",
     "install-backend": "cd backend && npm install",
-    "build-frontend": "cd frontend && npm run build -- --production=false",
+    "build-frontend": "cd frontend && npm run build",
     "build": "concurrently \"npm run install-root\" \"npm run install-frontend\" \"npm run install-backend\"",
     "start-frontend": "cd frontend && npm run dev",
     "start-backend": "cd backend && npm run start:dev",
     "start": "concurrently \"npm run start-backend\" \"npm run start-frontend\"",
-    "start:prod": "npm run build-frontend -- --production=false && cd backend && npm start",
-    "build:prod": "npm run install-root && npm run install-frontend -- --production=false && npm run install-backend"
+    "start:prod": "npm run build-frontend && cd backend && npm start",
+    "build:prod": "npm run install-root && npm run install-frontend && npm run install-backend"
   },
   "keywords": [],
   "author": "",
