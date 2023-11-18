@@ -2,16 +2,11 @@ const conn = require("../conn");
 const { STRING, UUID, UUIDV4, BOOLEAN, INTEGER } = conn.Sequelize;
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
+const path = require("path");
 
-require("dotenv").config();
+require("dotenv").config({ path: path.resolve(__dirname, "../..", ".env") });
 
-const JWT_SECRET =
-  process.env.JWT ||
-  (process.env.NODE_ENV === "development" ? "itsadevsecretbaby12302398#$" : null);
-
-if (!JWT_SECRET) {
-  throw new Error("JWT secret not set. Please set the JWT environment variable.");
-}
+const JWT_SECRET = process.env.JWT || "itsa389F5C6458C764FF4315281DB1E3Fdevsecretbaby12302398#$";
 
 const User = conn.define("user", {
   id: {
