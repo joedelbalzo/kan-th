@@ -74,11 +74,11 @@ const Blogposts_Tags = () => {
     contentPic = null;
     for (let image of blogpost.images) {
       if (image.position == "home") {
-        homePic = image.awsPicURL;
+        homePic = image;
       } else if (image.position == "content") {
-        contentPic = image.awsPicURL;
+        contentPic = image;
       } else if (image.position == "banner") {
-        bannerPic = image.awsPicURL;
+        bannerPic = image;
       }
     }
   };
@@ -107,7 +107,14 @@ const Blogposts_Tags = () => {
                 >
                   <h2>{blogpost.title}</h2>
                 </Link>
-                <img src={homePic} className="post-title-div-picture" />
+                {homePic ? (
+                  <>
+                    <img src={homePic.awsPicURL} className="post-title-div-picture" />{" "}
+                    <div className="picture-caption">{homePic.picCaption}</div>
+                  </>
+                ) : (
+                  ""
+                )}
                 <h3 style={{ fontWeight: 400 }}>{blogpost.subtitle}</h3>
                 <div>
                   {" "}

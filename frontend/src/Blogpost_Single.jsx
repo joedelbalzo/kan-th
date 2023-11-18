@@ -33,25 +33,27 @@ const Blogpost_Single = () => {
   let homePic;
   let bannerPic;
   let contentPic;
-
-  for (let image of post.images) {
-    if (image.position == "home") {
-      homePic = image;
-    } else if (image.position == "content") {
-      contentPic = image;
-    } else if (image.position == "banner") {
-      bannerPic = image;
+  const pics = (blogpost) => {
+    homePic = null;
+    bannerPic = null;
+    contentPic = null;
+    for (let image of blogpost.images) {
+      if (image.position == "home") {
+        homePic = image;
+      } else if (image.position == "content") {
+        contentPic = image;
+      } else if (image.position == "banner") {
+        bannerPic = image;
+      }
     }
-  }
-
-  console.log(homePic);
+  };
+  pics(post);
 
   // };
   //GOTTA INSERT A WAY TO CREDIT WHOEVER TOOK THE PHOTO. This should go in the database.
   const textReplace = (content) => {
     const bannerRegex = /%% banner picture goes here %%/g;
     const contentRegex = /%% content picture goes here %%/g;
-    console.log(bannerPic);
     bannerPic
       ? (content = content.replace(
           bannerRegex,
@@ -70,33 +72,6 @@ const Blogpost_Single = () => {
     return parse(content);
   };
 
-  // const readableDate = (date) => {
-  //   let year = date.slice(0, 4);
-  //   let month = date.slice(5, 7);
-  //   let day = date.slice(8, date.length);
-  //   let months = [
-  //     0,
-  //     "January",
-  //     "February",
-  //     "March",
-  //     "April",
-  //     "May",
-  //     "June",
-  //     "July",
-  //     "August",
-  //     "September",
-  //     "October",
-  //     "November",
-  //     "December",
-  //   ];
-
-  //   if (month[0] == 0) {
-  //     month = months[month[1]];
-  //   } else month = months[month];
-
-  //   return `${month} ${day}, ${year}`;
-  // };
-
   return (
     <div>
       <div className="post-grid">
@@ -107,8 +82,15 @@ const Blogpost_Single = () => {
           <div className="post-title-div">
             <span className="post-date">Date: {readableDate(post.publishedAt)}</span>
             <h1>{post.title}</h1>
-            <img src={homePic.awsPicURL} className="post-title-div-picture" />
-            <div className="picture-caption">{homePic.picCaption}</div>
+            {homePic ? (
+              <>
+                <img src={homePic.awsPicURL} className="post-title-div-picture" />{" "}
+                <div className="picture-caption">{homePic.picCaption}</div>
+              </>
+            ) : (
+              ""
+            )}
+
             <h2 style={{ fontWeight: 400 }}>{post.subtitle}</h2>
             {/* tags */}
             <ShareButtons />

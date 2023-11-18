@@ -151,15 +151,15 @@ const syncAndSeed = async () => {
       samplePost5.addImages([financeDefinitionBanner]),
     ].map((p) => p.catch((e) => ({ error: e.message })));
 
-    const results = await Promise.all(promises);
+    await Promise.all(promises);
 
-    results.forEach((result, index) => {
-      if (result.error) {
-        console.log(`Promise ${index + 1} failed with error: ${result.error}`);
-      } else {
-        console.log(`Promise ${index + 1} succeeded`);
-      }
-    });
+    // results.forEach((result, index) => {
+    //   if (result.error) {
+    //     console.log(`Promise ${index + 1} failed with error: ${result.error}`);
+    //   } else {
+    //     console.log(`Promise ${index + 1} succeeded`);
+    //   }
+    // });
 
     // await Promise.all([
     //   samplePost1.addTags([trials, finances, money]),
