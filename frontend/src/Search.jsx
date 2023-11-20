@@ -8,7 +8,7 @@ import Login from "./Login";
 import Nav from "./Nav";
 
 //Store Imports
-import { fetchBlogposts } from "./store";
+// import { fetchPublishedBlogposts } from "./store";
 
 const Search = () => {
   const navigate = useNavigate();

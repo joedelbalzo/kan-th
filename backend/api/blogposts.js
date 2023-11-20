@@ -12,12 +12,51 @@ const storage = multer.memoryStorage();
 const upload = multer({ storage: storage });
 const { getObjectSignedUrl } = require("../s3.js");
 
-const { isLoggedIn } = require("./middleware.js");
+const { isLoggedIn, restrictAccess } = require("./middleware.js");
 
-// get all the blogposts
+// get all the PUBLISHED blogposts
 app.get("/", async (req, res, next) => {
   try {
+    const limit = parseInt(req.query.limit) || 10;
+    const page = parseInt(req.query.page) || 1;
+
     let blogposts = await Blogpost.findAll({
+      where: {
+        published: true,
+      },
+      include: [Image, Tag],
+      limit: limit,
+      offset: (page - 1) * limit,
+      order: [["publishedAt", "DESC"]],
+    });
+
+    let responseData = blogposts.map((blogpost) => blogpost.get({ plain: true }));
+
+    await Promise.all(
+      responseData.map(async (blogpost) => {
+        await Promise.all(
+          blogpost.images.map(async (image) => {
+            if (image.awsPicURL === null) {
+              image.awsPicURL = await getObjectSignedUrl(image.awsPicID);
+            }
+          })
+        );
+      })
+    );
+
+    res.send(responseData);
+  } catch (ex) {
+    next(ex);
+  }
+});
+
+// get all the DRAFTED AND UNPUBLISHED blogposts
+app.get("/drafted", restrictAccess, async (req, res, next) => {
+  try {
+    let blogposts = await Blogpost.findAll({
+      where: {
+        published: false,
+      },
       include: [Image, Tag],
     });
 
@@ -74,6 +113,26 @@ app.put("/:id", isLoggedIn, async (req, res, next) => {
         title: request.title,
         content: request.content,
         tags: request.tags,
+      },
+      {
+        where: { id: id },
+      }
+    );
+    res.status(200).send(await Blogpost.findByPk(id));
+  } catch (ex) {
+    res.status(404).send({ message: "No blogpost found with the given ID." });
+    next(ex);
+  }
+});
+
+app.put("/publish/:id", isLoggedIn, restrictAccess, async (req, res, next) => {
+  try {
+    let today = new Date().toISOString();
+    let id = req.params.id;
+    const [update] = await Blogpost.update(
+      {
+        published: true,
+        publishedAt: today,
       },
       {
         where: { id: id },

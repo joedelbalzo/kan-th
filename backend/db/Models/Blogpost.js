@@ -1,6 +1,6 @@
 const { ARRAY } = require("sequelize");
 const conn = require("../conn");
-const { STRING, UUID, UUIDV4, BOOLEAN, TEXT, DATEONLY, INTEGER } = conn.Sequelize;
+const { STRING, UUID, UUIDV4, BOOLEAN, TEXT, DATE, INTEGER } = conn.Sequelize;
 
 const Blogpost = conn.define("blogpost", {
   id: {
@@ -38,7 +38,7 @@ const Blogpost = conn.define("blogpost", {
     defaultValue: false,
   },
   publishedAt: {
-    type: DATEONLY,
+    type: DATE,
     allowNull: true,
   },
 });

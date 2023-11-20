@@ -14,34 +14,10 @@ import SideNav from "./SideNav";
 //Store Imports
 import { fetchBlogpostsByTag } from "./store";
 
+//Function Imports
+import { readableDate, pics } from "./functions";
+
 //The is my terrible blog that really needs an overhaul: https://blog.usetheo.com/. I want it to look more consumery and friendly, rounded fonts, subtle colors.
-
-export const readableDate = (date) => {
-  let year = date.slice(0, 4);
-  let month = date.slice(5, 7);
-  let day = date.slice(8, date.length);
-  let months = [
-    0,
-    "January",
-    "February",
-    "March",
-    "April",
-    "May",
-    "June",
-    "July",
-    "August",
-    "September",
-    "October",
-    "November",
-    "December",
-  ];
-
-  if (month[0] == 0) {
-    month = months[month[1]];
-  } else month = months[month];
-
-  return `${month} ${day}, ${year}`;
-};
 
 const Blogposts_Tags = () => {
   let tag = useParams();
@@ -65,24 +41,6 @@ const Blogposts_Tags = () => {
     return parse(content);
   };
 
-  let homePic;
-  let bannerPic;
-  let contentPic;
-  const pics = (blogpost) => {
-    homePic = null;
-    bannerPic = null;
-    contentPic = null;
-    for (let image of blogpost.images) {
-      if (image.position == "home") {
-        homePic = image;
-      } else if (image.position == "content") {
-        contentPic = image;
-      } else if (image.position == "banner") {
-        bannerPic = image;
-      }
-    }
-  };
-
   return (
     <div>
       <div>
@@ -96,7 +54,9 @@ const Blogposts_Tags = () => {
           <SideNav />
         </div>
         {blogposts.map((blogpost) => {
-          pics(blogpost);
+          const { homePic, bannerPic, contentPic } = pics(blogpost);
+          console.log(homePic, bannerPic, contentPic);
+
           return (
             <div className="post-content" key={blogpost.id}>
               <div className="post-title-div">

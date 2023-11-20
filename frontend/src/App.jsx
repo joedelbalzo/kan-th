@@ -16,16 +16,16 @@ import AdminPosts from "./Admin/AdminPosts";
 import PrivacyPolicy from "./PrivacyPolicy";
 
 //Store Imports
-import { fetchBlogposts, fetchTags } from "./store";
+import { fetchPublishedBlogposts, fetchTags, fetchDraftedBlogposts } from "./store";
 
 function App() {
   const dispatch = useDispatch();
   const auth = useSelector((state) => state.auth);
 
   useEffect(() => {
-    dispatch(fetchBlogposts());
+    dispatch(fetchPublishedBlogposts());
     dispatch(fetchTags());
-    // fetch only this page?
+    dispatch(fetchDraftedBlogposts());
   }, []);
 
   return (

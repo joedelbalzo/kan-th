@@ -1,7 +1,6 @@
 import { createStore, combineReducers, applyMiddleware } from "redux";
 import logger from "redux-logger";
 import thunk from "redux-thunk";
-import axios from "axios";
 import auth from "./auth";
 import blogposts from "./blogposts";
 import tags from "./tags";

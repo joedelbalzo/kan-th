@@ -3,6 +3,7 @@ import axios from "axios";
 const initialState = {
   allBlogposts: [],
   filteredBlogposts: [],
+  draftedBlogposts: [],
 };
 
 const blogposts = (state = initialState, action) => {
@@ -12,12 +13,24 @@ const blogposts = (state = initialState, action) => {
   if (action.type === "REQUEST_BLOGPOSTS_BY_TAG") {
     return { ...state, filteredBlogposts: action.blogposts };
   }
+  if (action.type === "REQUEST_DRAFTS") {
+    return { ...state, draftedBlogposts: action.blogposts };
+  }
   if (action.type === "REQUEST_POST") {
     return { ...state, allBlogposts: action.blogposts };
   }
 
   if (action.type === "CREATE_BLOGPOST") {
     return { ...state, allBlogposts: [action.blogpost, ...state.allBlogposts] };
+  }
+  if (action.type === "PUBLISH_BLOGPOST") {
+    return {
+      ...state,
+      draftedBlogposts: state.draftedBlogposts.filter(
+        (blogpost) => blogpost.id !== action.blogpost.id
+      ),
+      allBlogposts: [action.blogpost, ...state.allBlogposts],
+    };
   }
 
   if (action.type === "EDIT_BLOGPOST") {
@@ -39,11 +52,17 @@ const blogposts = (state = initialState, action) => {
   return state;
 };
 
-export const fetchBlogposts = () => {
+export const fetchPublishedBlogposts = () => {
   return async (dispatch) => {
     const response = await axios.get("/api/blogposts");
-    const sorted = response.data.sort((a, b) => new Date(a.publishedAt) - new Date(b.publishedAt));
-    dispatch({ type: "REQUEST_BLOGPOSTS", blogposts: sorted });
+    // const sorted = response.data.sort((a, b) => new Date(a.publishedAt) - new Date(b.publishedAt));
+    dispatch({ type: "REQUEST_BLOGPOSTS", blogposts: response.data });
+  };
+};
+export const fetchDraftedBlogposts = () => {
+  return async (dispatch) => {
+    const response = await axios.get("/api/blogposts/drafted");
+    dispatch({ type: "REQUEST_DRAFTS", blogposts: response.data });
   };
 };
 
@@ -63,15 +82,35 @@ export const fetchBlogpostsByTag = (id) => {
   };
 };
 
-export const createBlogpost = (blogpost) => {
+export const createBlogpost = (formData, blogData) => {
   return async (dispatch) => {
     const token = window.localStorage.getItem("token");
-    const response = await axios.post("/api/blogposts/", blogpost, {
+    let blogResponse = await axios.post(`/api/blogposts/`, blogData, {
       headers: {
         authorization: token,
       },
     });
-    dispatch({ type: "CREATE_BLOGPOST", blogpost: response.data });
+    console.log("blog response in store", blogResponse.data);
+    const imageResponse = await axios.post(`/api/images/${blogResponse.data.id}`, formData, {
+      headers: {
+        "Content-Type": "multipart/form-data",
+        authorization: token,
+      },
+    });
+    dispatch({ type: "CREATE_BLOGPOST", blogpost: blogResponse.data });
+  };
+};
+
+export const publishBlogpost = (blogpost) => {
+  return async (dispatch) => {
+    const token = window.localStorage.getItem("token");
+
+    let blogResponse = await axios.put(`/api/blogposts/publish/${blogpost.id}`, blogpost.id, {
+      headers: {
+        authorization: token,
+      },
+    });
+    dispatch({ type: "CREATE_BLOGPOST", blogpost: blogResponse.data });
   };
 };
 

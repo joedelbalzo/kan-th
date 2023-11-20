@@ -6,9 +6,22 @@
   --bg-color-dark: #030718;
   --caption-color-light: rgba(10, 10, 10, 0.6);
   --caption-color-dark: rgba(245, 245, 245, 0.8);
+  --box-shadow-color-light: rgba(100, 100, 100, 0.2);
+  --box-shadow-color-dark: rgba(200, 200, 200, 0.2);
+
   font-family: "Rubik", sans-serif;
   width: 90vw;
-  margin: 2rem auto;
+  margin: 0 auto;
+  padding: 0;
+}
+
+html {
+  margin: 0;
+  padding: 0;
+}
+body {
+  margin: 0;
+  padding: 0;
 }
 
 .glasses-logo {
@@ -19,12 +32,14 @@ body[data-theme="light"] {
   --text-color: var(--text-color-light);
   --bg-color: var(--bg-color-light);
   --caption-color: var(--caption-color-light);
+  --box-shadow-color: var(--box-shadow-color-light);
 }
 
 body[data-theme="dark"] {
   --text-color: var(--text-color-dark);
   --bg-color: var(--bg-color-dark);
   --caption-color: var(--caption-color-dark);
+  --box-shadow-color: var(--box-shadow-color-dark);
 }
 
 body {
@@ -54,6 +69,12 @@ a:hover {
   align-items: center;
   justify-content: space-around;
   margin: auto;
+  background-color: #a9d6d5;
+  height: 4rem;
+  border-radius: 2rem;
+  padding: 1rem;
+  margin: 1rem;
+  box-shadow: 8px 8px 2rem var(--box-shadow-color);
 }
 
 .company-name-and-logo {

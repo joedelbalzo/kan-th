@@ -10,10 +10,12 @@ import Login from "./Login";
 import Nav from "./Nav";
 import ShareButtons from "./ShareButtons";
 import SideNav from "./SideNav";
-import { readableDate } from "./Blogposts";
 
 //Store Imports
 import { fetchBlogByID } from "./store";
+
+//Function Imports
+import { readableDate, pics } from "./functions";
 
 //The is my terrible blog that really needs an overhaul: https://blog.usetheo.com/. I want it to look more consumery and friendly, rounded fonts, subtle colors.
 
@@ -30,24 +32,9 @@ const Blogpost_Single = () => {
     return null;
   }
 
-  let homePic;
-  let bannerPic;
-  let contentPic;
-  const pics = (blogpost) => {
-    homePic = null;
-    bannerPic = null;
-    contentPic = null;
-    for (let image of blogpost.images) {
-      if (image.position == "home") {
-        homePic = image;
-      } else if (image.position == "content") {
-        contentPic = image;
-      } else if (image.position == "banner") {
-        bannerPic = image;
-      }
-    }
-  };
-  pics(post);
+  const { homePic, bannerPic, contentPic } = pics(post);
+
+  // console.log(homePic, bannerPic, contentPic);
 
   // };
   //GOTTA INSERT A WAY TO CREDIT WHOEVER TOOK THE PHOTO. This should go in the database.

@@ -39,7 +39,8 @@
 .admin-blogpost-options > *:hover {
   color: white;
   cursor: pointer;
-  background: rgba(0, 50, 206, 0.5);
+  background: rgba(00, 50, 206, 0.5);
+  text-decoration: none;
 }
 
 /* editor styles */
@@ -65,7 +66,8 @@
   display: flex;
 }
 
-.publish-button {
+.publish-button,
+.save-button {
   width: 80px;
   padding: 8px;
   margin: auto;
@@ -80,3 +82,39 @@
   border-radius: 4px;
   cursor: pointer;
 }
+.save-button:hover {
+  width: 80px;
+  padding: 8px;
+  margin: auto;
+  border: 2px solid blue;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.admin-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+.admin-grid > * > h2 {
+  text-align: center;
+  text-decoration: underline;
+}
+.admin-grid-published {
+  display: grid;
+  grid-column: 1;
+  border-right: 1px solid;
+  align-content: flex-start;
+  padding: 1rem;
+}
+.admin-grid-drafted {
+  display: grid;
+  grid-column: 2;
+  /* border-right: 1px solid; */
+  align-content: flex-start;
+  padding: 1rem;
+}
+/* .admin-grid-help {
+  display: grid;
+  grid-column: 3;
+  align-content: flex-start;
+} */

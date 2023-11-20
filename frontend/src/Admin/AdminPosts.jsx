@@ -16,6 +16,9 @@ import "./AdminStyles.css";
 import TextField from "@mui/material/TextField";
 import Autocomplete from "@mui/material/Autocomplete";
 
+//Function Imports
+import { readableDate, pics } from "../functions";
+
 const AdminPosts = () => {
   const location = useLocation();
   const dispatch = useDispatch();
@@ -27,7 +30,34 @@ const AdminPosts = () => {
   const [homePicture, setHomePicture] = useState("");
   const [contentPicture, setContentPicture] = useState("");
   const [bannerPicture, setBannerPicture] = useState("");
+  const [saveDateAndTime, setSaveDateAndTime] = useState("");
   const tags = useSelector((state) => state.tags);
+
+  const handleSave = async (event) => {
+    event.preventDefault();
+    let saved = new Date().toString();
+    setSaveDateAndTime(saved.slice(3, 24));
+
+    const formData = new FormData();
+    formData.append("homePicture", homePicture);
+    formData.append("bannerPicture", bannerPicture);
+    formData.append("contentPicture", contentPicture);
+
+    const blogData = {
+      title: title,
+      subtitle: subtitle,
+      content: content,
+      published: false,
+    };
+
+    console.log("save function", blogData);
+
+    if (type === "edit") {
+      dispatch(editBlogpost(formData, blogData, post.id));
+    } else if (type === "create") {
+      dispatch(createBlogpost(formData, blogData));
+    }
+  };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -41,6 +71,7 @@ const AdminPosts = () => {
       title: title,
       subtitle: subtitle,
       content: content,
+      published: true,
     };
 
     console.log("blog data.", blogData);
@@ -48,9 +79,11 @@ const AdminPosts = () => {
     if (type === "edit") {
       dispatch(editBlogpost(formData, blogData, post.id));
     } else if (type === "create") {
-      dispatch(createBlogpost(formData));
+      dispatch(createBlogpost(formData, blogData));
     }
   };
+
+  let { homePic, bannerPic, contentPic } = post ? pics(post) : "";
 
   // const formatText = (action) => {
   //   const textarea = document.getElementById("myTextArea");
@@ -217,7 +250,11 @@ const AdminPosts = () => {
         <label htmlFor="content" className="form-labels" style={{ alignItems: "flex-start" }}>
           Content:
         </label>
-        <ReactQuill value={content} onChange={setContent} style={{ marginBottom: 50 }} />
+        <ReactQuill
+          value={content}
+          onChange={setContent}
+          style={{ marginBottom: 50, minHeight: 400, minWidth: "70%" }}
+        />
         {/* <textarea
           style={{ width: "80vw", height: "35vh" }}
           id="myTextArea"
@@ -236,7 +273,7 @@ const AdminPosts = () => {
               onChange={(e) => setHomePicture(e.target.files[0])}
             />
           </label>
-          {post.homePictureNickname ? (
+          {homePic ? (
             <div style={{ marginLeft: "8px", fontSize: "smaller", fontStyle: "italic" }}>
               Currently: {post.homePictureNickname}
             </div>
@@ -254,9 +291,9 @@ const AdminPosts = () => {
               onChange={(e) => setBannerPicture(e.target.files[0])}
             />
           </label>
-          {post.bannerPictureNickname ? (
+          {bannerPic ? (
             <div style={{ marginLeft: "8px", fontSize: "smaller", fontStyle: "italic" }}>
-              Currently: {post.bannerPictureNickname}
+              Currently: {bannerPic}
             </div>
           ) : (
             ""
@@ -272,18 +309,24 @@ const AdminPosts = () => {
               onChange={(e) => setContentPicture(e.target.files[0])}
             />
           </label>
-          {post.contentPictureNickname ? (
+          {contentPic ? (
             <div style={{ marginLeft: "8px", fontSize: "smaller", fontStyle: "italic" }}>
-              Currently: {post.contentPictureNickname}
+              Currently: {contentPic}
             </div>
           ) : (
             ""
           )}
         </div>
       </div>
-      <button type="submit" className="publish-button">
-        Publish
-      </button>
+      <div style={{ display: "flex", width: "200px", margin: "auto" }}>
+        <button className="save-button" type="button" onClick={handleSave}>
+          Save
+        </button>
+        <button type="submit" className="publish-button">
+          Publish
+        </button>
+      </div>
+      <div>last saved at {saveDateAndTime}</div>
     </form>
   );
 };

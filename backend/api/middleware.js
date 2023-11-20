@@ -10,6 +10,27 @@ const isLoggedIn = async (req, res, next) => {
   }
 };
 
+const restrictAccess = (req, res, next) => {
+  const origin =
+    req.headers.origin || req.headers.referer || "localhost:3000" || "http://localhost:3000";
+  console.log("origin", origin);
+  if (origin) {
+    if (
+      origin === "https://www.usevali.com" ||
+      origin === "https://usevali.com" ||
+      origin.startsWith("asitenamed") ||
+      origin.startsWith("http://localhost:3000")
+    ) {
+      next();
+    } else {
+      res.status(403).send("Access Denied: Only Vali and its subpaths can access the database.");
+    }
+  } else {
+    res.status(403).send("Access Denied: Origin or Referer header is not set.");
+  }
+};
+
 module.exports = {
   isLoggedIn,
+  restrictAccess,
 };
