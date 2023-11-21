@@ -19,7 +19,7 @@ export const pics = (post) => {
 };
 
 export const readableDate = (date) => {
-  console.log(date);
+  // console.log(date);
   if (!date) {
     return null;
   }

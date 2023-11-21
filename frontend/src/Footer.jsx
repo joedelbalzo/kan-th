@@ -33,40 +33,43 @@ const Footer = () => {
         style={{
           fontSize: "calc(6px + .5vw)",
           paddingTop: "2rem",
-          paddingBottom: "1rem",
+          // paddingBottom: "1rem",
         }}
       >
         <div className="footer">
-          <Link to="" className="footer-links">
-            About
-          </Link>
-          <Link to="/privacy" className="footer-links">
-            Privacy
-          </Link>
-          <Link to="" className="footer-links">
-            Terms{" "}
-          </Link>
-          <Link to="" className="footer-links">
-            Home
-          </Link>
-          <Link to="" className="footer-links">
-            Contact and Feedback
-          </Link>
-        </div>
-        <p onClick={() => adminTools()}>&copy; Vali. Email me at jdelbalzo99@gmail.com.</p>
-        {admin >= 5 ? <Login /> : ""}
-        {auth.id != null ? (
-          <div>
-            <Link to="/admin" className="theme-toggle">
-              Admin Tools
+          <div className="footer-links">
+            <Link to="" className="footer-links">
+              About
             </Link>
-            <button onClick={() => handleLogout()} className="theme-toggle">
-              Admin Logout
-            </button>
+            <Link to="/privacy" className="footer-links">
+              Privacy
+            </Link>
+            <Link to="" className="footer-links">
+              Terms{" "}
+            </Link>
+            <Link to="" className="footer-links">
+              Home
+            </Link>
+            <Link to="/contact" className="footer-links">
+              Contact and Feedback
+            </Link>
           </div>
-        ) : (
-          ""
-        )}
+
+          <p onClick={() => adminTools()}>&copy; Vali. Email me at jdelbalzo99@gmail.com.</p>
+          {admin >= 5 ? <Login /> : ""}
+          {auth.id != null ? (
+            <div>
+              <Link to="/admin" className="theme-toggle">
+                Admin Tools
+              </Link>
+              <button onClick={() => handleLogout()} className="theme-toggle">
+                Admin Logout
+              </button>
+            </div>
+          ) : (
+            ""
+          )}
+        </div>
       </div>
     </>
   );

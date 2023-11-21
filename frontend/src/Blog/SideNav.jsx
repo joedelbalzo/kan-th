@@ -4,11 +4,11 @@ import { useNavigate, Link } from "react-router-dom";
 
 //Component Imports
 
-import "../styles.css";
+import "../../styles.css";
 
 //Store Imports
 import { useDispatch, useSelector } from "react-redux";
-import { fetchBlogpostsByTag } from "./store";
+import { fetchBlogpostsByTag } from "../store";
 
 const SideNav = () => {
   const tags = useSelector((state) => state.tags);
@@ -21,16 +21,16 @@ const SideNav = () => {
 
   const onTagClick = async (tag) => {
     await dispatch(fetchBlogpostsByTag(tag.id));
-    navigate(`/tags/${tag.id}`);
+    navigate(`/blog/tags/${tag.id}`);
   };
 
   return (
     <div>
       Search by Tag:
-      <ul>
+      <ul style={{ padding: 4 }}>
         {tags.map((tag) => {
           return (
-            <li key={tag.id} style={{ listStyleType: "none" }}>
+            <li key={tag.id} style={{ listStyleType: "none", padding: 4 }}>
               <Link onClick={() => onTagClick(tag)}>{tag.tagName}</Link>
             </li>
           );

@@ -32,6 +32,13 @@ const blogposts = (state = initialState, action) => {
       allBlogposts: [action.blogpost, ...state.allBlogposts],
     };
   }
+  if (action.type === "HIDE_BLOGPOST") {
+    return {
+      ...state,
+      allBlogposts: state.allBlogposts.filter((blogpost) => blogpost.id !== action.blogpost.id),
+      draftedBlogposts: [action.blogpost, ...state.draftedBlogposts],
+    };
+  }
 
   if (action.type === "EDIT_BLOGPOST") {
     return {
@@ -110,7 +117,7 @@ export const publishBlogpost = (blogpost) => {
         authorization: token,
       },
     });
-    dispatch({ type: "CREATE_BLOGPOST", blogpost: blogResponse.data });
+    dispatch({ type: "PUBLISH_BLOGPOST", blogpost: blogResponse.data });
   };
 };
 
@@ -135,6 +142,19 @@ export const editBlogpost = (formData, blogData, id) => {
       console.log("blog response in store", blogResponse);
     }
     dispatch({ type: "EDIT_BLOGPOST", blogpost: blogResponse.data });
+  };
+};
+
+export const hideBlogpost = (blogpost) => {
+  return async (dispatch) => {
+    const token = window.localStorage.getItem("token");
+    const blogResponse = await axios.put(`/api/blogposts/hidden/${blogpost.id}`, blogpost, {
+      headers: {
+        authorization: token,
+      },
+    });
+    console.log("blog response in store", blogResponse);
+    dispatch({ type: "HIDE_BLOGPOST", blogpost: blogResponse.data });
   };
 };
 

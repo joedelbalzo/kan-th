@@ -8,10 +8,12 @@ const init = async () => {
   try {
     console.log(process.env.NODE_ENV);
     if (process.env.NODE_ENV === "development") {
+      console.log("in dev");
       const { syncAndSeed } = require("./db");
       await conn.sync({ force: true });
       await syncAndSeed();
     } else {
+      console.log("in prod");
       await conn.authenticate();
     }
 

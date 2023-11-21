@@ -14,7 +14,6 @@ const reducer = combineReducers({
 let store;
 
 if (process.env.NODE_ENV === `development`) {
-  console.log("in", process.env.NODE_ENV);
   store = createStore(reducer, applyMiddleware(thunk, logger));
 } else {
   console.log("in", process.env.NODE_ENV);

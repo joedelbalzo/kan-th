@@ -3,7 +3,7 @@ import React from "react";
 
 const PrivacyPolicy = () => {
   return (
-    <div>
+    <div style={{ width: "90vw", margin: "auto" }}>
       <h1>Vali Privacy Policy </h1>
       <h2>1. Introduction </h2>
       At Vali, d/b/a Vali ("us", "we", "our" or the "Company") we value your privacy and the

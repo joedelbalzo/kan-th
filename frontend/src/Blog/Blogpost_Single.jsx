@@ -6,16 +6,16 @@ import parse from "html-react-parser";
 import DOMPurify from "dompurify";
 
 //Component Imports
-import Login from "./Login";
-import Nav from "./Nav";
-import ShareButtons from "./ShareButtons";
+import Login from "../Login";
+import Nav from "../Nav";
+import ShareButtons from "../ShareButtons";
 import SideNav from "./SideNav";
 
 //Store Imports
-import { fetchBlogByID } from "./store";
+import { fetchBlogByID } from "../store";
 
 //Function Imports
-import { readableDate, pics } from "./functions";
+import { readableDate, pics } from "../functions";
 
 //The is my terrible blog that really needs an overhaul: https://blog.usetheo.com/. I want it to look more consumery and friendly, rounded fonts, subtle colors.
 

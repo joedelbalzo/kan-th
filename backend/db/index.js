@@ -76,20 +76,55 @@ const syncAndSeed = async () => {
       Tag.create({ tagName: "Diversity and Inclusion" }),
     ]);
 
-    const [financeJpgHome, financeDefinitionHome] = await Promise.all([
+    const [
+      financeJpgHome,
+      financeDefinitionHome,
+      financeJpgHome2,
+      financeDefinitionHome2,
+      financeJpgHome3,
+      financeDefinitionHome3,
+    ] = await Promise.all([
       Image.create({
         position: "home",
         awsPicID: "top-ten-matter-most-personal-finance-scaled-1-2048x1366.jpg.jpg",
-        picNickname: "from-joe-shadi-wedding.jpg",
+        picNickname: "financejpg.jpg",
         // awsPicURL,
-        picCaption: "home pic caption",
+        picCaption: "home 1",
       }),
       Image.create({
         position: "home",
         awsPicID: "finance-financial-performance-concept-illustration_53876-40450.jpg.jpg",
         picNickname: "giphy.gif",
         // awsPicURL,
-        picCaption: "home pic caption",
+        picCaption: "home 1",
+      }),
+      Image.create({
+        position: "home",
+        awsPicID: "top-ten-matter-most-personal-finance-scaled-1-2048x1366.jpg.jpg",
+        picNickname: "financejpg.jpg",
+        // awsPicURL,
+        picCaption: "home 2",
+      }),
+      Image.create({
+        position: "home",
+        awsPicID: "finance-financial-performance-concept-illustration_53876-40450.jpg.jpg",
+        picNickname: "giphy.gif",
+        // awsPicURL,
+        picCaption: "home 2",
+      }),
+      Image.create({
+        position: "home",
+        awsPicID: "top-ten-matter-most-personal-finance-scaled-1-2048x1366.jpg.jpg",
+        picNickname: "financejpg.jpg",
+        // awsPicURL,
+        picCaption: "home 3",
+      }),
+      Image.create({
+        position: "home",
+        awsPicID: "finance-financial-performance-concept-illustration_53876-40450.jpg.jpg",
+        picNickname: "giphy.gif",
+        // awsPicURL,
+        picCaption: "home 3",
       }),
     ]);
 
@@ -103,10 +138,10 @@ const syncAndSeed = async () => {
 
       samplePost1.addImages(financeJpgHome),
       samplePost2.addImages(financeDefinitionHome),
-      samplePost3.addImages(financeJpgHome),
-      samplePost4.addImages(financeDefinitionHome),
-      samplePost5.addImages(financeJpgHome),
-      samplePost6.addImages(financeDefinitionHome),
+      samplePost3.addImages(financeJpgHome2),
+      samplePost4.addImages(financeDefinitionHome2),
+      samplePost5.addImages(financeJpgHome3),
+      samplePost6.addImages(financeDefinitionHome3),
     ].map((p) => p.catch((e) => ({ error: e.message })));
 
     await Promise.all(promises);
@@ -165,6 +200,10 @@ const syncAndSeed = async () => {
       images: {
         financeJpgHome,
         financeDefinitionHome,
+        financeJpgHome2,
+        financeDefinitionHome2,
+        financeJpgHome3,
+        financeDefinitionHome3,
       },
     };
   } catch (error) {

@@ -118,3 +118,10 @@
   grid-column: 3;
   align-content: flex-start;
 } */
+
+.admin-confirm {
+  outline: 2px solid green;
+}
+.admin-cancel {
+  outline: 2px solid red;
+}

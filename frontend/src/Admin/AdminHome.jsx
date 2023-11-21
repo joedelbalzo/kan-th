@@ -1,5 +1,5 @@
 //React Imports
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, Link } from "react-router-dom";
 
@@ -8,7 +8,7 @@ import Login from "../Login";
 import Nav from "../Nav";
 
 //Store Imports
-import { fetchDraftedBlogposts, deleteBlogpost, publishBlogpost } from "../store";
+import { fetchDraftedBlogposts, deleteBlogpost, publishBlogpost, hideBlogpost } from "../store";
 import AdminPosts from "./AdminPosts";
 
 //Component Style Imports
@@ -42,6 +42,8 @@ import { readableDate } from "../functions";
 const Admin = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const [hidden, setHidden] = useState(0);
+  const [archive, setArchive] = useState(0);
 
   const auth = useSelector((state) => state.auth);
   const blogposts = useSelector((state) => state.blogposts.allBlogposts);
@@ -51,10 +53,9 @@ const Admin = () => {
     return null;
   }
 
-  const hideArchivePost = (blogpost) => {
-    console.log("hide and archive");
-    console.log(blogpost);
-    dispatch(deleteBlogpost(blogpost));
+  const hidePost = (blogpost, action) => {
+    console.log("Hidden");
+    dispatch(hideBlogpost(blogpost));
   };
   const publish = (blogpost) => {
     console.log("publish!");
@@ -88,7 +89,18 @@ const Admin = () => {
                   <li>Title: {blogpost.title}</li>
                   <li>Subtitle: {blogpost.subtitle}</li>
                   <div className="admin-blogpost-options">
-                    <button onClick={() => hideArchivePost(blogpost)}>Hide and Archive</button>
+                    {hidden === blogpost.id ? (
+                      <>
+                        <button className="admin-confirm" onClick={() => hidePost(blogpost)}>
+                          Confirm Hide
+                        </button>
+                        <button className="admin-cancel" onClick={() => setHidden(0)}>
+                          Cancel Hide
+                        </button>
+                      </>
+                    ) : (
+                      <button onClick={() => setHidden(blogpost.id)}>Hide</button>
+                    )}
                     <button>
                       <Link to="/admin/posts" state={{ post: blogpost, type: "edit" }}>
                         Edit
@@ -109,7 +121,18 @@ const Admin = () => {
                   <li>Title: {blogpost.title}</li>
                   <li>Subtitle: {blogpost.subtitle}</li>
                   <div className="admin-blogpost-options">
-                    <button onClick={() => hideArchivePost(blogpost)}>Hide and Archive</button>
+                    {archive ? (
+                      <>
+                        <button className="admin-confirm" onClick={() => hidePost(blogpost)}>
+                          Confirm Archive
+                        </button>
+                        <button className="admin-cancel" onClick={() => setArchive(0)}>
+                          Cancel Archive
+                        </button>
+                      </>
+                    ) : (
+                      <button onClick={() => setArchive(blogpost.id)}>Archive</button>
+                    )}
                     <button>
                       <Link to="/admin/posts" state={{ post: blogpost, type: "edit" }}>
                         Edit
