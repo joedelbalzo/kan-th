@@ -2,7 +2,6 @@
 import React, { useState, useMemo, useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useLocation, Link } from "react-router-dom";
-import { useDropzone } from "react-dropzone";
 
 //Text Editor Imports
 import ReactQuill from "react-quill";
