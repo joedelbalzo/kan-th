@@ -34,6 +34,7 @@ const AdminPosts = () => {
   const [contentPicture, setContentPicture] = useState(contentPic?.picNickname || "");
   const [bannerPicture, setBannerPicture] = useState(bannerPic?.picNickname || "");
   const [saveDateAndTime, setSaveDateAndTime] = useState("");
+  const [published, setPublished] = useState(false);
   const tags = useSelector((state) => state.tags);
 
   const handleSave = async (event) => {
@@ -64,25 +65,29 @@ const AdminPosts = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+    try {
+      const formData = new FormData();
+      formData.append("homePicture", homePicture);
+      formData.append("bannerPicture", bannerPicture);
+      formData.append("contentPicture", contentPicture);
 
-    const formData = new FormData();
-    formData.append("homePicture", homePicture);
-    formData.append("bannerPicture", bannerPicture);
-    formData.append("contentPicture", contentPicture);
+      const blogData = {
+        title: title,
+        subtitle: subtitle,
+        content: content,
+        published: true,
+      };
 
-    const blogData = {
-      title: title,
-      subtitle: subtitle,
-      content: content,
-      published: true,
-    };
+      console.log("blog data.", blogData);
 
-    console.log("blog data.", blogData);
-
-    if (type === "edit") {
-      dispatch(editBlogpost(formData, blogData, post.id));
-    } else if (type === "create") {
-      dispatch(createBlogpost(formData, blogData));
+      if (type === "edit") {
+        await dispatch(editBlogpost(formData, blogData, post.id));
+      } else if (type === "create") {
+        await dispatch(createBlogpost(formData, blogData));
+      }
+      setPublished(true);
+    } catch (err) {
+      console.log(err);
     }
   };
 
@@ -194,8 +199,7 @@ const AdminPosts = () => {
             type="text"
             // value={homeCaption}
             className="image-input"
-            onChange={(e) => setTitle(e.target.value)}
-            required
+            onChange={console.log("home caption")}
           />
         </div>
         <div style={{ paddingBottom: "2vh", width: "100%", display: "flex", alignItems: "center" }}>
@@ -222,8 +226,7 @@ const AdminPosts = () => {
             type="text"
             // value={homeCaption}
             className="image-input"
-            onChange={(e) => setTitle(e.target.value)}
-            required
+            onChange={console.log("banner caption")}
           />
         </div>
 
@@ -251,8 +254,7 @@ const AdminPosts = () => {
             type="text"
             // value={homeCaption}
             className="image-input"
-            onChange={(e) => setTitle(e.target.value)}
-            required
+            onChange={console.log("content caption")}
           />
         </div>
       </div>
@@ -263,6 +265,7 @@ const AdminPosts = () => {
         <button type="submit" className="publish-button">
           Publish
         </button>
+        {published && <div>you've done it</div>}
       </div>
       <div>last saved at {saveDateAndTime}</div>
     </form>

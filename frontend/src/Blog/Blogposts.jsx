@@ -62,7 +62,7 @@ const Blogposts = () => {
           <div className="post-title-div">
             {/* <span className="post-date">Date: {readableDate(blogposts[0].publishedAt)}</span> */}
             <Link
-              to={`/posts/${blogposts[0].id}`}
+              to={`/blog/posts/${blogposts[0].id}`}
               style={{ textDecoration: "none", color: "inherit" }}
             >
               <h2>{blogposts[0].title}</h2>
@@ -127,7 +127,7 @@ const Blogposts = () => {
                   <div className="post-title-div">
                     <span className="post-date">Date: {readableDate(blogpost.publishedAt)}</span>
                     <Link
-                      to={`/posts/${blogpost.id}`}
+                      to={`/blog/posts/${blogpost.id}`}
                       style={{ textDecoration: "none", color: "inherit" }}
                     >
                       <h2>{blogpost.title}</h2>

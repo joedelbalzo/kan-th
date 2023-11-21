@@ -145,36 +145,56 @@ const Nav = () => {
                 Home
               </Link>
             </MenuItem>
-            <MenuItem key={"portfolio"}>
+            <MenuItem key={"join"}>
               <Link
                 offset="10"
-                to="/portfolio"
+                to="/join"
                 id={currPage === "portfolio" ? "activelinks" : "links"}
                 onClick={handleCloseNavMenu}
               >
-                Portfolio
+                Join
               </Link>
             </MenuItem>
-            <MenuItem key={"services"}>
+            <MenuItem key={"about"}>
               <Link
                 offset="10"
-                to="/services"
-                id={currPage === "services" ? "activelinks" : "links"}
+                to="/about"
+                id={currPage === "about" ? "activelinks" : "links"}
                 onClick={handleCloseNavMenu}
               >
-                Services
+                About
               </Link>
             </MenuItem>
-            <MenuItem key={"contact"}>
+            <MenuItem key={"blog"}>
               <Link
                 offset="10"
-                to="/contact"
-                id={currPage === "contact" ? "activelinks" : "links"}
+                to="/blog"
+                id={currPage === "blog" ? "activelinks" : "links"}
                 onClick={handleCloseNavMenu}
               >
-                Contact
+                Blog
               </Link>
             </MenuItem>
+
+            <MenuItem key={"login"}>
+              <Link
+                offset="10"
+                to="/login"
+                id={currPage === "login" ? "activelinks" : "links"}
+                onClick={handleCloseNavMenu}
+              >
+                Login
+              </Link>
+            </MenuItem>
+            {theme == "dark" ? (
+              <MenuItem key={"light"} onClick={toggleTheme}>
+                <FaRegSun />
+              </MenuItem>
+            ) : (
+              <MenuItem key={"dark"} onClick={toggleTheme}>
+                <FaRegMoon />
+              </MenuItem>
+            )}
           </Menu>
         </Box>
       </div>
