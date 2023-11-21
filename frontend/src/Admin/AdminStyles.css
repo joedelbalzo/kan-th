@@ -52,10 +52,10 @@
 }
 .form-labels {
   display: flex;
-  width: 100px;
+  width: 150px;
   margin-right: 0.5rem;
   align-items: center;
-  font-size: 24px;
+  font-size: 20px;
 }
 .form-input {
   padding: 4px;
@@ -109,19 +109,43 @@
 .admin-grid-drafted {
   display: grid;
   grid-column: 2;
-  /* border-right: 1px solid; */
   align-content: flex-start;
   padding: 1rem;
 }
-/* .admin-grid-help {
-  display: grid;
-  grid-column: 3;
-  align-content: flex-start;
-} */
 
 .admin-confirm {
   outline: 2px solid green;
 }
 .admin-cancel {
   outline: 2px solid red;
+}
+
+.admin-post-form {
+  display: flex;
+  flex-direction: column;
+  width: 90vw;
+  margin: auto;
+}
+
+.image-input {
+  padding: 4px;
+  width: 50%;
+}
+.image-upload-labels {
+  padding: 8px;
+  width: 250px;
+  margin-right: 0.2rem;
+  align-items: center;
+  font-size: 20px;
+}
+.image-upload-buttons {
+  text-align: center;
+  width: 150px;
+  padding: 8px;
+  margin: 2px 1rem;
+  border: 2px solid gray;
+  border-radius: 4px;
+}
+.image-upload-buttons:hover {
+  cursor: pointer;
 }

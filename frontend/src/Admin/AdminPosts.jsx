@@ -25,10 +25,14 @@ const AdminPosts = () => {
   const [title, setTitle] = useState(post?.title || "");
   const [subtitle, setSubtitle] = useState(post?.subtitle || "");
   const [content, setContent] = useState(post?.content || "");
-  // const [tags, setTags] = useState("");
-  const [homePicture, setHomePicture] = useState("");
-  const [contentPicture, setContentPicture] = useState("");
-  const [bannerPicture, setBannerPicture] = useState("");
+
+  let { homePic, bannerPic, contentPic } = post ? pics(post) : "";
+
+  console.log(homePic, bannerPic, contentPic);
+
+  const [homePicture, setHomePicture] = useState(homePic?.picNickname || "");
+  const [contentPicture, setContentPicture] = useState(contentPic?.picNickname || "");
+  const [bannerPicture, setBannerPicture] = useState(bannerPic?.picNickname || "");
   const [saveDateAndTime, setSaveDateAndTime] = useState("");
   const tags = useSelector((state) => state.tags);
 
@@ -82,75 +86,12 @@ const AdminPosts = () => {
     }
   };
 
-  let { homePic, bannerPic, contentPic } = post ? pics(post) : "";
-
-  // const formatText = (action) => {
-  //   const textarea = document.getElementById("myTextArea");
-  //   const start = textarea.selectionStart;
-  //   const end = textarea.selectionEnd;
-  //   const selectedText = content.substring(start, end);
-
-  //   // Determine the tags based on the action
-  //   let tagStart, tagEnd;
-  //   switch (action) {
-  //     case "bold":
-  //       tagStart = "<strong>";
-  //       tagEnd = "</strong>";
-  //       break;
-  //     case "italic":
-  //       tagStart = "<em>";
-  //       tagEnd = "</em>";
-  //       break;
-  //     case "list":
-  //       tagStart = "<ul><li>";
-  //       tagEnd = "</li></ul>";
-  //       break;
-  //     case "hyperlink":
-  //       const url = prompt("Enter the URL:"); // Using prompt for simplicity
-  //       tagStart = `<a href="${url}">`;
-  //       tagEnd = "</a>";
-  //       break;
-  //     case "subtitle":
-  //       tagStart = `<h2>`;
-  //       tagEnd = `</h2>`;
-  //       break;
-  //     case "subtitle3":
-  //       tagStart = `<h3>`;
-  //       tagEnd = `</h3>`;
-  //       break;
-  //     case "subtitle4":
-  //       tagStart = `<h4>`;
-  //       tagEnd = `</h4>`;
-  //       break;
-  //     case "blockquote":
-  //       tagStart = `<blockquote>`;
-  //       tagEnd = `</blockquote>`;
-  //       break;
-  //     case "linebreak":
-  //       tagStart = `<blockquote>`;
-  //       tagEnd = `</blockquote>`;
-  //       break;
-  //     case "indent":
-  //       tagStart = `<div style="margin-left: 8px;">`;
-  //       tagEnd = `</div>`;
-  //       break;
-  //   }
-
-  //   // Construct the new content
-  //   const before = content.substring(0, start);
-  //   const after = content.substring(end);
-  //   const newText = `${before}${tagStart}${selectedText}${tagEnd}${after}`;
-
-  //   // Update the content state
-  //   setContent(newText);
-  // };
-
   return (
-    <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column" }}>
+    <form onSubmit={handleSubmit} className="admin-post-form">
       <div style={{ display: "flex", flexDirection: "column" }}>
         <div className="form-field">
           <label htmlFor="title" className="form-labels">
-            Title:{" "}
+            Title:
           </label>
           <TextField
             variant="outlined"
@@ -177,7 +118,7 @@ const AdminPosts = () => {
             required
           />
         </div>
-        <div className="tag-fields">
+        <div className="tag-fields" style={{ marginTop: 8 }}>
           <div className="form-field">
             <label htmlFor="tags" className="form-labels">
               Tags:
@@ -185,7 +126,8 @@ const AdminPosts = () => {
             <Autocomplete
               disablePortal
               id="combo-box-demo"
-              options={tags}
+              options={tags[0] ? tags[0] : ""}
+              value={tags[0] ? tags[0] : ""}
               getOptionLabel={(option) => option.tagName}
               sx={{ width: 150 }}
               renderInput={(params) => <TextField {...params} label="Tag 1" />}
@@ -195,7 +137,8 @@ const AdminPosts = () => {
             <Autocomplete
               disablePortal
               id="combo-box-demo"
-              options={tags}
+              options={tags[1] ? tags[1] : ""}
+              value={tags[1] ? tags[1] : ""}
               getOptionLabel={(option) => option.tagName}
               sx={{ width: 150 }}
               renderInput={(params) => <TextField {...params} label="Tag 2" />}
@@ -205,7 +148,8 @@ const AdminPosts = () => {
             <Autocomplete
               disablePortal
               id="combo-box-demo"
-              options={tags}
+              options={tags[2] ? tags[2] : ""}
+              value={tags[2] ? tags[2] : ""}
               getOptionLabel={(option) => option.tagName}
               sx={{ width: 150 }}
               renderInput={(params) => <TextField {...params} label="Tag 3" />}
@@ -213,38 +157,7 @@ const AdminPosts = () => {
           </div>
         </div>
       </div>
-      {/* <div style={{ display: "flex", flexDirection: "row", padding: "1rem" }}>
-        <button type="button" onClick={() => formatText("bold")}>
-          Bold
-        </button>
-        <button type="button" onClick={() => formatText("italic")}>
-          Italic
-        </button>
-        <button type="button" onClick={() => formatText("list")}>
-          List
-        </button>
-        <button type="button" onClick={() => formatText("hyperlink")}>
-          Hyperlink
-        </button>
-        <button type="button" onClick={() => formatText("subtitle")}>
-          Subtitle H2
-        </button>
-        <button type="button" onClick={() => formatText("subtitle3")}>
-          Subtitle H3
-        </button>
-        <button type="button" onClick={() => formatText("subtitle4")}>
-          Subtitle H4
-        </button>
-        <button type="button" onClick={() => formatText("blockquote")}>
-          Blockquote
-        </button>
-        <button type="button" onClick={() => formatText("indent")}>
-          Indent
-        </button>
-        <button type="button" onClick={() => formatText("linebreak")}>
-          Line Break
-        </button>
-      </div> */}
+
       <div className="form-field">
         <label htmlFor="content" className="form-labels" style={{ alignItems: "flex-start" }}>
           Content:
@@ -254,67 +167,93 @@ const AdminPosts = () => {
           onChange={setContent}
           style={{ marginBottom: 50, minHeight: 400, minWidth: "70%" }}
         />
-        {/* <textarea
-          style={{ width: "80vw", height: "35vh" }}
-          id="myTextArea"
-          value={content}
-          onChange={(e) => setContent(e.target.value)}
-        /> */}
       </div>
+
       <div style={{ padding: 8 }}>
-        <div style={{ paddingBottom: "2vh" }}>
-          <label htmlFor="homePicture">
-            Home Picture.
-            <input
-              type="file"
-              id="homePicture"
-              name="homePicture"
-              onChange={(e) => setHomePicture(e.target.files[0])}
-            />
+        <div style={{ paddingBottom: "2vh", width: "100%", display: "flex", alignItems: "center" }}>
+          <label htmlFor="homePicture" className="image-upload-labels">
+            Home Picture:
           </label>
-          {homePic ? (
-            <div style={{ marginLeft: "8px", fontSize: "smaller", fontStyle: "italic" }}>
-              Currently: {post.homePictureNickname}
-            </div>
-          ) : (
-            ""
-          )}
+          <input
+            type="file"
+            id="homePicture"
+            name="homePicture"
+            style={{ display: "none" }}
+            onChange={(e) => setHomePicture(e.target.files[0])}
+          />
+
+          <label htmlFor="homePicture" className="image-upload-buttons">
+            {homePic ? "Select New File" : "Select File"}
+          </label>
+          {homePic && <div>Current Picture: {homePic.picNickname}</div>}
         </div>
-        <div style={{ paddingBottom: "2vh" }}>
-          <label htmlFor="bannerPicture">
+        <div style={{ display: "flex", alignItems: "center" }}>
+          <p className="image-upload-labels">Home Caption:</p>
+          <TextField
+            variant="outlined"
+            type="text"
+            // value={homeCaption}
+            className="image-input"
+            onChange={(e) => setTitle(e.target.value)}
+            required
+          />
+        </div>
+        <div style={{ paddingBottom: "2vh", width: "100%", display: "flex", alignItems: "center" }}>
+          <label htmlFor="bannerPicture" className="image-upload-labels">
             Banner Picture:
-            <input
-              type="file"
-              id="bannerPicture"
-              name="bannerPicture"
-              onChange={(e) => setBannerPicture(e.target.files[0])}
-            />
           </label>
-          {bannerPic ? (
-            <div style={{ marginLeft: "8px", fontSize: "smaller", fontStyle: "italic" }}>
-              Currently: {bannerPic}
-            </div>
-          ) : (
-            ""
-          )}
+          <input
+            type="file"
+            id="bannerPicture"
+            name="bannerPicture"
+            style={{ display: "none" }}
+            onChange={(e) => setBannerPicture(e.target.files[0])}
+          />
+
+          <label htmlFor="bannerPicture" className="image-upload-buttons">
+            {bannerPic ? "Select New File" : "Select File"}
+          </label>
+          {bannerPic && <div>Current Picture: {bannerPic.picNickname}</div>}
         </div>
-        <div style={{ paddingBottom: "2vh" }}>
-          <label htmlFor="contentPicture">
+        <div style={{ display: "flex", alignItems: "center" }}>
+          <p className="image-upload-labels">Banner Caption:</p>
+          <TextField
+            variant="outlined"
+            type="text"
+            // value={homeCaption}
+            className="image-input"
+            onChange={(e) => setTitle(e.target.value)}
+            required
+          />
+        </div>
+
+        <div style={{ paddingBottom: "2vh", width: "100%", display: "flex", alignItems: "center" }}>
+          <label htmlFor="contentPicture" className="image-upload-labels">
             Content Picture:
-            <input
-              type="file"
-              id="contentPicture"
-              name="contentPicture"
-              onChange={(e) => setContentPicture(e.target.files[0])}
-            />
           </label>
-          {contentPic ? (
-            <div style={{ marginLeft: "8px", fontSize: "smaller", fontStyle: "italic" }}>
-              Currently: {contentPic}
-            </div>
-          ) : (
-            ""
-          )}
+          <input
+            type="file"
+            id="contentPicture"
+            name="contentPicture"
+            style={{ display: "none" }}
+            onChange={(e) => setContentPicture(e.target.files[0])}
+          />
+
+          <label htmlFor="contentPicture" className="image-upload-buttons">
+            {contentPic ? "Select New File" : "Select File"}
+          </label>
+          {contentPic && <div>Current Picture: {contentPic.picNickname}</div>}
+        </div>
+        <div style={{ display: "flex", alignItems: "center" }}>
+          <p className="image-upload-labels">Content Caption:</p>
+          <TextField
+            variant="outlined"
+            type="text"
+            // value={homeCaption}
+            className="image-input"
+            onChange={(e) => setTitle(e.target.value)}
+            required
+          />
         </div>
       </div>
       <div style={{ display: "flex", width: "200px", margin: "auto" }}>

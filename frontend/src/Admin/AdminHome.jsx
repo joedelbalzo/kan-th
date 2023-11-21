@@ -62,6 +62,8 @@ const Admin = () => {
     dispatch(publishBlogpost(blogpost));
   };
 
+  //needs logic in case there's a distinct error. work on the field validation in the posts, but also work on errors here.
+
   return (
     <div>
       <h3 className="admin-header">

@@ -1,4 +1,7 @@
 const { User } = require("../db");
+const path = require("path");
+
+require("dotenv").config({ path: path.resolve(__dirname, "..", ".env") });
 
 const isLoggedIn = async (req, res, next) => {
   try {
@@ -18,7 +21,8 @@ const restrictAccess = (req, res, next) => {
     if (
       origin === "https://www.usevali.com" ||
       origin === "https://usevali.com" ||
-      origin.startsWith("asitenamed") ||
+      origin.startsWith("asitenamedka") ||
+      origin.startsWith(process.env.DEV_SITE) ||
       origin.startsWith("http://localhost:3000")
     ) {
       next();
