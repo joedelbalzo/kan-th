@@ -145,6 +145,26 @@ app.put("/publish/:id", isLoggedIn, restrictAccess, async (req, res, next) => {
   }
 });
 
+//this needs to somehow save the date that it was published.
+app.put("/hidden/:id", isLoggedIn, restrictAccess, async (req, res, next) => {
+  try {
+    let id = req.params.id;
+
+    const [update] = await Blogpost.update(
+      {
+        published: false,
+      },
+      {
+        where: { id: id },
+      }
+    );
+    res.status(200).send(await Blogpost.findByPk(id));
+  } catch (ex) {
+    res.status(404).send({ message: "No blogpost found with the given ID." });
+    next(ex);
+  }
+});
+
 // delete blogpost
 app.delete("/:id", isLoggedIn, async (req, res, next) => {
   try {
