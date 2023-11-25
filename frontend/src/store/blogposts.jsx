@@ -123,10 +123,11 @@ export const publishBlogpost = (blogpost) => {
 
 //SO this is going to have to make two axios calls, one to blogposts and one to images. the ID needs to go with each.
 //
-export const editBlogpost = (formData, blogData, id) => {
+export const editBlogpost = (formData, blogData, tagData, id) => {
   return async (dispatch) => {
     const token = window.localStorage.getItem("token");
     let blogResponse;
+    let tagResponse;
     const imageResponse = await axios.put(`/api/images/${id}`, formData, {
       headers: {
         "Content-Type": "multipart/form-data",
@@ -134,6 +135,14 @@ export const editBlogpost = (formData, blogData, id) => {
       },
     });
     if (imageResponse.status === 200) {
+      tagResponse = await axios.put(`/api/tags/${id}`, tagData, {
+        headers: {
+          authorization: token,
+        },
+      });
+      console.log("tag response in store", tagResponse);
+    }
+    if (tagResponse.status === 200) {
       blogResponse = await axios.put(`/api/blogposts/${id}`, blogData, {
         headers: {
           authorization: token,

@@ -64,14 +64,14 @@ const Blogpost_Single = () => {
       <div className="post-grid">
         <div className="post-info">
           <SideNav />
-        </div>{" "}
+        </div>
         <div className="post-content">
           <div className="post-title-div">
             <span className="post-date">Date: {readableDate(post.publishedAt)}</span>
             <h1>{post.title}</h1>
             {homePic ? (
               <>
-                <img src={homePic.awsPicURL} className="post-title-div-picture" />{" "}
+                <img src={homePic.awsPicURL} className="post-title-div-picture" />
                 <div className="picture-caption">{homePic.picCaption}</div>
               </>
             ) : (

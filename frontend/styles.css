@@ -14,8 +14,8 @@
   --bg-color-darkgradient: linear-gradient(65deg, rgb(3, 7, 18) 55%, #183333 100%);
   --caption-color-light: rgba(10, 10, 10, 0.6);
   --caption-color-dark: rgba(245, 245, 245, 0.8);
-  --box-shadow-color-light: rgba(100, 100, 100, 0.2);
-  --box-shadow-color-dark: rgba(200, 200, 200, 0.2);
+  --box-shadow-color-light: rgba(100, 100, 100, 0.3);
+  --box-shadow-color-dark: rgba(200, 200, 200, 0.3);
 }
 
 html {
@@ -182,7 +182,6 @@ h3 {
 .post-grid {
   display: grid;
   grid-template-columns: 175px 4fr;
-  /* margin-bottom: 4rem; */
   width: 90vw;
   margin: 2rem auto 4rem;
 }
@@ -193,6 +192,11 @@ h3 {
   background: var(--headliner);
   color: var(--text-color-opposite);
   font-size: calc(12px + 1vw);
+}
+
+.post-headliner > .post-container {
+  width: 90vw;
+  margin: auto;
 }
 .post-headliner > .post-container > .post-title-div > a > h2 {
   font-size: calc(24px + 2vw);
@@ -207,9 +211,16 @@ h3 {
   color: var(--caption-color-opposite);
 }
 
+.post-headline-div-picture {
+  width: 40vw;
+  margin: 2rem 1rem 2rem 0;
+  border-radius: 1rem;
+  object-fit: cover;
+}
+
 .post-container {
   display: flex;
-  width: 80vw;
+  /* width: 80vw; */
   margin: auto;
 }
 
@@ -227,10 +238,20 @@ h3 {
   flex: 1 1 100%;
   margin: auto;
   padding: 1rem;
-  width: 90vw;
 }
 .post-title-div > a > h2 {
   font-size: calc(24px + 1vw);
+}
+
+.post-title-div-picture {
+  flex: 1;
+  margin: 2rem auto;
+  padding: 1rem;
+  width: 80%;
+  max-height: 500px;
+  object-fit: cover;
+  display: flex;
+  border-radius: 1rem;
 }
 
 .post-date {
@@ -242,14 +263,16 @@ h3 {
 }
 .post-div-picture {
   flex: 1;
-  width: 80%;
-  margin: 2rem auto;
-  padding: 1rem;
-  height: 400px;
+  margin: 2rem auto 2rem;
+  margin: 2rem;
+  /* padding: 1rem; */
+  max-width: 400px;
   object-fit: cover;
   display: flex;
-  max-width: 500px;
+  border-radius: 1rem;
+  box-shadow: 4px 4px 1rem 4px var(--box-shadow-color);
 }
+
 .picture-caption {
   font-size: 12px;
   text-align: center;
@@ -282,38 +305,35 @@ h3 {
   display: flex;
   flex-direction: row;
   align-items: center;
-  padding: 6px;
+  padding: 4px;
   margin: 4px;
   background-color: inherit;
   color: inherit;
-  outline: 1px solid;
   border: 0;
-  border-radius: 4px;
+  border-radius: 2px;
   font-variant: small-caps;
-  box-shadow: 1px 1px 1px 1px rgba(50, 50, 50, 1);
+  box-shadow: 2px 2px 4px var(--box-shadow-color);
 }
 .share-buttons > *:hover {
   cursor: pointer;
-  background-color: rgba(200, 200, 200, 0.1);
-  box-shadow: 2px 2px 4px rgba(200, 200, 200, 0.4);
+
+  box-shadow: 2px 2px 4px var(--box-shadow-color);
   color: inherit;
   outline: 1px solid var(--box-shadow-color);
-  /* outline: 2px solid rgba(50, 100, 200, 1); */
   border-radius: 4px;
-  /* box-shadow: 1px 1px 1px 1px rgba(100, 100, 100, 1); */
 }
 
 .footer {
   display: flex;
   flex-direction: column;
-  background: var(--headliner);
-  color: var(--text-color-opposite);
+  /* background: var(--headliner); */
+  /* color: var(--text-color-opposite); */
 }
 
 .footer-links {
   display: flex;
   justify-content: center;
-  margin: 1rem 4px;
+  margin: 1rem 1rem;
   font-size: calc(10px + 0.5vw);
 }
 
@@ -345,9 +365,15 @@ h3 {
 /*  */
 /*  */
 /*  */
+/* BASIC SMALL SCREEN STYLES */
 
+@media screen and (min-width: 900px) and (max-width: 1200px) {
+  .share-buttons-text {
+    display: none;
+  }
+}
 /* BASIC MOBILE STYLES */
-@media screen and (min-width: 300px) and (max-width: 800px) {
+@media screen and (min-width: 300px) and (max-width: 901px) {
   body {
     overflow-y: none;
   }
@@ -376,8 +402,16 @@ h3 {
   .post-info {
     display: none;
   }
+
+  .post-headline-div-picture {
+    width: 70vw;
+    max-height: 500px;
+    margin: 2rem auto;
+    border-radius: 2rem;
+    object-fit: cover;
+  }
   .post-container {
-    width: 100vw;
+    width: 90vw;
     display: flex;
     flex-direction: column;
     margin: 1rem auto 1rem;
@@ -385,20 +419,30 @@ h3 {
   .post-grid {
     display: grid;
     grid-template-columns: 1fr 0;
-    margin: 0;
+    margin: 0 auto;
   }
   .post-title-div {
     margin: 0 auto;
     padding: 0;
   }
-  .post-div-picture {
+
+  .post-title-div-picture {
+    flex: 1;
     margin: 2rem auto;
+    max-width: 98vw;
+    object-fit: cover;
+    display: flex;
+  }
+  .post-div-picture {
+    margin: 2rem 0;
     padding: 0;
+    max-width: 98vw;
+    max-height: 400px;
   }
 
   .post-content {
     grid-column: 1;
-    margin: 0;
+    margin: 0 auto;
   }
   .share-buttons-text {
     display: none;

@@ -45,4 +45,36 @@ app.get("/:id", async (req, res, next) => {
   }
 });
 
+app.put("/:id", async (req, res, next) => {
+  try {
+    const post = await Blogpost.findByPk(req.params.id);
+    if (!post) {
+      return res.status(404).send("Post not found");
+    }
+    const { firstTag, secondTag, thirdTag } = req.body;
+
+    async function processTag(tag) {
+      let cleanedTagName = tag.tagName.trim().toLowerCase();
+      if (tag.id) {
+        return tag.id;
+      } else {
+        const [newTag, created] = await Tag.findOrCreate({ where: { tagName: cleanedTagName } });
+        return newTag.id;
+      }
+    }
+
+    const tagIds = await Promise.all([
+      processTag(firstTag),
+      processTag(secondTag),
+      processTag(thirdTag),
+    ]);
+
+    await post.setTags(tagIds);
+    res.sendStatus(200);
+  } catch (err) {
+    console.log(err);
+    next(err);
+  }
+});
+
 module.exports = app;

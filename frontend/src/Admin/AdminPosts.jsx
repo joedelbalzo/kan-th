@@ -21,21 +21,27 @@ import { readableDate, pics } from "../functions";
 const AdminPosts = () => {
   const location = useLocation();
   const dispatch = useDispatch();
+  //gets post
   const { post, type } = location.state || {};
   const [title, setTitle] = useState(post?.title || "");
   const [subtitle, setSubtitle] = useState(post?.subtitle || "");
   const [content, setContent] = useState(post?.content || "");
 
+  //gets pics
   let { homePic, bannerPic, contentPic } = post ? pics(post) : "";
-
-  console.log(homePic, bannerPic, contentPic);
-
   const [homePicture, setHomePicture] = useState(homePic?.picNickname || "");
   const [contentPicture, setContentPicture] = useState(contentPic?.picNickname || "");
   const [bannerPicture, setBannerPicture] = useState(bannerPic?.picNickname || "");
   const [saveDateAndTime, setSaveDateAndTime] = useState("");
   const [published, setPublished] = useState(false);
+
+  //gets tags
   const tags = useSelector((state) => state.tags);
+  const [firstTag, setFirstTag] = useState(tags[0] || "Select Tag");
+  const [secondTag, setSecondTag] = useState(tags[1] || "Select Tag");
+  const [thirdTag, setThirdTag] = useState(tags[2] || "Select Tag");
+
+  console.log("tags", tags);
 
   const handleSave = async (event) => {
     event.preventDefault();
@@ -54,12 +60,16 @@ const AdminPosts = () => {
       published: false,
     };
 
-    console.log("save function", blogData);
+    const tagData = {
+      firstTag: firstTag,
+      secondTag: secondTag,
+      thirdTag: thirdTag,
+    };
 
     if (type === "edit") {
-      dispatch(editBlogpost(formData, blogData, post.id));
+      dispatch(editBlogpost(formData, blogData, tagData, post.id));
     } else if (type === "create") {
-      dispatch(createBlogpost(formData, blogData));
+      dispatch(createBlogpost(formData, blogData, tagData));
     }
   };
 
@@ -78,12 +88,16 @@ const AdminPosts = () => {
         published: true,
       };
 
-      console.log("blog data.", blogData);
+      const tagData = {
+        firstTag: firstTag,
+        secondTag: secondTag,
+        thirdTag: thirdTag,
+      };
 
       if (type === "edit") {
-        await dispatch(editBlogpost(formData, blogData, post.id));
+        dispatch(editBlogpost(formData, blogData, tagData, post.id));
       } else if (type === "create") {
-        await dispatch(createBlogpost(formData, blogData));
+        dispatch(createBlogpost(formData, blogData, tagData));
       }
       setPublished(true);
     } catch (err) {
@@ -131,33 +145,42 @@ const AdminPosts = () => {
             <Autocomplete
               disablePortal
               id="combo-box-demo"
-              options={tags[0] ? tags[0] : ""}
-              value={tags[0] ? tags[0] : ""}
-              getOptionLabel={(option) => option.tagName}
+              value={firstTag}
+              options={tags}
+              getOptionLabel={(option) => (option.tagName ? option.tagName : "")}
               sx={{ width: 150 }}
               renderInput={(params) => <TextField {...params} label="Tag 1" />}
+              onChange={(event, newValue) => {
+                setFirstTag(newValue);
+              }}
             />
           </div>
           <div className="form-field">
             <Autocomplete
               disablePortal
               id="combo-box-demo"
-              options={tags[1] ? tags[1] : ""}
-              value={tags[1] ? tags[1] : ""}
-              getOptionLabel={(option) => option.tagName}
+              value={secondTag}
+              options={tags}
+              getOptionLabel={(option) => (option.tagName ? option.tagName : "")}
               sx={{ width: 150 }}
               renderInput={(params) => <TextField {...params} label="Tag 2" />}
+              onChange={(event, newValue) => {
+                setSecondTag(newValue);
+              }}
             />
           </div>
           <div className="form-field">
             <Autocomplete
               disablePortal
               id="combo-box-demo"
-              options={tags[2] ? tags[2] : ""}
-              value={tags[2] ? tags[2] : ""}
-              getOptionLabel={(option) => option.tagName}
+              value={thirdTag}
+              options={tags}
+              getOptionLabel={(option) => (option.tagName ? option.tagName : "")}
               sx={{ width: 150 }}
               renderInput={(params) => <TextField {...params} label="Tag 3" />}
+              onChange={(event, newValue) => {
+                setThirdTag(newValue);
+              }}
             />
           </div>
         </div>

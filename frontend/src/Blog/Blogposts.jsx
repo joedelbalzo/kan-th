@@ -55,7 +55,7 @@ const Blogposts = () => {
       <div className="post-headliner" key={blogposts[0].id}>
         <div className="post-container">
           {headlinerPic != null ? (
-            <img src={headlinerPic.awsPicURL} className="post-div-picture" />
+            <img src={headlinerPic.awsPicURL} className="post-headline-div-picture" />
           ) : (
             ""
           )}
@@ -72,7 +72,11 @@ const Blogposts = () => {
             <div className="post-tags">
               Tags:
               {blogposts[0].tags[0] ? (
-                <Link key={blogposts[0].tags[0].id} style={{ marginLeft: 4 }}>
+                <Link
+                  to={`/blog/tags/${blogposts[0].tags[0].id}`}
+                  key={blogposts[0].tags[0].id}
+                  style={{ marginLeft: 4 }}
+                >
                   {blogposts[0].tags[0].tagName}
                 </Link>
               ) : (
@@ -80,7 +84,11 @@ const Blogposts = () => {
               )}
               ,
               {blogposts[0].tags[1] ? (
-                <Link key={blogposts[0].tags[1].id} style={{ marginLeft: 4 }}>
+                <Link
+                  to={`/blog/tags/${blogposts[0].tags[1].id}`}
+                  key={blogposts[0].tags[1].id}
+                  style={{ marginLeft: 4 }}
+                >
                   {blogposts[0].tags[1].tagName}
                 </Link>
               ) : (
@@ -88,7 +96,11 @@ const Blogposts = () => {
               )}
               ,
               {blogposts[0].tags[2] ? (
-                <Link key={blogposts[0].tags[2].id} style={{ marginLeft: 4 }}>
+                <Link
+                  to={`/blog/tags/${blogposts[0].tags[2].id}`}
+                  key={blogposts[0].tags[2].id}
+                  style={{ marginLeft: 4 }}
+                >
                   {blogposts[0].tags[2].tagName}{" "}
                 </Link>
               ) : (
@@ -98,7 +110,7 @@ const Blogposts = () => {
             <ShareButtons />
             <div className="post-body">
               {sampleText(blogposts[0].content)}{" "}
-              <Link to={`/posts/${blogposts[0].id}`}>...read more</Link>
+              <Link to={`/blog/posts/${blogposts[0].id}`}>...read more</Link>
             </div>
           </div>
         </div>
@@ -137,7 +149,11 @@ const Blogposts = () => {
                     <div className="post-tags">
                       Tags:
                       {blogpost.tags[0] ? (
-                        <Link key={blogpost.tags[0].id} style={{ marginLeft: 4 }}>
+                        <Link
+                          to={`/blog/tags/${blogpost.tags[0].id}`}
+                          key={blogpost.tags[0].id}
+                          style={{ marginLeft: 4 }}
+                        >
                           {blogpost.tags[0].tagName}
                         </Link>
                       ) : (
@@ -145,7 +161,11 @@ const Blogposts = () => {
                       )}
                       ,
                       {blogpost.tags[1] ? (
-                        <Link key={blogpost.tags[1].id} style={{ marginLeft: 4 }}>
+                        <Link
+                          to={`/blog/tags/${blogpost.tags[1].id}`}
+                          key={blogpost.tags[1].id}
+                          style={{ marginLeft: 4 }}
+                        >
                           {blogpost.tags[1].tagName}
                         </Link>
                       ) : (
@@ -153,7 +173,11 @@ const Blogposts = () => {
                       )}
                       ,
                       {blogpost.tags[2] ? (
-                        <Link key={blogpost.tags[2].id} style={{ marginLeft: 4 }}>
+                        <Link
+                          to={`/blog/tags/${blogpost.tags[2].id}`}
+                          key={blogpost.tags[2].id}
+                          style={{ marginLeft: 4 }}
+                        >
                           {blogpost.tags[2].tagName}{" "}
                         </Link>
                       ) : (
@@ -163,7 +187,7 @@ const Blogposts = () => {
                     <ShareButtons />
                     <div className="post-body">
                       {sampleText(blogpost.content)}{" "}
-                      <Link to={`/posts/${blogpost.id}`}>...read more</Link>
+                      <Link to={`/blog/posts/${blogpost.id}`}>...read more</Link>
                     </div>
                   </div>
                   <div className="post-bottom-border"></div>
