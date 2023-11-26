@@ -46,6 +46,8 @@ app.get("/", async (req, res, next) => {
 
     res.send(responseData);
   } catch (ex) {
+    console.error("Error in /api/blogposts:", ex);
+
     next(ex);
   }
 });
