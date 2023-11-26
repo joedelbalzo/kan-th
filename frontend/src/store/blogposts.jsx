@@ -89,22 +89,32 @@ export const fetchBlogpostsByTag = (id) => {
   };
 };
 
-export const createBlogpost = (formData, blogData) => {
+export const createBlogpost = (formData, blogData, tagData) => {
   return async (dispatch) => {
     const token = window.localStorage.getItem("token");
+
     let blogResponse = await axios.post(`/api/blogposts/`, blogData, {
       headers: {
         authorization: token,
       },
     });
     console.log("blog response in store", blogResponse.data);
-    const imageResponse = await axios.post(`/api/images/${blogResponse.data.id}`, formData, {
+
+    let imageResponse = await axios.post(`/api/images/${blogResponse.data.id}`, formData, {
       headers: {
         "Content-Type": "multipart/form-data",
         authorization: token,
       },
     });
+    console.log("image response", imageResponse.data);
+    let tagResponse = await axios.put(`/api/tags/${blogResponse.data.id}`, tagData, {
+      headers: {
+        authorization: token,
+      },
+    });
+    console.log("tag response in store", tagResponse.data);
     dispatch({ type: "CREATE_BLOGPOST", blogpost: blogResponse.data });
+    return blogResponse.data.id;
   };
 };
 

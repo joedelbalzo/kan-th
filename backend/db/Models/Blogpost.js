@@ -41,6 +41,18 @@ const Blogpost = conn.define("blogpost", {
     type: DATE,
     allowNull: true,
   },
+  lastSaved: {
+    type: DATE,
+    allowNull: true,
+  },
+  archived: {
+    type: BOOLEAN,
+    allowNull: true,
+  },
+  archivedOn: {
+    type: DATE,
+    allowNull: true,
+  },
 });
 
 module.exports = Blogpost;

@@ -36,7 +36,7 @@ const Blogposts = () => {
   const sampleText = (content) => {
     content = DOMPurify.sanitize(content);
     const arrContent = content.split(" ");
-    content = arrContent.splice(0, 70).join(" ");
+    content = arrContent.splice(0, 40).join(" ");
     return parse(content);
   };
 

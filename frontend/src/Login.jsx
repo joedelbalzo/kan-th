@@ -1,9 +1,10 @@
 //React Imports
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
 //Component Imports
 import Nav from "./Nav";
+import { ThemeContext } from "./ThemeContext";
 
 //Store Imports
 import { attemptLogin } from "./store";
@@ -18,6 +19,8 @@ const Login = () => {
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const theme = useContext(ThemeContext);
+
   const [credentials, setCredentials] = useState({
     username: "",
     password: "",
@@ -38,8 +41,8 @@ const Login = () => {
   };
 
   return (
-    <div id="login" style={{ paddingTop: "1rem" }}>
-      <h2>Login</h2>
+    <div id="login" style={{ paddingTop: "2rem" }}>
+      <h2 style={{ paddingBottom: "1rem" }}>Login</h2>
       <form style={{ display: "flex" }}>
         <TextField
           label="username"

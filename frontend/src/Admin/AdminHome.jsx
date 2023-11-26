@@ -52,13 +52,11 @@ const Admin = () => {
     return null;
   }
 
-  const hidePost = (blogpost, action) => {
+  const hidePost = (blogpost) => {
     console.log("Hidden");
     dispatch(hideBlogpost(blogpost));
   };
   const publish = (blogpost) => {
-    console.log("publish!");
-    console.log(blogpost);
     dispatch(publishBlogpost(blogpost));
   };
 

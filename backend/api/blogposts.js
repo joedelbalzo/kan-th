@@ -113,6 +113,7 @@ app.put("/:id", isLoggedIn, async (req, res, next) => {
         title: request.title,
         content: request.content,
         tags: request.tags,
+        lastSaved: request.lastSaved,
       },
       {
         where: { id: id },
@@ -133,6 +134,7 @@ app.put("/publish/:id", isLoggedIn, restrictAccess, async (req, res, next) => {
       {
         published: true,
         publishedAt: today,
+        lastSaved: today,
       },
       {
         where: { id: id },
@@ -149,10 +151,13 @@ app.put("/publish/:id", isLoggedIn, restrictAccess, async (req, res, next) => {
 app.put("/hidden/:id", isLoggedIn, restrictAccess, async (req, res, next) => {
   try {
     let id = req.params.id;
+    let today = new Date().toISOString();
 
     const [update] = await Blogpost.update(
       {
         published: false,
+        archived: true,
+        archivedOn: today,
       },
       {
         where: { id: id },

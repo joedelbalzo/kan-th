@@ -1,6 +1,7 @@
 const conn = require("./conn");
 const { User, Blogpost, Tag, Image } = require("./Models");
 const path = require("path");
+const { faker } = require("@faker-js/faker");
 require("dotenv").config({ path: path.resolve(__dirname, "..", ".env") });
 
 const adminPW = process.env.ADMIN_PW;
@@ -24,8 +25,7 @@ const syncAndSeed = async () => {
         Blogpost.create({
           title: "Understanding Personal Finance: A Beginner's Guide",
           subtitle: "Navigating the Basics of Money Management",
-          content:
-            "<strong>The more words, the better we can play with the design of the site.</strong>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.<br/><br/>",
+          content: faker.lorem.paragraph(4),
           published: false,
           publishedAt: "Mon Jul 10 2023 11:06:12 GMT-0500 (Eastern Standard Time)",
         }),
@@ -40,28 +40,28 @@ const syncAndSeed = async () => {
         Blogpost.create({
           title: "Post 3. The Importance of Building an Emergency Fund",
           subtitle: "Secure Your Financial Future with Smart Saving",
-          content: "This is blog post number 4!",
+          content: `This is blog post number 3! ${faker.lorem.paragraphs(5, "<br/></br>\n")}`,
           published: true,
           publishedAt: "Mon Nov 14 2023 11:06:12 GMT-0500 (Eastern Standard Time)",
         }),
         Blogpost.create({
           title: "Post 4. The Importance of Building an Emergency Fund",
           subtitle: "Secure Your Financial Future with Smart Saving",
-          content: "This is blog post number 4!",
+          content: `This is blog post number 4! ${faker.lorem.paragraphs(5, "<br/></br></br>\n")}`,
           published: true,
           publishedAt: "Mon Nov 16 2023 11:06:12 GMT-0500 (Eastern Standard Time)",
         }),
         Blogpost.create({
           title: "Post 5. The Importance of Building an Emergency Fund",
           subtitle: "Secure Your Financial Future with Smart Saving",
-          content: "This is blog post number 5!",
+          content: `This is blog post number 5! ${faker.lorem.paragraphs(5, "<br/></br>\n")}`,
           published: true,
           publishedAt: "Mon Nov 18 2023 11:06:12 GMT-0500 (Eastern Standard Time)",
         }),
         Blogpost.create({
           title: "Post 6. The Importance of Building an Emergency Fund",
           subtitle: "Secure Your Financial Future with Smart Saving",
-          content: "This is blog post number 6!",
+          content: `This is blog post number 6! ${faker.lorem.paragraphs(5, "<br/></br>\n")}`,
           published: true,
           publishedAt: "Mon Nov 20 2023 11:06:12 GMT-0500 (Eastern Standard Time)",
         }),
