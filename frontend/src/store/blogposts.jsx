@@ -61,8 +61,7 @@ const blogposts = (state = initialState, action) => {
 
 export const fetchPublishedBlogposts = () => {
   return async (dispatch) => {
-    const response = await axios.get("/api/blogposts");
-    // const sorted = response.data.sort((a, b) => new Date(a.publishedAt) - new Date(b.publishedAt));
+    const response = await axios.get(`/api/blogposts`);
     dispatch({ type: "REQUEST_BLOGPOSTS", blogposts: response.data });
   };
 };

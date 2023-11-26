@@ -62,8 +62,11 @@ function App(props) {
   useEffect(() => {
     dispatch(fetchPublishedBlogposts());
     dispatch(fetchTags());
-    dispatch(fetchDraftedBlogposts());
   }, []);
+
+  if (auth && auth.username == "admin") {
+    dispatch(fetchDraftedBlogposts());
+  }
 
   return (
     <div>

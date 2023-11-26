@@ -17,8 +17,6 @@ import SideNav from "./SideNav";
 //Function Imports
 import { readableDate, pics } from "../functions";
 
-//The is my terrible blog that really needs an overhaul: https://blog.usetheo.com/. I want it to look more consumery and friendly, rounded fonts, subtle colors.
-
 const Blogposts = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();

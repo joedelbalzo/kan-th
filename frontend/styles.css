@@ -102,7 +102,7 @@ a:hover {
   /* display: flex; */
   padding: 1rem;
   align-items: center;
-  font-size: 48px;
+  font-size: 42px;
 }
 
 .brand-name {
@@ -146,11 +146,11 @@ a:hover {
 }
 
 .nav-links {
-  padding: 1.5rem;
+  padding: 1rem;
 }
 .nav-links:hover {
   text-decoration: none;
-  padding: 1.5rem;
+  padding: 1rem;
   background-color: rgba(200, 200, 200, 0.1);
   box-shadow: 2px 2px 4px rgba(200, 200, 200, 0.4);
   border-radius: 1rem;
@@ -171,46 +171,87 @@ a:hover {
 
 /* HOME PAGE */
 .home-div {
-  margin: 0 auto;
   display: flex;
-  height: 60vh;
+  align-items: center;
+  justify-content: center;
+  height: 500px;
   width: 100%;
   background: var(--headliner);
-  color: var(--text-color-opposite);
-  font-size: calc(12px + 1vw);
   box-shadow: inset 2px 2px 8rem 1rem #102222;
 }
+
+.home-div-inner {
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 50% 50%;
+  grid-template-rows: 1fr;
+  width: 90%;
+  height: 450px;
+  color: var(--text-color-opposite);
+  font-size: calc(12px + 1vw);
+}
 .home-div-text {
-  flex: 2 1 100%;
-  align-items: center;
-  /* width: 50%; */
+  grid-column: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 0 2rem;
 }
 .home-div-title {
-  font-size: calc(36px + 1vw);
+  font-size: calc(24px + 2vw);
   word-wrap: normal;
+  margin: 0 auto;
+  padding: 0;
 }
 .home-div-subtitle {
-  margin-top: 1rem;
-  font-size: calc(24px + 1vw);
+  margin-top: 2rem;
+  font-size: calc(10px + 1.5vw);
   word-wrap: normal;
 }
 .home-div-body {
-  margin-top: 1rem;
-  font-size: calc(12px + 1vw);
+  margin-top: 2rem;
+  font-size: calc(10px + 1vw);
 }
-
 .home-div-image {
-  flex: 1 2 100%;
-  padding: 1rem 4rem;
+  grid-column: 2;
+  display: flex;
   align-items: center;
-  padding: 0 4rem;
+  /* justify-content: center; */
+  position: relative;
 }
 .home-div-image > img {
+  /* max-width: calc(100% - 2rem); */
+  width: 100%;
+  height: 450px;
+  object-fit: cover;
   border-radius: 2rem;
-  max-height: calc(60vh - 2rem);
   box-shadow: 12px 8px 16px 1px #204444;
-  object-fit: scale-down;
-  margin: 1rem;
+  transition: box-shadow 0.3s;
+}
+
+.home-div-image:hover::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(150, 150, 150, 0.4);
+  border-radius: 2rem;
+  cursor: pointer;
+}
+
+.bottom-left {
+  display: none;
+  position: absolute;
+  bottom: 32px;
+  left: 32px;
+}
+
+.home-div-image:hover .bottom-left {
+  display: block;
+  cursor: pointer;
+  font-style: italic;
 }
 
 /* MAIN BLOG PAGE STYLES */
@@ -422,10 +463,63 @@ h3 {
 /*  */
 /* BASIC SMALL SCREEN STYLES */
 
-@media screen and (min-width: 900px) and (max-width: 1200px) {
+@media screen and (max-width: 1200px) {
   .share-buttons-text {
     display: none;
   }
+
+  /* HOME PAGE */
+  .home-div-inner {
+    display: grid;
+    grid-template-rows: 125px 325px;
+    grid-template-columns: 1fr 1fr;
+    width: 95%;
+  }
+  .home-div-text {
+    display: grid;
+    grid-row: 1/-1;
+    grid-column: 1/-1;
+    grid-template-rows: 125px 150px 175px;
+    grid-template-columns: 1fr 1fr;
+  }
+  .home-div-title {
+    display: grid;
+    grid-row: 1;
+    grid-column: 1 / -1;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    margin: 0 auto;
+  }
+  .home-div-subtitle {
+    grid-column: 1;
+    grid-row: 2;
+    margin-top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(16px + 2vw);
+  }
+  .home-div-body {
+    grid-column: 1;
+    grid-row: 3;
+    margin-top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(10px + 1.5vw);
+  }
+  .home-div-image {
+    grid-row: 2/3;
+    grid-column: 2;
+    /* display: flex; */
+    /* align-items: center; */
+    /* justify-content: center; */
+  }
+  .home-div-image > img {
+    height: 325px;
+  }
+
   .post-info {
     display: none;
   }
@@ -452,8 +546,8 @@ h3 {
     object-fit: cover;
   }
 }
-/* BASIC MOBILE STYLES */
-@media screen and (min-width: 300px) and (max-width: 901px) {
+/*  MOBILE SPECIFIC STYLES */
+@media screen and (max-width: 600px) {
   body {
     overflow-y: none;
   }
@@ -477,6 +571,16 @@ h3 {
   #large {
     display: none;
     width: 0px;
+  }
+
+  .home-div-title {
+    font-size: calc(20px + 3vw);
+  }
+  .home-div-subtitle {
+    font-size: calc(14px + 1.5vw);
+  }
+  .home-div-body {
+    font-size: calc(10px + 1.5vw);
   }
 
   .post-info {
