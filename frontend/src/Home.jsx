@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { HashRouter as Router, Routes, Route } from "react-router-dom";
 
 //Component Imports
+import openSign from "./assets/pexels-tim-mossholder-3345876.jpg";
 
 //Store Imports
 
@@ -24,7 +25,7 @@ function Home() {
             </div>
           </div>
           <div className="home-div-image">
-            <img src="../images/pexels-tim-mossholder-3345876.jpg" />
+            <img src={openSign} />
             <div className="bottom-left">Get Started &rarr;</div>
           </div>
         </div>
