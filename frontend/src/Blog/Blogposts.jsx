@@ -153,7 +153,7 @@ const Blogposts = () => {
                       </div>
                       <ShareButtons />
                       <div className="post-body">
-                        {sampleText(blogpost.content)} <Link to={`/blog/posts/${blogpost.id}`}>...read more</Link>
+                        {sampleText(blogpost.content)} <Link to={`./blog/posts/${blogpost.id}`}>...read more</Link>
                       </div>
                     </div>
                     <div className="post-bottom-border"></div>

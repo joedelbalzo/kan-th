@@ -10,8 +10,9 @@ const blogposts = (state = initialState, action) => {
   if (action.type === "REQUEST_BLOGPOSTS") {
     return { ...state, allBlogposts: action.blogposts };
   }
-  if (action.type === "REQUEST_BLOGPOSTS_BY_TAG") {
-    return { ...state, filteredBlogposts: action.blogposts };
+  if (action.type === "FILTER_BLOGPOSTS_BY_TAG") {
+    const filtered = state.allBlogposts.filter((blogpost) => blogpost.tags.some((tag) => tag.id === action.tagId));
+    return { ...state, filteredBlogposts: filtered };
   }
   if (action.type === "REQUEST_DRAFTS") {
     return { ...state, draftedBlogposts: action.blogposts };
@@ -26,9 +27,7 @@ const blogposts = (state = initialState, action) => {
   if (action.type === "PUBLISH_BLOGPOST") {
     return {
       ...state,
-      draftedBlogposts: state.draftedBlogposts.filter(
-        (blogpost) => blogpost.id !== action.blogpost.id
-      ),
+      draftedBlogposts: state.draftedBlogposts.filter((blogpost) => blogpost.id !== action.blogpost.id),
       allBlogposts: [action.blogpost, ...state.allBlogposts],
     };
   }
@@ -43,9 +42,7 @@ const blogposts = (state = initialState, action) => {
   if (action.type === "EDIT_BLOGPOST") {
     return {
       ...state,
-      allBlogposts: state.allBlogposts.map((blogpost) =>
-        blogpost.id === action.blogpost.id ? action.blogpost : blogpost
-      ),
+      allBlogposts: state.allBlogposts.map((blogpost) => (blogpost.id === action.blogpost.id ? action.blogpost : blogpost)),
     };
   }
 
@@ -57,6 +54,10 @@ const blogposts = (state = initialState, action) => {
   }
 
   return state;
+};
+
+export const filterBlogpostsByTag = (tagId) => {
+  return { type: "FILTER_BLOGPOSTS_BY_TAG", tagId };
 };
 
 export const fetchPublishedBlogposts = () => {
@@ -80,13 +81,12 @@ export const fetchBlogByID = (id) => {
   };
 };
 
-export const fetchBlogpostsByTag = (id) => {
-  return async (dispatch) => {
-    const response = await axios.get(`/api/tags/${id}`);
-    const sorted = response.data.sort((a, b) => new Date(a.publishedAt) - new Date(b.publishedAt));
-    dispatch({ type: "REQUEST_BLOGPOSTS_BY_TAG", blogposts: sorted });
-  };
-};
+// export const fetchBlogpostsByTag = (id) => {
+//   return async (dispatch) => {
+//     const response = await axios.get(`/api/tags/${id}`);
+//     dispatch({ type: "REQUEST_BLOGPOSTS_BY_TAG", blogposts: response.data });
+//   };
+// };
 
 export const createBlogpost = (formData, blogData, tagData) => {
   return async (dispatch) => {

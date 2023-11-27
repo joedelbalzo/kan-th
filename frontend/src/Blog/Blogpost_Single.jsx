@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, Link, useParams } from "react-router-dom";
 import parse from "html-react-parser";
 import DOMPurify from "dompurify";
+// import * as DOMPurify from "dompurify";
 
 //Component Imports
 
