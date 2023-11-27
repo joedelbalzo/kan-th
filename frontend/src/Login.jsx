@@ -7,12 +7,13 @@ import Nav from "./Nav";
 import { ThemeContext } from "./ThemeContext";
 
 //Store Imports
-import { attemptLogin } from "./store";
+import { attemptLogin, logout } from "./store";
 import { useDispatch, useSelector } from "react-redux";
 
 //Other Imports
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
+import { FadeComponent } from "./assets/FadeComponent";
 
 const Login = () => {
   const auth = useSelector((state) => state.auth);
@@ -40,41 +41,106 @@ const Login = () => {
     }
   };
 
+  const handleLogout = () => {
+    localStorage.clear();
+    dispatch(logout());
+  };
+
+  const buttonStyles = {
+    color: "inherit",
+    width: "80px",
+    padding: "8px",
+    margin: "auto",
+    border: "2px solid inherit",
+    borderRadius: "4px",
+  };
+
   return (
-    <div id="login" style={{ paddingTop: "2rem" }}>
-      <h2 style={{ paddingBottom: "1rem" }}>Login</h2>
-      <form style={{ display: "flex" }}>
-        <TextField
-          label="username"
-          value={credentials.username}
-          name="username"
-          onChange={onChange}
-        />
-        <div style={{ marginBottom: 1 }} />
-        <TextField
-          id="filled-password-input"
-          label="password"
-          name="password"
-          type="password"
-          value={credentials.password}
-          onChange={onChange}
-        />
-        <Button type="submit" onClick={login} style={{ fontSize: "1.2rem" }}>
-          Login
-        </Button>
-      </form>
-      <div
-        style={{
-          margin: "0 auto",
-          color: "darkred",
-          fontSize: "calc(4px + 0.5vw)",
-          fontStyle: "italic",
-          minHeight: "2vh",
-        }}
-      >
-        {errorMessage ? errorMessage : <div style={{ minHeight: "(6px + 0.5vw)" }}></div>}
+    <FadeComponent>
+      <div className="login" style={{ paddingTop: "2rem" }}>
+        <h2>Sign in to Vali</h2>
+        <div> Continue with Google</div>
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            margin: "1rem auto",
+          }}
+        >
+          {" "}
+          <div
+            style={{
+              width: "40px",
+              height: "1px",
+              outline: "1px solid #183333",
+              backgroundColor: "darkgray",
+              borderRadius: "2rem",
+              marginRight: "1rem",
+            }}
+          ></div>
+          or{" "}
+          <div
+            style={{
+              width: "40px",
+              height: "1px",
+              outline: "1px solid #183333",
+              backgroundColor: "darkgray",
+
+              borderRadius: "2rem",
+              marginLeft: "1rem",
+            }}
+          ></div>
+        </div>
+        <form onSubmit={login} style={{ display: "flex" }}>
+          <TextField
+            label="username"
+            value={credentials.username}
+            name="username"
+            onChange={onChange}
+          />
+          <div style={{ marginBottom: 1 }} />
+          <TextField
+            id="filled-password-input"
+            label="password"
+            name="password"
+            type="password"
+            value={credentials.password}
+            onChange={onChange}
+          />
+          {auth.id != null ? (
+            <Button type="submit" onClick={() => handleLogout()} style={{ fontSize: "1.2rem" }}>
+              Logout
+            </Button>
+          ) : (
+            <Button type="submit" style={{ fontSize: "1.2rem" }}>
+              Login
+            </Button>
+          )}
+        </form>
+        {auth.username == "admin" && (
+          <div>
+            <Link to="/admin" style={buttonStyles}>
+              Admin Tools
+            </Link>
+            <button onClick={() => handleLogout()} style={buttonStyles}>
+              Admin Logout
+            </button>
+          </div>
+        )}
+        <div
+          style={{
+            margin: "0 auto",
+            color: "darkred",
+            fontSize: "calc(4px + 0.5vw)",
+            fontStyle: "italic",
+            minHeight: "2vh",
+          }}
+        >
+          {errorMessage ? errorMessage : <div style={{ minHeight: "(6px + 0.5vw)" }}></div>}
+        </div>
       </div>
-    </div>
+    </FadeComponent>
   );
 };
 

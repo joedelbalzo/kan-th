@@ -1,5 +1,5 @@
 //React Imports
-import React, { useEffect } from "react";
+import React, { useEffect, Suspense, lazy } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { HashRouter as Router, Routes, Route } from "react-router-dom";
 
@@ -7,26 +7,30 @@ import { HashRouter as Router, Routes, Route } from "react-router-dom";
 import Login from "./Login";
 import Home from "./Home";
 import Nav from "./Nav";
-import Blogposts from "./Blog/Blogposts";
-import Blogposts_Tags from "./Blog/Blogposts_Tags";
-import Blogpost_Single from "./Blog/Blogpost_Single";
+
+const Blogposts = lazy(() => import("./Blog/Blogposts"));
+const Blogposts_Tags = lazy(() => import("./Blog/Blogposts_Tags"));
+const Blogpost_Single = lazy(() => import("./Blog/Blogpost_Single"));
+
+// import Blogposts from "./Blog/Blogposts";
+// import Blogposts_Tags from "./Blog/Blogposts_Tags";
+// import Blogpost_Single from "./Blog/Blogpost_Single";
 import Footer from "./Footer";
 import Search from "./Search";
-import Admin from "./Admin/AdminHome";
-import AdminPosts from "./Admin/AdminPosts";
-import PrivacyPolicy from "./PrivacyPolicy";
-import Contact from "./Contact";
+const Admin = lazy(() => import("./Admin/AdminHome"));
+const AdminPosts = lazy(() => import("./Admin/AdminPosts"));
+const PrivacyPolicy = lazy(() => import("./PrivacyPolicy"));
+const Contact = lazy(() => import("./Contact"));
 
 //Store Imports
 import { fetchPublishedBlogposts, fetchTags, fetchDraftedBlogposts } from "./store";
 
 //MUI imports
 import useScrollTrigger from "@mui/material/useScrollTrigger";
-import Box from "@mui/material/Box";
 import Fab from "@mui/material/Fab";
 import ArrowUpwardOutlinedIcon from "@mui/icons-material/ArrowUpwardOutlined";
-import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import Fade from "@mui/material/Fade";
+import Box from "@mui/material/Box";
 
 //scroll
 function ScrollTop(props) {
@@ -69,21 +73,49 @@ function App(props) {
   }
 
   return (
-    <div>
-      <Nav />
-      <div style={{ display: "flex", flexDirection: "column" }}></div>
-      {/* <hr /> */}
-      <div style={{ flexGrow: 100 }}>
+    <div style={{ display: "flex", flexDirection: "column", minHeight: "100vh" }}>
+      <div style={{ position: "sticky" }}>
+        <Nav />
+      </div>
+
+      {/* <div ></div> */}
+      <div style={{ display: "flex", flexDirection: "column", flexGrow: 1 }}>
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/login" element={<Login />} />
           <Route path="/blog/" element={<Blogposts />} />
           <Route path="/blog/posts/:id" element={<Blogpost_Single />} />
           <Route path="/blog/tags/:id" element={<Blogposts_Tags />} />
-          <Route path="/privacy" element={<PrivacyPolicy />} />
+          <Route
+            path="/privacy"
+            element={
+              <Suspense fallback={<div>Loading Privacy Policy...</div>}>
+                <PrivacyPolicy />{" "}
+              </Suspense>
+            }
+          />
           <Route path="/contact" element={<Contact />} />
 
-          {auth.id && <Route path="/admin" element={<Admin />} />}
-          {auth.id && <Route path="/admin/posts" element={<AdminPosts />} />}
+          {auth.username == "admin" && (
+            <Route
+              path="/admin"
+              element={
+                <Suspense fallback={<div>Loading Admin...</div>}>
+                  <Admin />{" "}
+                </Suspense>
+              }
+            />
+          )}
+          {auth.username == "admin" && (
+            <Route
+              path="/admin/posts"
+              element={
+                <Suspense fallback={<div>Loading Admin Posts...</div>}>
+                  <AdminPosts />{" "}
+                </Suspense>
+              }
+            />
+          )}
         </Routes>
       </div>
       <ScrollTop {...props}>

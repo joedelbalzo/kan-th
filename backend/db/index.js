@@ -19,6 +19,16 @@ const syncAndSeed = async () => {
         authorId: 666,
       }),
     ]);
+    const notAdmin = await Promise.all([
+      User.create({
+        username: "jimbo",
+        // password: "Admin12345!",
+        password: "123",
+        email: "jdelbalzo99@gmail.com",
+        adminStatus: true,
+        authorId: 666,
+      }),
+    ]);
 
     const [samplePost1, samplePost2, samplePost3, samplePost4, samplePost5, samplePost6] =
       await Promise.all([
@@ -146,40 +156,10 @@ const syncAndSeed = async () => {
 
     await Promise.all(promises);
 
-    // results.forEach((result, index) => {
-    //   if (result.error) {
-    //     console.log(`Promise ${index + 1} failed with error: ${result.error}`);
-    //   } else {
-    //     console.log(`Promise ${index + 1} succeeded`);
-    //   }
-    // });
-
-    // await Promise.all([
-    //   samplePost1.addTags([trials, finances, money]),
-    //   samplePost2.addTags([finances, smbs, dei]),
-    //   samplePost3.addTags([money, smbs, dei]),
-    //   samplePost4.addTags([trials, errors, money]),
-    //   samplePost5.addTags([finances, smbs, dei]),
-    //   samplePost6.addTags([money, smbs, dei]),
-
-    //   samplePost1.addImages([financeJpgHome]),
-    //   samplePost2.addImages([financeDefinitionHome]),
-    //   samplePost3.addImages([financeJpgHome]),
-    //   samplePost4.addImages([financeDefinitionHome]),
-    //   samplePost5.addImages([financeJpgHome]),
-    //   samplePost6.addImages([financeDefinitionHome]),
-
-    //   samplePost2.addImages([financeJpgBanner]),
-    //   samplePost1.addImages([financeDefinitionBanner]),
-    //   samplePost4.addImages([financeJpgBanner]),
-    //   samplePost3.addImages([financeDefinitionBanner]),
-    //   samplePost6.addImages([financeJpgBanner]),
-    //   samplePost5.addImages([financeDefinitionBanner]),
-    // ]);
-
     return {
       users: {
         admin,
+        notAdmin,
       },
       blogposts: {
         samplePost1,

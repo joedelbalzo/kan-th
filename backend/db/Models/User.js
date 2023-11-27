@@ -54,7 +54,6 @@ User.addHook("beforeSave", async (user) => {
 });
 
 User.prototype.generateToken = function () {
-  console.log("generating token", jwt.sign({ id: this.id }, JWT_SECRET, { expiresIn: "1h" }));
   return {
     token: jwt.sign({ id: this.id }, JWT_SECRET, { expiresIn: "1h" }),
   };

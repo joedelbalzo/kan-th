@@ -57,7 +57,7 @@ const Footer = () => {
 
           <p onClick={() => adminTools()}>&copy; Vali. Email me at jdelbalzo99@gmail.com.</p>
           {admin >= 5 ? <Login /> : ""}
-          {auth.id != null ? (
+          {auth.username == "admin" ? (
             <div>
               <Link to="/admin" className="theme-toggle">
                 Admin Tools

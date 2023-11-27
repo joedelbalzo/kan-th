@@ -15,13 +15,15 @@ import { useDispatch, useSelector } from "react-redux";
 import { logout } from "./store";
 
 //mui
-import Box from "@mui/material/Box";
 import IconButton from "@mui/material/IconButton";
 import MenuIcon from "@mui/icons-material/Menu";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
+import Box from "@mui/material/Box";
 
 const Nav = () => {
+  const auth = useSelector((state) => state.auth);
+
   const { theme, toggleTheme } = useContext(ThemeContext);
 
   const [width, setWidth] = useState(0);
@@ -75,9 +77,21 @@ const Nav = () => {
           <span className="brand-name">vali</span>
         </div>
       </Link>
-      <Link to="/" className="nav-links" id="large" style={{ fontSize: "24px" }}>
-        <div>join</div>
-      </Link>
+      {!auth.id ? (
+        <Link to="/login" className="nav-links" id="large" style={{ fontSize: "24px" }}>
+          <div>login</div>
+        </Link>
+      ) : (
+        <Link
+          to="/"
+          onClick={handleLogout}
+          className="nav-links"
+          id="large"
+          style={{ fontSize: "24px" }}
+        >
+          <div>logout</div>
+        </Link>
+      )}
       <Link to="/blog" className="nav-links" id="large" style={{ fontSize: "24px" }}>
         <div>blog</div>
       </Link>
@@ -85,7 +99,7 @@ const Nav = () => {
         <div>about</div>
       </Link>
 
-      {theme == "dark" ? (
+      {/* {theme == "dark" ? (
         <button onClick={toggleTheme} id="large" className="theme-toggle">
           <FaRegMoon />
         </button>
@@ -96,7 +110,7 @@ const Nav = () => {
       )}
       <button onClick={toggleTheme} id="large" className="theme-toggle">
         <FaSearch />
-      </button>
+      </button> */}
 
       <div className="menuItems" id="small">
         <Box
@@ -152,7 +166,7 @@ const Nav = () => {
                 id={currPage === "portfolio" ? "activelinks" : "links"}
                 onClick={handleCloseNavMenu}
               >
-                Join
+                Login
               </Link>
             </MenuItem>
             <MenuItem key={"about"}>
@@ -186,7 +200,7 @@ const Nav = () => {
                 Login
               </Link>
             </MenuItem>
-            {theme == "dark" ? (
+            {/* {theme == "dark" ? (
               <MenuItem key={"light"} onClick={toggleTheme}>
                 <FaRegSun />
               </MenuItem>
@@ -194,7 +208,7 @@ const Nav = () => {
               <MenuItem key={"dark"} onClick={toggleTheme}>
                 <FaRegMoon />
               </MenuItem>
-            )}
+            )} */}
           </Menu>
         </Box>
       </div>
