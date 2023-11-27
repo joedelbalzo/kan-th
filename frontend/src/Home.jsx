@@ -7,7 +7,7 @@ import { useWindowSize } from "@react-hook/window-size";
 
 //Component Imports
 import openSign from "./assets/pexels-tim-mossholder-3345876.jpg";
-import FinanceBar from "./assets/financebar";
+import FinanceBar from "./assets/FinanceBar";
 import Seedling from "./assets/Seedling";
 import Links from "./assets/Links";
 import { FadeComponent } from "./assets/FadeComponent";
