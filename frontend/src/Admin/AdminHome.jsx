@@ -1,5 +1,5 @@
 //React Imports
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, Link } from "react-router-dom";
 
@@ -14,7 +14,7 @@ import { publishBlogpost, hideBlogpost } from "../store";
 import "./AdminStyles.css";
 
 //Function Imports
-import { readableDate } from "../functions";
+// import { readableDate } from "../functions";
 
 //////////////////////////////
 //////////////////////////////
@@ -65,8 +65,7 @@ const Admin = () => {
   return (
     <div>
       <h3 className="admin-header">
-        Hey there, boss. Here's where the magic happens. Below is the list of published posts,
-        drafted posts, and handy little help guide.{" "}
+        Hey there, boss. Here's where the magic happens. Below is the list of published posts, drafted posts, and handy little help guide.{" "}
       </h3>
 
       <div className="admin-nav">

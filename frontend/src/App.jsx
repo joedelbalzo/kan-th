@@ -17,7 +17,7 @@ const Blogpost_Single = lazy(() => import("./Blog/Blogpost_Single"));
 // import Blogposts_Tags from "./Blog/Blogposts_Tags";
 // import Blogpost_Single from "./Blog/Blogpost_Single";
 import Footer from "./Footer";
-import Search from "./Search";
+// import Search from "./Search";
 const Admin = lazy(() => import("./Admin/AdminHome"));
 const AdminPosts = lazy(() => import("./Admin/AdminPosts"));
 const PrivacyPolicy = lazy(() => import("./PrivacyPolicy"));

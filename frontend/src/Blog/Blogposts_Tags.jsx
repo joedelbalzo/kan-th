@@ -1,18 +1,16 @@
 //React Imports
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate, Link, useParams, useLocation } from "react-router-dom";
+import { useNavigate, Link, useParams } from "react-router-dom";
 import parse from "html-react-parser";
 import DOMPurify from "dompurify";
 
 //Component Imports
-import Login from "../Login";
-import Nav from "../Nav";
+
 import ShareButtons from "../ShareButtons";
 import SideNav from "./SideNav";
 
 //Store Imports
-import { fetchBlogpostsByTag } from "../store";
 
 //Function Imports
 import { readableDate, pics } from "../functions";
@@ -60,17 +58,10 @@ const Blogposts_Tags = () => {
             return (
               <div className="post-content" key={blogpost.id}>
                 <div className="post-container">
-                  {homePic != null ? (
-                    <img src={homePic.awsPicURL} className="post-div-picture" />
-                  ) : (
-                    ""
-                  )}
+                  {homePic != null ? <img src={homePic.awsPicURL} className="post-div-picture" /> : ""}
                   <div className="post-title-div">
                     <span className="post-date">Date: {readableDate(blogpost.publishedAt)}</span>
-                    <Link
-                      to={`/posts/${blogpost.id}`}
-                      style={{ textDecoration: "none", color: "inherit" }}
-                    >
+                    <Link to={`/posts/${blogpost.id}`} style={{ textDecoration: "none", color: "inherit" }}>
                       <h2>{blogpost.title}</h2>
                     </Link>
 
@@ -103,8 +94,7 @@ const Blogposts_Tags = () => {
                     </div>
                     <ShareButtons />
                     <div className="post-body">
-                      {sampleText(blogpost.content)}{" "}
-                      <Link to={`/posts/${blogpost.id}`}>...read more</Link>
+                      {sampleText(blogpost.content)} <Link to={`/posts/${blogpost.id}`}>...read more</Link>
                     </div>
                   </div>
                   <div className="post-bottom-border"></div>

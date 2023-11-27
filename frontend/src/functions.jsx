@@ -1,5 +1,3 @@
-import React from "react";
-
 export const pics = (post) => {
   let homePic = null;
   let bannerPic = null;

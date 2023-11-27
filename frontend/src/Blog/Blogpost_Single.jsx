@@ -1,18 +1,16 @@
 //React Imports
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, Link, useParams } from "react-router-dom";
 import parse from "html-react-parser";
 import DOMPurify from "dompurify";
 
 //Component Imports
-import Login from "../Login";
-import Nav from "../Nav";
+
 import ShareButtons from "../ShareButtons";
 import SideNav from "./SideNav";
 
 //Store Imports
-import { fetchBlogByID } from "../store";
 
 //Function Imports
 import { readableDate, pics } from "../functions";
@@ -24,9 +22,7 @@ const Blogpost_Single = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const post = useSelector((state) =>
-    state.blogposts.allBlogposts.find((post) => post.id.toString() === id)
-  );
+  const post = useSelector((state) => state.blogposts.allBlogposts.find((post) => post.id.toString() === id));
 
   if (!post) {
     return null;

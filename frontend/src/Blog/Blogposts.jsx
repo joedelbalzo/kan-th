@@ -6,8 +6,7 @@ import parse from "html-react-parser";
 import DOMPurify from "dompurify";
 
 //Component Imports
-import Login from "../Login";
-import Nav from "../Nav";
+
 import ShareButtons from "../ShareButtons";
 import SideNav from "./SideNav";
 import { FadeComponent } from "../assets/FadeComponent";
@@ -18,7 +17,7 @@ import Loading from "../assets/Loading";
 
 //Function Imports
 import { readableDate, pics } from "../functions";
-import { Fade } from "@mui/material";
+// import { Fade } from "@mui/material";
 
 const Blogposts = () => {
   const navigate = useNavigate();

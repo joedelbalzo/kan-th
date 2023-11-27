@@ -1,5 +1,5 @@
 //React Imports
-import React, { useState, useMemo, useCallback } from "react";
+import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useLocation, Link } from "react-router-dom";
 
@@ -8,7 +8,7 @@ import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 
 //Store Imports
-import { createBlogpost, editBlogpost, publishBlogpost } from "../store";
+import { createBlogpost, editBlogpost } from "../store";
 
 //Component Style Imports
 import "./AdminStyles.css";
@@ -19,7 +19,7 @@ import TextField from "@mui/material/TextField";
 import Autocomplete from "@mui/material/Autocomplete";
 
 //Function Imports
-import { readableDate, pics } from "../functions";
+import { pics } from "../functions";
 
 const AdminPosts = () => {
   const location = useLocation();
@@ -208,18 +208,11 @@ const AdminPosts = () => {
           <label htmlFor="content" className="form-labels" style={{ alignItems: "flex-start" }}>
             Content:
           </label>
-          <ReactQuill
-            value={content}
-            onChange={setContent}
-            style={{ marginBottom: 50, minHeight: 400, minWidth: "70%" }}
-            required
-          />
+          <ReactQuill value={content} onChange={setContent} style={{ marginBottom: 50, minHeight: 400, minWidth: "70%" }} required />
         </div>
 
         <div style={{ padding: 8 }}>
-          <div
-            style={{ paddingBottom: "2vh", width: "100%", display: "flex", alignItems: "center" }}
-          >
+          <div style={{ paddingBottom: "2vh", width: "100%", display: "flex", alignItems: "center" }}>
             <label htmlFor="homePicture" className="image-upload-labels">
               Home Picture:
             </label>
@@ -239,16 +232,9 @@ const AdminPosts = () => {
           </div>
           <div style={{ display: "flex", alignItems: "center" }}>
             <p className="image-upload-labels">Home Caption:</p>
-            <TextField
-              variant="outlined"
-              type="text"
-              className="image-input"
-              onChange={console.log("home caption")}
-            />
+            <TextField variant="outlined" type="text" className="image-input" onChange={console.log("home caption")} />
           </div>
-          <div
-            style={{ paddingBottom: "2vh", width: "100%", display: "flex", alignItems: "center" }}
-          >
+          <div style={{ paddingBottom: "2vh", width: "100%", display: "flex", alignItems: "center" }}>
             <label htmlFor="bannerPicture" className="image-upload-labels">
               Banner Picture:
             </label>
@@ -277,9 +263,7 @@ const AdminPosts = () => {
             />
           </div>
 
-          <div
-            style={{ paddingBottom: "2vh", width: "100%", display: "flex", alignItems: "center" }}
-          >
+          <div style={{ paddingBottom: "2vh", width: "100%", display: "flex", alignItems: "center" }}>
             <label htmlFor="contentPicture" className="image-upload-labels">
               Content Picture:
             </label>
