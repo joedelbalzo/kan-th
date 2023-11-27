@@ -1,5 +1,5 @@
 //React Imports
-import React, { useEffect, Suspense, lazy } from "react";
+import React, { useEffect, Suspense, lazy, Profiler } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { HashRouter as Router, Routes, Route } from "react-router-dom";
 
@@ -49,11 +49,7 @@ function ScrollTop(props) {
 
   return (
     <Fade in={trigger}>
-      <Box
-        onClick={handleClick}
-        role="presentation"
-        sx={{ position: "fixed", bottom: 24, right: 24 }}
-      >
+      <Box onClick={handleClick} role="presentation" sx={{ position: "fixed", bottom: 24, right: 24 }}>
         {children}
       </Box>
     </Fade>
@@ -73,14 +69,19 @@ function App(props) {
     dispatch(fetchDraftedBlogposts());
   }
 
+  function onRender(id, phase, actualDuration, baseDuration, startTime, commitTime) {
+    console.log(id, phase, actualDuration, baseDuration, startTime, commitTime);
+  }
+
   return (
     <div style={{ display: "flex", flexDirection: "column", minHeight: "100vh" }}>
       <div style={{ position: "sticky" }}>
+        {/* <Profiler id="Nav" onRender={onRender}> */}
         <Nav />
+        {/* </Profiler> */}
       </div>
-
-      {/* <div ></div> */}
       <div style={{ display: "flex", flexDirection: "column", flexGrow: 1 }}>
+        {/* <Profiler id="Home" onRender={onRender}> */}
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
@@ -181,6 +182,7 @@ function App(props) {
             />
           )}
         </Routes>
+        {/* </Profiler> */}
       </div>
       <ScrollTop {...props}>
         <Fab

@@ -211,8 +211,10 @@ a:hover {
   grid-column: 1;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  align-items: space-around;
+  justify-content: space-around;
   margin: 0 1rem;
+  /* border: 2px solid blue; */
 }
 .home-div-title {
   font-size: calc(24px + 2vw);
@@ -221,12 +223,12 @@ a:hover {
   padding: 0;
 }
 .home-div-subtitle {
-  margin-top: 2rem;
+  /* margin-top: 2rem; */
   font-size: calc(10px + 1.5vw);
   word-wrap: normal;
 }
 .home-div-body {
-  margin-top: 1rem;
+  /* margin-top: 1rem; */
   font-size: calc(10px + 1vw);
 }
 .home-div-image {

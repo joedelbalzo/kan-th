@@ -7,12 +7,12 @@ export const ThemeProvider = ({ children }) => {
   const [theme, setTheme] = useState("light"); // Default to light theme
 
   // Toggle theme function
-  const toggleTheme = () => {
-    // const newTheme = theme === "light" ? "dark" : "light";
-    // setTheme(newTheme);
-    // localStorage.setItem("theme", newTheme);
-    setTheme("light");
-  };
+  // const toggleTheme = () => {
+  //   // const newTheme = theme === "light" ? "dark" : "light";
+  //   // setTheme(newTheme);
+  //   // localStorage.setItem("theme", newTheme);
+  //   setTheme("light");
+  // };
 
   // Load theme from localStorage
   // useEffect(() => {
@@ -29,5 +29,5 @@ export const ThemeProvider = ({ children }) => {
   //   }
   // }, []);
 
-  return <ThemeContext.Provider value={{ theme, toggleTheme }}>{children}</ThemeContext.Provider>;
+  return <ThemeContext.Provider value={{ theme /*toggleTheme*/ }}>{children}</ThemeContext.Provider>;
 };

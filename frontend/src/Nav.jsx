@@ -1,17 +1,16 @@
 //React Imports
 import React, { useContext, useEffect, useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
-import { FaRegSun, FaRegMoon, FaSearch } from "react-icons/fa";
+// import { FaRegSun, FaRegMoon, FaSearch } from "react-icons/fa";
 
 //Component Imports
-import Login from "./Login";
-import Admin from "./Admin/AdminHome";
+
 import GlassesIcon from "./assets/GlassesIcon";
 import { ThemeContext } from "./ThemeContext";
 import "../styles.css";
 
 //Store Imports
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch, useSelector, shallowEqual } from "react-redux";
 import { logout } from "./store";
 
 //mui
@@ -21,12 +20,11 @@ import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import Box from "@mui/material/Box";
 
-const Nav = () => {
-  const auth = useSelector((state) => state.auth);
+const Nav = React.memo(() => {
+  const auth = useSelector((state) => state.auth, shallowEqual);
 
-  const { theme, toggleTheme } = useContext(ThemeContext);
+  const { theme /*toggleTheme*/ } = useContext(ThemeContext);
 
-  const [width, setWidth] = useState(0);
   const [anchorElNav, setAnchorElNav] = useState(null);
   const [currPage, setCurrPage] = useState("/");
 
@@ -42,24 +40,8 @@ const Nav = () => {
     dispatch(logout());
   };
 
-  useEffect(() => {
-    try {
-      const width = window.innerWidth;
-      setWidth(width);
-    } catch (err) {
-      console.log(err);
-    }
-  }, []);
-
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
-  };
-
-  const handleCloseNavMenu = () => {
-    setAnchorElNav(null);
-    setTimeout(() => {
-      setCurrPage(window.location.hash.slice(2));
-    }, 1000);
   };
 
   const scrollToTop = () => {
@@ -82,13 +64,7 @@ const Nav = () => {
           <div>login</div>
         </Link>
       ) : (
-        <Link
-          to="/"
-          onClick={handleLogout}
-          className="nav-links"
-          id="large"
-          style={{ fontSize: "24px" }}
-        >
+        <Link to="/" onClick={handleLogout} className="nav-links" id="large" style={{ fontSize: "24px" }}>
           <div>logout</div>
         </Link>
       )}
@@ -120,12 +96,7 @@ const Nav = () => {
             display: { xs: "flex", md: "none" },
           }}
         >
-          <IconButton
-            aria-controls="menu-appbar"
-            aria-haspopup="true"
-            onClick={handleOpenNavMenu}
-            color="inherit"
-          >
+          <IconButton aria-controls="menu-appbar" aria-haspopup="true" onClick={handleOpenNavMenu} color="inherit">
             <MenuIcon />
           </IconButton>
           <Menu
@@ -141,7 +112,7 @@ const Nav = () => {
               horizontal: "left",
             }}
             open={Boolean(anchorElNav)}
-            onClose={handleCloseNavMenu}
+            onClose={() => setAnchorElNav(null)}
             slotProps={{ className: "menu-paper-root" }}
             sx={{
               padding: 0,
@@ -150,70 +121,36 @@ const Nav = () => {
             }}
           >
             <MenuItem key={"home"} onClick={scrollToTop}>
-              <Link
-                offset="10"
-                to="/"
-                id={currPage === "" ? "activelinks" : "links"}
-                onClick={handleCloseNavMenu}
-              >
+              <Link offset="10" to="/" id={currPage === "" ? "activelinks" : "links"} onClick={() => setAnchorElNav(null)}>
                 Home
               </Link>
             </MenuItem>
             <MenuItem key={"join"}>
-              <Link
-                offset="10"
-                to="/join"
-                id={currPage === "portfolio" ? "activelinks" : "links"}
-                onClick={handleCloseNavMenu}
-              >
+              <Link offset="10" to="/join" id={currPage === "portfolio" ? "activelinks" : "links"} onClick={() => setAnchorElNav(null)}>
                 Login
               </Link>
             </MenuItem>
             <MenuItem key={"about"}>
-              <Link
-                offset="10"
-                to="/about"
-                id={currPage === "about" ? "activelinks" : "links"}
-                onClick={handleCloseNavMenu}
-              >
+              <Link offset="10" to="/about" id={currPage === "about" ? "activelinks" : "links"} onClick={() => setAnchorElNav(null)}>
                 About
               </Link>
             </MenuItem>
             <MenuItem key={"blog"}>
-              <Link
-                offset="10"
-                to="/blog"
-                id={currPage === "blog" ? "activelinks" : "links"}
-                onClick={handleCloseNavMenu}
-              >
+              <Link offset="10" to="/blog" id={currPage === "blog" ? "activelinks" : "links"} onClick={() => setAnchorElNav(null)}>
                 Blog
               </Link>
             </MenuItem>
 
             <MenuItem key={"login"}>
-              <Link
-                offset="10"
-                to="/login"
-                id={currPage === "login" ? "activelinks" : "links"}
-                onClick={handleCloseNavMenu}
-              >
+              <Link offset="10" to="/login" id={currPage === "login" ? "activelinks" : "links"} onClick={() => setAnchorElNav(null)}>
                 Login
               </Link>
             </MenuItem>
-            {/* {theme == "dark" ? (
-              <MenuItem key={"light"} onClick={toggleTheme}>
-                <FaRegSun />
-              </MenuItem>
-            ) : (
-              <MenuItem key={"dark"} onClick={toggleTheme}>
-                <FaRegMoon />
-              </MenuItem>
-            )} */}
           </Menu>
         </Box>
       </div>
     </div>
   );
-};
+});
 
 export default Nav;
