@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { HashRouter as Router, Routes, Route } from "react-router-dom";
 
 //Component Imports
+import Loading from "./assets/Loading";
 import Login from "./Login";
 import Home from "./Home";
 import Nav from "./Nav";
@@ -83,13 +84,62 @@ function App(props) {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/blog/" element={<Blogposts />} />
-          <Route path="/blog/posts/:id" element={<Blogpost_Single />} />
-          <Route path="/blog/tags/:id" element={<Blogposts_Tags />} />
+          <Route
+            path="/blog/"
+            element={
+              <Suspense
+                fallback={
+                  <div>
+                    <Loading />
+                    Loading Posts...
+                  </div>
+                }
+              >
+                <Blogposts />{" "}
+              </Suspense>
+            }
+          />
+          <Route
+            path="/blog/posts/:id"
+            element={
+              <Suspense
+                fallback={
+                  <div>
+                    <Loading />
+                    Loading Posts...
+                  </div>
+                }
+              >
+                <Blogpost_Single />{" "}
+              </Suspense>
+            }
+          />
+          <Route
+            path="/blog/tags/:id"
+            element={
+              <Suspense
+                fallback={
+                  <div>
+                    <Loading />
+                    Loading Posts...
+                  </div>
+                }
+              >
+                <Blogposts_Tags />{" "}
+              </Suspense>
+            }
+          />
           <Route
             path="/privacy"
             element={
-              <Suspense fallback={<div>Loading Privacy Policy...</div>}>
+              <Suspense
+                fallback={
+                  <div>
+                    <Loading />
+                    Loading Privacy Policy...
+                  </div>
+                }
+              >
                 <PrivacyPolicy />{" "}
               </Suspense>
             }
@@ -100,7 +150,14 @@ function App(props) {
             <Route
               path="/admin"
               element={
-                <Suspense fallback={<div>Loading Admin...</div>}>
+                <Suspense
+                  fallback={
+                    <div>
+                      <Loading />
+                      Loading Admin...
+                    </div>
+                  }
+                >
                   <Admin />{" "}
                 </Suspense>
               }
@@ -110,7 +167,14 @@ function App(props) {
             <Route
               path="/admin/posts"
               element={
-                <Suspense fallback={<div>Loading Admin Posts...</div>}>
+                <Suspense
+                  fallback={
+                    <div>
+                      <Loading />
+                      Loading Admin Posts...
+                    </div>
+                  }
+                >
                   <AdminPosts />{" "}
                 </Suspense>
               }

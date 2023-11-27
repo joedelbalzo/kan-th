@@ -42,3 +42,4 @@ Seedling.defaultProps = {
 };
 
 export default Seedling;
+// from https://www.svgrepo.com/collection/xnix-circular-interface-icons/

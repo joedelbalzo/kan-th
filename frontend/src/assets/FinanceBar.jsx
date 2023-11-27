@@ -36,3 +36,5 @@ FinanceBar.defaultProps = {
 };
 
 export default FinanceBar;
+
+// from https://www.svgrepo.com/collection/xnix-circular-interface-icons/
