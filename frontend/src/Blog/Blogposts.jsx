@@ -1,5 +1,5 @@
 //React Imports
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, Link } from "react-router-dom";
 import parse from "html-react-parser";
@@ -11,6 +11,7 @@ import Nav from "../Nav";
 import ShareButtons from "../ShareButtons";
 import SideNav from "./SideNav";
 import { FadeComponent } from "../assets/FadeComponent";
+import Loading from "../assets/Loading";
 
 //Store Imports
 // import { fetchPublishedBlogposts } from "./store";
@@ -22,8 +23,17 @@ import { Fade } from "@mui/material";
 const Blogposts = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const [loading, setLoading] = useState(true);
 
   const blogposts = useSelector((state) => state.blogposts.allBlogposts);
+
+  // useEffect(() => {
+  //   if (!blogposts) {
+  //     return <Loading />;
+  //   } else {
+  //     setLoading(false);
+  //   }
+  // }, [blogposts]);
 
   if (!blogposts) {
     return null;
@@ -51,17 +61,10 @@ const Blogposts = () => {
       <div>
         <div className="post-headliner" key={blogposts[0].id}>
           <div className="post-container">
-            {headlinerPic != null ? (
-              <img src={headlinerPic.awsPicURL} className="post-headline-div-picture" />
-            ) : (
-              ""
-            )}
+            {headlinerPic != null ? <img src={headlinerPic.awsPicURL} className="post-headline-div-picture" /> : ""}
             <div className="post-title-div">
               {/* <span className="post-date">Date: {readableDate(blogposts[0].publishedAt)}</span> */}
-              <Link
-                to={`/blog/posts/${blogposts[0].id}`}
-                style={{ textDecoration: "none", color: "inherit" }}
-              >
+              <Link to={`/blog/posts/${blogposts[0].id}`} style={{ textDecoration: "none", color: "inherit" }}>
                 <h2>{blogposts[0].title}</h2>
               </Link>
 
@@ -69,11 +72,7 @@ const Blogposts = () => {
               <div className="post-tags">
                 Tags:
                 {blogposts[0].tags[0] ? (
-                  <Link
-                    to={`/blog/tags/${blogposts[0].tags[0].id}`}
-                    key={blogposts[0].tags[0].id}
-                    style={{ marginLeft: 4 }}
-                  >
+                  <Link to={`/blog/tags/${blogposts[0].tags[0].id}`} key={blogposts[0].tags[0].id} style={{ marginLeft: 4 }}>
                     {blogposts[0].tags[0].tagName}
                   </Link>
                 ) : (
@@ -81,11 +80,7 @@ const Blogposts = () => {
                 )}
                 ,
                 {blogposts[0].tags[1] ? (
-                  <Link
-                    to={`/blog/tags/${blogposts[0].tags[1].id}`}
-                    key={blogposts[0].tags[1].id}
-                    style={{ marginLeft: 4 }}
-                  >
+                  <Link to={`/blog/tags/${blogposts[0].tags[1].id}`} key={blogposts[0].tags[1].id} style={{ marginLeft: 4 }}>
                     {blogposts[0].tags[1].tagName}
                   </Link>
                 ) : (
@@ -93,11 +88,7 @@ const Blogposts = () => {
                 )}
                 ,
                 {blogposts[0].tags[2] ? (
-                  <Link
-                    to={`/blog/tags/${blogposts[0].tags[2].id}`}
-                    key={blogposts[0].tags[2].id}
-                    style={{ marginLeft: 4 }}
-                  >
+                  <Link to={`/blog/tags/${blogposts[0].tags[2].id}`} key={blogposts[0].tags[2].id} style={{ marginLeft: 4 }}>
                     {blogposts[0].tags[2].tagName}{" "}
                   </Link>
                 ) : (
@@ -106,8 +97,7 @@ const Blogposts = () => {
               </div>
               <ShareButtons />
               <div className="post-body">
-                {sampleText(blogposts[0].content)}{" "}
-                <Link to={`/blog/posts/${blogposts[0].id}`}>...read more</Link>
+                {sampleText(blogposts[0].content)} <Link to={`/blog/posts/${blogposts[0].id}`}>...read more</Link>
               </div>
             </div>
           </div>
@@ -128,17 +118,10 @@ const Blogposts = () => {
               return (
                 <div className="post-content" key={blogpost.id}>
                   <div className="post-container">
-                    {homePic != null ? (
-                      <img src={homePic.awsPicURL} className="post-div-picture" />
-                    ) : (
-                      ""
-                    )}
+                    {homePic != null ? <img src={homePic.awsPicURL} className="post-div-picture" /> : ""}
                     <div className="post-title-div">
                       <span className="post-date">Date: {readableDate(blogpost.publishedAt)}</span>
-                      <Link
-                        to={`/blog/posts/${blogpost.id}`}
-                        style={{ textDecoration: "none", color: "inherit" }}
-                      >
+                      <Link to={`/blog/posts/${blogpost.id}`} style={{ textDecoration: "none", color: "inherit" }}>
                         <h2>{blogpost.title}</h2>
                       </Link>
 
@@ -146,11 +129,7 @@ const Blogposts = () => {
                       <div className="post-tags">
                         Tags:
                         {blogpost.tags[0] ? (
-                          <Link
-                            to={`/blog/tags/${blogpost.tags[0].id}`}
-                            key={blogpost.tags[0].id}
-                            style={{ marginLeft: 4 }}
-                          >
+                          <Link to={`/blog/tags/${blogpost.tags[0].id}`} key={blogpost.tags[0].id} style={{ marginLeft: 4 }}>
                             {blogpost.tags[0].tagName}
                           </Link>
                         ) : (
@@ -158,11 +137,7 @@ const Blogposts = () => {
                         )}
                         ,
                         {blogpost.tags[1] ? (
-                          <Link
-                            to={`/blog/tags/${blogpost.tags[1].id}`}
-                            key={blogpost.tags[1].id}
-                            style={{ marginLeft: 4 }}
-                          >
+                          <Link to={`/blog/tags/${blogpost.tags[1].id}`} key={blogpost.tags[1].id} style={{ marginLeft: 4 }}>
                             {blogpost.tags[1].tagName}
                           </Link>
                         ) : (
@@ -170,11 +145,7 @@ const Blogposts = () => {
                         )}
                         ,
                         {blogpost.tags[2] ? (
-                          <Link
-                            to={`/blog/tags/${blogpost.tags[2].id}`}
-                            key={blogpost.tags[2].id}
-                            style={{ marginLeft: 4 }}
-                          >
+                          <Link to={`/blog/tags/${blogpost.tags[2].id}`} key={blogpost.tags[2].id} style={{ marginLeft: 4 }}>
                             {blogpost.tags[2].tagName}{" "}
                           </Link>
                         ) : (
@@ -183,8 +154,7 @@ const Blogposts = () => {
                       </div>
                       <ShareButtons />
                       <div className="post-body">
-                        {sampleText(blogpost.content)}{" "}
-                        <Link to={`/blog/posts/${blogpost.id}`}>...read more</Link>
+                        {sampleText(blogpost.content)} <Link to={`/blog/posts/${blogpost.id}`}>...read more</Link>
                       </div>
                     </div>
                     <div className="post-bottom-border"></div>

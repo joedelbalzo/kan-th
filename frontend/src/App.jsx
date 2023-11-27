@@ -60,9 +60,18 @@ function App(props) {
   const dispatch = useDispatch();
   const auth = useSelector((state) => state.auth);
 
+  // useEffect(() => {
+  //   dispatch(fetchPublishedBlogposts());
+  //   dispatch(fetchTags());
+  // }, []);
+  //memory test
   useEffect(() => {
-    dispatch(fetchPublishedBlogposts());
-    dispatch(fetchTags());
+    const timer = setTimeout(() => {
+      dispatch(fetchPublishedBlogposts());
+      dispatch(fetchTags());
+    }, 1000);
+
+    return () => clearTimeout(timer);
   }, []);
 
   if (auth && auth.username == "admin") {
