@@ -5,11 +5,15 @@
   font-family: Arial, sans-serif;
 }
 .spinner {
-  border: 3px solid rgba(0, 0, 0, 0.1);
+  /* border-width: 3px; */
+  border-style: solid;
+  border-color: rgba(0, 0, 0, 0.1);
   border-radius: 50%;
-  border-top: 3px solid white;
-  width: 10px;
-  height: 10px;
+  /* border-top-width: 3px; */
+  border-top-style: solid;
+  border-top-color: white;
+  /* width: 10px; */
+  /* height: 10px; */
   animation: spin 1s linear infinite;
 }
 @keyframes spin {

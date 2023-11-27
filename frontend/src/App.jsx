@@ -99,9 +99,8 @@ function App(props) {
             element={
               <Suspense
                 fallback={
-                  <div>
-                    <Loading />
-                    Loading Posts...
+                  <div style={{ margin: "4rem auto" }}>
+                    <Loading height={"200px"} width={"200px"} borderWidth={"20px"} />
                   </div>
                 }
               >
@@ -114,9 +113,8 @@ function App(props) {
             element={
               <Suspense
                 fallback={
-                  <div>
-                    <Loading />
-                    Loading Posts...
+                  <div style={{ margin: "4rem auto" }}>
+                    <Loading height={"200px"} width={"200px"} borderWidth={"20px"} />
                   </div>
                 }
               >
@@ -129,9 +127,8 @@ function App(props) {
             element={
               <Suspense
                 fallback={
-                  <div>
-                    <Loading />
-                    Loading Posts...
+                  <div style={{ margin: "4rem auto" }}>
+                    <Loading height={"200px"} width={"200px"} borderWidth={"20px"} />
                   </div>
                 }
               >
@@ -144,9 +141,8 @@ function App(props) {
             element={
               <Suspense
                 fallback={
-                  <div>
-                    <Loading />
-                    Loading Privacy Policy...
+                  <div style={{ margin: "4rem auto" }}>
+                    <Loading height={"200px"} width={"200px"} borderWidth={"20px"} />
                   </div>
                 }
               >
@@ -163,8 +159,7 @@ function App(props) {
                 <Suspense
                   fallback={
                     <div>
-                      <Loading />
-                      Loading Admin...
+                      <Loading height={"200px"} width={"200px"} borderWidth={"20px"} />
                     </div>
                   }
                 >
@@ -180,8 +175,7 @@ function App(props) {
                 <Suspense
                   fallback={
                     <div>
-                      <Loading />
-                      Loading Admin Posts...
+                      <Loading height={"200px"} width={"200px"} borderWidth={"20px"} />
                     </div>
                   }
                 >

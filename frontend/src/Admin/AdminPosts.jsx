@@ -304,7 +304,7 @@ const AdminPosts = () => {
           )}
           {loading && published == false && (
             <button className="publish-button" disabled>
-              <Loading />
+              <Loading height={"10px"} width={"10px"} borderWidth={"3px"} />
             </button>
           )}
           {loading == false && published && (

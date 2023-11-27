@@ -1,0 +1,2 @@
+import{b as l,u as r,a as c,j as a,L as o,X as d}from"./index-4eff5fbb.js";const g=()=>{const e=l(s=>s.tags),t=r(),i=c();if(!e)return null;const n=async s=>{await i(d(s.id)),t(`/blog/tags/${s.id}`)};return a.jsxs("div",{children:["Search by Tag:",a.jsx("ul",{style:{padding:4},children:e.map(s=>a.jsx("li",{style:{listStyleType:"none",padding:4},children:a.jsx(o,{onClick:()=>n(s),children:s.tagName})},s.id))})]})};export{g as default};
+//# sourceMappingURL=SideNav-63abf612.js.map

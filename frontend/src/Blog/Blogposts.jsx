@@ -1,5 +1,5 @@
 //React Imports
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, lazy, Suspense } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, Link } from "react-router-dom";
 import parse from "html-react-parser";
@@ -8,7 +8,8 @@ import DOMPurify from "dompurify";
 //Component Imports
 
 import ShareButtons from "../ShareButtons";
-import SideNav from "./SideNav";
+const SideNav = lazy(() => import("./SideNav"));
+
 import { FadeComponent } from "../assets/FadeComponent";
 import Loading from "../assets/Loading";
 
@@ -108,7 +109,16 @@ const Blogposts = () => {
 
         <div className="post-grid">
           <div className="post-info">
-            <SideNav />
+            <Suspense
+              fallback={
+                <div>
+                  <Loading />
+                  Loading Posts...
+                </div>
+              }
+            >
+              <SideNav />
+            </Suspense>
           </div>
           {blogposts
             .filter((post) => post !== blogposts[0])
