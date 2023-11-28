@@ -1,5 +1,5 @@
 const conn = require("./conn");
-const { User, Blogpost, Tag, Image } = require("./Models");
+const { User, Blogpost, Tag, Image, Business } = require("./Models");
 const path = require("path");
 const { faker } = require("@faker-js/faker");
 require("dotenv").config({ path: path.resolve(__dirname, "..", ".env") });
@@ -9,26 +9,19 @@ const adminPW = process.env.ADMIN_PW;
 const syncAndSeed = async () => {
   await conn.sync({ force: true });
   try {
-    const admin = await Promise.all([
-      User.create({
-        username: "admin",
-        // password: "Admin12345!",
-        password: adminPW,
-        email: "jdelbalzo99@gmail.com",
-        adminStatus: true,
-        authorId: 666,
-      }),
-    ]);
-    const notAdmin = await Promise.all([
-      User.create({
-        username: "jimbo",
-        // password: "Admin12345!",
-        password: "123",
-        email: "jdelbalzo99@gmail.com",
-        adminStatus: true,
-        authorId: 666,
-      }),
-    ]);
+    const admin = await User.create({
+      username: "admin",
+      password: adminPW,
+      email: "jdelbalzo99@gmail.com",
+      adminStatus: true,
+    });
+    const notAdmin = await User.create({
+      username: "jimbo",
+      password: "123",
+      email: "jdelbalzo99@gmail.com",
+      adminStatus: false,
+      businessId: null,
+    });
 
     const [samplePost1, samplePost2, samplePost3, samplePost4, samplePost5, samplePost6] = await Promise.all([
       Blogpost.create({
@@ -77,12 +70,12 @@ const syncAndSeed = async () => {
     ]);
 
     const [trials, errors, money, finances, smbs, dei] = await Promise.all([
-      Tag.create({ tagName: "Trials" }),
-      Tag.create({ tagName: "Errors" }),
-      Tag.create({ tagName: "Money" }),
-      Tag.create({ tagName: "Finances" }),
-      Tag.create({ tagName: "SMBs" }),
-      Tag.create({ tagName: "Diversity and Inclusion" }),
+      Tag.create({ name: "Trials" }),
+      Tag.create({ name: "Errors" }),
+      Tag.create({ name: "Money" }),
+      Tag.create({ name: "Finances" }),
+      Tag.create({ name: "SMBs" }),
+      Tag.create({ name: "Diversity and Inclusion" }),
     ]);
 
     const [financeJpgHome, financeDefinitionHome, financeJpgHome2, financeDefinitionHome2, financeJpgHome3, financeDefinitionHome3] =
@@ -131,6 +124,10 @@ const syncAndSeed = async () => {
         }),
       ]);
 
+    const jimbosPizzeria = await Business.create({
+      name: "Jimbo's Pizzeria",
+    });
+
     const promises = [
       samplePost1.addTags([trials, finances, money]),
       samplePost2.addTags([finances, smbs, dei]),
@@ -149,10 +146,16 @@ const syncAndSeed = async () => {
 
     await Promise.all(promises);
 
+    notAdmin.businessId = jimbosPizzeria.id;
+    await notAdmin.save();
+
     return {
       users: {
         admin,
         notAdmin,
+      },
+      businesses: {
+        jimbosPizzeria,
       },
       blogposts: {
         samplePost1,

@@ -54,20 +54,16 @@ app.put("/:id", async (req, res, next) => {
     const { firstTag, secondTag, thirdTag } = req.body;
 
     async function processTag(tag) {
-      let cleanedTagName = tag.tagName.trim().toLowerCase();
+      let cleanedTagName = tag.name.trim().toLowerCase();
       if (tag.id) {
         return tag.id;
       } else {
-        const [newTag, created] = await Tag.findOrCreate({ where: { tagName: cleanedTagName } });
+        const [newTag, created] = await Tag.findOrCreate({ where: { name: cleanedTagName } });
         return newTag.id;
       }
     }
 
-    const tagIds = await Promise.all([
-      processTag(firstTag),
-      processTag(secondTag),
-      processTag(thirdTag),
-    ]);
+    const tagIds = await Promise.all([processTag(firstTag), processTag(secondTag), processTag(thirdTag)]);
 
     await post.setTags(tagIds);
     res.sendStatus(200);

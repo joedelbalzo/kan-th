@@ -59,6 +59,19 @@ const Nav = React.memo(() => {
           <span className="brand-name">vali</span>
         </div>
       </Link>
+
+      {auth.id && (
+        <Link to="/portfolio" className="nav-links" id="large" style={{ fontSize: "24px" }}>
+          portfolio
+        </Link>
+      )}
+
+      <Link to="/blog" className="nav-links" id="large" style={{ fontSize: "24px" }}>
+        <div>blog</div>
+      </Link>
+      <Link to="/" className="nav-links" id="large" style={{ fontSize: "24px" }}>
+        <div>about</div>
+      </Link>
       {!auth.id ? (
         <Link to="/login" className="nav-links" id="large" style={{ fontSize: "24px" }}>
           <div>login</div>
@@ -68,25 +81,6 @@ const Nav = React.memo(() => {
           <div>logout</div>
         </Link>
       )}
-      <Link to="/blog" className="nav-links" id="large" style={{ fontSize: "24px" }}>
-        <div>blog</div>
-      </Link>
-      <Link to="/" className="nav-links" id="large" style={{ fontSize: "24px" }}>
-        <div>about</div>
-      </Link>
-
-      {/* {theme == "dark" ? (
-        <button onClick={toggleTheme} id="large" className="theme-toggle">
-          <FaRegMoon />
-        </button>
-      ) : (
-        <button onClick={toggleTheme} id="large" className="theme-toggle">
-          <FaRegSun />
-        </button>
-      )}
-      <button onClick={toggleTheme} id="large" className="theme-toggle">
-        <FaSearch />
-      </button> */}
 
       <div className="menuItems" id="small">
         <Box

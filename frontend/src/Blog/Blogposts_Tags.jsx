@@ -56,7 +56,7 @@ const Blogposts_Tags = () => {
                       Tags:
                       {blogpost.tags[0] ? (
                         <Link key={blogpost.tags[0].id} to={`/blog/tags/${blogpost.tags[0].id}`} style={{ marginLeft: 4 }}>
-                          {blogpost.tags[0].tagName}
+                          {blogpost.tags[0].name}
                         </Link>
                       ) : (
                         ""
@@ -64,7 +64,7 @@ const Blogposts_Tags = () => {
                       ,
                       {blogpost.tags[1] ? (
                         <Link key={blogpost.tags[1].id} to={`/blog/tags/${blogpost.tags[1].id}`} style={{ marginLeft: 4 }}>
-                          {blogpost.tags[1].tagName}
+                          {blogpost.tags[1].name}
                         </Link>
                       ) : (
                         ""
@@ -72,7 +72,7 @@ const Blogposts_Tags = () => {
                       ,
                       {blogpost.tags[2] ? (
                         <Link key={blogpost.tags[2].id} to={`/blog/tags/${blogpost.tags[2].id}`} style={{ marginLeft: 4 }}>
-                          {blogpost.tags[2].tagName}{" "}
+                          {blogpost.tags[2].name}{" "}
                         </Link>
                       ) : (
                         ""

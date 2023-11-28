@@ -4,8 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, Link } from "react-router-dom";
 
 //Component Imports
-import Login from "../Login";
-import Nav from "../Nav";
+import AdminHelp from "./AdminHelp";
 
 //Store Imports
 import { publishBlogpost, hideBlogpost } from "../store";
@@ -73,9 +72,7 @@ const Admin = () => {
           Create New Post
         </Link>
         <br />
-        <Link to="/admin/posts" state={{ post: null, type: "create" }}>
-          Need Help?
-        </Link>
+        <Link to="/admin/help">Help and Documentation</Link>
       </div>
       <div className="admin-grid">
         <div className="admin-grid-published">
@@ -142,9 +139,6 @@ const Admin = () => {
               </div>
             );
           })}
-        </div>
-        <div className="admin-grid-help">
-          <h2>Help</h2>
         </div>
       </div>
     </div>

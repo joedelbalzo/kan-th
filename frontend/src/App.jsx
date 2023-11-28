@@ -5,23 +5,25 @@ import { HashRouter as Router, Routes, Route } from "react-router-dom";
 
 //Component Imports
 import Loading from "./assets/Loading";
-import Login from "./Login";
-import Home from "./Home";
 import Nav from "./Nav";
+import Home from "./Home";
+import Footer from "./Footer";
+import Login from "./Login";
+import PrivacyPolicy from "./PrivacyPolicy";
+import Contact from "./Contact";
 
+const BlogWrapper = lazy(() => import("./Blog/BlogWrapper"));
 const Blogposts = lazy(() => import("./Blog/Blogposts"));
 const Blogposts_Tags = lazy(() => import("./Blog/Blogposts_Tags"));
 const Blogpost_Single = lazy(() => import("./Blog/Blogpost_Single"));
 
-// import Blogposts from "./Blog/Blogposts";
-// import Blogposts_Tags from "./Blog/Blogposts_Tags";
-// import Blogpost_Single from "./Blog/Blogpost_Single";
-import Footer from "./Footer";
-// import Search from "./Search";
-const Admin = lazy(() => import("./Admin/AdminHome"));
+const AdminWrapper = lazy(() => import("./Admin/AdminWrapper"));
+const AdminHome = lazy(() => import("./Admin/AdminHome"));
 const AdminPosts = lazy(() => import("./Admin/AdminPosts"));
-const PrivacyPolicy = lazy(() => import("./PrivacyPolicy"));
-const Contact = lazy(() => import("./Contact"));
+const AdminHelp = lazy(() => import("./Admin/AdminHelp"));
+
+const PortfolioWrapper = lazy(() => import("./Portfolio/PortfolioWrapper"));
+const PortfolioHome = lazy(() => import("./Portfolio/PortfolioHome"));
 
 //Store Imports
 import { fetchPublishedBlogposts, fetchTags, fetchDraftedBlogposts } from "./store";
@@ -85,76 +87,55 @@ function App(props) {
   return (
     <div style={{ display: "flex", flexDirection: "column", minHeight: "100vh" }}>
       <div style={{ position: "sticky" }}>
-        {/* <Profiler id="Nav" onRender={onRender}> */}
         <Nav />
-        {/* </Profiler> */}
       </div>
       <div style={{ display: "flex", flexDirection: "column", flexGrow: 1 }}>
-        {/* <Profiler id="Home" onRender={onRender}> */}
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
-          <Route
-            path="/blog/"
-            element={
-              <Suspense
-                fallback={
-                  <div style={{ margin: "4rem auto" }}>
-                    <Loading height={"200px"} width={"200px"} borderWidth={"20px"} />
-                  </div>
-                }
-              >
-                <Blogposts />{" "}
-              </Suspense>
-            }
-          />
-          <Route
-            path="/blog/posts/:id"
-            element={
-              <Suspense
-                fallback={
-                  <div style={{ margin: "4rem auto" }}>
-                    <Loading height={"200px"} width={"200px"} borderWidth={"20px"} />
-                  </div>
-                }
-              >
-                <Blogpost_Single />{" "}
-              </Suspense>
-            }
-          />
-          <Route
-            path="/blog/tags/:id"
-            element={
-              <Suspense
-                fallback={
-                  <div style={{ margin: "4rem auto" }}>
-                    <Loading height={"200px"} width={"200px"} borderWidth={"20px"} />
-                  </div>
-                }
-              >
-                <Blogposts_Tags />{" "}
-              </Suspense>
-            }
-          />
-          <Route
-            path="/privacy"
-            element={
-              <Suspense
-                fallback={
-                  <div style={{ margin: "4rem auto" }}>
-                    <Loading height={"200px"} width={"200px"} borderWidth={"20px"} />
-                  </div>
-                }
-              >
-                <PrivacyPolicy />{" "}
-              </Suspense>
-            }
-          />
+          <Route path="/privacy" element={<PrivacyPolicy />} />
           <Route path="/contact" element={<Contact />} />
+          <Route
+            path="/blog/*"
+            element={
+              <Suspense
+                fallback={
+                  <div style={{ margin: "4rem auto" }}>
+                    <Loading height={"200px"} width={"200px"} borderWidth={"20px"} />
+                  </div>
+                }
+              >
+                <BlogWrapper />{" "}
+              </Suspense>
+            }
+          >
+            <Route index element={<Blogposts />} />
+            <Route path="posts/:id" element={<Blogpost_Single />} />
+            <Route path="tags/:id" element={<Blogposts_Tags />} />
+          </Route>
+
+          {auth.id && (
+            <Route
+              path="/portfolio/*"
+              element={
+                <Suspense
+                  fallback={
+                    <div>
+                      <Loading height={"200px"} width={"200px"} borderWidth={"20px"} />
+                    </div>
+                  }
+                >
+                  <PortfolioWrapper />
+                </Suspense>
+              }
+            >
+              <Route index element={<PortfolioHome />} />
+            </Route>
+          )}
 
           {auth.username == "admin" && (
             <Route
-              path="/admin"
+              path="/admin/*"
               element={
                 <Suspense
                   fallback={
@@ -163,30 +144,18 @@ function App(props) {
                     </div>
                   }
                 >
-                  <Admin />{" "}
+                  <AdminWrapper />
                 </Suspense>
               }
-            />
-          )}
-          {auth.username == "admin" && (
-            <Route
-              path="/admin/posts"
-              element={
-                <Suspense
-                  fallback={
-                    <div>
-                      <Loading height={"200px"} width={"200px"} borderWidth={"20px"} />
-                    </div>
-                  }
-                >
-                  <AdminPosts />{" "}
-                </Suspense>
-              }
-            />
+            >
+              <Route index element={<AdminHome />} />
+              <Route path="posts" element={<AdminPosts />} />
+              <Route path="help" element={<AdminHelp />} />
+            </Route>
           )}
         </Routes>
-        {/* </Profiler> */}
       </div>
+
       <ScrollTop {...props}>
         <Fab
           size="large"

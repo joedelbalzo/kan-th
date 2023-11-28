@@ -27,7 +27,7 @@ const SideNav = () => {
         {tags.map((tag) => {
           return (
             <li key={tag.id} style={{ listStyleType: "none", padding: 4 }}>
-              <Link onClick={() => onTagClick(tag)}>{tag.tagName}</Link>
+              <Link onClick={() => onTagClick(tag)}>{tag.name}</Link>
             </li>
           );
         })}

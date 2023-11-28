@@ -1,11 +1,17 @@
-const { User } = require("../db");
+const { User, Business } = require("../db");
 const path = require("path");
 
 require("dotenv").config({ path: path.resolve(__dirname, "..", ".env") });
 
 const isLoggedIn = async (req, res, next) => {
   try {
-    const user = await User.findByToken(req.headers.authorization);
+    const user = await User.findByToken(req.headers.authorization, {
+      include: [
+        {
+          model: Business,
+        },
+      ],
+    });
     req.user = user;
     next();
   } catch (ex) {
@@ -14,8 +20,7 @@ const isLoggedIn = async (req, res, next) => {
 };
 
 const restrictAccess = (req, res, next) => {
-  const origin =
-    req.headers.origin || req.headers.referer || "localhost:3000" || "http://localhost:3000";
+  const origin = req.headers.origin || req.headers.referer || "localhost:3000" || "http://localhost:3000";
   console.log("origin", origin);
   if (origin) {
     if (

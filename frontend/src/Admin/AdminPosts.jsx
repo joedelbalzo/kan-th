@@ -121,7 +121,10 @@ const AdminPosts = () => {
 
   return (
     <div>
-      <Link to="/admin">Back</Link>
+      <Link to="/admin" className="image-upload-buttons">
+        {" "}
+        &larr; Back
+      </Link>
       <form onSubmit={handleSubmit} className="admin-post-form">
         <div style={{ display: "flex", flexDirection: "column" }}>
           <div className="form-field">
@@ -163,7 +166,7 @@ const AdminPosts = () => {
                 id="combo-box-demo"
                 value={firstTag}
                 options={tags}
-                getOptionLabel={(option) => (option.tagName ? option.tagName : "")}
+                getOptionLabel={(option) => (option.name ? option.name : "")}
                 sx={{ width: 150 }}
                 renderInput={(params) => <TextField {...params} label="Tag 1" />}
                 onChange={(event, newValue) => {
@@ -178,7 +181,7 @@ const AdminPosts = () => {
                 id="combo-box-demo"
                 value={secondTag}
                 options={tags}
-                getOptionLabel={(option) => (option.tagName ? option.tagName : "")}
+                getOptionLabel={(option) => (option.name ? option.name : "")}
                 sx={{ width: 150 }}
                 renderInput={(params) => <TextField {...params} label="Tag 2" />}
                 onChange={(event, newValue) => {
@@ -193,7 +196,7 @@ const AdminPosts = () => {
                 id="combo-box-demo"
                 value={thirdTag}
                 options={tags}
-                getOptionLabel={(option) => (option.tagName ? option.tagName : "")}
+                getOptionLabel={(option) => (option.name ? option.name : "")}
                 sx={{ width: 150 }}
                 renderInput={(params) => <TextField {...params} label="Tag 3" />}
                 onChange={(event, newValue) => {

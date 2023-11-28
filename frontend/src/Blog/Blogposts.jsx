@@ -73,7 +73,7 @@ const Blogposts = () => {
                 Tags:
                 {blogposts[0].tags[0] ? (
                   <Link to={`/blog/tags/${blogposts[0].tags[0].id}`} key={blogposts[0].tags[0].id} style={{ marginLeft: 4 }}>
-                    {blogposts[0].tags[0].tagName}
+                    {blogposts[0].tags[0].name}
                   </Link>
                 ) : (
                   ""
@@ -81,7 +81,7 @@ const Blogposts = () => {
                 ,
                 {blogposts[0].tags[1] ? (
                   <Link to={`/blog/tags/${blogposts[0].tags[1].id}`} key={blogposts[0].tags[1].id} style={{ marginLeft: 4 }}>
-                    {blogposts[0].tags[1].tagName}
+                    {blogposts[0].tags[1].name}
                   </Link>
                 ) : (
                   ""
@@ -89,7 +89,7 @@ const Blogposts = () => {
                 ,
                 {blogposts[0].tags[2] ? (
                   <Link to={`/blog/tags/${blogposts[0].tags[2].id}`} key={blogposts[0].tags[2].id} style={{ marginLeft: 4 }}>
-                    {blogposts[0].tags[2].tagName}{" "}
+                    {blogposts[0].tags[2].name}{" "}
                   </Link>
                 ) : (
                   ""
@@ -139,7 +139,7 @@ const Blogposts = () => {
                         Tags:
                         {blogpost.tags[0] ? (
                           <Link to={`/blog/tags/${blogpost.tags[0].id}`} key={blogpost.tags[0].id} style={{ marginLeft: 4 }}>
-                            {blogpost.tags[0].tagName}
+                            {blogpost.tags[0].name}
                           </Link>
                         ) : (
                           ""
@@ -147,7 +147,7 @@ const Blogposts = () => {
                         ,
                         {blogpost.tags[1] ? (
                           <Link to={`/blog/tags/${blogpost.tags[1].id}`} key={blogpost.tags[1].id} style={{ marginLeft: 4 }}>
-                            {blogpost.tags[1].tagName}
+                            {blogpost.tags[1].name}
                           </Link>
                         ) : (
                           ""
@@ -155,7 +155,7 @@ const Blogposts = () => {
                         ,
                         {blogpost.tags[2] ? (
                           <Link to={`/blog/tags/${blogpost.tags[2].id}`} key={blogpost.tags[2].id} style={{ marginLeft: 4 }}>
-                            {blogpost.tags[2].tagName}{" "}
+                            {blogpost.tags[2].name}{" "}
                           </Link>
                         ) : (
                           ""

@@ -41,9 +41,10 @@ const User = conn.define("user", {
     //   },
     // },
   },
-  authorId: {
-    type: INTEGER,
-    allowNull: false,
+
+  businessId: {
+    type: UUID,
+    unique: true,
   },
 });
 

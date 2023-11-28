@@ -149,3 +149,12 @@
 .image-upload-buttons:hover {
   cursor: pointer;
 }
+
+.help-and-documentation-div {
+  width: 80%;
+  margin: auto;
+}
+.help-and-docs-body > ul > li {
+  padding: 1rem;
+  /* border: 1px solid red; */
+}
