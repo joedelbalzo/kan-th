@@ -15,7 +15,7 @@
     "start-frontend": "cd frontend && npm run dev",
     "start-backend": "cd backend && npm run start:dev",
     "start": "concurrently \"npm run start-backend\" \"npm run start-frontend\"",
-    "start:prod": "NODE_OPTIONS=--max_old_space_size=512 npm run build-frontend && cd backend && npm start",
+    "start:prod": "npm run build-frontend && cd backend && npm start",
     "build:prod": "npm run install-root && npm run install-frontend && npm run install-backend"
   },
   "keywords": [],
