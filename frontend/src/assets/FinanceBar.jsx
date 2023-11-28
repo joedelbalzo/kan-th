@@ -1,10 +1,6 @@
-import React, { useContext } from "react";
-import { ThemeContext } from "../ThemeContext";
+import React from "react";
 
 const FinanceBar = ({ width, height }) => {
-  const { theme } = useContext(ThemeContext);
-  const fillColor = theme === "dark" ? "whitesmoke" : "#030712";
-
   return (
     <svg
       version="1.1"
@@ -17,7 +13,7 @@ const FinanceBar = ({ width, height }) => {
       style={{
         display: "inline-block",
         verticalAlign: "middle",
-        color: fillColor,
+        color: "#030712",
         width: width,
         height: height,
       }}
@@ -36,5 +32,3 @@ FinanceBar.defaultProps = {
 };
 
 export default FinanceBar;
-
-// from https://www.svgrepo.com/collection/xnix-circular-interface-icons/

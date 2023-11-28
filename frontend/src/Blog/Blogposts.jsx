@@ -95,7 +95,7 @@ const Blogposts = () => {
                   ""
                 )}
               </div>
-              <ShareButtons />
+              <ShareButtons fillColor={"whitesmoke"} />
               <div className="post-body">
                 {sampleText(blogposts[0].content)} <Link to={`/blog/posts/${blogposts[0].id}`}>...read more</Link>
               </div>
@@ -161,7 +161,7 @@ const Blogposts = () => {
                           ""
                         )}
                       </div>
-                      <ShareButtons />
+                      <ShareButtons fillColor={"#183333"} />
                       <div className="post-body">
                         {sampleText(blogpost.content)} <Link to={`./blog/posts/${blogpost.id}`}>...read more</Link>
                       </div>
