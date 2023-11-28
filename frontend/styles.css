@@ -681,6 +681,14 @@ h3 {
     height: 200px;
     /* position: relative; */
   }
+
+  .home-content-images {
+    width: 95vw;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+  }
+
   .post-info {
     display: none;
   }
