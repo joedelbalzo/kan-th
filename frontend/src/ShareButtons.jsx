@@ -1,9 +1,10 @@
 import React from "react";
-import Email from "./assets/ShareIcons/Email.jsx";
-import Facebook from "./assets/ShareIcons/Facebook.jsx";
-import LinkedIn from "./assets/ShareIcons/LinkedIn.jsx";
-import Reddit from "./assets/ShareIcons/Reddit.jsx";
-import Twitter from "./assets/ShareIcons/Twitter.jsx";
+// import Email from "./assets/ShareIcons/Email.jsx";
+// import Facebook from "./assets/ShareIcons/Facebook.jsx";
+// import LinkedIn from "./assets/ShareIcons/LinkedIn.jsx";
+// import Reddit from "./assets/ShareIcons/Reddit.jsx";
+// import Twitter from "./assets/ShareIcons/Twitter.jsx";
+import { Facebook, Email, LinkedIn, Twitter, Reddit } from "./assets/ShareIcons.jsx";
 
 const ShareButtons = ({ fillColor }) => {
   const url = window.location.href;
@@ -39,7 +40,7 @@ const ShareButtons = ({ fillColor }) => {
           Twitter
         </span>
       </button>
-      <button onClick={() => share("email")}>
+      {/* <button onClick={() => share("email")}>
         <Email fillColor={fillColor} />{" "}
         <span style={{ margin: 2 }} className="share-buttons-text">
           Email
@@ -50,7 +51,7 @@ const ShareButtons = ({ fillColor }) => {
         <span style={{ margin: 2 }} className="share-buttons-text">
           Reddit
         </span>
-      </button>
+      </button> */}
     </div>
   );
 };

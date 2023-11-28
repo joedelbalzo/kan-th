@@ -1,10 +1,11 @@
 //React Imports
-import React, { useState } from "react";
+import React, { useState, lazy } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useLocation, Link } from "react-router-dom";
 
 //Text Editor Imports
-import ReactQuill from "react-quill";
+// import ReactQuill from "react-quill";
+const ReactQuill = lazy(() => import("react-quill"));
 import "react-quill/dist/quill.snow.css";
 
 //Store Imports

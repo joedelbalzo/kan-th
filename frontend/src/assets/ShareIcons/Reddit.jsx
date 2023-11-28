@@ -10,7 +10,6 @@ const Reddit = ({ width, height, fillColor }) => {
       id="Capa_1"
       xmlns="http://www.w3.org/2000/svg"
       xmlnsXlink="http://www.w3.org/1999/xlink"
-      // viewBox="0 -0.5 25 25"
       role="img"
       xmlSpace="preserve"
       width={width}
@@ -20,8 +19,6 @@ const Reddit = ({ width, height, fillColor }) => {
         display: "inline-block",
         verticalAlign: "middle",
         strokeWidth: "1px",
-        // width: width,
-        // height: height,
       }}
     >
       <g

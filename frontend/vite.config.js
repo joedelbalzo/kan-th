@@ -9,7 +9,7 @@ export default defineConfig({
     }),
   ],
   build: {
-    sourcemap: true,
+    sourcemap: false,
     outDir: "dist",
   },
   server: {
