@@ -95,7 +95,9 @@ const Blogposts = () => {
                   ""
                 )}
               </div>
-              <ShareButtons fillColor={"whitesmoke"} />
+              <div style={{ display: "flex", justifyContent: "center" }}>
+                <ShareButtons fillColor={"whitesmoke"} />
+              </div>
               <div className="post-body">
                 {sampleText(blogposts[0].content)} <Link to={`/blog/posts/${blogposts[0].id}`}>...read more</Link>
               </div>

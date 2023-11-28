@@ -328,6 +328,7 @@ h3 {
   margin-top: 2px;
   padding-top: 2px;
   word-wrap: normal;
+  margin-bottom: 4px;
 }
 
 .post-grid {
@@ -351,21 +352,20 @@ h3 {
   margin: auto;
 }
 .post-headliner > .post-container > .post-title-div > a > h2 {
-  font-size: calc(24px + 2vw);
+  font-size: calc(20px + 2vw);
 }
 .post-headliner > .post-container > .post-title-div > h3 {
   padding: 1rem 0;
-  font-size: calc(14px + 1vw);
+  font-size: calc(10px + 1.5vw);
   color: inherit;
 }
 .post-headliner > .post-container > .post-title-div > * {
-  font-size: calc(12px + 0.5vw);
+  font-size: calc(10px + 0.5vw);
   color: var(--caption-color-opposite);
 }
 
 .post-headline-div-picture {
   height: 450px;
-
   margin: 25px 1rem 25px 0;
   border-radius: 1rem;
   object-fit: cover;
@@ -445,8 +445,8 @@ h3 {
 }
 
 .post-tags {
-  font-size: 16px;
-  margin-bottom: 1rem;
+  font-size: 14px;
+  margin-bottom: 0.5rem;
   color: var(--caption-color);
 }
 
@@ -587,11 +587,15 @@ h3 {
     display: none;
   }
   .post-headliner > .post-container {
-    width: 90vw;
+    width: 95vw;
     display: flex;
     flex-direction: column;
     margin: 1rem auto 1rem;
   }
+  .post-headliner > .post-container > .post-title-div > a > h2 {
+    font-size: calc(16px + 2vw);
+  }
+
   .post-grid {
     display: grid;
     grid-template-columns: 1fr 0;
@@ -602,11 +606,14 @@ h3 {
     margin: 0 auto;
   }
   .post-headline-div-picture {
-    width: 100%;
-    max-height: 500px;
-    margin: 2rem auto;
+    width: 95%;
+    max-height: 250px;
+    margin: 1rem auto 0;
     border-radius: 2rem;
     object-fit: cover;
+  }
+  .post-body {
+    display: none;
   }
 }
 /*  MOBILE SPECIFIC STYLES */
@@ -678,9 +685,9 @@ h3 {
     display: none;
   }
   .post-headline-div-picture {
-    width: 100%;
-    max-height: 500px;
-    margin: 2rem auto;
+    width: 95%;
+    max-height: 250px;
+    margin: 1rem auto 0;
     border-radius: 2rem;
     object-fit: cover;
   }
@@ -690,6 +697,18 @@ h3 {
     flex-direction: column;
     margin: 1rem auto 1rem;
   }
+  .post-headliner > .post-container > .post-title-div > a > h2 {
+    font-size: calc(20px + 2vw);
+    padding: 8px;
+  }
+  .post-headliner > .post-container > .post-title-div > h3 {
+    font-size: calc(10px + 1vw);
+    padding: 8px;
+  }
+  .post-tags {
+    padding: 0 8px;
+  }
+
   .post-grid {
     display: grid;
     grid-template-columns: 1fr 0;
@@ -715,6 +734,9 @@ h3 {
   .post-content {
     grid-column: 1;
     margin: 0 auto;
+  }
+  .post-body {
+    display: none;
   }
   .share-buttons-text {
     display: none;
