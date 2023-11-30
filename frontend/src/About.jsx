@@ -67,7 +67,7 @@ function About() {
           }
         });
       },
-      { threshold: 0.5, rootMargin: "0px 0px 0px 0px" }
+      { threshold: 0.1, rootMargin: "0px 0px 0px 0px" }
     );
 
     observer.observe(ref1.current);
@@ -106,7 +106,7 @@ function About() {
       </motion.div>
 
       {/* HOME CONTENT */}
-      <div className="home-content">
+      <div className="about-container">
         <motion.div
           ref={ref1}
           initial={{ opacity: 0, y: "50px" }}
@@ -120,7 +120,76 @@ function About() {
             overflow: "hidden",
           }}
         >
-          <div className="home-content-about">The About Us Page</div>
+          <div className="about-content">
+            <div className="vali-about">
+              <div className="vali-text">
+                <h1 style={{ textAlign: "center" }}>Welcome to Vali</h1>
+                <main>
+                  A pioneer in SMB valuations dedicated to empowering small and medium-sized businesses with crucial financial insights. At
+                  Vali, we blend our expertise in finance with innovative technology to offer comprehensive valuation services that are both
+                  accessible and reliable. Our mission at Vali is to demystify the business valuation process and make it a powerful tool
+                  for SMB owners. We believe that understanding the true value of your business is not just a financial exercise but a
+                  strategic move to secure your future, leverage growth opportunities, and plan for long-term success.
+                </main>
+                <br />
+                <main>
+                  Vali offers a range of valuation services tailored to the unique needs of SMBs. From detailed valuation reports to
+                  strategic consulting, we cover all aspects of business valuation. Our services are based on transparent, time-tested
+                  methods, ensuring that you receive a valuation that truly reflects your business’s worth.
+                  <ul>
+                    <li>
+                      <strong>Comprehensive Business Valuation</strong>: Utilizing a blend of market-based, income-based, and asset-based
+                      approaches to provide a holistic view of your business's value.
+                    </li>
+                    <li>
+                      <strong>Strategic Advisory</strong>: Offering insights on how to increase your business's value based on its current
+                      valuation, and identifying opportunities for growth.
+                    </li>
+                    <li>
+                      <strong>Financing Assistance</strong>: Guiding you on how your valuation can aid in securing financing, whether
+                      through debt or equity.
+                    </li>
+                    <li>
+                      <strong>Competitive Analysis</strong>: Comparing your business with industry benchmarks to identify strengths,
+                      weaknesses, and areas for improvement.
+                    </li>
+                    <li>
+                      <strong>Preparation for Sale or Acquisition</strong>: Assisting in getting your business 'sale-ready' by providing a
+                      credible and comprehensive valuation report.
+                    </li>
+                  </ul>
+                </main>
+                <main>
+                  Why choose us? Expertise, customized solutions, transparency, and a technology-driven approach. Our vision is to become
+                  the most trusted partner for small and medium business owners worldwide in understanding and enhancing their business
+                  value. We strive to turn valuation from a mere number into a roadmap for success, and we look forward to being your
+                  partner.
+                </main>
+              </div>
+              <div className="vali-picture">
+                <img src="https://prohygiene.com/usa/wp-content/uploads/sites/18/2015/12/placeholder.gif" width="320" height="480" />
+              </div>
+            </div>
+            <div className="kanica-about">
+              <div className="kanica-text">
+                <h1>Founder: Kanica Allagh</h1>
+                <p>
+                  After spending 10 years in finance, from capital markets to investing, I came in close contact to valuation and financing
+                  decision making for enterprises. I began noticing how these skills and products are gapped for SMBs, those who would
+                  benefit the most.{" "}
+                </p>
+                <p>
+                  After experiencing the high growth environment Capsule, I saw firsthand the excitement and challenges of providing new
+                  products to underserved users.
+                </p>
+                <p>
+                  Finally, I personally care about this problem. After advising close friends and relatives in the valuations of their
+                  hard-earned businesses, I became completely overwhelmed with the problem and excited about the opportunity to serve this
+                  market.
+                </p>
+              </div>
+            </div>
+          </div>
         </motion.div>
         <motion.div
           ref={ref2}

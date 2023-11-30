@@ -105,11 +105,9 @@ a:hover {
 }
 
 .company-name-and-logo {
-  /* display: flex; */
   padding: 1rem;
   align-items: center;
   font-size: 42px;
-  /* opacity: 500%; */
 }
 
 .brand-name {
@@ -268,10 +266,12 @@ a:hover {
   margin: auto;
 }
 .home-content-about {
-  height: 200px;
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
+  width: 80vw;
+  text-align: left;
   margin: auto;
 }
 .home-content-images {
@@ -301,12 +301,69 @@ a:hover {
   justify-content: center;
   align-items: center;
   font-size: 28px;
+  box-shadow: 8px 8px 1rem rgba(100, 100, 100, 0.4);
 }
 .lets-go:hover {
   cursor: pointer;
   outline: 4px solid #183333;
   color: #183333;
   background-color: #bddde528;
+  box-shadow: 8px 8px 1rem rgba(100, 100, 100, 0.4);
+}
+
+/*  */
+/*  */
+/*  */
+/* ABOUT PAGE */
+/*  */
+/*  */
+/* .about-container {
+  width: 90vw;
+  margin: 2rem auto;
+} */
+.about-content {
+  width: 90vw;
+  margin: 2rem auto;
+}
+
+.vali-about {
+  margin: 2rem auto;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  grid-template-rows: 1;
+}
+
+.vali-text {
+  grid-column: 2;
+  grid-row: 1;
+}
+.vali-picture {
+  grid-column: 1;
+  grid-row: 1;
+}
+
+.vali-picture > img {
+  border-radius: 4rem;
+  box-shadow: 8px 8px 1rem rgba(100, 100, 100, 0.4);
+}
+
+.kanica-about {
+  width: 80vw;
+  background-color: #86bbd8;
+  margin: auto;
+  padding: 2rem;
+  border-radius: 4rem;
+  box-shadow: 8px 8px 1rem rgba(100, 100, 100, 0.4);
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  grid-template-rows: 1;
+}
+.kanica-text {
+  grid-column: 1;
+}
+.kanica-picture {
+  grid-column: 1;
+  grid-row: 1;
 }
 
 /* MAIN BLOG PAGE STYLES */
