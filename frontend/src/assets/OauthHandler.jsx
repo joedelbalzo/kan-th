@@ -1,7 +1,7 @@
 // OAuthHandler.js
 import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { handleGoogleOAuthResponse } from "./reduxActions"; // Import your action
+import { handleGoogleOAuthResponse } from "../store"; // Import your action
 
 const OAuthHandler = () => {
   const dispatch = useDispatch();
