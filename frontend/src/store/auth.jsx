@@ -6,6 +6,35 @@ const auth = (state = {}, action) => {
   return state;
 };
 
+export const loginWithGoogle = () => {
+  return async (dispatch) => {
+    try {
+      // Extract the token from the URL query parameter
+      const urlParams = new URLSearchParams(window.location.search);
+      const token = urlParams.get("token");
+
+      if (token) {
+        window.localStorage.setItem("token", token);
+        const response = await axios.get("/api/auth/me", {
+          headers: {
+            authorization: token,
+          },
+        });
+        dispatch({ type: "SET_AUTH", auth: response.data });
+      }
+    } catch (error) {
+      console.error("Error handling Google OAuth response:", error);
+    }
+  };
+};
+
+export const handleGoogleOAuthResponse = (token) => {
+  return async (dispatch) => {
+    window.localStorage.setItem("token", token);
+    dispatch(loginWithToken());
+  };
+};
+
 export const logout = () => {
   window.localStorage.removeItem("token");
   return { type: "SET_AUTH", auth: {} };

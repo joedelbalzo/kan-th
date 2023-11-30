@@ -10,11 +10,13 @@ import DOMPurify from "dompurify";
 
 import ShareButtons from "../ShareButtons";
 import SideNav from "./SideNav";
+import "./BlogStyles.css";
 
 //Store Imports
 
 //Function Imports
 import { readableDate, pics } from "../functions";
+import BackButton from "../assets/BackButton";
 
 //The is my terrible blog that really needs an overhaul: https://blog.usetheo.com/. I want it to look more consumery and friendly, rounded fonts, subtle colors.
 
@@ -58,33 +60,66 @@ const Blogpost_Single = () => {
 
   return (
     <div>
-      <div className="post-grid">
-        <div className="post-info">
-          <SideNav />
-        </div>
-        <div className="post-content">
-          <div className="post-title-div">
-            <span className="post-date">Date: {readableDate(post.publishedAt)}</span>
-            <h1>{post.title}</h1>
-            {homePic ? (
-              <>
-                <img src={homePic.awsPicURL} className="post-title-div-picture" />
-                <div className="picture-caption">{homePic.picCaption}</div>
-              </>
-            ) : (
-              ""
+      <div className="single-post-grid">
+        <div className="single-post-heading-div">
+          <div className="single-post-headliner" key={post.id}>
+            <Link to="../" className="single-post-back-button">
+              <BackButton /> Back to Blog
+            </Link>
+            <h1 className="single-post-title">{post.title}</h1>
+            <h2 className="single-post-subtitle">
+              {/* {post.subtitle}{" "} */}
+              <span className="single-post-date">
+                <br />
+                Date: {readableDate(post.publishedAt)}
+              </span>
+              <div style={{ fontSize: "14px" }}>
+                <ShareButtons fillColor={"whitesmoke"} />
+              </div>
+              <div className="single-post-tags">
+                Tags:
+                {post.tags[0] && (
+                  <Link to={`/blog/tags/${post.tags[0].id}`} key={post.tags[0].id} style={{ marginLeft: 4 }}>
+                    {post.tags[0].name}
+                  </Link>
+                )}
+                ,
+                {post.tags[1] && (
+                  <Link to={`/blog/tags/${post.tags[1].id}`} key={post.tags[1].id} style={{ marginLeft: 4 }}>
+                    {post.tags[1].name}
+                  </Link>
+                )}
+                ,
+                {post.tags[2] && (
+                  <Link to={`/blog/tags/${post.tags[2].id}`} key={post.tags[2].id} style={{ marginLeft: 4 }}>
+                    {post.tags[2].name}{" "}
+                  </Link>
+                )}
+              </div>
+            </h2>
+            {homePic && (
+              <div className="single-post-home-picture">
+                <img src={homePic.awsPicURL} />
+                {/* <span className="caption">{homePic.picCaption}</span> */}
+              </div>
             )}
-
-            <h2 style={{ fontWeight: 400 }}>{post.subtitle}</h2>
-            {/* tags */}
-            <ShareButtons />
           </div>
-          <br />
-          <br />
-          <div className="post-content">{textReplace(post.content)}</div>
+        </div>
+
+        <div className="single-post-body">
+          {post.subtitle}
+          {textReplace(post.content)}
         </div>
       </div>
-      <hr />
+
+      {/* <div className="post-info">
+          <SideNav />
+        </div> */}
+      <div className="post-content">
+        <br />
+        <br />
+        {/* <div className="post-content">{textReplace(post.content)}</div> */}
+      </div>
     </div>
   );
 };

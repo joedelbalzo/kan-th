@@ -14,7 +14,7 @@ import { FadeComponent } from "./assets/FadeComponent";
 
 //Store Imports
 
-function Home() {
+function About() {
   const dispatch = useDispatch();
   const auth = useSelector((state) => state.auth);
 
@@ -61,7 +61,7 @@ function Home() {
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            if (entry.target === ref1.current) controls1.start({ opacity: 1, y: 0, transition: { duration: 1 } });
+            if (entry.target === ref1.current) controls1.start({ opacity: 1, y: 0 });
             if (entry.target === ref2.current) controls2.start({ opacity: 1, y: 0 });
             if (entry.target === ref3.current) controls3.start({ opacity: 1, y: 0 });
           }
@@ -109,7 +109,7 @@ function Home() {
       <div className="home-content">
         <motion.div
           ref={ref1}
-          initial={{ opacity: 0, y: "20px" }}
+          initial={{ opacity: 0, y: "50px" }}
           animate={controls1}
           transition={transition}
           style={{
@@ -120,7 +120,7 @@ function Home() {
             overflow: "hidden",
           }}
         >
-          <div className="home-content-about">Here is some more content that will fade up about us</div>
+          <div className="home-content-about">The About Us Page</div>
         </motion.div>
         <motion.div
           ref={ref2}
@@ -180,4 +180,4 @@ function Home() {
   );
 }
 
-export default Home;
+export default About;

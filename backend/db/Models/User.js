@@ -20,7 +20,7 @@ const User = conn.define("user", {
     validate: {
       notEmpty: true,
     },
-    unique: true,
+    // unique: true,
   },
   adminStatus: {
     type: BOOLEAN,
@@ -46,6 +46,10 @@ const User = conn.define("user", {
     type: UUID,
     unique: true,
   },
+  googleId: {
+    type: STRING,
+    unique: true,
+  },
 });
 
 User.addHook("beforeSave", async (user) => {
@@ -55,9 +59,11 @@ User.addHook("beforeSave", async (user) => {
 });
 
 User.prototype.generateToken = function () {
-  return {
-    token: jwt.sign({ id: this.id }, JWT_SECRET, { expiresIn: "1h" }),
-  };
+  const payload = { id: this.id };
+
+  const token = jwt.sign(payload, JWT_SECRET, { expiresIn: "1h" });
+
+  return { token };
 };
 
 User.register = async function (credentials) {

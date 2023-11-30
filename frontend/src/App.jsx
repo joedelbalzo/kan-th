@@ -11,6 +11,7 @@ import Footer from "./Footer";
 import Login from "./Login";
 import PrivacyPolicy from "./PrivacyPolicy";
 import Contact from "./Contact";
+import About from "./About";
 
 const BlogWrapper = lazy(() => import("./Blog/BlogWrapper"));
 const Blogposts = lazy(() => import("./Blog/Blogposts"));
@@ -21,6 +22,7 @@ const AdminWrapper = lazy(() => import("./Admin/AdminWrapper"));
 const AdminHome = lazy(() => import("./Admin/AdminHome"));
 const AdminPosts = lazy(() => import("./Admin/AdminPosts"));
 const AdminHelp = lazy(() => import("./Admin/AdminHelp"));
+const OAuthHandler = lazy(() => import("./assets/OauthHandler"));
 
 const PortfolioWrapper = lazy(() => import("./Portfolio/PortfolioWrapper"));
 const PortfolioHome = lazy(() => import("./Portfolio/PortfolioHome"));
@@ -92,7 +94,10 @@ function App(props) {
       <div style={{ display: "flex", flexDirection: "column", flexGrow: 1 }}>
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/client-route" element={<OAuthHandler />} />
+
           <Route path="/login" element={<Login />} />
+          <Route path="/about" element={<About />} />
           <Route path="/privacy" element={<PrivacyPolicy />} />
           <Route path="/contact" element={<Contact />} />
           <Route

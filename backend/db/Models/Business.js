@@ -1,7 +1,7 @@
 const conn = require("../conn");
 const { STRING, UUID, UUIDV4 } = conn.Sequelize;
 
-const Tag = conn.define("tag", {
+const Business = conn.define("business", {
   id: {
     type: UUID,
     primaryKey: true,
@@ -12,4 +12,4 @@ const Tag = conn.define("tag", {
     allowNull: false,
   },
 });
-module.exports = Tag;
+module.exports = Business;

@@ -18,6 +18,7 @@ import Loading from "../assets/Loading";
 
 //Function Imports
 import { readableDate, pics } from "../functions";
+import BackButton from "../assets/BackButton";
 // import { Fade } from "@mui/material";
 
 const Blogposts = () => {
@@ -27,13 +28,13 @@ const Blogposts = () => {
 
   const blogposts = useSelector((state) => state.blogposts.allBlogposts);
 
-  // useEffect(() => {
-  //   if (!blogposts) {
-  //     return <Loading />;
-  //   } else {
-  //     setLoading(false);
-  //   }
-  // }, [blogposts]);
+  useEffect(() => {
+    if (!blogposts) {
+      return <Loading />;
+    } else {
+      setLoading(false);
+    }
+  }, [blogposts]);
 
   if (!blogposts) {
     return null;
@@ -43,63 +44,63 @@ const Blogposts = () => {
     return null;
   }
 
-  const sampleText = (content) => {
+  let headlinerPost = blogposts.find((post) => post.title == "What Is Your Valuation and Why Does It Matter?");
+  let headlinerPic;
+  if (!headlinerPost.images) {
+    return;
+  } else {
+    for (let image of headlinerPost.images) {
+      if (image.position === "home") {
+        headlinerPic = image;
+      }
+    }
+  }
+
+  const sampleText = (content, length) => {
     content = DOMPurify.sanitize(content);
-    const arrContent = content.split(" ");
-    content = arrContent.splice(0, 25).join(" ");
+    const arrContent = content.split(". ");
+    content = arrContent.splice(0, 2).join(". ") + ".";
     return parse(content);
   };
 
-  let headlinerPic;
-  for (let image of blogposts[0].images) {
-    if (image.position === "home") {
-      headlinerPic = image;
-    }
-  }
   return (
     <FadeComponent>
       <div>
-        <div className="post-headliner" key={blogposts[0].id}>
+        <div className="post-headliner" key={headlinerPost.id}>
           <div className="post-container">
             {headlinerPic != null ? <img src={headlinerPic.awsPicURL} className="post-headline-div-picture" /> : ""}
             <div className="post-title-div">
-              {/* <span className="post-date">Date: {readableDate(blogposts[0].publishedAt)}</span> */}
-              <Link to={`/blog/posts/${blogposts[0].id}`} style={{ textDecoration: "none", color: "inherit" }}>
-                <h2>{blogposts[0].title}</h2>
+              <Link to={`/blog/posts/${headlinerPost.id}`} style={{ textDecoration: "none", color: "inherit" }}>
+                <h2>{headlinerPost.title}</h2>
               </Link>
 
-              <h3 style={{ fontWeight: 400 }}>{blogposts[0].subtitle}</h3>
-              <div className="post-tags">
+              {/* <h3 style={{ fontWeight: 350 }}>{headlinerPost.subtitle}</h3> */}
+              {/* <div className="post-tags" style={{ fontWeight: 350 }}>
                 Tags:
-                {blogposts[0].tags[0] ? (
-                  <Link to={`/blog/tags/${blogposts[0].tags[0].id}`} key={blogposts[0].tags[0].id} style={{ marginLeft: 4 }}>
-                    {blogposts[0].tags[0].name}
+                {headlinerPost.tags[0] && (
+                  <Link to={`/blog/tags/${headlinerPost.tags[0].id}`} key={headlinerPost.tags[0].id} style={{ marginLeft: 4 }}>
+                    {headlinerPost.tags[0].name}
                   </Link>
-                ) : (
-                  ""
                 )}
                 ,
-                {blogposts[0].tags[1] ? (
-                  <Link to={`/blog/tags/${blogposts[0].tags[1].id}`} key={blogposts[0].tags[1].id} style={{ marginLeft: 4 }}>
-                    {blogposts[0].tags[1].name}
+                {headlinerPost.tags[1] && (
+                  <Link to={`/blog/tags/${headlinerPost.tags[1].id}`} key={headlinerPost.tags[1].id} style={{ marginLeft: 4 }}>
+                    {headlinerPost.tags[1].name}
                   </Link>
-                ) : (
-                  ""
                 )}
                 ,
-                {blogposts[0].tags[2] ? (
-                  <Link to={`/blog/tags/${blogposts[0].tags[2].id}`} key={blogposts[0].tags[2].id} style={{ marginLeft: 4 }}>
-                    {blogposts[0].tags[2].name}{" "}
+                {headlinerPost.tags[2] && (
+                  <Link to={`/blog/tags/${headlinerPost.tags[2].id}`} key={headlinerPost.tags[2].id} style={{ marginLeft: 4 }}>
+                    {headlinerPost.tags[2].name}{" "}
                   </Link>
-                ) : (
-                  ""
                 )}
-              </div>
-              <div style={{ display: "flex", justifyContent: "center" }}>
-                <ShareButtons fillColor={"whitesmoke"} />
-              </div>
+              </div> */}
+              <div className="post-share-buttons">{/* <ShareButtons fillColor={"whitesmoke"} style={{ fontWeight: 350 }} /> */}</div>
               <div className="post-body">
-                {sampleText(blogposts[0].content)} <Link to={`/blog/posts/${blogposts[0].id}`}>...read more</Link>
+                {sampleText(headlinerPost.content, 25)}{" "}
+                <Link to={`/blog/posts/${headlinerPost.id}`}>
+                  read more <BackButton facingRight={true} strokeColor="whitesmoke" />
+                </Link>
               </div>
             </div>
           </div>
@@ -123,7 +124,7 @@ const Blogposts = () => {
             </Suspense>
           </div>
           {blogposts
-            .filter((post) => post !== blogposts[0])
+            .filter((post) => post !== headlinerPost)
             .map((blogpost) => {
               let { homePic } = pics(blogpost);
               return (
@@ -131,14 +132,15 @@ const Blogposts = () => {
                   <div className="post-container">
                     {homePic != null ? <img src={homePic.awsPicURL} className="post-div-picture" /> : ""}
                     <div className="post-title-div">
-                      <span className="post-date">Date: {readableDate(blogpost.publishedAt)}</span>
                       <Link to={`/blog/posts/${blogpost.id}`} style={{ textDecoration: "none", color: "inherit" }}>
                         <h2>{blogpost.title}</h2>
                       </Link>
 
-                      <h3 style={{ fontWeight: 400 }}>{blogpost.subtitle}</h3>
-                      <div className="post-tags">
-                        Tags:
+                      <h3 style={{ fontWeight: 350 }}>{blogpost.subtitle}</h3>
+
+                      <div className="post-tags" style={{ marginTop: "1rem" }}>
+                        <span className="post-date">Date: {readableDate(blogpost.publishedAt)} </span>
+                        || Tags:
                         {blogpost.tags[0] ? (
                           <Link to={`/blog/tags/${blogpost.tags[0].id}`} key={blogpost.tags[0].id} style={{ marginLeft: 4 }}>
                             {blogpost.tags[0].name}
@@ -163,9 +165,13 @@ const Blogposts = () => {
                           ""
                         )}
                       </div>
-                      <ShareButtons fillColor={"#183333"} />
+                      {/* <ShareButtons fillColor={"#183333"} /> */}
                       <div className="post-body">
-                        {sampleText(blogpost.content)} <Link to={`./blog/posts/${blogpost.id}`}>...read more</Link>
+                        {sampleText(blogpost.content, 40)}
+                        <Link to={`./blog/posts/${blogpost.id}`}>
+                          read more
+                          <BackButton height={"16px"} facingRight={true} strokeColor="#183333" />
+                        </Link>
                       </div>
                     </div>
                     <div className="post-bottom-border"></div>

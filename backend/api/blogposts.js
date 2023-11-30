@@ -31,7 +31,6 @@ app.get("/", async (req, res, next) => {
     });
 
     let responseData = blogposts.map((blogpost) => blogpost.get({ plain: true }));
-
     await Promise.all(
       responseData.map(async (blogpost) => {
         await Promise.all(

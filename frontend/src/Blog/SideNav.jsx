@@ -15,6 +15,8 @@ const SideNav = () => {
     return null;
   }
 
+  console.log(tags);
+
   const onTagClick = async (tag) => {
     await dispatch(filterBlogpostsByTag(tag.id));
     navigate(`/blog/tags/${tag.id}`);
@@ -22,11 +24,11 @@ const SideNav = () => {
 
   return (
     <div>
-      Search by Tag:
-      <ul style={{ padding: 4 }}>
+      Tags:
+      <ul style={{ padding: 0 }}>
         {tags.map((tag) => {
           return (
-            <li key={tag.id} style={{ listStyleType: "none", padding: 4 }}>
+            <li key={tag.id} style={{ listStyleType: "none", padding: 0 }}>
               <Link onClick={() => onTagClick(tag)}>{tag.name}</Link>
             </li>
           );

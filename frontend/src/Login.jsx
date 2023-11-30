@@ -7,7 +7,7 @@ import Nav from "./Nav";
 import { ThemeContext } from "./ThemeContext";
 
 //Store Imports
-import { attemptLogin, logout } from "./store";
+import { attemptLogin, loginWithGoogle, logout } from "./store";
 import { useDispatch, useSelector } from "react-redux";
 
 //Other Imports
@@ -35,6 +35,8 @@ const Login = () => {
   const login = async (ev) => {
     ev.preventDefault();
     try {
+      window.localStorage.removeItem("token");
+
       await dispatch(attemptLogin(credentials));
     } catch (err) {
       setErrorMessage("username or password is incorrect");
@@ -44,6 +46,12 @@ const Login = () => {
   const handleLogout = () => {
     localStorage.clear();
     dispatch(logout());
+  };
+
+  const handleGoogleLogin = () => {
+    window.localStorage.removeItem("token");
+    window.location.href = "http://localhost:3000/api/auth/google";
+    dispatch(loginWithGoogle());
   };
 
   const buttonStyles = {
@@ -59,7 +67,12 @@ const Login = () => {
     <FadeComponent>
       <div className="login" style={{ paddingTop: "2rem" }}>
         <h2>Sign in to Vali</h2>
-        <div> Continue with Google</div>
+        <div>
+          {" "}
+          <button className="login-with-google-btn" onClick={handleGoogleLogin}>
+            Login with Google
+          </button>
+        </div>
         <div
           style={{
             display: "flex",
