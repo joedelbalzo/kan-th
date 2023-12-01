@@ -1,10 +1,6 @@
-import React, { useContext } from "react";
-import { ThemeContext } from "../ThemeContext";
+import React from "react";
 
 const Seedling = ({ width, height }) => {
-  const { theme } = useContext(ThemeContext);
-  const fillColor = theme === "dark" ? "whitesmoke" : "#030712";
-
   return (
     <svg
       version="1.1"

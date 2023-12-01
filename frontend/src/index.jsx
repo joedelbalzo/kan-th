@@ -4,7 +4,7 @@ import App from "./App";
 import { Provider } from "react-redux";
 import store, { loginWithToken } from "./store";
 import { HashRouter } from "react-router-dom";
-import { ThemeProvider } from "./ThemeContext";
+// import { ThemeProvider } from "./ThemeContext";
 
 store.dispatch(loginWithToken());
 const root = createRoot(document.querySelector("#root"));
@@ -12,9 +12,9 @@ const root = createRoot(document.querySelector("#root"));
 root.render(
   <Provider store={store}>
     <HashRouter>
-      <ThemeProvider>
-        <App />
-      </ThemeProvider>
+      {/* <ThemeProvider> */}
+      <App />
+      {/* </ThemeProvider> */}
     </HashRouter>
   </Provider>
 );

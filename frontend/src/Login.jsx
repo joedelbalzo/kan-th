@@ -3,8 +3,6 @@ import React, { useState, useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
 //Component Imports
-import Nav from "./Nav";
-import { ThemeContext } from "./ThemeContext";
 
 //Store Imports
 import { attemptLogin, loginWithGoogle, logout } from "./store";
@@ -18,9 +16,7 @@ import { FadeComponent } from "./assets/FadeComponent";
 const Login = () => {
   const auth = useSelector((state) => state.auth);
 
-  const navigate = useNavigate();
   const dispatch = useDispatch();
-  const theme = useContext(ThemeContext);
 
   const [credentials, setCredentials] = useState({
     username: "",

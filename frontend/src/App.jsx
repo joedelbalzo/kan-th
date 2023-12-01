@@ -1,7 +1,7 @@
 //React Imports
 import React, { useEffect, Suspense, lazy, Profiler } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { HashRouter as Router, Routes, Route } from "react-router-dom";
+import { HashRouter, Route, Routes } from "react-router-dom";
 
 //Component Imports
 import Loading from "./assets/Loading";

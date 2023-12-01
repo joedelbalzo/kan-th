@@ -60,12 +60,12 @@ const Blogpost_Single = () => {
 
   return (
     <div>
+      <Link to="../" className="single-post-back-button">
+        <BackButton strokeColor="#183333" /> Back to Blog
+      </Link>
       <div className="single-post-grid">
         <div className="single-post-heading-div">
           <div className="single-post-headliner" key={post.id}>
-            <Link to="../" className="single-post-back-button">
-              <BackButton /> Back to Blog
-            </Link>
             <h1 className="single-post-title">{post.title}</h1>
             <h2 className="single-post-subtitle">
               {/* {post.subtitle}{" "} */}

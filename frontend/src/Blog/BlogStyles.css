@@ -24,7 +24,7 @@
   font-size: calc(12px + 1vw);
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-template-rows: 40px 300px 160fr;
+  grid-template-rows: 10px 300px 160fr;
 }
 
 .single-post-back-button {
@@ -32,7 +32,7 @@
   grid-row: 1;
   font-size: 20px;
   font-weight: 300;
-  color: lightgray;
+  color: #183333;
 }
 .single-post-back-button:hover {
   text-decoration: none;
@@ -66,8 +66,6 @@
 .single-post-home-picture {
   grid-column: 2;
   grid-row: 1/-1;
-  /* height: 350px; */
-  /* margin: 25px 1rem 25px 0; */
   margin: auto;
   display: flex;
   flex-direction: column;
@@ -93,4 +91,79 @@
   font-size: 20px;
   line-height: 1.5;
   display: grid;
+}
+
+/*  */
+/*  */
+/*  */
+/*  */
+/*  */
+/*  */
+/*  */
+/*  */
+/*  */
+@media screen and (max-width: 1200px) {
+  .single-post-headliner {
+    width: 95%;
+    margin: auto;
+    grid-template-rows: 10px 350px 140fr;
+  }
+  .single-post-headliner > h1 {
+    grid-column: 1;
+    grid-row: 2;
+    padding: 1rem;
+    font-size: calc(22px + 3vw);
+    margin: auto;
+  }
+  .single-post-subtitle {
+    font-size: 14px;
+    margin-left: 1rem;
+    color: lightgray;
+  }
+  .single-post-home-picture > img {
+    height: 400px;
+    width: 100%;
+    border-radius: 1rem;
+    /* padding: 1rem; */
+    object-fit: cover;
+    box-shadow: 8px 8px 16px 1px #204444;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .single-post-grid {
+    display: grid;
+    grid-template-columns: 1fr 0;
+    margin: 0 auto;
+  }
+  .single-post-headliner {
+    grid-template-columns: 1fr 0;
+    grid-template-rows: 0px 250px 125fr 125fr;
+  }
+  .single-post-home-picture {
+    grid-column: 1;
+    grid-row: 1;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+  }
+  .single-post-home-picture > img {
+    height: 200px;
+    width: 60vw;
+    margin: 25px auto;
+    border-radius: 1rem;
+    object-fit: cover;
+    box-shadow: 8px 8px 16px 1px #204444;
+  }
+  .single-post-headliner > h1 {
+    grid-column: 1;
+    grid-row: 3;
+    padding: 0 1rem;
+    font-size: 32px;
+    margin: auto;
+    text-align: center;
+  }
+  .single-post-headliner > h2 {
+    grid-row: 4;
+  }
 }

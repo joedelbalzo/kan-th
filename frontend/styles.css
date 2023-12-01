@@ -1,9 +1,10 @@
 /* styles.css */
 :root {
+  --text-color-dark: whitesmoke;
   --text-color-light: #030718;
   --bg-color-light: whitesmoke;
-  --bg-color-lightgradient: linear-gradient(to right top, #f5f5f5, #e8ebf2 50%, #d4e3ee 80%, #bddde5, /*#a9d6d5, */ #86bbd8);
-  --text-color-dark: whitesmoke;
+  --bg-color-dark: #183333;
+  --bg-color-lightgradient: linear-gradient(to right top, #f5f5f5, #e8ebf2 40%, #d4e3ee 70%, #bddde5, /*#a9d6d5, */ #86bbd8);
   --bg-color-darkgradient: linear-gradient(65deg, rgb(3, 7, 18) 55%, #183333 100%);
   --caption-color-light: rgba(10, 10, 10, 0.6);
   --caption-color-dark: rgba(245, 245, 245, 0.8);
@@ -21,44 +22,24 @@ body {
   margin: 0 auto;
   padding: 0;
   font-size: calc(14px + 0.5vw);
-}
 
-body[data-theme="light"] {
-  --text-color: var(--text-color-light);
-  --text-color-opposite: var(--text-color-dark);
-  --bg-color: var(--bg-color-light);
-  --bg-grad: var(--bg-color-lightgradient);
-  --caption-color: var(--caption-color-light);
-  --caption-color-opposite: var(--caption-color-dark);
-  --box-shadow-color: var(--box-shadow-color-light);
-  --headliner: #183333;
-}
-
-body[data-theme="dark"] {
-  --text-color: var(--text-color-dark);
-  --text-color-opposite: var(--text-color-light);
-  --bg-color: var(--bg-color-dark);
-  --bg-grad: var(--bg-color-darkgradient);
-  --caption-color: var(--caption-color-dark);
-  --caption-color-opposite: var(--caption-color-light);
-  --box-shadow-color: var(--box-shadow-color-dark);
-  --headliner: var(--bg-color-lightgradient);
+  color: #030718;
 }
 
 body {
-  background: var(--bg-grad);
-  color: var(--text-color);
+  background: var(--bg-color-lightgradient);
+  color: var(--text-color-light);
   transition: background-color 0.2s, color 0.2s;
 }
 
 #background-image {
   position: relative;
   width: 100%;
-  background: var(--bg-grad);
+  background: var(--bg-color-lightgradient);
   z-index: 0;
 }
 
-#background-image::after {
+/* #background-image::after {
   content: "";
   position: absolute;
   background-image: url("./src/assets/pexels-milo-textures-2768398.jpg");
@@ -71,7 +52,7 @@ body {
   opacity: 0.3;
   z-index: -1;
   box-shadow: inset 1rem 0rem 4rem 6rem white;
-}
+} */
 
 a {
   color: inherit;
@@ -92,14 +73,14 @@ a:hover {
 .login {
   background-color: #ffffff40;
   backdrop-filter: blur(10px);
-  color: var(--text-color);
+  color: var(--text-color-light);
   text-align: center;
   margin: 2rem auto;
   width: 400px;
   height: 350px;
   outline: 3px solid #183333;
   border-radius: 2rem;
-  box-shadow: 8px 8px 2rem var(--box-shadow-color);
+  box-shadow: 8px 8px 2rem var(--box-shadow-color-light);
 }
 
 .login form {
@@ -114,7 +95,7 @@ a:hover {
 }
 
 .header-container {
-  width: 80vw;
+  width: 70vw;
   display: flex;
   align-items: center;
   justify-content: space-around;
@@ -124,15 +105,12 @@ a:hover {
   border-bottom-right-radius: 2rem;
   border-top-right-radius: 2rem;
   padding-bottom: 1rem;
-  border-bottom: 4px solid #183333;
-
-  /* box-shadow: 8px 8px 1rem rgba(100, 100, 100, 0.1); */
 }
 
 .company-name-and-logo {
   padding: 1rem;
   align-items: center;
-  font-size: 42px;
+  font-size: 52px;
 }
 
 .brand-name {
@@ -149,7 +127,7 @@ a:hover {
 
 .brand-name:before {
   content: "";
-  background: var(--bg-grad);
+  background: #86bbd8;
   display: block;
   position: absolute;
   bottom: -3px;
@@ -188,13 +166,13 @@ a:hover {
 }
 
 .MuiOutlinedInput-root {
-  background-color: var(--bg-grad) !important;
-  color: var(--text-color) !important;
+  background-color: var(--bg-color-lightgradient) !important;
+  color: var(--text-color-light) !important;
 }
 .MuiOutlinedInput-notchedOutline {
-  background-color: var(--bg-grad) !important;
-  color: var(--text-color) !important;
-  border-color: var(--text-color) !important;
+  background-color: var(--bg-color-lightgradient) !important;
+  color: var(--text-color-light) !important;
+  border-color: var(--text-color-light) !important;
   border-width: 2px !important;
   border-radius: 8px !important;
   box-shadow: 10 !important;
@@ -207,7 +185,7 @@ a:hover {
   justify-content: center;
   height: 500px;
   width: 100%;
-  background: var(--headliner);
+  background: var(--bg-color-dark);
   box-shadow: inset 2px 2px 8rem 1rem #102222;
 }
 
@@ -218,7 +196,7 @@ a:hover {
   grid-template-rows: 1fr;
   width: 85%;
   height: 450px;
-  color: var(--text-color-opposite);
+  color: var(--text-color-dark);
   font-size: calc(12px + 1vw);
 }
 .home-div-text {
@@ -434,8 +412,8 @@ h3 {
 .post-headliner {
   width: 100%;
   grid-column: 1 / span 2;
-  background: var(--headliner);
-  color: var(--text-color-opposite);
+  background: var(--bg-color-dark);
+  color: var(--text-color-dark);
   font-size: calc(12px + 1vw);
   height: 500px;
   box-shadow: inset 2px 2px 8rem 1rem #102222;
@@ -455,7 +433,7 @@ h3 {
 }
 .post-headliner > .post-container > .post-title-div > * {
   font-size: calc(10px + 0.5vw);
-  color: var(--caption-color-opposite);
+  color: var(--caption-color-dark);
 }
 
 .post-headline-div-picture {
@@ -521,14 +499,14 @@ h3 {
   object-fit: cover;
   display: flex;
   border-radius: 1rem;
-  box-shadow: 4px 4px 1rem 4px var(--box-shadow-color);
+  box-shadow: 4px 4px 1rem 4px var(--box-shadow-color-light);
 }
 
 .picture-caption {
   font-size: 12px;
   text-align: center;
   margin-bottom: 1rem;
-  color: var(--caption-color);
+  color: var(--caption-color-light);
 }
 .post-body {
   font-size: 14px;
@@ -545,7 +523,7 @@ h3 {
 .post-tags {
   font-size: 12px;
   margin-bottom: 0.5rem;
-  color: var(--caption-color);
+  color: var(--caption-color-light);
 }
 
 .share-buttons {
@@ -563,13 +541,13 @@ h3 {
   border: 0;
   border-radius: 2px;
   font-variant: small-caps;
-  box-shadow: 2px 2px 4px var(--box-shadow-color);
+  box-shadow: 2px 2px 4px var(--box-shadow-color-light);
 }
 .share-buttons > *:hover {
   cursor: pointer;
-  box-shadow: 2px 2px 4px var(--box-shadow-color);
+  box-shadow: 2px 2px 4px var(--box-shadow-color-light);
   color: inherit;
-  outline: 1px solid var(--box-shadow-color);
+  outline: 1px solid var(--box-shadow-color-light);
   border-radius: 4px;
 }
 
@@ -664,30 +642,20 @@ h3 {
   #background-image {
     position: relative;
     width: 100%;
-    background: var(--bg-grad);
+    background: var(--bg-color-lightgradient);
     z-index: 0;
   }
 
-  #background-image::after {
-    content: "";
-    position: absolute;
-    background-image: url("./src/assets/pexels-milo-textures-2768398.jpg");
-    background-attachment: fixed;
-    background-size: cover;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    opacity: 0.3;
-    z-index: -1;
-    box-shadow: inset 1rem 0rem 4rem 1.5rem white;
-  }
   .share-buttons-text {
     display: none;
   }
   .nav-links {
     padding: 1rem;
     margin: 0;
+  }
+  .header-container {
+    width: 90vw;
+    padding: 0.5rem;
   }
   /* HOME PAGE */
 
@@ -781,7 +749,9 @@ h3 {
     margin: 1rem auto 1rem;
   }
   .post-headliner > .post-container > .post-title-div > a > h2 {
-    font-size: calc(16px + 1.5vw);
+    padding-top: 1rem;
+    text-align: center;
+    font-size: 42px;
   }
 
   .post-grid {
@@ -795,16 +765,29 @@ h3 {
   }
   .post-headline-div-picture {
     width: 95%;
-    max-height: 250px;
+    max-height: 300px;
     margin: 1rem auto 0;
     border-radius: 2rem;
     object-fit: cover;
   }
+
   .post-body {
     display: none;
   }
+  #read-more {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin: 0 2rem;
+  }
 }
 /*  MOBILE SPECIFIC STYLES */
+/*  MOBILE SPECIFIC STYLES */
+/*  MOBILE SPECIFIC STYLES */
+/*  MOBILE SPECIFIC STYLES */
+/*  MOBILE SPECIFIC STYLES */
+/*  MOBILE SPECIFIC STYLES */
+
 @media screen and (max-width: 500px) {
   body {
     overflow-y: none;
@@ -923,7 +906,7 @@ h3 {
   }
   .post-headline-div-picture {
     width: 95%;
-    max-height: 250px;
+    max-height: 300px;
     margin: 1rem auto 0;
     border-radius: 2rem;
     object-fit: cover;
@@ -935,8 +918,8 @@ h3 {
     margin: 1rem auto 1rem;
   }
   .post-headliner > .post-container > .post-title-div > a > h2 {
-    font-size: calc(20px + 2vw);
-    padding: 8px;
+    font-size: 32px;
+    padding: 1rem;
   }
   .post-headliner > .post-container > .post-title-div > h3 {
     font-size: calc(10px + 1vw);

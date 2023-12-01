@@ -6,7 +6,6 @@ import { useNavigate, Link } from "react-router-dom";
 //Component Imports
 
 import GlassesIcon from "./assets/GlassesIcon";
-import { ThemeContext } from "./ThemeContext";
 import "../styles.css";
 
 //Store Imports
@@ -23,17 +22,11 @@ import Box from "@mui/material/Box";
 const Nav = React.memo(() => {
   const auth = useSelector((state) => state.auth, shallowEqual);
 
-  const { theme /*toggleTheme*/ } = useContext(ThemeContext);
-
   const [anchorElNav, setAnchorElNav] = useState(null);
   const [currPage, setCurrPage] = useState("/");
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
-
-  useEffect(() => {
-    document.body.setAttribute("data-theme", theme);
-  }, [theme]);
 
   const handleLogout = () => {
     localStorage.clear();

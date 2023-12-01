@@ -7,14 +7,10 @@ import DOMPurify from "dompurify";
 
 //Component Imports
 
-import ShareButtons from "../ShareButtons";
 const SideNav = lazy(() => import("./SideNav"));
 
 import { FadeComponent } from "../assets/FadeComponent";
 import Loading from "../assets/Loading";
-
-//Store Imports
-// import { fetchPublishedBlogposts } from "./store";
 
 //Function Imports
 import { readableDate, pics } from "../functions";
@@ -74,34 +70,15 @@ const Blogposts = () => {
                 <h2>{headlinerPost.title}</h2>
               </Link>
 
-              {/* <h3 style={{ fontWeight: 350 }}>{headlinerPost.subtitle}</h3> */}
-              {/* <div className="post-tags" style={{ fontWeight: 350 }}>
-                Tags:
-                {headlinerPost.tags[0] && (
-                  <Link to={`/blog/tags/${headlinerPost.tags[0].id}`} key={headlinerPost.tags[0].id} style={{ marginLeft: 4 }}>
-                    {headlinerPost.tags[0].name}
-                  </Link>
-                )}
-                ,
-                {headlinerPost.tags[1] && (
-                  <Link to={`/blog/tags/${headlinerPost.tags[1].id}`} key={headlinerPost.tags[1].id} style={{ marginLeft: 4 }}>
-                    {headlinerPost.tags[1].name}
-                  </Link>
-                )}
-                ,
-                {headlinerPost.tags[2] && (
-                  <Link to={`/blog/tags/${headlinerPost.tags[2].id}`} key={headlinerPost.tags[2].id} style={{ marginLeft: 4 }}>
-                    {headlinerPost.tags[2].name}{" "}
-                  </Link>
-                )}
-              </div> */}
-              <div className="post-share-buttons">{/* <ShareButtons fillColor={"whitesmoke"} style={{ fontWeight: 350 }} /> */}</div>
               <div className="post-body">
                 {sampleText(headlinerPost.content, 25)}{" "}
                 <Link to={`/blog/posts/${headlinerPost.id}`}>
                   read more <BackButton facingRight={true} strokeColor="whitesmoke" />
                 </Link>
               </div>
+              <Link to={`/blog/posts/${headlinerPost.id}`} id="read-more">
+                read more <BackButton facingRight={true} strokeColor="whitesmoke" />
+              </Link>
             </div>
           </div>
         </div>
