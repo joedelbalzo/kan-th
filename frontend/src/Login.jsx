@@ -78,7 +78,7 @@ const Login = () => {
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
-            margin: "1rem auto",
+            margin: ".5rem auto",
           }}
         >
           {" "}

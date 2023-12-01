@@ -87,98 +87,100 @@ function App(props) {
   }
 
   return (
-    <div style={{ display: "flex", flexDirection: "column", minHeight: "100vh" }}>
-      <div style={{ position: "sticky" }}>
-        <Nav />
-      </div>
-      <div style={{ display: "flex", flexDirection: "column", flexGrow: 1 }}>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/client-route" element={<OAuthHandler />} />
+    <div id="background-image">
+      <div style={{ display: "flex", flexDirection: "column", minHeight: "100vh" }}>
+        <div style={{ position: "sticky" }}>
+          <Nav />
+        </div>
+        <div style={{ display: "flex", flexDirection: "column", flexGrow: 1 }}>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/client-route" element={<OAuthHandler />} />
 
-          <Route path="/login" element={<Login />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/privacy" element={<PrivacyPolicy />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route
-            path="/blog/*"
-            element={
-              <Suspense
-                fallback={
-                  <div style={{ margin: "4rem auto" }}>
-                    <Loading height={"200px"} width={"200px"} borderWidth={"20px"} />
-                  </div>
+            <Route path="/login" element={<Login />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/privacy" element={<PrivacyPolicy />} />
+            <Route path="/contact" element={<Contact />} />
+            <Route
+              path="/blog/*"
+              element={
+                <Suspense
+                  fallback={
+                    <div style={{ margin: "4rem auto" }}>
+                      <Loading height={"100px"} width={"100px"} borderWidth={"20px"} />
+                    </div>
+                  }
+                >
+                  <BlogWrapper />{" "}
+                </Suspense>
+              }
+            >
+              <Route index element={<Blogposts />} />
+              <Route path="posts/:id" element={<Blogpost_Single />} />
+              <Route path="tags/:id" element={<Blogposts_Tags />} />
+            </Route>
+
+            {auth.id && (
+              <Route
+                path="/portfolio/*"
+                element={
+                  <Suspense
+                    fallback={
+                      <div>
+                        <Loading height={"100px"} width={"100px"} borderWidth={"20px"} />
+                      </div>
+                    }
+                  >
+                    <PortfolioWrapper />
+                  </Suspense>
                 }
               >
-                <BlogWrapper />{" "}
-              </Suspense>
-            }
+                <Route index element={<PortfolioHome />} />
+              </Route>
+            )}
+
+            {auth.username == "admin" && (
+              <Route
+                path="/admin/*"
+                element={
+                  <Suspense
+                    fallback={
+                      <div>
+                        <Loading height={"100px"} width={"100px"} borderWidth={"20px"} />
+                      </div>
+                    }
+                  >
+                    <AdminWrapper />
+                  </Suspense>
+                }
+              >
+                <Route index element={<AdminHome />} />
+                <Route path="posts" element={<AdminPosts />} />
+                <Route path="help" element={<AdminHelp />} />
+              </Route>
+            )}
+          </Routes>
+        </div>
+
+        <ScrollTop {...props}>
+          <Fab
+            size="large"
+            sx={{
+              border: "1px solid rgb(20,30,70)",
+              height: "36px",
+              width: "36px",
+              borderRadius: "4px",
+              boxShadow: "2px 2px 2px rgba(20,30,70, .5)",
+            }}
+            className="scroll-button"
+            aria-label="scroll back to top"
           >
-            <Route index element={<Blogposts />} />
-            <Route path="posts/:id" element={<Blogpost_Single />} />
-            <Route path="tags/:id" element={<Blogposts_Tags />} />
-          </Route>
-
-          {auth.id && (
-            <Route
-              path="/portfolio/*"
-              element={
-                <Suspense
-                  fallback={
-                    <div>
-                      <Loading height={"200px"} width={"200px"} borderWidth={"20px"} />
-                    </div>
-                  }
-                >
-                  <PortfolioWrapper />
-                </Suspense>
-              }
-            >
-              <Route index element={<PortfolioHome />} />
-            </Route>
-          )}
-
-          {auth.username == "admin" && (
-            <Route
-              path="/admin/*"
-              element={
-                <Suspense
-                  fallback={
-                    <div>
-                      <Loading height={"200px"} width={"200px"} borderWidth={"20px"} />
-                    </div>
-                  }
-                >
-                  <AdminWrapper />
-                </Suspense>
-              }
-            >
-              <Route index element={<AdminHome />} />
-              <Route path="posts" element={<AdminPosts />} />
-              <Route path="help" element={<AdminHelp />} />
-            </Route>
-          )}
-        </Routes>
-      </div>
-
-      <ScrollTop {...props}>
-        <Fab
-          size="large"
-          sx={{
-            border: "1px solid rgb(20,30,70)",
-            height: "36px",
-            width: "36px",
-            borderRadius: "4px",
-            boxShadow: "2px 2px 2px rgba(20,30,70, .5)",
-          }}
-          className="scroll-button"
-          aria-label="scroll back to top"
-        >
-          <ArrowUpwardOutlinedIcon />
-        </Fab>
-      </ScrollTop>
-      <div>
-        <Footer />
+            <ArrowUpwardOutlinedIcon />
+          </Fab>
+        </ScrollTop>
+        <div>
+          <Footer />
+        </div>
       </div>
     </div>
   );

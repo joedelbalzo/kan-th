@@ -57,7 +57,7 @@ const Nav = React.memo(() => {
       <div className="header-container">
         <Link to="/" style={{ textDecoration: "none", color: "inherit", flexGrow: 1 }}>
           <div className="company-name-and-logo">
-            <GlassesIcon width="42px" height="38px" />
+            <GlassesIcon width="36px" height="30px" />
             <span className="brand-name">vali</span>
           </div>
         </Link>

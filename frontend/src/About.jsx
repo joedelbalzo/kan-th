@@ -102,10 +102,10 @@ function About() {
                   We're a small, privately owned company, just like yours, and we're ready to be your partner in this journey.{"   "}
                 </motion.div>
               </div>
-              <div className="home-div-image">
+              {/* <div className="home-div-image">
                 <img src={openSign} />
                 <div className="bottom-left">Get Started &rarr;</div>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>
