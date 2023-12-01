@@ -137,7 +137,7 @@ function Home() {
         >
           <div className="home-content-images" style={{ display: "flex" }}>
             <div className="home-content-images-1">
-              <FinanceBar width={"25vw"} height={"20vh"} />
+              <FinanceBar width={"25vw"} height={"25vh"} />
               <div>We compare your data across benchmarks set by thousands of companies to see how you stack up in your industry.</div>
             </div>
             <div className="home-content-images-2">

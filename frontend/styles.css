@@ -350,12 +350,12 @@ a:hover {
 
 .vali-about {
   margin: 2rem auto;
-  width: 80vw;
+  width: 90vw;
   /* max-height: fit-content; */
 }
 
 .vali-grid-container {
-  width: 70vw;
+  width: 75vw;
   display: grid;
   grid-template-columns: 1fr 2fr;
   column-gap: 1rem;
@@ -661,6 +661,27 @@ h3 {
 /* BASIC SMALL SCREEN STYLES */
 
 @media screen and (max-width: 1200px) {
+  #background-image {
+    position: relative;
+    width: 100%;
+    background: var(--bg-grad);
+    z-index: 0;
+  }
+
+  #background-image::after {
+    content: "";
+    position: absolute;
+    background-image: url("./src/assets/pexels-milo-textures-2768398.jpg");
+    background-attachment: fixed;
+    background-size: cover;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    opacity: 0.3;
+    z-index: -1;
+    box-shadow: inset 1rem 0rem 4rem 1.5rem white;
+  }
   .share-buttons-text {
     display: none;
   }
@@ -869,9 +890,6 @@ h3 {
 
   .vali-about {
     display: block;
-  }
-  .vali-text main:first-child {
-    grid-row: 1;
   }
 
   .vali-picture {
