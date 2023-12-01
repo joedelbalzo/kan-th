@@ -321,37 +321,51 @@ a:hover {
   width: 90vw;
   margin: 2rem auto;
 } */
-.about-content {
-  width: 90vw;
+.about-container {
+  width: 80vw;
   margin: 2rem auto;
 }
 
 .vali-about {
   margin: 2rem auto;
+  width: 80vw;
+  /* max-height: fit-content; */
+}
+
+.vali-grid-container {
+  width: 70vw;
   display: grid;
   grid-template-columns: 1fr 2fr;
+  column-gap: 1rem;
   grid-template-rows: 1;
+  margin: 2rem auto;
 }
 
-.vali-text {
+.vali-grid-text {
   grid-column: 2;
-  grid-row: 1;
 }
-.vali-picture {
+.vali-grid-picture {
   grid-column: 1;
-  grid-row: 1;
+  margin: auto;
 }
 
-.vali-picture > img {
-  border-radius: 4rem;
+.vali-grid-picture > img {
+  /* max-width: 100%; */
+  margin: 0 auto;
+  max-height: 500px;
+  border-radius: 1rem;
   box-shadow: 8px 8px 1rem rgba(100, 100, 100, 0.4);
 }
 
+.vali-about-list > li {
+  padding: 0.5rem 0 1rem 1rem;
+}
+
 .kanica-about {
-  width: 80vw;
+  width: 70%;
   background-color: #86bbd8;
-  margin: auto;
-  padding: 2rem;
+  margin: 2rem auto;
+  padding: 1rem 2rem;
   border-radius: 4rem;
   box-shadow: 8px 8px 1rem rgba(100, 100, 100, 0.4);
   display: grid;
@@ -689,6 +703,30 @@ h3 {
     padding: 1rem;
   }
 
+  /*  */
+  /*  */
+  /* about page */
+  /*  */
+  /*  */
+
+  .vali-grid-container {
+    width: 100%;
+    grid-template-columns: 1fr 1fr;
+  }
+  .vali-about-list {
+    margin: 4px 0;
+    padding: 0 0 0 20px;
+  }
+
+  .vali-about-list > li {
+    padding: 0.5rem 0 0.5rem 0.1rem;
+  }
+
+  /*  */
+  /*  */
+  /* post page */
+  /*  */
+  /*  */
   .post-info {
     display: none;
   }
@@ -793,6 +831,51 @@ h3 {
     display: flex;
     flex-direction: column;
   }
+
+  /*  */
+  /*  */
+  /* about page */
+  /*  */
+  /*  */
+
+  .about-content {
+    display: block;
+    width: 90vw;
+    margin: 2rem auto;
+  }
+
+  .vali-about {
+    display: block;
+  }
+  .vali-text main:first-child {
+    grid-row: 1;
+  }
+
+  .vali-picture {
+    grid-row: 1;
+  }
+  .kanica-about {
+    grid-row: 3;
+    width: 95vw;
+    padding: 1rem;
+
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto;
+  }
+  .kanica-text {
+    grid-column: 1;
+  }
+  .kanica-picture {
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  /*  */
+  /*  */
+  /*  blog  */
+  /*  */
+  /*  */
 
   .post-info {
     display: none;

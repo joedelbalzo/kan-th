@@ -7,6 +7,7 @@ import { useWindowSize } from "@react-hook/window-size";
 
 //Component Imports
 import openSign from "./assets/pexels-tim-mossholder-3345876.jpg";
+import aboutTrip from "./assets/about-trip.webp";
 import FinanceBar from "./assets/FinanceBar";
 import Seedling from "./assets/Seedling";
 import Links from "./assets/Links";
@@ -44,11 +45,15 @@ function About() {
   const controls1 = useAnimation();
   const controls2 = useAnimation();
   const controls3 = useAnimation();
+  const controls4 = useAnimation();
+  const controls5 = useAnimation();
   const [width] = useWindowSize();
 
   const ref1 = useRef(null);
   const ref2 = useRef(null);
   const ref3 = useRef(null);
+  const ref4 = useRef(null);
+  const ref5 = useRef(null);
 
   const transition = {
     type: "spring",
@@ -64,6 +69,8 @@ function About() {
             if (entry.target === ref1.current) controls1.start({ opacity: 1, y: 0 });
             if (entry.target === ref2.current) controls2.start({ opacity: 1, y: 0 });
             if (entry.target === ref3.current) controls3.start({ opacity: 1, y: 0 });
+            if (entry.target === ref4.current) controls4.start({ opacity: 1, y: 0 });
+            if (entry.target === ref5.current) controls5.start({ opacity: 1, y: 0 });
           }
         });
       },
@@ -73,6 +80,8 @@ function About() {
     observer.observe(ref1.current);
     observer.observe(ref2.current);
     observer.observe(ref3.current);
+    observer.observe(ref4.current);
+    observer.observe(ref5.current);
 
     return () => observer.disconnect();
   }, []);
@@ -85,15 +94,12 @@ function About() {
           <div className="home-div">
             <div className="home-div-inner">
               <div className="home-div-text">
-                <h1 className="home-div-title">Financing shouldn't be a guessing game.</h1>
+                <h1 className="home-div-title">Welcome to Vali!</h1>
                 <motion.div variants={child} className="home-div-subtitle">
-                  <h2>Small and medium business owners deserve better.</h2>
+                  <h2>We're dedicated to empowering small and medium-sized businesses with crucial financial insights.</h2>
                 </motion.div>
                 <motion.div variants={child} className="home-div-body">
-                  Vali is here to help you get competitive funding quickly and easily.{"   "}
-                  <Link to="/login" style={{ textDecoration: "underline", cursor: "pointer" }}>
-                    {"   "}Let's go!
-                  </Link>
+                  We're a small, privately owned company, just like yours, and we're ready to be your partner in this journey.{"   "}
                 </motion.div>
               </div>
               <div className="home-div-image">
@@ -107,36 +113,52 @@ function About() {
 
       {/* HOME CONTENT */}
       <div className="about-container">
-        <motion.div
-          ref={ref1}
-          initial={{ opacity: 0, y: "50px" }}
-          animate={controls1}
-          transition={transition}
-          style={{
-            display: "flex",
-            flexDirection: "row",
-            flexWrap: "wrap",
-            justifyContent: "center",
-            overflow: "hidden",
-          }}
-        >
-          <div className="about-content">
-            <div className="vali-about">
-              <div className="vali-text">
-                <h1 style={{ textAlign: "center" }}>Welcome to Vali</h1>
-                <main>
-                  A pioneer in SMB valuations dedicated to empowering small and medium-sized businesses with crucial financial insights. At
-                  Vali, we blend our expertise in finance with innovative technology to offer comprehensive valuation services that are both
-                  accessible and reliable. Our mission at Vali is to demystify the business valuation process and make it a powerful tool
-                  for SMB owners. We believe that understanding the true value of your business is not just a financial exercise but a
-                  strategic move to secure your future, leverage growth opportunities, and plan for long-term success.
-                </main>
+        <div className="vali-about">
+          <motion.div
+            ref={ref1}
+            initial={{ opacity: 0, y: "50px" }}
+            animate={controls1}
+            transition={transition}
+            style={{
+              display: "flex",
+              flexDirection: "row",
+              flexWrap: "wrap",
+              justifyContent: "center",
+              overflow: "hidden",
+            }}
+          >
+            <div className="vali-text">
+              <main>
+                At Vali, we blend our expertise in finance with innovative technology to offer comprehensive valuation services that are
+                both accessible and reliable. Our mission at Vali is to demystify the business valuation process and make it a powerful tool
+                for SMB owners. <br />
                 <br />
-                <main>
-                  Vali offers a range of valuation services tailored to the unique needs of SMBs. From detailed valuation reports to
-                  strategic consulting, we cover all aspects of business valuation. Our services are based on transparent, time-tested
-                  methods, ensuring that you receive a valuation that truly reflects your business’s worth.
-                  <ul>
+                We believe that understanding the true value of your business is not just a financial exercise but a strategic move to
+                secure your future, leverage growth opportunities, and plan for long-term success.
+              </main>
+              <br />
+
+              <div className="vali-grid-container">
+                <motion.div
+                  ref={ref2}
+                  initial={{ opacity: 0, y: "50px" }}
+                  animate={controls1}
+                  transition={transition}
+                  style={{
+                    display: "flex",
+                    flexDirection: "row",
+                    flexWrap: "wrap",
+                    justifyContent: "center",
+                    overflow: "hidden",
+                  }}
+                >
+                  <div className="vali-grid-picture">
+                    <img src={aboutTrip} />
+                  </div>
+                </motion.div>
+                <main className="vali-grid-text">
+                  We're excited to go on this journey of financial awareness and freedom with you. Here is how we get there:
+                  <ul className="vali-about-list">
                     <li>
                       <strong>Comprehensive Business Valuation</strong>: Utilizing a blend of market-based, income-based, and asset-based
                       approaches to provide a holistic view of your business's value.
@@ -159,42 +181,54 @@ function About() {
                     </li>
                   </ul>
                 </main>
-                <main>
-                  Why choose us? Expertise, customized solutions, transparency, and a technology-driven approach. Our vision is to become
-                  the most trusted partner for small and medium business owners worldwide in understanding and enhancing their business
-                  value. We strive to turn valuation from a mere number into a roadmap for success, and we look forward to being your
-                  partner.
-                </main>
               </div>
-              <div className="vali-picture">
-                <img src="https://prohygiene.com/usa/wp-content/uploads/sites/18/2015/12/placeholder.gif" width="320" height="480" />
-              </div>
+
+              <main>
+                Why choose us? Expertise, customized solutions, transparency, and a technology-driven approach. Our vision is to become the
+                most trusted partner for small and medium business owners in understanding and enhancing their business value. We strive to
+                turn valuation from a mere number into a roadmap for success, and we look forward to going on this journey with you.
+              </main>
             </div>
-            <div className="kanica-about">
-              <div className="kanica-text">
-                <h1>Founder: Kanica Allagh</h1>
-                <p>
-                  After spending 10 years in finance, from capital markets to investing, I came in close contact to valuation and financing
-                  decision making for enterprises. I began noticing how these skills and products are gapped for SMBs, those who would
-                  benefit the most.{" "}
-                </p>
-                <p>
-                  After experiencing the high growth environment Capsule, I saw firsthand the excitement and challenges of providing new
-                  products to underserved users.
-                </p>
-                <p>
-                  Finally, I personally care about this problem. After advising close friends and relatives in the valuations of their
-                  hard-earned businesses, I became completely overwhelmed with the problem and excited about the opportunity to serve this
-                  market.
-                </p>
+            <motion.div
+              ref={ref3}
+              initial={{ opacity: 0, y: "50px" }}
+              animate={controls3}
+              transition={transition}
+              style={{
+                display: "flex",
+                flexDirection: "row",
+                flexWrap: "wrap",
+                justifyContent: "center",
+                overflow: "hidden",
+              }}
+            >
+              <div className="kanica-about">
+                <div className="kanica-text">
+                  <h1>Founder: Kanica Allagh</h1>
+                  <p>
+                    After spending 10 years in finance, from capital markets to investing, I came in close contact to valuation and
+                    financing decision making for enterprises. I began noticing how these skills and products are gapped for SMBs, those who
+                    would benefit the most.{" "}
+                  </p>
+                  <p>
+                    After experiencing the high growth environment Capsule, I saw firsthand the excitement and challenges of providing new
+                    products to underserved users.
+                  </p>
+                  <p>
+                    Finally, I personally care about this problem. After advising close friends and relatives in the valuations of their
+                    hard-earned businesses, I became completely overwhelmed with the problem and excited about the opportunity to serve this
+                    market.
+                  </p>
+                </div>
               </div>
-            </div>
-          </div>
-        </motion.div>
+            </motion.div>
+          </motion.div>
+        </div>
+
         <motion.div
-          ref={ref2}
+          ref={ref4}
           initial={{ opacity: 0, y: "50px" }}
-          animate={controls2}
+          animate={controls4}
           transition={transition}
           style={{
             display: "flex",
@@ -228,9 +262,9 @@ function About() {
 
         {/* JOIN NOW */}
         <motion.div
-          ref={ref3}
+          ref={ref5}
           initial={{ opacity: 0, y: "50px" }}
-          animate={controls3}
+          animate={controls5}
           transition={transition}
           style={{
             display: "flex",
