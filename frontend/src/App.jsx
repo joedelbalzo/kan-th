@@ -73,7 +73,7 @@ function App(props) {
     const timer = setTimeout(() => {
       dispatch(fetchPublishedBlogposts());
       dispatch(fetchTags());
-    }, 1000);
+    }, 200);
 
     return () => clearTimeout(timer);
   }, []);

@@ -134,7 +134,7 @@ const SeededPosts = [
     title: "Getting buyer inbounds? Here’s what to look for",
     subtitle: "So, you're thinking about selling your business, huh?",
     content: `
-    <div>Hey there, fellow business owner! So, you're thinking about selling your business, huh? It's an exciting journey, but it can also be a bit overwhelming. Fear not, we've got some practical advice on what to look for when you're sifting through those buyer inbounds.</div>
+    <div>Hey there, fellow business owner! So, you're thinking about selling your business, huh? It's an exciting journey, but it can also be a bit overwhelming. Fear not, we've got some practical advice on what to look for when you're sifting through those buyer inbounds. </div>
   
     <h2>What to Look for in Potential Buyers</h2>
     <ol>
@@ -185,7 +185,7 @@ const SeededPosts = [
     <div>As you navigate the journey of selling your business, remember, the right buyer is out there, and they'll honor the legacy you've built as they take your business into the future. Good luck!</div>
   `,
     published: true,
-    publishedAt: "10-30-2023",
+    publishedAt: "11-12-2023",
     lastSaved: "10-30-2023",
     archived: false,
     archivedOn: null,
@@ -319,7 +319,7 @@ const SeededPosts = [
     <p>See how to value your business <a href="link-to-valuation">here</a>. Questions? <a href="mailto:email@example.com">Shoot us an email</a>.</p>
   `,
     published: true,
-    publishedAt: "11-15-2023",
+    publishedAt: "11-18-2023",
     lastSaved: "10-30-2023",
     archived: false,
     archivedOn: null,

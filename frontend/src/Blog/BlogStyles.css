@@ -166,4 +166,10 @@
   .single-post-headliner > h2 {
     grid-row: 4;
   }
+  .single-post-body {
+    width: 90vw;
+    margin: 4rem auto;
+    font-size: 22px;
+    line-height: 1.4;
+  }
 }

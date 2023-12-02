@@ -10,6 +10,11 @@
   --caption-color-dark: rgba(245, 245, 245, 0.8);
   --box-shadow-color-light: rgba(100, 100, 100, 0.3);
   --box-shadow-color-dark: rgba(200, 200, 200, 0.3);
+
+  --primary: #183333;
+  --secondary: #96ccee;
+  --tertiary: #f7bf75;
+  --tertiary: #96ccee;
 }
 
 html {
@@ -127,7 +132,7 @@ a:hover {
 
 .brand-name:before {
   content: "";
-  background: #86bbd8;
+  background: #96ccee;
   display: block;
   position: absolute;
   bottom: -3px;
@@ -282,10 +287,10 @@ a:hover {
   margin: auto;
   display: flex;
   justify-content: space-around;
-  padding: 1rem;
 }
 .home-content-images > * {
   display: flex;
+  width: 30%;
   flex-direction: column;
   align-items: center;
 }
@@ -320,6 +325,123 @@ a:hover {
 /* ABOUT PAGE */
 /*  */
 /*  */
+.about-div-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 300px;
+  width: 100%;
+  background: var(--bg-color-dark);
+  box-shadow: inset 2px 2px 8rem 1rem #102222;
+}
+
+.about-div-inner {
+  margin: 0 auto;
+  display: grid;
+  width: 85%;
+  height: 200px;
+  color: var(--text-color-dark);
+  font-size: calc(12px + 1vw);
+}
+
+.about-div-text {
+  grid-column: 1/-1;
+  grid-row: 1;
+}
+.about-title {
+  font-size: calc(24px + 5vw);
+  text-align: center;
+  word-wrap: normal;
+  margin: 0 auto;
+  padding: 0;
+}
+.about-subtitle {
+  font-size: 24px;
+  word-wrap: normal;
+  width: 50%;
+  margin: auto;
+  text-align: center;
+}
+
+.about-body-container {
+  width: 80vw;
+  margin: 2rem auto;
+}
+
+#vali-body-about-first {
+  width: 80%;
+  margin: 4rem auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+#vali-body-about-first > main,
+#vali-body-about-first > #svg-picture-overlay-container {
+  display: flex;
+  flex: 1;
+  min-width: 450px;
+}
+#vali-body-about-first > #svg-picture-overlay-container {
+  min-width: 450px;
+  max-width: 450px;
+}
+
+#svg-picture-overlay-container {
+  width: 450px;
+  height: 300px;
+  object-fit: cover;
+  position: relative;
+}
+#svg-picture-overlay-container > #Capa_1 {
+  position: absolute;
+  top: -20px;
+  left: 0px;
+  z-index: 300;
+}
+#svg-picture-overlay-container > #about-image {
+  position: absolute;
+  top: 50px;
+  left: 50px;
+  width: 80%;
+  height: 80%;
+  margin: 0 auto;
+  z-index: 1;
+  border-radius: 1rem;
+}
+
+#vali-body-about-second {
+  width: 90%;
+  margin: 2rem auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap-reverse;
+}
+#vali-body-about-second > .vali-body-about-second-picture > img,
+#vali-body-about-second > .vali-body-about-second-text {
+  flex: 1 1 50%;
+  min-width: 450px;
+}
+#vali-body-about-second > .vali-body-about-second-text {
+  padding-left: 1rem;
+}
+
+#vali-body-about-second > .vali-body-about-second-picture {
+}
+
+#vali-body-about-second > .vali-body-about-second-picture > img {
+  min-width: 350px;
+  max-width: 350px;
+  margin: 1rem;
+  border-radius: 1rem;
+  box-shadow: 8px 8px 1rem rgba(100, 100, 100, 0.4);
+}
+
+#vali-body-about-third {
+  margin: 4rem auto;
+  line-height: 2rem;
+}
 
 .about-container {
   width: 90vw;
@@ -331,7 +453,7 @@ a:hover {
   width: 90vw;
   /* max-height: fit-content; */
 }
-
+/* 
 .vali-grid-container {
   width: 75vw;
   display: grid;
@@ -347,15 +469,15 @@ a:hover {
 .vali-grid-picture {
   grid-column: 1;
   margin: auto;
-}
-
+} */
+/* 
 .vali-grid-picture > img {
-  /* max-width: 100%; */
+  /* max-width: 100%;
   margin: 0 auto;
   max-height: 500px;
   border-radius: 1rem;
   box-shadow: 8px 8px 1rem rgba(100, 100, 100, 0.4);
-}
+} */
 
 .vali-about-list > li {
   padding: 0.5rem 0 1rem 1rem;
@@ -363,7 +485,7 @@ a:hover {
 
 .kanica-about {
   width: 70%;
-  background-color: #86bbd8;
+  background-color: #96ccee;
   margin: 2rem auto;
   padding: 1rem 2rem;
   border-radius: 4rem;
@@ -496,6 +618,7 @@ h3 {
   /* margin: 2rem; */
   max-width: 300px;
   max-height: 400px;
+  min-height: 250px;
   object-fit: cover;
   display: flex;
   border-radius: 1rem;
@@ -708,11 +831,14 @@ h3 {
   }
 
   .home-content-images {
-    width: 700px;
+    width: 600px;
     margin: auto;
     display: flex;
     justify-content: space-around;
-    padding: 1rem;
+    padding: 0.3rem;
+  }
+  .home-content-images > * > * {
+    width: 85%;
   }
 
   /*  */
@@ -721,9 +847,20 @@ h3 {
   /*  */
   /*  */
 
-  .vali-grid-container {
-    width: 100%;
+  .about-body-container {
+    width: 85vw;
+    margin: 2rem auto;
+  }
+
+  .about-div-inner {
+    display: grid;
+    grid-template-rows: 125px 325px;
     grid-template-columns: 1fr 1fr;
+    width: 95%;
+  }
+
+  #vali-body-about-first {
+    width: 100%;
   }
   .vali-about-list {
     margin: 4px 0;
