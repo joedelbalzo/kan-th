@@ -213,7 +213,7 @@ function About() {
           </motion.div>
         </div>
 
-        <motion.div ref={ref5} initial={{ opacity: 0, y: "50px" }} animate={controls5} transition={transition}>
+        <motion.div ref={ref5} initial={{ opacity: 0, y: "10px" }} animate={controls5} transition={transition}>
           <div className="home-content-images" style={{ display: "flex" }}>
             <div className="home-content-images-1">
               <FinanceBar width={"20vw"} height={"20vh"} />
@@ -236,7 +236,7 @@ function About() {
           </div>
         </motion.div>
 
-        <motion.div ref={ref5} initial={{ opacity: 0, y: "100px" }} animate={controls5} transition={transition}>
+        <motion.div ref={ref4} initial={{ opacity: 0, y: "50px" }} animate={controls4} transition={transition}>
           <div className="lets-go">
             <Link to="/login">Let's go! &rarr;</Link>
           </div>

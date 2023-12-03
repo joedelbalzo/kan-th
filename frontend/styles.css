@@ -353,12 +353,12 @@ a:hover {
 
 .about-body-container {
   width: 80vw;
-  margin: 2rem auto;
+  margin: 4rem auto;
 }
 
 #vali-body-about-first {
   width: 80%;
-  margin: 4rem auto;
+  margin: 4rem auto 6rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -400,7 +400,7 @@ a:hover {
 
 #vali-body-about-second {
   width: 90%;
-  margin: 2rem auto;
+  margin: 4rem auto 6rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -424,7 +424,7 @@ a:hover {
 }
 
 #vali-body-about-third {
-  margin: 4rem auto;
+  margin: 4rem auto 6rem;
   line-height: 2rem;
 }
 
@@ -840,7 +840,7 @@ h3 {
 
   .about-body-container {
     width: 85vw;
-    margin: 2rem auto;
+    margin: 3rem auto;
   }
 
   .about-div-inner {

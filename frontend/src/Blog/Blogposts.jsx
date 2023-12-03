@@ -73,9 +73,9 @@ const Blogposts = () => {
 
               <div className="post-body">
                 {sampleText(headlinerPost.content, 25)}{" "}
-                <Link to={`/blog/posts/${headlinerPost.id}`}>
+                {/* <Link to={`/blog/posts/${headlinerPost.id}`}>
                   read more <BackButton facingRight={true} strokeColor="whitesmoke" />
-                </Link>
+                </Link> */}
               </div>
               <Link to={`/blog/posts/${headlinerPost.id}`} id="read-more">
                 read more <BackButton facingRight={true} strokeColor="whitesmoke" />
