@@ -79,11 +79,9 @@ const syncAndSeed = async () => {
     const [growthStrategies, valuations, equityAndDebt, businessPlanning, financingInsights, benchmarks, marketAnalysis, competitiveEdge] =
       await Promise.all([
         Tag.create({ name: "Growth Strategies" }),
-        Tag.create({ name: "Valuations" }),
+        Tag.create({ name: "Valuations and Benchmarks" }),
         Tag.create({ name: "Equity and Debt" }),
-        Tag.create({ name: "Business Planning" }),
         Tag.create({ name: "Financing Insights" }),
-        Tag.create({ name: "Benchmarks" }),
         Tag.create({ name: "Market Analysis" }),
         Tag.create({ name: "Competitive Edge" }),
       ]);

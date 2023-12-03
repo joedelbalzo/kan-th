@@ -15,8 +15,6 @@ const SideNav = () => {
     return null;
   }
 
-  console.log(tags);
-
   const onTagClick = async (tag) => {
     await dispatch(filterBlogpostsByTag(tag.id));
     navigate(`/blog/tags/${tag.id}`);

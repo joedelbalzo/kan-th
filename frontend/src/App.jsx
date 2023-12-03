@@ -64,11 +64,6 @@ function App(props) {
   const dispatch = useDispatch();
   const auth = useSelector((state) => state.auth);
 
-  // useEffect(() => {
-  //   dispatch(fetchPublishedBlogposts());
-  //   dispatch(fetchTags());
-  // }, []);
-  //memory test
   useEffect(() => {
     const timer = setTimeout(() => {
       dispatch(fetchPublishedBlogposts());
@@ -89,9 +84,7 @@ function App(props) {
   return (
     <div id="background-image">
       <div style={{ display: "flex", flexDirection: "column", minHeight: "100vh" }}>
-        <div style={{ position: "sticky" }}>
-          <Nav />
-        </div>
+        <Nav />
         <div style={{ display: "flex", flexDirection: "column", flexGrow: 1 }}>
           <Routes>
             <Route path="/" element={<Home />} />

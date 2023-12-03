@@ -15,6 +15,7 @@ import Loading from "../assets/Loading";
 //Function Imports
 import { readableDate, pics } from "../functions";
 import BackButton from "../assets/BackButton";
+import ShareButtons from "../ShareButtons";
 // import { Fade } from "@mui/material";
 
 const Blogposts = () => {
@@ -82,11 +83,28 @@ const Blogposts = () => {
             </div>
           </div>
         </div>
-
         {/* break between headliner and other latest posts */}
         {/* break between headliner and other latest posts */}
         {/* break between headliner and other latest posts */}
-
+        <div
+          style={{
+            fontSize: "14px",
+            display: "flex",
+            alignItems: "center",
+            width: "70%",
+            justifyContent: "space-around",
+            margin: "auto",
+          }}
+        >
+          Subscribe and Share!
+          <form>
+            <label>
+              // email and rss buttons coming //
+              {/* <input></input> */}
+            </label>
+          </form>
+          <ShareButtons shareType={"generic"} fillColor={"#183333"} />
+        </div>
         <div className="post-grid">
           <div className="post-info">
             <Suspense
@@ -100,6 +118,7 @@ const Blogposts = () => {
               <SideNav />
             </Suspense>
           </div>
+
           {blogposts
             .filter((post) => post !== headlinerPost)
             .map((blogpost) => {

@@ -74,7 +74,7 @@ const Blogpost_Single = () => {
                 Date: {readableDate(post.publishedAt)}
               </span>
               <div style={{ fontSize: "14px" }}>
-                <ShareButtons fillColor={"whitesmoke"} />
+                <ShareButtons fillColor={"whitesmoke"} post={post} />
               </div>
               <div className="single-post-tags">
                 Tags:

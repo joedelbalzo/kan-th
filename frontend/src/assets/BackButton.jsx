@@ -12,7 +12,6 @@ const BackButton = ({ width = "20px", height = "40px", facingRight = false, stro
       xmlSpace="preserve"
       style={{
         display: "inline-block",
-        display: "inline-block",
         verticalAlign: "middle",
         color: "none",
         width: width,

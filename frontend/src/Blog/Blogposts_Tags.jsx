@@ -78,7 +78,7 @@ const Blogposts_Tags = () => {
                         ""
                       )}
                     </div>
-                    <ShareButtons />
+                    <ShareButtons post={blogpost} />
                     <div className="post-body">
                       {sampleText(blogpost.content)} <Link to={`/blog/posts/${blogpost.id}`}>...read more</Link>
                     </div>
