@@ -50,6 +50,12 @@ const Login = () => {
     dispatch(loginWithGoogle());
   };
 
+  if (errorMessage) {
+    setTimeout(() => {
+      setErrorMessage("");
+    }, 4000);
+  }
+
   const buttonStyles = {
     color: "inherit",
     width: "80px",
@@ -136,12 +142,12 @@ const Login = () => {
           style={{
             margin: "0 auto",
             color: "darkred",
-            fontSize: "calc(4px + 0.5vw)",
+            fontSize: "calc(10px + 0.5vw)",
             fontStyle: "italic",
             minHeight: "2vh",
           }}
         >
-          {errorMessage ? errorMessage : <div style={{ minHeight: "(6px + 0.5vw)" }}></div>}
+          {errorMessage ? errorMessage : <div style={{ minHeight: "16px" }}></div>}
         </div>
       </div>
     </FadeComponent>

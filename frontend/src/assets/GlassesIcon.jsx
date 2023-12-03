@@ -1,6 +1,6 @@
 import React from "react";
 
-const GlassesIcon = ({ width, height }) => {
+const GlassesIcon = ({ width, height, color = "#030712" }) => {
   return (
     <svg
       aria-hidden="true"
@@ -14,7 +14,7 @@ const GlassesIcon = ({ width, height }) => {
       style={{
         display: "inline-block",
         verticalAlign: "middle",
-        color: "#030712",
+        color: color,
         width: width,
         height: height,
       }}
@@ -30,6 +30,7 @@ const GlassesIcon = ({ width, height }) => {
 GlassesIcon.defaultProps = {
   width: "1rem",
   height: "1rem",
+  color: "#030712",
 };
 
 export default GlassesIcon;

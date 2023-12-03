@@ -20,10 +20,10 @@ const PieChart = ({ width, height }) => {
     >
       <defs>
         <filter id="shadow">
-          <feDropShadow dx=".2" dy=".2" stdDeviation=".2" flood-color="rgba(200,200,200,1)" />
+          <feDropShadow dx=".2" dy=".2" stdDeviation=".2" floodColor="rgba(200,200,200,1)" />
         </filter>
         <filter id="shadow2">
-          <feDropShadow dx=".4" dy=".4" stdDeviation=".2" flood-color="rgba(200,200,200,.1)" />
+          <feDropShadow dx=".4" dy=".4" stdDeviation=".2" floodColor="rgba(200,200,200,.1)" />
         </filter>
       </defs>
       <path

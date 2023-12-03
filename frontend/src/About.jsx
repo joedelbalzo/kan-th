@@ -180,7 +180,7 @@ function About() {
             </div>
           </motion.div>
 
-          <motion.div ref={ref4} initial={{ opacity: 0, y: "100px" }} animate={controls4} transition={transition}>
+          <motion.div ref={ref3} initial={{ opacity: 0, y: "50px" }} animate={controls3} transition={transition}>
             <div className="kanica-about">
               <div className="kanica-text">
                 <h1>Founder: Kanica Allagh</h1>
@@ -202,7 +202,7 @@ function About() {
             </div>
           </motion.div>
 
-          <motion.div ref={ref3} initial={{ opacity: 0, y: "100px" }} animate={controls3} transition={transition}>
+          <motion.div ref={ref4} initial={{ opacity: 0, y: "50px" }} animate={controls4} transition={transition}>
             <div id="vali-body-about-third">
               <main>
                 So, why choose us? Expertise, customized solutions, transparency, and a technology-driven approach. Our vision is to become
