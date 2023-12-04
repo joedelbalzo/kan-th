@@ -1,14 +1,14 @@
 //React Imports
 import React from "react";
 import { useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import parse from "html-react-parser";
 import DOMPurify from "dompurify";
 
 //Component Imports
 
 import ShareButtons from "../ShareButtons";
-import SideNav from "./SideNav";
+import SubNav from "./SubNav";
 
 //Store Imports
 
@@ -17,6 +17,8 @@ import { readableDate, pics } from "../functions";
 
 const Blogposts_Tags = () => {
   const blogposts = useSelector((state) => state.blogposts.filteredBlogposts);
+  let { id } = useParams();
+  console.log(id);
 
   if (!blogposts) {
     return null;
@@ -35,7 +37,7 @@ const Blogposts_Tags = () => {
     <div>
       <div className="post-grid">
         <div className="post-info">
-          <SideNav />
+          <SubNav id={id} />
         </div>
         {blogposts
           // .filter((post) => post !== blogposts[0])

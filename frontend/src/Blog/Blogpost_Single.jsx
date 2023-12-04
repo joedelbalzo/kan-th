@@ -9,7 +9,7 @@ import DOMPurify from "dompurify";
 //Component Imports
 
 import ShareButtons from "../ShareButtons";
-import SideNav from "./SideNav";
+import SubNav from "./SubNav";
 import "./BlogStyles.css";
 
 //Store Imports
@@ -113,7 +113,7 @@ const Blogpost_Single = () => {
       </div>
 
       {/* <div className="post-info">
-          <SideNav />
+          <SubNav />
         </div> */}
       <div className="post-content">
         <br />

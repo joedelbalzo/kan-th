@@ -11,6 +11,7 @@ import FinanceBar from "./assets/FinanceBar";
 import Seedling from "./assets/Seedling";
 import Links from "./assets/Links";
 import { FadeComponent } from "./assets/FadeComponent";
+import AboutBody from "./About-Body";
 
 //Store Imports
 
@@ -104,6 +105,7 @@ function Home() {
           </div>
         </div>
       </motion.div>
+      <AboutBody />
 
       {/* HOME CONTENT */}
       <div className="home-content">
@@ -119,9 +121,7 @@ function Home() {
             justifyContent: "center",
             overflow: "hidden",
           }}
-        >
-          <div className="home-content-about">Here is some more content that will fade up about us</div>
-        </motion.div>
+        ></motion.div>
         <motion.div
           ref={ref2}
           initial={{ opacity: 0, y: "50px" }}

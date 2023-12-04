@@ -7,7 +7,7 @@ import DOMPurify from "dompurify";
 
 //Component Imports
 
-const SideNav = lazy(() => import("./SideNav"));
+const SubNav = lazy(() => import("./SubNav"));
 
 import { FadeComponent } from "../assets/FadeComponent";
 import Loading from "../assets/Loading";
@@ -115,7 +115,7 @@ const Blogposts = () => {
                 </div>
               }
             >
-              <SideNav />
+              <SubNav />
             </Suspense>
           </div>
 

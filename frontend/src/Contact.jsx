@@ -43,8 +43,13 @@ function Contact() {
   };
 
   return (
-    <div className="contact">
-      <h2 className="contact-header">CONTACT</h2>
+    <div>
+      <div className="contact-div">
+        <div className="contact-div-inner">
+          <h2 className="contact-title">Contact Us</h2>
+        </div>
+      </div>
+
       <h3 className="contact-subheader">Feel free to contact me and I'll be in touch shortly!</h3>
       <form className="contact-main-form" onSubmit={handleSubmit}>
         <input id="name" type="name" name="name" placeholder="Your Name" value={emailForm.name} onChange={handleChange} />
