@@ -1,4 +1,3 @@
-/* styles.css */
 :root {
   --text-color-dark: whitesmoke;
   --text-color-light: #030718;
@@ -168,7 +167,7 @@ a:hover {
   box-shadow: 10 !important;
 }
 
-/* HOME PAGE */
+/* main home PAGE */
 .home-div {
   display: flex;
   align-items: center;
@@ -257,7 +256,7 @@ a:hover {
   font-style: italic;
 }
 
-/* HOME CONTENT */
+/* main home CONTENT */
 .home-content {
   margin: auto;
 }
@@ -310,7 +309,7 @@ a:hover {
 /*  */
 /*  */
 /*  */
-/* ABOUT PAGE */
+/* main about PAGE */
 /*  */
 /*  */
 .about-div-container {
@@ -441,33 +440,7 @@ a:hover {
 .vali-about {
   margin: 2rem auto;
   width: 90vw;
-  /* max-height: fit-content; */
 }
-/* 
-.vali-grid-container {
-  width: 75vw;
-  display: grid;
-  grid-template-columns: 1fr 2fr;
-  column-gap: 1rem;
-  grid-template-rows: 1;
-  margin: 2rem auto;
-}
-
-.vali-grid-text {
-  grid-column: 2;
-}
-.vali-grid-picture {
-  grid-column: 1;
-  margin: auto;
-} */
-/* 
-.vali-grid-picture > img {
-  /* max-width: 100%;
-  margin: 0 auto;
-  max-height: 500px;
-  border-radius: 1rem;
-  box-shadow: 8px 8px 1rem rgba(100, 100, 100, 0.4);
-} */
 
 .vali-about-list > li {
   padding: 0.5rem 0 1rem 1rem;
@@ -729,7 +702,7 @@ h3 {
 
 /*  */
 /*  */
-/*  CONTACT */
+/*  main CONTACT */
 /*  */
 /*  */
 /*  */
@@ -824,7 +797,7 @@ h3 {
 /*  */
 /*  */
 /*  */
-/* BASIC SMALL SCREEN STYLES */
+/* ipad screen STYLES */
 
 @media screen and (max-width: 1200px) {
   #background-image {
@@ -845,7 +818,7 @@ h3 {
     width: 90vw;
     padding: 0.5rem;
   }
-  /* HOME PAGE */
+  /* ipad home PAGE */
 
   .home-div-inner {
     display: grid;
@@ -914,7 +887,7 @@ h3 {
 
   /*  */
   /*  */
-  /* ABOUT page */
+  /* ipad about page */
   /*  */
   /*  */
 
@@ -955,7 +928,7 @@ h3 {
 
   /*  */
   /*  */
-  /* post page */
+  /* ipad post page */
   /*  */
   /*  */
 
@@ -1060,7 +1033,13 @@ h3 {
   #large {
     display: none;
     width: 0px;
-  } /* HOME PAGE */
+  }
+
+  /* */
+  /* */
+  /* mobile home PAGE */
+  /* */
+  /* */
   .home-div-inner {
     display: grid;
     height: 450px;
@@ -1125,7 +1104,7 @@ h3 {
 
   /*  */
   /*  */
-  /* login page */
+  /* mobile login page */
   /*  */
   /*  */
 
@@ -1142,7 +1121,7 @@ h3 {
   }
   /*  */
   /*  */
-  /* about page */
+  /* mobile about page */
   /*  */
   /*  */
 
@@ -1200,13 +1179,27 @@ h3 {
 
   /*  */
   /*  */
-  /*  blog  */
+  /*  mobile blog  */
   /*  */
   /*  */
 
   /* .post-info {
     display: none;
   } */
+
+  .tag-styles {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+    outline: 1px solid #183333;
+    padding: 0.5rem;
+    margin: 2px 2px;
+    border-radius: 1rem;
+    font-size: 12px;
+    text-decoration: none;
+    box-shadow: 2px 2px 4px var(--box-shadow-color-light);
+  }
+
   .post-headline-div-picture {
     width: 95%;
     max-height: 300px;

@@ -19,6 +19,20 @@ const isLoggedIn = async (req, res, next) => {
   }
 };
 
+const isAdmin = async (req, res, next) => {
+  try {
+    const admin = await User.findByToken(req.headers.authorization);
+    if (admin && admin.adminStatus == true) {
+      next();
+    } else {
+      res.status(401).send("For [Admin] Eyes Only");
+    }
+  } catch (ex) {
+    console.error(ex);
+    res.status(500).send("Internal Server Error");
+  }
+};
+
 const restrictAccess = (req, res, next) => {
   const origin = req.headers.origin || req.headers.referer || "localhost:3000" || "http://localhost:3000";
   console.log("origin", origin);
@@ -40,6 +54,7 @@ const restrictAccess = (req, res, next) => {
 };
 
 module.exports = {
+  isAdmin,
   isLoggedIn,
   restrictAccess,
 };

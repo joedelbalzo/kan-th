@@ -22,6 +22,7 @@ const AdminWrapper = lazy(() => import("./Admin/AdminWrapper"));
 const AdminHome = lazy(() => import("./Admin/AdminHome"));
 const AdminPosts = lazy(() => import("./Admin/AdminPosts"));
 const AdminHelp = lazy(() => import("./Admin/AdminHelp"));
+const AdminUsers = lazy(() => import("./Admin/AdminUsers"));
 const OAuthHandler = lazy(() => import("./assets/OauthHandler"));
 
 const PortfolioWrapper = lazy(() => import("./Portfolio/PortfolioWrapper"));
@@ -150,6 +151,7 @@ function App(props) {
                 <Route index element={<AdminHome />} />
                 <Route path="posts" element={<AdminPosts />} />
                 <Route path="help" element={<AdminHelp />} />
+                <Route path="users" element={<AdminUsers />} />
               </Route>
             )}
           </Routes>

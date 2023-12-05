@@ -63,6 +63,9 @@ const Admin = () => {
 
   return (
     <div>
+      <nav>
+        <Link to="/admin/users">Users</Link>
+      </nav>
       <h3 className="admin-header">
         Hey there, boss. Here's where the magic happens. Below is the list of published posts, drafted posts, and handy little help guide.{" "}
       </h3>

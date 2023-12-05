@@ -1,7 +1,7 @@
 const express = require("express");
 const app = express.Router();
 const { User } = require("../db");
-const { isLoggedIn } = require("./middleware");
+const { isLoggedIn, isAdmin } = require("./middleware");
 const path = require("path");
 const bcrypt = require("bcrypt");
 
@@ -81,9 +81,30 @@ app.get("/logout", function (req, res) {
   res.redirect("/");
 });
 
-app.post("/", async (req, res, next) => {
+//admin things
+app.get("/users", isAdmin, isLoggedIn, async (req, res, next) => {
   try {
-    res.send(await User.authenticate(req.body));
+    const allUsers = await User.findAll();
+    res.send(allUsers);
+  } catch (ex) {
+    next(ex);
+  }
+});
+app.get("/filteredusers", isAdmin, isLoggedIn, async (req, res, next) => {
+  try {
+    const { param } = req.body;
+    console.log(param);
+    const allUsers = await User.findAll();
+    res.send(allUsers);
+  } catch (ex) {
+    next(ex);
+  }
+});
+
+//basic user things
+app.get("/", isLoggedIn, (req, res, next) => {
+  try {
+    res.send(req.user);
   } catch (ex) {
     next(ex);
   }
@@ -98,9 +119,9 @@ app.post("/register", async (req, res, next) => {
   }
 });
 
-app.get("/", isLoggedIn, (req, res, next) => {
+app.post("/", async (req, res, next) => {
   try {
-    res.send(req.user);
+    res.send(await User.authenticate(req.body));
   } catch (ex) {
     next(ex);
   }

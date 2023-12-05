@@ -6,7 +6,7 @@ const path = require("path");
 
 require("dotenv").config({ path: path.resolve(__dirname, "../..", ".env") });
 
-const JWT_SECRET = process.env.JWT || "itsa389F5C6458C764FF4315281DB1E3Fdevsecretbaby12302398#$";
+const JWT_SECRET = process.env.JWT || "itsa389F5C6458C764FF43152asd81DB1E3Fdevsecretbaby12302398#$";
 
 const User = conn.define("user", {
   id: {
@@ -25,6 +25,7 @@ const User = conn.define("user", {
   adminStatus: {
     type: BOOLEAN,
     allowNull: true,
+    defaultValue: false,
   },
   email: {
     type: STRING,
@@ -41,6 +42,12 @@ const User = conn.define("user", {
     //   },
     // },
   },
+  city: {
+    type: STRING,
+  },
+  state: {
+    type: STRING,
+  },
 
   businessId: {
     type: UUID,
@@ -49,6 +56,10 @@ const User = conn.define("user", {
   googleId: {
     type: STRING,
     unique: true,
+  },
+  mailingList: {
+    type: BOOLEAN,
+    defaultValue: true,
   },
 });
 
