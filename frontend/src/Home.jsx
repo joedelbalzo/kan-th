@@ -70,7 +70,7 @@ function Home() {
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            if (entry.target === ref1.current) controls1.start({ opacity: 1, y: 0, transition: { duration: 1 } });
+            if (entry.target === ref1.current) controls1.start({ opacity: 1, y: 0 });
             if (entry.target === ref2.current) controls2.start({ opacity: 1, y: 0 });
             if (entry.target === ref3.current) controls3.start({ opacity: 1, y: 0 });
             if (entry.target === ref4.current) controls4.start({ opacity: 1, y: 0 });
@@ -78,7 +78,7 @@ function Home() {
           }
         });
       },
-      { threshold: 0.5, rootMargin: "0px 0px 0px 0px" }
+      { threshold: 0.2, rootMargin: "0px 0px 0px 0px" }
     );
 
     observer.observe(ref1.current);

@@ -32,8 +32,8 @@ const Login = () => {
     ev.preventDefault();
     try {
       window.localStorage.removeItem("token");
-
       await dispatch(attemptLogin(credentials));
+      //insert redirect to profile page
     } catch (err) {
       setErrorMessage("username or password is incorrect");
     }

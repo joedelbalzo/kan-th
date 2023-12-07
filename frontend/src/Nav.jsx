@@ -1,5 +1,5 @@
 //React Imports
-import React, { useContext, useEffect, useState, useRef } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 // import { FaRegSun, FaRegMoon, FaSearch } from "react-icons/fa";
 
@@ -12,13 +12,6 @@ import Hamburger from "./assets/Hamburger";
 //Store Imports
 import { useDispatch, useSelector, shallowEqual } from "react-redux";
 import { logout } from "./store";
-
-//mui
-import IconButton from "@mui/material/IconButton";
-import MenuIcon from "@mui/icons-material/Menu";
-import Menu from "@mui/material/Menu";
-import MenuItem from "@mui/material/MenuItem";
-import Box from "@mui/material/Box";
 
 const Nav = React.memo(() => {
   let auth = useSelector((state) => state.auth, shallowEqual);
@@ -75,24 +68,29 @@ const Nav = React.memo(() => {
         </Link>
 
         {auth.id && (
-          <Link to="/portfolio" className="nav-links" id="large" style={{ fontSize: "24px" }}>
+          <Link to="/portfolio" className="nav-links" id="large" style={{ fontSize: "22px" }}>
             portfolio
           </Link>
         )}
 
-        <Link to="/blog" className="nav-links" id="large" style={{ fontSize: "24px" }}>
+        <Link to="/blog" className="nav-links" id="large" style={{ fontSize: "22px" }}>
           <div>blog</div>
         </Link>
-        <Link to="/about" className="nav-links" id="large" style={{ fontSize: "24px" }}>
+        <Link to="/about" className="nav-links" id="large" style={{ fontSize: "22px" }}>
           <div>about</div>
         </Link>
         {!auth.id ? (
-          <Link to="/login" className="nav-links" id="large" style={{ fontSize: "24px" }}>
+          <Link to="/login" className="nav-links" id="large" style={{ fontSize: "22px" }}>
             <div>login</div>
           </Link>
         ) : (
-          <Link to="/" onClick={handleLogout} className="nav-links" id="large" style={{ fontSize: "24px" }}>
+          <Link to="/" onClick={handleLogout} className="nav-links" id="large" style={{ fontSize: "22px" }}>
             <div>logout</div>
+          </Link>
+        )}
+        {auth.id && auth.adminStatus === true && (
+          <Link to="/admin" className="nav-links" id="large" style={{ fontSize: "22px" }}>
+            <div>admin tools</div>
           </Link>
         )}
 
@@ -127,6 +125,11 @@ const Nav = React.memo(() => {
             ) : (
               <Link to="/" onClick={handleLogout}>
                 <div>logout</div>
+              </Link>
+            )}
+            {auth.id && auth.adminStatus === true && (
+              <Link to="/admin">
+                <div>admin tools</div>
               </Link>
             )}
           </div>

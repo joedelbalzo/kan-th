@@ -970,18 +970,15 @@ h3 {
     margin: 0 2rem;
   }
 }
-/*  MOBILE SPECIFIC STYLES */
-/*  MOBILE SPECIFIC STYLES */
-/*  MOBILE SPECIFIC STYLES */
-/*  MOBILE SPECIFIC STYLES */
-/*  MOBILE SPECIFIC STYLES */
-/*  MOBILE SPECIFIC STYLES */
 
-@media screen and (max-width: 500px) {
-  body {
-    overflow-y: none;
-  }
-  /* nav */
+/*  */
+/*  */
+/*  */
+/* small iPad Nav */
+/*  */
+/*  */
+
+@media screen and (max-width: 768px) {
   #small {
     display: flex;
     justify-content: flex-end;
@@ -1034,6 +1031,19 @@ h3 {
   #large {
     display: none;
     width: 0px;
+  }
+}
+
+/*  MOBILE SPECIFIC STYLES */
+/*  MOBILE SPECIFIC STYLES */
+/*  MOBILE SPECIFIC STYLES */
+/*  MOBILE SPECIFIC STYLES */
+/*  MOBILE SPECIFIC STYLES */
+/*  MOBILE SPECIFIC STYLES */
+
+@media screen and (max-width: 500px) {
+  body {
+    overflow-y: none;
   }
 
   /* */

@@ -41,9 +41,10 @@ const Admin = () => {
 
   return (
     <div>
-      <nav>
-        <Link to={"/admin/users"}>Users</Link>
-      </nav>
+      <Link to="/admin" className="image-upload-buttons">
+        {" "}
+        &larr; Back
+      </Link>
       <h3 className="admin-header">Here's the list of Users</h3>
       {users.map((user) => {
         return (

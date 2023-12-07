@@ -42,6 +42,10 @@ const AdminMailingList = () => {
   return (
     <div>
       <AdminNav />
+      <Link to="/admin" className="image-upload-buttons">
+        {" "}
+        &larr; Back
+      </Link>
       <h3 className="admin-header">Email List of People who are interested. Joe, sort this by most recent.</h3>
       <div>
         <ul>

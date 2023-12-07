@@ -10,6 +10,10 @@ const Help = () => {
   };
   return (
     <div className="help-and-documentation-div">
+      <Link to="/admin" className="image-upload-buttons">
+        {" "}
+        &larr; Back
+      </Link>
       <div className="help-and-documentation-links">
         Help and Documentation
         <ul style={{ display: "flex", width: "50%", margin: "auto", justifyContent: "space-around" }}>

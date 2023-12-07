@@ -6,6 +6,9 @@ import { useNavigate, Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { createUserProfile, editUserProfile } from "../store";
 
+//Style imports
+import "./PortfolioStyles.css";
+
 const PortfolioHome = () => {
   const auth = useSelector((state) => state.auth);
   // need businesses in the state to be able to pull information with the user's businessId
