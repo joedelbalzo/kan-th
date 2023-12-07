@@ -142,3 +142,15 @@
   border-radius: 2rem;
   box-shadow: 8px 8px 1rem rgba(100, 100, 100, 0.4);
 }
+
+@media screen and (max-width: 500px) {
+  .portfolio-grid-container {
+    width: 90%;
+    margin: 2rem auto;
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+  .portfolio-personalize-image {
+    grid-column: 1;
+  }
+}

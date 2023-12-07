@@ -106,31 +106,22 @@ const Blogposts = () => {
         {/* break between headliner and other latest posts */}
 
         <div className="post-grid">
-          <div className="post-info">
-            <Suspense
-              fallback={
-                <div>
-                  <Loading />
-                  Loading Posts...
-                </div>
-              }
-            >
-              {/* <SubNav /> */}
-            </Suspense>
+          <div className="post-info" style={{ marginTop: "2rem" }}>
+            <JoinMailingList />
+            <div className="tag-styles-container" style={{ marginTop: "2rem", marginBottom: "0" }}>
+              sort by tags:
+              <select className="tag-styles" onChange={(event) => onTagClick(event.target.value)}>
+                {tags.map((tag) => {
+                  return (
+                    <option value={tag.id} key={tag.id}>
+                      {tag.name}
+                    </option>
+                  );
+                })}
+              </select>
+            </div>
           </div>
-          <JoinMailingList />
-          <div className="tag-styles-container" style={{ marginTop: "2rem", marginBottom: "0" }}>
-            sort by tags:
-            <select className="tag-styles" onChange={(event) => onTagClick(event.target.value)}>
-              {tags.map((tag) => {
-                return (
-                  <option value={tag.id} key={tag.id}>
-                    {tag.name}
-                  </option>
-                );
-              })}
-            </select>
-          </div>
+
           {filteredPosts
             .filter((post) => post !== headlinerPost)
             .map((blogpost) => {

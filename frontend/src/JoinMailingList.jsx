@@ -45,12 +45,12 @@ const JoinMailingList = () => {
   const styles = {
     div: {
       maxWidth: "550px",
-      minWidth: "320px",
+      minWidth: "310px",
       margin: "0 auto",
     },
     form: {
       display: "flex",
-      width: "320px",
+      width: "310px",
       margin: "4px auto",
     },
     input: {

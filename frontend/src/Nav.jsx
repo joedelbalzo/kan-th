@@ -26,6 +26,7 @@ const Nav = React.memo(() => {
   const dispatch = useDispatch();
 
   const handleLogout = async () => {
+    closeNav();
     await dispatch(logout());
     auth = null;
     console.log(auth);
@@ -110,7 +111,11 @@ const Nav = React.memo(() => {
               </div>
             </Link>
 
-            {auth.id && <Link to="/portfolio">portfolio</Link>}
+            {auth.id && (
+              <Link to="/portfolio" onClick={closeNav}>
+                portfolio
+              </Link>
+            )}
 
             <Link to="/blog" onClick={closeNav}>
               <div>blog</div>
@@ -128,7 +133,7 @@ const Nav = React.memo(() => {
               </Link>
             )}
             {auth.id && auth.adminStatus === true && (
-              <Link to="/admin">
+              <Link to="/admin" onClick={closeNav}>
                 <div>admin tools</div>
               </Link>
             )}
