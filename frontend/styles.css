@@ -455,15 +455,40 @@ a:hover {
   border-radius: 4rem;
   box-shadow: 8px 8px 1rem rgba(100, 100, 100, 0.4);
   display: grid;
-  grid-template-columns: 2fr 1fr;
-  grid-template-rows: 1;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr auto;
 }
-.kanica-text {
-  grid-column: 1;
+
+.kanica-heading {
+  grid-row: 1;
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  grid-template-rows: 1fr;
+  padding-top: 1rem;
 }
-.kanica-picture {
+
+.kanica-heading > div {
   grid-column: 1;
   grid-row: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-bottom: 10%;
+}
+.kanica-heading > div > h1 {
+  font-size: calc(12px + 4vw);
+}
+.kanica-picture {
+  grid-column: 2;
+  height: 90%;
+  width: 90%;
+  object-fit: cover;
+  border-radius: 2rem;
+  margin: auto;
+}
+.kanica-text {
+  grid-row: 2;
+  height: fit-content;
 }
 
 /* MAIN BLOG PAGE STYLES */
@@ -617,44 +642,23 @@ h3 {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  margin: 0 auto;
+  align-items: center;
+  margin: 1rem auto;
   flex-wrap: wrap;
+  font-size: 14px;
+  position: relative;
 }
 .tag-styles {
   display: flex;
   flex-wrap: nowrap;
   justify-content: space-around;
   outline: 1px solid #183333;
-  padding: 0.5rem;
-  margin: 2px 4px;
+  padding: 4px 8px;
+  margin: 0px 4px;
   border-radius: 1rem;
   font-size: 14px;
   text-decoration: none;
   box-shadow: 2px 2px 4px var(--box-shadow-color-light);
-}
-.tag-styles:hover {
-  cursor: pointer;
-  background-color: #183333;
-  box-shadow: 2px 4px 4px var(--box-shadow-color-light);
-  color: whitesmoke;
-}
-.tag-styles > a:hover {
-  text-decoration: none;
-  color: whitesmoke;
-}
-
-.tag-styles-selected {
-  display: flex;
-  flex-wrap: nowrap;
-  justify-content: space-around;
-  outline: 3px solid #183333;
-  padding: 0.5rem;
-  margin: 2px 4px;
-  border-radius: 1rem;
-  font-size: 14px;
-  text-decoration: none;
-  background-color: #96ccee40;
-  box-shadow: 4px 4px 8px var(--box-shadow-color-light);
 }
 
 .share-buttons {
@@ -1171,21 +1175,48 @@ h3 {
   .vali-picture {
     grid-row: 1;
   }
-  .kanica-about {
-    grid-row: 3;
-    width: 90%;
-    padding: 1rem;
 
+  .kanica-about {
+    width: 95%;
+    margin: 2rem auto;
+    padding: 1rem 0;
+    border-radius: 2rem;
     display: grid;
     grid-template-columns: 1fr;
-    grid-template-rows: auto auto;
+    grid-template-rows: 1fr auto;
   }
-  .kanica-text {
-    grid-column: 1;
+
+  .kanica-heading {
+    grid-row: 1;
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    grid-template-rows: 1fr;
+    padding: 0 1rem;
   }
-  .kanica-picture {
+
+  .kanica-heading > div {
     grid-column: 1;
     grid-row: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-bottom: 10%;
+  }
+  .kanica-heading > div > h1 {
+    font-size: calc(12px + 3vw);
+  }
+  .kanica-picture {
+    grid-column: 2;
+    height: 90%;
+    width: 90%;
+    object-fit: cover;
+    border-radius: 1rem;
+    margin: auto;
+  }
+  .kanica-text {
+    grid-row: 2;
+    padding: 1rem;
+    height: fit-content;
   }
 
   /*  */

@@ -8,6 +8,7 @@ import DOMPurify from "dompurify";
 //Component Imports
 
 const SubNav = lazy(() => import("./SubNav"));
+const JoinMailingList = lazy(() => import("../JoinMailingList"));
 
 import { FadeComponent } from "../assets/FadeComponent";
 import Loading from "../assets/Loading";
@@ -22,14 +23,17 @@ const Blogposts = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [loading, setLoading] = useState(true);
+  const tags = useSelector((state) => state.tags);
 
-  const blogposts = useSelector((state) => state.blogposts.allBlogposts);
+  let blogposts = useSelector((state) => state.blogposts.allBlogposts);
+  const [filteredPosts, setFilteredPosts] = useState(blogposts);
 
   useEffect(() => {
     if (!blogposts) {
       return <Loading />;
     } else {
       setLoading(false);
+      setFilteredPosts(blogposts);
     }
   }, [blogposts]);
 
@@ -60,6 +64,25 @@ const Blogposts = () => {
     return parse(content);
   };
 
+  //tag filtering
+  const tagToAdd = {
+    id: 1234,
+    name: "All Posts",
+  };
+
+  if (!tags.some((tag) => tag.id === tagToAdd.id && tag.name === tagToAdd.name)) {
+    tags.unshift(tagToAdd);
+  }
+  let posts = blogposts;
+  const onTagClick = (ev) => {
+    if (ev === "1234") {
+      setFilteredPosts(blogposts);
+    } else {
+      const filtered = blogposts.filter((post) => post.tags.some((tag) => tag.id === ev));
+      setFilteredPosts(filtered);
+    }
+  };
+
   return (
     <FadeComponent>
       <div>
@@ -71,12 +94,7 @@ const Blogposts = () => {
                 <h2>{headlinerPost.title}</h2>
               </Link>
 
-              <div className="post-body">
-                {sampleText(headlinerPost.content, 25)}{" "}
-                {/* <Link to={`/blog/posts/${headlinerPost.id}`}>
-                  read more <BackButton facingRight={true} strokeColor="whitesmoke" />
-                </Link> */}
-              </div>
+              <div className="post-body">{sampleText(headlinerPost.content, 25)} </div>
               <Link to={`/blog/posts/${headlinerPost.id}`} id="read-more">
                 read more <BackButton facingRight={true} strokeColor="whitesmoke" />
               </Link>
@@ -86,25 +104,7 @@ const Blogposts = () => {
         {/* break between headliner and other latest posts */}
         {/* break between headliner and other latest posts */}
         {/* break between headliner and other latest posts */}
-        <div
-          style={{
-            fontSize: "14px",
-            display: "flex",
-            alignItems: "center",
-            width: "70%",
-            justifyContent: "space-around",
-            margin: "auto",
-          }}
-        >
-          Subscribe and Share!
-          <form>
-            <label>
-              // email and rss buttons coming //
-              {/* <input></input> */}
-            </label>
-          </form>
-          <ShareButtons shareType={"generic"} fillColor={"#183333"} />
-        </div>
+
         <div className="post-grid">
           <div className="post-info">
             <Suspense
@@ -115,11 +115,23 @@ const Blogposts = () => {
                 </div>
               }
             >
-              <SubNav />
+              {/* <SubNav /> */}
             </Suspense>
           </div>
-
-          {blogposts
+          <JoinMailingList />
+          <div className="tag-styles-container" style={{ marginTop: "2rem", marginBottom: "0" }}>
+            sort by tags:
+            <select className="tag-styles" onChange={(event) => onTagClick(event.target.value)}>
+              {tags.map((tag) => {
+                return (
+                  <option value={tag.id} key={tag.id}>
+                    {tag.name}
+                  </option>
+                );
+              })}
+            </select>
+          </div>
+          {filteredPosts
             .filter((post) => post !== headlinerPost)
             .map((blogpost) => {
               let { homePic } = pics(blogpost);
@@ -144,18 +156,16 @@ const Blogposts = () => {
                         ) : (
                           ""
                         )}
-                        ,
                         {blogpost.tags[1] ? (
-                          <Link to={`/blog/tags/${blogpost.tags[1].id}`} key={blogpost.tags[1].id} style={{ marginLeft: 4 }}>
-                            {blogpost.tags[1].name}
+                          <Link to={`/blog/tags/${blogpost.tags[1].id}`} key={blogpost.tags[1].id}>
+                            , {blogpost.tags[1].name}
                           </Link>
                         ) : (
                           ""
                         )}
-                        ,
                         {blogpost.tags[2] ? (
-                          <Link to={`/blog/tags/${blogpost.tags[2].id}`} key={blogpost.tags[2].id} style={{ marginLeft: 4 }}>
-                            {blogpost.tags[2].name}{" "}
+                          <Link to={`/blog/tags/${blogpost.tags[2].id}`} key={blogpost.tags[2].id}>
+                            , {blogpost.tags[2].name}{" "}
                           </Link>
                         ) : (
                           ""

@@ -44,19 +44,18 @@ const JoinMailingList = () => {
 
   const styles = {
     div: {
-      maxWidth: "500px",
+      maxWidth: "550px",
       minWidth: "320px",
       margin: "0 auto",
     },
     form: {
       display: "flex",
-
       width: "320px",
       margin: "4px auto",
     },
     input: {
       width: "200px",
-      padding: ".5rem",
+      padding: ".2rem",
       borderRadius: ".5rem",
       margin: "0 auto",
     },
@@ -65,19 +64,20 @@ const JoinMailingList = () => {
       alignItems: "center",
       justifyContent: "center",
       width: "100px",
-      height: "45px",
+      height: "30px",
       padding: ".5rem",
       borderRadius: ".5rem",
       margin: "0 auto",
       backgroundColor: "#183333",
       color: "whitesmoke",
+      cursor: "pointer",
     },
   };
 
   return (
     <div className="join-mailing-list" style={styles.div}>
-      <strong>Subscribe for updates.</strong>
-      <br /> Weekly updates on financing trends, valuations and platform features.
+      <strong>Subscribe for Updates</strong>
+      <br /> <span style={{ fontSize: "14px" }}>On financing trends, valuations and platform features.</span>
       <form onSubmit={joinMailingList} style={styles.form}>
         <input type="email" id="email" style={styles.input} onChange={(ev) => setEmail(ev.target.value)}></input>
 

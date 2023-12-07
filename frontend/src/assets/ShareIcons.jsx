@@ -98,8 +98,6 @@ LinkedIn.defaultProps = {
 
 export const Reddit = ({ width, height, fillColor }) => {
   const fillOpposite = fillColor == "#183333" ? "whitesmoke" : "#183333";
-  console.log(width, height, fillColor);
-
   return (
     <svg
       version="1.1"
@@ -162,7 +160,7 @@ export const Reddit = ({ width, height, fillColor }) => {
             opacity: 1,
           }}
           transform=" matrix(1 0 0 1 0 0) "
-          stroke-linecap="round"
+          strokeLinecap="round"
         />
       </g>
     </svg>

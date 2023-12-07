@@ -76,7 +76,7 @@ const syncAndSeed = async () => {
 
     await Promise.all(posts.map((post, index) => post.addImage(images[index])));
 
-    const [growthStrategies, valuations, equityAndDebt, businessPlanning, financingInsights, benchmarks, marketAnalysis, competitiveEdge] =
+    const [growthStrategies, valuationsAndBenchmarks, equityAndDebt, financingInsights, marketAnalysis, competitiveEdge] =
       await Promise.all([
         Tag.create({ name: "Growth Strategies" }),
         Tag.create({ name: "Valuations and Benchmarks" }),
@@ -89,6 +89,25 @@ const syncAndSeed = async () => {
     const jimbosPizzeria = await Business.create({
       name: "Jimbo's Pizzeria",
     });
+
+    await Promise.all([
+      posts[0].addTags(growthStrategies),
+      posts[0].addTags(competitiveEdge),
+      posts[1].addTags(valuationsAndBenchmarks),
+      posts[1].addTags(growthStrategies),
+      posts[2].addTags(equityAndDebt),
+      posts[2].addTags(valuationsAndBenchmarks),
+      posts[3].addTags(financingInsights),
+      posts[3].addTags(equityAndDebt),
+      posts[4].addTags(marketAnalysis),
+      posts[4].addTags(financingInsights),
+      posts[5].addTags(competitiveEdge),
+      posts[5].addTags(marketAnalysis),
+      posts[6].addTags(marketAnalysis),
+      posts[6].addTags(financingInsights),
+      posts[7].addTags(competitiveEdge),
+      posts[7].addTags(marketAnalysis),
+    ]);
 
     // const promises = [
     //   post1.addTags([valuations, growthStrategies, businessPlanning]),
@@ -113,11 +132,9 @@ const syncAndSeed = async () => {
       },
       tags: {
         growthStrategies,
-        valuations,
+        valuationsAndBenchmarks,
         equityAndDebt,
-        businessPlanning,
         financingInsights,
-        benchmarks,
         marketAnalysis,
         competitiveEdge,
       },

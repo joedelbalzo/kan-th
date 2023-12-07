@@ -5,55 +5,52 @@ import { useNavigate, Link, useParams } from "react-router-dom";
 //Store Imports
 import { useDispatch, useSelector } from "react-redux";
 import { filterBlogpostsByTag } from "../store";
+import JoinMailingList from "../JoinMailingList";
 
-const SubNav = () => {
+const SubNav = ({ id }) => {
   const tags = useSelector((state) => state.tags);
   const navigate = useNavigate();
   const dispatch = useDispatch();
-
-  let { id } = useParams();
 
   if (!tags) {
     return null;
   }
 
-  if (!id) {
-    id = 0;
-  }
-  console.log("subnav", id);
-
-  const onTagClick = async (tag) => {
-    if (tag === "all") {
-      navigate(`.`);
-    }
-    await dispatch(filterBlogpostsByTag(tag.id));
-    navigate(`/blog/tags/${tag.id}`);
+  const tagToAdd = {
+    id: 1234,
+    name: "All Posts",
   };
+
+  if (!tags.some((tag) => tag.id === tagToAdd.id && tag.name === tagToAdd.name)) {
+    tags.unshift(tagToAdd);
+  }
+
+  const onTagClick = async (ev) => {
+    if (ev === "1234") {
+      console.log("its working here dipshit");
+      navigate(`/blog/`);
+    } else {
+      await dispatch(filterBlogpostsByTag(ev));
+      navigate(`/blog/tags/${ev}`);
+    }
+  };
+
+  //needs a list of tags, so we can add "all"
 
   return (
     <div>
-      <span style={{ fontSize: "14px" }}>sort by tags:</span>
+      <JoinMailingList />
       <div className="tag-styles-container">
-        <div className="tag-styles" key={0}>
-          <Link to="/blog">All Posts</Link>
-        </div>
-        {tags.map((tag) => {
-          return (
-            <div key={tag.id}>
-              {tag.id === id ? (
-                <div className="tag-styles-selected" onClick={() => onTagClick(tag)}>
-                  {console.log("try again", id, tag.id)}
-
-                  <Link onClick={() => onTagClick(tag)}>{tag.name}</Link>
-                </div>
-              ) : (
-                <div className="tag-styles" key={tag.id} onClick={() => onTagClick(tag)}>
-                  <Link onClick={() => onTagClick(tag)}>{tag.name}</Link>
-                </div>
-              )}
-            </div>
-          );
-        })}
+        sort by tags:
+        <select className="tag-styles" onChange={(event) => onTagClick(event.target.value)}>
+          {tags.map((tag) => {
+            return (
+              <option value={tag.id} key={tag.id}>
+                {tag.name}
+              </option>
+            );
+          })}
+        </select>
       </div>
     </div>
   );
