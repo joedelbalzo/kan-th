@@ -5,6 +5,7 @@ import { useNavigate, Link } from "react-router-dom";
 
 //Component Imports
 import AdminHelp from "./AdminHelp";
+import AdminNav from "./AdminNav";
 
 //Store Imports
 import { publishBlogpost, hideBlogpost } from "../store";
@@ -63,12 +64,7 @@ const Admin = () => {
 
   return (
     <div>
-      <nav>
-        <Link to="/admin/users">Users</Link>
-      </nav>
-      <h3 className="admin-header">
-        Hey there, boss. Here's where the magic happens. Below is the list of published posts, drafted posts, and handy little help guide.{" "}
-      </h3>
+      <AdminNav />
 
       <div className="admin-nav">
         <Link to="/admin/posts" state={{ post: null, type: "create" }}>

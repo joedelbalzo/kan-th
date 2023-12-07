@@ -33,6 +33,12 @@ const User = conn.define("user", {
       isEmail: true,
     },
   },
+  firstName: {
+    type: STRING,
+  },
+  lastName: {
+    type: STRING,
+  },
   password: {
     type: STRING,
     // validate: {
@@ -58,6 +64,10 @@ const User = conn.define("user", {
     unique: true,
   },
   mailingList: {
+    type: BOOLEAN,
+    defaultValue: true,
+  },
+  isNewUser: {
     type: BOOLEAN,
     defaultValue: true,
   },

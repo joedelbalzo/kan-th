@@ -1,5 +1,5 @@
 const conn = require("./conn");
-const { User, Blogpost, Tag, Image, Business } = require("./Models");
+const { User, Blogpost, Tag, Image, Business, MailingListUser } = require("./Models");
 const path = require("path");
 const { faker } = require("@faker-js/faker");
 require("dotenv").config({ path: path.resolve(__dirname, "..", ".env") });
@@ -137,4 +137,5 @@ module.exports = {
   Tag,
   Image,
   conn,
+  MailingListUser,
 };

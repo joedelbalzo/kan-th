@@ -66,7 +66,8 @@ a:hover {
   text-align: center;
   margin: 2rem auto;
   width: 400px;
-  height: 350px;
+  min-height: 350px;
+  max-height: max-content;
   outline: 3px solid #183333;
   border-radius: 2rem;
   box-shadow: 8px 8px 2rem var(--box-shadow-color-light);

@@ -14,6 +14,7 @@ import { createBlogpost, editBlogpost } from "../store";
 //Component Style Imports
 import "./AdminStyles.css";
 import Loading from "../assets/Loading";
+import AdminNav from "./AdminNav";
 
 //MUI Imports
 import TextField from "@mui/material/TextField";

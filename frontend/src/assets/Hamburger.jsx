@@ -12,7 +12,6 @@ const Hamburger = ({ width = "30px", height = "30px" }) => {
       xmlSpace="preserve"
       style={{
         display: "inline-block",
-        display: "inline-block",
         verticalAlign: "middle",
         color: "none",
         width: width,

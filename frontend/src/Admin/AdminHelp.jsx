@@ -1,4 +1,5 @@
 import React from "react";
+import AdminNav from "./AdminNav";
 
 const Help = () => {
   const scrollToSection = (sectionId) => {

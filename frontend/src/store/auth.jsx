@@ -1,9 +1,8 @@
 import axios from "axios";
 
-let authState;
+let authState = null;
 export const auth = (state = {}, action) => {
   if (action.type === "SET_AUTH") {
-    authState = action.auth;
     return action.auth;
   }
   return state;
@@ -23,6 +22,7 @@ export const loginWithGoogle = () => {
           },
         });
         dispatch({ type: "SET_AUTH", auth: response.data });
+        dispatch({ type: "UPDATE_USERS_AND_PROFILES", data: response.data });
       }
     } catch (error) {
       console.error("Error handling Google OAuth response:", error);
@@ -38,9 +38,11 @@ export const handleGoogleOAuthResponse = (token) => {
 };
 
 export const logout = () => {
-  window.localStorage.removeItem("token");
-  authState = null;
-  return { type: "SET_AUTH", auth: {} };
+  return async (dispatch) => {
+    window.localStorage.removeItem("token");
+    dispatch({ type: "UPDATE_USERS_AND_PROFILES", currentUser: null });
+    return { type: "SET_AUTH", auth: {} };
+  };
 };
 
 export const loginWithToken = () => {
@@ -54,6 +56,7 @@ export const loginWithToken = () => {
           },
         });
         dispatch({ type: "SET_AUTH", auth: response.data });
+        dispatch({ type: "UPDATE_USERS_AND_PROFILES", data: response.data });
       } catch (ex) {
         return console.log("Login Invalid");
       }
@@ -81,12 +84,12 @@ export const register = (credentials) => {
 const initialState = {
   allUsers: [],
   filteredUsers: [],
-  user: null,
+  currentUser: null,
 };
 
 export const usersAndProfiles = (state = initialState, action) => {
   if (action.type === "FETCH_USERS") {
-    if (authState.adminStatus === true) {
+    if (state.currentUser.adminStatus === true) {
       return { allUsers: action.users };
     }
   }
@@ -94,22 +97,26 @@ export const usersAndProfiles = (state = initialState, action) => {
     return { filteredUsers: action.user };
   }
   if (action.type === "FETCH_FILTERED_USERS") {
-    if (authState.admin === true) {
+    if (state.currentUser.adminStatus === true) {
       return { ...state, filteredUsers: action.users };
     }
   }
   if (action.type === "CREATE_USER_PROFILE" || action.type === "EDIT_USER_PROFILE") {
-    if (authState.admin === true || state.currentUser.id === action.user.id) {
+    if (state.currentUser.adminStatus === true || state.currentUser.id === action.user.id) {
       return { ...state, currentUser: action.user };
     }
   }
   if (action.type === "ARCHIVE_USER_PROFILE") {
-    if (state.currentUser.role === "admin" || state.currentUser.id === action.user.id) {
+    if (state.currentUser.adminStatus === true || state.currentUser.id === action.user.id) {
       return {
         ...state,
         allUsers: state.allUsers.filter((user) => user.id !== action.user.id),
       };
     }
+  }
+  if (action.type === "UPDATE_USERS_AND_PROFILES") {
+    console.log("omg we're here", action.data);
+    return { ...state, currentUser: action.data };
   }
   return state;
 };
@@ -152,12 +159,13 @@ export const fetchFilteredUsers = (param) => {
 export const createUserProfile = (user) => {
   return async (dispatch) => {
     const token = window.localStorage.getItem("token");
-    let response = await axios.post(`/api/users/`, user, {
+    let response = await axios.put(`/api/auth/user/`, user, {
       headers: {
         authorization: token,
       },
     });
     dispatch({ type: "CREATE_USER_PROFILE", user: response.data });
+    return "success";
   };
 };
 
@@ -186,7 +194,29 @@ export const archiveUserProfile = (blogpost) => {
     dispatch({ type: "HIDE_BLOGPOST", blogpost: blogResponse.data });
   };
 };
-// export default {
-//   userprofile,
-//   auth,
-// };
+
+//mailing list
+const mailingListState = {
+  mailingList: [],
+};
+
+export const mailingList = (state = mailingListState, action) => {
+  if (action.type === "FETCH_MAILINGLIST") {
+    if (initialState.currentUser.adminStatus === true) {
+      return action.list;
+    }
+    return state;
+  }
+};
+export const fetchMailingList = () => {
+  return async (dispatch) => {
+    const token = window.localStorage.getItem("token");
+    const response = await axios.get(`/api/auth/mailinglist`, {
+      headers: {
+        authorization: token,
+      },
+    });
+    dispatch({ type: "FETCH_MAILINGLIST", list: response.data });
+    return response;
+  };
+};

@@ -21,7 +21,7 @@ import MenuItem from "@mui/material/MenuItem";
 import Box from "@mui/material/Box";
 
 const Nav = React.memo(() => {
-  const auth = useSelector((state) => state.auth, shallowEqual);
+  let auth = useSelector((state) => state.auth, shallowEqual);
 
   const [anchorElNav, setAnchorElNav] = useState(null);
   const [currPage, setCurrPage] = useState("/");
@@ -32,9 +32,11 @@ const Nav = React.memo(() => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const handleLogout = () => {
+  const handleLogout = async () => {
+    await dispatch(logout());
+    auth = null;
+    console.log(auth);
     localStorage.clear();
-    dispatch(logout());
     navigate("/");
   };
 

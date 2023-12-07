@@ -10,6 +10,7 @@ import { fetchUsers } from "../store";
 
 //Component Style Imports
 import "./AdminStyles.css";
+import AdminNav from "./AdminNav";
 
 const Admin = () => {
   const navigate = useNavigate();

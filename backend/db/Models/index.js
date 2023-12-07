@@ -3,6 +3,7 @@ const Blogpost = require("./Blogpost");
 const Tag = require("./Tag");
 const Image = require("./Image");
 const Business = require("./Business");
+const MailingListUser = require("./MailingListUser");
 
 Blogpost.belongsToMany(Tag, { through: "BlogpostTags" });
 Tag.belongsToMany(Blogpost, { through: "BlogpostTags" });
@@ -18,4 +19,5 @@ module.exports = {
   Tag,
   Image,
   Business,
+  MailingListUser,
 };

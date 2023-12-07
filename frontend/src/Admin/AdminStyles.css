@@ -1,10 +1,36 @@
 /* admin home styles */
+
 .admin-header {
   display: flex;
   justify-content: center;
   font-size: 1rem;
   margin: 1rem auto;
   text-align: center;
+}
+
+.admin-home-nav {
+  display: flex;
+  height: 50px;
+  width: 400px;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin: 0 auto;
+}
+.admin-home-nav > a {
+  font-size: 18px;
+  border-left: 1px solid #183333;
+  border-right: 1px solid #183333;
+  padding: 2px 0.5rem;
+  margin: 0.5rem;
+}
+.admin-home-nav > a:hover {
+  background-color: #18333360;
+  color: whitesmoke;
+  border-left: 1px solid #183333;
+  border-right: 1px solid #183333;
+  outline: 2px solid #183333;
+  text-decoration: none;
 }
 
 .admin-nav {

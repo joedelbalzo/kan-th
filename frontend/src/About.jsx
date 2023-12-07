@@ -67,8 +67,8 @@ function About() {
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            if (entry.target === ref1.current) controls1.start({ opacity: 1, y: 0 });
-            if (entry.target === ref2.current) controls2.start({ opacity: 1, y: 0 });
+            // if (entry.target === ref1.current) controls1.start({ opacity: 1, y: 0 });
+            // if (entry.target === ref2.current) controls2.start({ opacity: 1, y: 0 });
             if (entry.target === ref3.current) controls3.start({ opacity: 1, y: 0 });
             if (entry.target === ref4.current) controls4.start({ opacity: 1, y: 0 });
             if (entry.target === ref5.current) controls5.start({ opacity: 1, y: 0 });
@@ -78,8 +78,8 @@ function About() {
       { threshold: 0.1, rootMargin: "0px 0px 0px 0px" }
     );
 
-    observer.observe(ref1.current);
-    observer.observe(ref2.current);
+    // observer.observe(ref1.current);
+    // observer.observe(ref2.current);
     observer.observe(ref3.current);
     observer.observe(ref4.current);
     observer.observe(ref5.current);
@@ -130,7 +130,7 @@ function About() {
         </motion.div>
 
         <div className="vali-body-about">
-          <motion.div ref={ref1} initial={{ opacity: 0, y: "100px" }} animate={controls1} transition={transition}>
+          {/* <motion.div ref={ref1} initial={{ opacity: 0, y: "100px" }} animate={controls1} transition={transition}>
             <div id="vali-body-about-first">
               <main>
                 At Vali, we blend our expertise in finance with innovative technology to offer comprehensive valuation services that are
@@ -178,12 +178,13 @@ function About() {
                 </ul>
               </main>
             </div>
-          </motion.div>
+          </motion.div> */}
 
           <motion.div ref={ref3} initial={{ opacity: 0, y: "50px" }} animate={controls3} transition={transition}>
             <div className="kanica-about">
               <div className="kanica-text">
-                <h1>Founder: Kanica Allagh</h1>
+                <h1>Kanica Allagh</h1>
+                <h2>Founder</h2>
                 <p>
                   After spending 10 years in finance, from capital markets to investing, I came in close contact to valuation and financing
                   decision making for enterprises. I began noticing how these skills and products are gapped for SMBs, those who would
@@ -202,7 +203,7 @@ function About() {
             </div>
           </motion.div>
 
-          <motion.div ref={ref4} initial={{ opacity: 0, y: "50px" }} animate={controls4} transition={transition}>
+          {/* <motion.div ref={ref4} initial={{ opacity: 0, y: "50px" }} animate={controls4} transition={transition}>
             <div id="vali-body-about-third">
               <main>
                 So, why choose us? Expertise, customized solutions, transparency, and a technology-driven approach. Our vision is to become
@@ -210,7 +211,7 @@ function About() {
                 to turn valuation from a mere number into a roadmap for success, and we look forward to going on this journey with you.
               </main>
             </div>
-          </motion.div>
+          </motion.div> */}
         </div>
 
         <motion.div ref={ref5} initial={{ opacity: 0, y: "10px" }} animate={controls5} transition={transition}>

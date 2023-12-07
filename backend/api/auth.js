@@ -1,6 +1,6 @@
 const express = require("express");
 const app = express.Router();
-const { User } = require("../db");
+const { User, MailingListUser } = require("../db");
 const { isLoggedIn, isAdmin } = require("./middleware");
 const path = require("path");
 const bcrypt = require("bcrypt");
@@ -76,6 +76,28 @@ app.get("/google/callback", passport.authenticate("google", { failureRedirect: "
   }
 });
 
+app.get("/mailinglist", isAdmin, isLoggedIn, async (req, res, next) => {
+  try {
+    res.send(await MailingListUser.findAll());
+  } catch (ex) {
+    console.log(ex);
+    next(ex);
+  }
+});
+
+app.post("/mailinglist", async (req, res, next) => {
+  try {
+    console.log("in express", req.body);
+    const response = await MailingListUser.create({
+      email: req.body.email,
+      currentlyActive: true,
+    });
+    res.sendStatus(201);
+  } catch (ex) {
+    next(ex);
+  }
+});
+
 app.get("/logout", function (req, res) {
   req.logout();
   res.redirect("/");
@@ -127,9 +149,10 @@ app.post("/", async (req, res, next) => {
   }
 });
 
-app.put("/", isLoggedIn, async (req, res, next) => {
+app.put("/user", isLoggedIn, async (req, res, next) => {
   try {
     const user = req.user;
+    console.log(user, req.body);
     //define the properties a user can change
     await user.update(req.body);
     res.send(user);

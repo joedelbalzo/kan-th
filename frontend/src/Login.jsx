@@ -67,7 +67,7 @@ const Login = () => {
 
   return (
     <FadeComponent>
-      <div className="login" style={{ paddingTop: "2rem" }}>
+      <div className="login" style={{ paddingTop: "1rem" }}>
         <h2>Sign in to Vali</h2>
         <div>
           {" "}
@@ -80,7 +80,7 @@ const Login = () => {
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
-            margin: ".5rem auto",
+            margin: ".2rem auto",
           }}
         >
           {" "}
@@ -101,7 +101,6 @@ const Login = () => {
               height: "1px",
               outline: "1px solid #183333",
               backgroundColor: "darkgray",
-
               borderRadius: "2rem",
               marginLeft: "1rem",
             }}
@@ -133,9 +132,6 @@ const Login = () => {
             <Link to="/admin" style={buttonStyles}>
               Admin Tools
             </Link>
-            <button onClick={() => handleLogout()} style={buttonStyles}>
-              Admin Logout
-            </button>
           </div>
         )}
         <div

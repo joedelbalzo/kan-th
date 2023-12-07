@@ -23,10 +23,12 @@ const AdminHome = lazy(() => import("./Admin/AdminHome"));
 const AdminPosts = lazy(() => import("./Admin/AdminPosts"));
 const AdminHelp = lazy(() => import("./Admin/AdminHelp"));
 const AdminUsers = lazy(() => import("./Admin/AdminUsers"));
+const AdminMailingList = lazy(() => import("./Admin/AdminMailingList"));
 const OAuthHandler = lazy(() => import("./assets/OauthHandler"));
 
 const PortfolioWrapper = lazy(() => import("./Portfolio/PortfolioWrapper"));
 const PortfolioHome = lazy(() => import("./Portfolio/PortfolioHome"));
+const PortfolioPersonalize = lazy(() => import("./Portfolio/PortfolioPersonalize"));
 
 //Store Imports
 import { fetchPublishedBlogposts, fetchTags, fetchDraftedBlogposts } from "./store";
@@ -129,7 +131,17 @@ function App(props) {
                   </Suspense>
                 }
               >
-                <Route index element={<PortfolioHome />} />
+                {auth.isNewUser ? (
+                  <>
+                    <Route index element={<PortfolioPersonalize />} />
+                    <Route path="home" element={<PortfolioHome />} />
+                  </>
+                ) : (
+                  <>
+                    <Route index path="home" element={<PortfolioHome />} />
+                    <Route path="edit" element={<PortfolioPersonalize />} />
+                  </>
+                )}
               </Route>
             )}
 
@@ -152,6 +164,7 @@ function App(props) {
                 <Route path="posts" element={<AdminPosts />} />
                 <Route path="help" element={<AdminHelp />} />
                 <Route path="users" element={<AdminUsers />} />
+                <Route path="mailinglist" element={<AdminMailingList />} />
               </Route>
             )}
           </Routes>

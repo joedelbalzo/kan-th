@@ -4,7 +4,6 @@ import thunk from "redux-thunk";
 import { auth, usersAndProfiles } from "./auth";
 import blogposts from "./blogposts";
 import tags from "./tags";
-// import userprofile from "./userprofile";
 
 const rootReducer = combineReducers({
   blogposts,
@@ -27,4 +26,3 @@ export default store;
 export * from "./auth";
 export * from "./blogposts";
 export * from "./tags";
-// export * from "./userprofile";
