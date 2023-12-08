@@ -66,13 +66,6 @@ const Admin = () => {
     <div>
       <AdminNav />
 
-      <div className="admin-nav">
-        <Link to="/admin/posts" state={{ post: null, type: "create" }}>
-          Create New Post
-        </Link>
-        <br />
-        <Link to="/admin/help">Help and Documentation</Link>
-      </div>
       <div className="admin-grid">
         <div className="admin-grid-published">
           <h2>Published Posts</h2>

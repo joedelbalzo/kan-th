@@ -9,6 +9,7 @@ const Hamburger = ({ width = "30px", height = "30px" }) => {
       xmlnsXlink="http://www.w3.org/1999/xlink"
       viewBox="0 0 24 24"
       role="img"
+      aria-label="Image of three lines, indicating a mobile menu"
       xmlSpace="preserve"
       style={{
         display: "inline-block",

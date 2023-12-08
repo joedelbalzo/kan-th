@@ -4,11 +4,11 @@ import { useNavigate, Link } from "react-router-dom";
 
 //Store Imports
 import { useDispatch, useSelector } from "react-redux";
-import { createUserProfile, editUserProfile } from "../store";
+import { createUserProfile } from "../store";
 
 //Component Imports
 import Loading from "../assets/Loading";
-import image from "../assets/pexels-tim-douglas-6205523.jpg";
+import image from "../assets/pexels-tim-douglas.webp";
 
 //Style imports
 import "./PortfolioStyles.css";

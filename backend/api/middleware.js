@@ -35,7 +35,6 @@ const isAdmin = async (req, res, next) => {
 
 const restrictAccess = (req, res, next) => {
   const origin = req.headers.origin || req.headers.referer || "localhost:3000" || "http://localhost:3000";
-  console.log("origin", origin);
   if (origin) {
     if (
       origin === "https://www.usevali.com" ||

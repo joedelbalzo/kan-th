@@ -21,7 +21,7 @@ import TextField from "@mui/material/TextField";
 import Autocomplete from "@mui/material/Autocomplete";
 
 //Function Imports
-import { pics } from "../functions";
+import { pics } from "../Components/functions";
 
 const AdminPosts = () => {
   const location = useLocation();

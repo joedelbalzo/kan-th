@@ -7,13 +7,13 @@ import DOMPurify from "dompurify";
 
 //Component Imports
 
-import ShareButtons from "../ShareButtons";
+import ShareButtons from "../Components/ShareButtons";
 import SubNav from "./SubNav";
 
 //Store Imports
 
 //Function Imports
-import { readableDate, pics } from "../functions";
+import { readableDate, pics } from "../Components/functions";
 
 const Blogposts_Tags = () => {
   const blogposts = useSelector((state) => state.blogposts.filteredBlogposts);

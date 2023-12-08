@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Facebook, Email, LinkedIn, Twitter, Reddit } from "./assets/ShareIcons.jsx";
+import { Facebook, Email, LinkedIn, Twitter, Reddit } from "../assets/ShareIcons.jsx";
 
 const ShareButtons = ({ fillColor, post, shareType = null }) => {
   if (shareType == "generic") {

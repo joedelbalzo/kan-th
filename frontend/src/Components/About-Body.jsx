@@ -4,12 +4,10 @@ import { Link } from "react-router-dom";
 import { motion, useAnimation } from "framer-motion";
 
 //Component Imports
-import construction from "./assets/pexels-ivan-samkov-4491875.webp";
-import aboutTrip from "./assets/about-trip.webp";
-import FinanceBar from "./assets/FinanceBar";
-import Seedling from "./assets/Seedling";
-import Links from "./assets/Links";
-import PieChart from "./assets/BusinessIcons/PieChart";
+// import construction from "./assets/pexels-ivan-samkov.webp";
+// import aboutTrip from "./assets/about-trip.webp";
+// import PieChart from "./assets/BusinessIcons/PieChart";
+import { pieChartImg, aboutTripImg, woodworkerImg } from "../assets/ImageObjects";
 
 //Store Imports
 
@@ -71,7 +69,7 @@ function AboutBody() {
               your future, leverage growth opportunities, and plan for long-term success. <br />
             </main>
             <div id="svg-picture-overlay-container">
-              <PieChart id="piechart-svg" />
+              <img src={pieChartImg.src} alt={pieChartImg.alt} id="piechart-svg" />
               <img src={construction} id="about-image" />
             </div>
           </div>

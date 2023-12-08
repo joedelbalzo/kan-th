@@ -5,15 +5,15 @@ import { Link, useNavigate } from "react-router-dom";
 //Component Imports
 
 //Store Imports
-import { attemptLogin, loginWithGoogle, logout } from "./store";
+import { attemptLogin, loginWithGoogle, logout } from "../store";
 import { useDispatch, useSelector } from "react-redux";
 
 //Other Imports
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
-import { FadeComponent } from "./assets/FadeComponent";
+import { FadeComponent } from "../assets/FadeComponent";
 
-const Login = () => {
+const LoginComponent = () => {
   const auth = useSelector((state) => state.auth);
 
   const dispatch = useDispatch();
@@ -118,13 +118,17 @@ const Login = () => {
             onChange={onChange}
           />
           {auth.id != null ? (
-            <Button type="submit" onClick={() => handleLogout()} style={{ fontSize: "1.2rem" }}>
-              Logout
-            </Button>
+            // <Button type="submit" onClick={() => handleLogout()} style={{ fontSize: "1.2rem" }}>
+            <button type="submit" onClick={() => handleLogout()} className="logout-button">
+              logout
+            </button>
           ) : (
-            <Button type="submit" style={{ fontSize: "1.2rem" }}>
-              Login
-            </Button>
+            <button type="submit" className="login-button">
+              Login &rarr;
+            </button>
+            // <Button type="submit" style={{ fontSize: "1.2rem" }}>
+            //   Login
+            // </Button>
           )}
         </form>
         {auth.username == "admin" && (
@@ -150,4 +154,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default LoginComponent;

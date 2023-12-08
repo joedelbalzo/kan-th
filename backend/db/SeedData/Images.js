@@ -5,6 +5,7 @@ const SeededImages = [
     picNickname: "Headliner Picture",
     awsPicURL: null,
     picCaption: "Photo by fauxels",
+    altText: "Image of colleagues discussing finances around a table",
   },
 
   {
@@ -13,6 +14,7 @@ const SeededImages = [
     picNickname: "Valuation",
     awsPicURL: null,
     picCaption: "Photo by Pixabay",
+    altText: "Image of financial charts and comparisons on a laptop",
   },
   {
     position: "home",
@@ -20,6 +22,7 @@ const SeededImages = [
     picNickname: "Debt and Equity",
     awsPicURL: null,
     picCaption: "Photo by Mikhail Nilov",
+    altText: "Image of two business partners looking at financial bills",
   },
   {
     position: "home",
@@ -27,6 +30,8 @@ const SeededImages = [
     picNickname: "giphy.gif",
     awsPicURL: null,
     picCaption: "home 1",
+    altText:
+      "Illustration of finance terms, including debt, taxes, financial plans, bitcoin and cryptocurrency, charts, savings, and so on.",
   },
   {
     position: "home",
@@ -34,6 +39,7 @@ const SeededImages = [
     picNickname: "picture about search funds",
     awsPicURL: null,
     picCaption: "Photo by Essow K",
+    altText: "Image of High Rise Skyscraper buildings in a city.",
   },
   {
     position: "home",
@@ -41,6 +47,8 @@ const SeededImages = [
     picNickname: "financejpg.jpg",
     awsPicURL: null,
     picCaption: "home 1",
+    altText:
+      "Image of coins in a stack, each stack a different height symbolizing the balance of personal finances, from home to health to car and food.",
   },
   {
     position: "home",
@@ -48,6 +56,7 @@ const SeededImages = [
     picNickname: "Debt vs Equity financing.",
     awsPicURL: null,
     picCaption: "Photo by Kampus Production",
+    altText: "Image of a cheerful man at his small business food truck, standing with his arms crossed and smiling.",
   },
   {
     position: "home",
@@ -55,6 +64,7 @@ const SeededImages = [
     picNickname: "How Knowing Your Company’s Valuation Can Help You Get Financing",
     awsPicURL: null,
     picCaption: "Photo by Karolina Grabowska",
+    altText: "Image of two business partners with a calculator, notebooks, and counting cash dollars.",
   },
 ];
 

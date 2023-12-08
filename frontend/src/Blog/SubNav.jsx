@@ -5,7 +5,7 @@ import { useNavigate, Link, useParams } from "react-router-dom";
 //Store Imports
 import { useDispatch, useSelector } from "react-redux";
 import { filterBlogpostsByTag } from "../store";
-import JoinMailingList from "../JoinMailingList";
+import JoinMailingList from "../Components/JoinMailingList";
 
 const SubNav = ({ id }) => {
   const tags = useSelector((state) => state.tags);

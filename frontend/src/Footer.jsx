@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
 //Component Imports
-import Login from "./Login";
+import LoginComponent from "./Components/LoginComponent";
 
 //Store Imports
 import { logout } from "./store";
@@ -32,7 +32,6 @@ const Footer = () => {
       <div
         style={{
           fontSize: "calc(6px + .5vw)",
-          paddingTop: "2rem",
           // paddingBottom: "1rem",
         }}
       >
@@ -55,8 +54,13 @@ const Footer = () => {
             </Link>
           </div>
 
-          <p onClick={() => adminTools()}>&copy; Vali. Email me at jdelbalzo99@gmail.com.</p>
-          {admin >= 5 ? <Login /> : ""}
+          <p onClick={() => adminTools()}>
+            &copy; Vali. Built by{" "}
+            <a href="https://www.joedelbalzo.com" alt="Joe Del Balzo">
+              JDB
+            </a>
+          </p>
+          {admin >= 5 ? <LoginComponent /> : ""}
           {auth.username == "admin" ? (
             <div>
               <Link to="/admin" className="theme-toggle">

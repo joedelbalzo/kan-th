@@ -9,6 +9,7 @@ const Links = ({ width, height }) => {
       xmlnsXlink="http://www.w3.org/1999/xlink"
       viewBox="0 0 24 24"
       role="img"
+      aria-label="Image of Links"
       xmlSpace="preserve"
       style={{
         display: "inline-block",

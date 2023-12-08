@@ -20,10 +20,14 @@ const AdminNav = () => {
     <div style={{ textAlign: "center" }}>
       Admin Tools
       <nav className="admin-home-nav">
-        <Link to="/admin/users">Home</Link>
+        <Link to="/admin/">Home</Link>
         <Link to="/admin/users">Users</Link>
         <Link to="/admin/posts">Posts</Link>
         <Link to="/admin/mailinglist">Mailing List</Link>
+        <Link to="/admin/posts" state={{ post: null, type: "create" }}>
+          Create New Blog
+        </Link>
+        <Link to="/admin/help">Help</Link>
       </nav>
     </div>
   );

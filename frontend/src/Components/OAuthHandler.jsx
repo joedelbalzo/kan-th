@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { useLocation, useNavigate } from "react-router-dom";
-import { handleGoogleOAuthResponse } from "./store";
+import { handleGoogleOAuthResponse } from "../store";
 
 function OAuthHandler() {
   console.log("we did it, Joe");

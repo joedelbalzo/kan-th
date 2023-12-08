@@ -78,7 +78,11 @@ app.get("/google/callback", passport.authenticate("google", { failureRedirect: "
 
 app.get("/mailinglist", isAdmin, isLoggedIn, async (req, res, next) => {
   try {
-    res.send(await MailingListUser.findAll());
+    res.send(
+      await MailingListUser.findAll({
+        order: [["createdAt", "DESC"]],
+      })
+    );
   } catch (ex) {
     console.log(ex);
     next(ex);

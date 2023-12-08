@@ -9,6 +9,7 @@ export const Email = ({ width, height, fillColor }) => {
       xmlnsXlink="http://www.w3.org/1999/xlink"
       viewBox="0 -0.5 25 25"
       role="img"
+      aria-label="Illustration to share via Email."
       xmlSpace="preserve"
       style={{
         display: "inline-block",
@@ -41,6 +42,7 @@ export const Facebook = ({ width, height, fillColor }) => {
       xmlnsXlink="http://www.w3.org/1999/xlink"
       viewBox="0 -0.5 25 25"
       role="img"
+      aria-label="Illustration to share via Facebook."
       xmlSpace="preserve"
       style={{
         display: "inline-block",
@@ -73,6 +75,7 @@ export const LinkedIn = ({ width, height, fillColor }) => {
       xmlnsXlink="http://www.w3.org/1999/xlink"
       viewBox="0 -0.5 25 25"
       role="img"
+      aria-label="Illustration to share via LinkedIn."
       xmlSpace="preserve"
       style={{
         display: "inline-block",
@@ -105,6 +108,7 @@ export const Reddit = ({ width, height, fillColor }) => {
       xmlns="http://www.w3.org/2000/svg"
       xmlnsXlink="http://www.w3.org/1999/xlink"
       role="img"
+      aria-label="Illustration to share via Reddit."
       xmlSpace="preserve"
       width={width}
       height={height}
@@ -181,6 +185,7 @@ export const Twitter = ({ width, height, fillColor }) => {
       xmlnsXlink="http://www.w3.org/1999/xlink"
       viewBox="-2 -2 30 25"
       role="img"
+      aria-label="Illustration to share via Twitter or X."
       xmlSpace="preserve"
       style={{
         display: "inline-block",

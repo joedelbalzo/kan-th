@@ -25,5 +25,9 @@ const Image = conn.define("image", {
     type: STRING,
     allowNull: true,
   },
+  altText: {
+    type: STRING,
+    allowNull: true,
+  },
 });
 module.exports = Image;

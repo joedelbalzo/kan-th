@@ -6,21 +6,15 @@ import { motion, useAnimation } from "framer-motion";
 import { useWindowSize } from "@react-hook/window-size";
 
 //Component Imports
-import construction from "./assets/pexels-ivan-samkov-4491875.webp";
-import aboutTrip from "./assets/about-trip.webp";
 import FinanceBar from "./assets/FinanceBar";
 import Seedling from "./assets/Seedling";
 import Links from "./assets/Links";
 import { FadeComponent } from "./assets/FadeComponent";
-import PieChart from "./assets/BusinessIcons/PieChart";
-import kanica from "./assets/kanica.jpg";
+import { kanicaImg } from "./assets/ImageObjects";
 
 //Store Imports
 
 function About() {
-  const dispatch = useDispatch();
-  const auth = useSelector((state) => state.auth);
-
   //text
   const container = {
     hidden: { opacity: 0 },
@@ -47,15 +41,15 @@ function About() {
   const controls1 = useAnimation();
   const controls2 = useAnimation();
   const controls3 = useAnimation();
-  const controls4 = useAnimation();
-  const controls5 = useAnimation();
+  // const controls4 = useAnimation();
+  // const controls5 = useAnimation();
   const [width] = useWindowSize();
 
   const ref1 = useRef(null);
   const ref2 = useRef(null);
   const ref3 = useRef(null);
-  const ref4 = useRef(null);
-  const ref5 = useRef(null);
+  // const ref4 = useRef(null);
+  // const ref5 = useRef(null);
 
   const transition = {
     type: "spring",
@@ -68,38 +62,24 @@ function About() {
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            // if (entry.target === ref1.current) controls1.start({ opacity: 1, y: 0 });
-            // if (entry.target === ref2.current) controls2.start({ opacity: 1, y: 0 });
+            if (entry.target === ref1.current) controls1.start({ opacity: 1, y: 0 });
+            if (entry.target === ref2.current) controls2.start({ opacity: 1, y: 0 });
             if (entry.target === ref3.current) controls3.start({ opacity: 1, y: 0 });
-            if (entry.target === ref4.current) controls4.start({ opacity: 1, y: 0 });
-            if (entry.target === ref5.current) controls5.start({ opacity: 1, y: 0 });
+            // if (entry.target === ref4.current) controls4.start({ opacity: 1, y: 0 });
+            // if (entry.target === ref5.current) controls5.start({ opacity: 1, y: 0 });
           }
         });
       },
       { threshold: 0.1, rootMargin: "0px 0px 0px 0px" }
     );
 
-    // observer.observe(ref1.current);
-    // observer.observe(ref2.current);
+    observer.observe(ref1.current);
+    observer.observe(ref2.current);
     observer.observe(ref3.current);
-    observer.observe(ref4.current);
-    observer.observe(ref5.current);
+    // observer.observe(ref4.current);
+    // observer.observe(ref5.current);
 
     return () => observer.disconnect();
-
-    //       <motion.div
-    //   ref={ref1}
-    //   initial={{ opacity: 0, y: "100px" }}
-    //   animate={controls1}
-    //   transition={transition}
-    //   style={{
-    //     display: "flex",
-    //     flexDirection: "row",
-    //     flexWrap: "wrap",
-    //     justifyContent: "center",
-    //     overflow: "hidden",
-    //   }}
-    // >
   }, []);
 
   return (
@@ -130,14 +110,14 @@ function About() {
           <h2>and we're ready to be your partner in this journey.</h2>
         </motion.div>
 
-        <motion.div ref={ref3} initial={{ opacity: 0, y: "50px" }} animate={controls3} transition={transition}>
+        <motion.div ref={ref1} initial={{ opacity: 0, y: "50px" }} animate={controls1} transition={transition}>
           <div className="kanica-about">
             <div className="kanica-heading">
               <div>
                 <h1>Kanica Allagh</h1>
                 <h2>Founder</h2>
               </div>
-              <img src={kanica} className="kanica-picture" />
+              <img src={kanicaImg.src} alt={kanicaImg.alt} className="kanica-picture" />
             </div>
             <div className="kanica-text">
               <p>
@@ -157,19 +137,9 @@ function About() {
             </div>
           </div>
         </motion.div>
-
-        {/* <motion.div ref={ref4} initial={{ opacity: 0, y: "50px" }} animate={controls4} transition={transition}>
-            <div id="vali-body-about-third">
-              <main>
-                So, why choose us? Expertise, customized solutions, transparency, and a technology-driven approach. Our vision is to become
-                the most trusted partner for small and medium business owners in understanding and enhancing their business value. We strive
-                to turn valuation from a mere number into a roadmap for success, and we look forward to going on this journey with you.
-              </main>
-            </div>
-          </motion.div> */}
       </div>
 
-      <motion.div ref={ref5} initial={{ opacity: 0, y: "10px" }} animate={controls5} transition={transition}>
+      <motion.div ref={ref2} initial={{ opacity: 0, y: "10px" }} animate={controls2} transition={transition}>
         <div className="home-content-images" style={{ display: "flex" }}>
           <div className="home-content-images-1">
             <FinanceBar width={"20vw"} height={"20vh"} />
@@ -191,7 +161,7 @@ function About() {
         </div>
       </motion.div>
 
-      <motion.div ref={ref4} initial={{ opacity: 0, y: "50px" }} animate={controls4} transition={transition}>
+      <motion.div ref={ref3} initial={{ opacity: 0, y: "50px" }} animate={controls3} transition={transition}>
         <div className="lets-go">
           <Link to="/login">Let's go! &rarr;</Link>
         </div>

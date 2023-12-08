@@ -9,6 +9,7 @@ const GlassesIcon = ({ width, height, color = "#030712" }) => {
       data-icon="glasses"
       className="svg-inline--fa fa-glasses fa-fw fa-lg mr-1 mt-auto mb-auto w-6"
       role="img"
+      aria-label="Image of glasses"
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 576 512"
       style={{

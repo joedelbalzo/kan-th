@@ -8,15 +8,15 @@ import DOMPurify from "dompurify";
 //Component Imports
 
 const SubNav = lazy(() => import("./SubNav"));
-const JoinMailingList = lazy(() => import("../JoinMailingList"));
+const JoinMailingList = lazy(() => import("../Components/JoinMailingList"));
 
 import { FadeComponent } from "../assets/FadeComponent";
 import Loading from "../assets/Loading";
 
 //Function Imports
-import { readableDate, pics } from "../functions";
+import { readableDate, pics } from "../Components/functions";
 import BackButton from "../assets/BackButton";
-import ShareButtons from "../ShareButtons";
+import ShareButtons from "../Components/ShareButtons";
 // import { Fade } from "@mui/material";
 
 const Blogposts = () => {
@@ -88,7 +88,11 @@ const Blogposts = () => {
       <div>
         <div className="post-headliner" key={headlinerPost.id}>
           <div className="post-container">
-            {headlinerPic != null ? <img src={headlinerPic.awsPicURL} className="post-headline-div-picture" /> : ""}
+            {headlinerPic != null ? (
+              <img src={headlinerPic.awsPicURL} alt={headlinerPic.altText} className="post-headline-div-picture" />
+            ) : (
+              ""
+            )}
             <div className="post-title-div">
               <Link to={`/blog/posts/${headlinerPost.id}`} style={{ textDecoration: "none", color: "inherit" }}>
                 <h2>{headlinerPost.title}</h2>
@@ -129,7 +133,7 @@ const Blogposts = () => {
               return (
                 <div className="post-content" key={blogpost.id}>
                   <div className="post-container">
-                    {homePic != null ? <img src={homePic.awsPicURL} className="post-div-picture" /> : ""}
+                    {homePic != null ? <img src={homePic.awsPicURL} alt={homePic.altText} className="post-div-picture" /> : ""}
                     <div className="post-title-div">
                       <Link to={`/blog/posts/${blogpost.id}`} style={{ textDecoration: "none", color: "inherit" }}>
                         <h2>{blogpost.title}</h2>

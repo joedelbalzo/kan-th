@@ -115,7 +115,6 @@ export const usersAndProfiles = (state = initialState, action) => {
     }
   }
   if (action.type === "UPDATE_USERS_AND_PROFILES") {
-    console.log("omg we're here", action.data);
     return { ...state, currentUser: action.data };
   }
   return state;

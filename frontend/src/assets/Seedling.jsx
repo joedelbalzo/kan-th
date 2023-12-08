@@ -9,6 +9,7 @@ const Seedling = ({ width, height }) => {
       xmlnsXlink="http://www.w3.org/1999/xlink"
       viewBox="0 0 24 24"
       role="img"
+      aria-label="Image of tree seedling."
       xmlSpace="preserve"
       style={{
         display: "inline-block",

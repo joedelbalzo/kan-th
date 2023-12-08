@@ -11,6 +11,7 @@ import { fetchMailingList } from "../store";
 //Component Style Imports
 import "./AdminStyles.css";
 import AdminNav from "./AdminNav";
+import { readableDate } from "../Components/functions";
 
 const AdminMailingList = () => {
   const navigate = useNavigate();
@@ -35,9 +36,21 @@ const AdminMailingList = () => {
       }
     }
     fetchListAndSetState();
+    console.log(list);
   }, []);
 
-  loading == false ? console.log("list", list) : null;
+  if (!list) {
+    return null;
+  }
+
+  loading == false ? console.log("emails all loaded", list) : null;
+
+  const copyEmails = () => {
+    const emails = list.map((user) => {
+      return user.email;
+    });
+    navigator.clipboard.writeText(emails);
+  };
 
   return (
     <div>
@@ -46,12 +59,30 @@ const AdminMailingList = () => {
         {" "}
         &larr; Back
       </Link>
-      <h3 className="admin-header">Email List of People who are interested. Joe, sort this by most recent.</h3>
+      <h3 className="admin-header">List of Mailing List Emails</h3>
+
+      {list && (
+        <div style={{ fontSize: "12px", width: "80%", margin: "0 auto" }}>
+          Right now, there are {list.length} emails on your list. The first one signed up on {} and the most recent one signed up on {}
+        </div>
+      )}
+      <button onClick={copyEmails} className="login-button" style={{ fontSize: "14px", height: "30px", margin: "2rem" }}>
+        Copy All Emails to Clipboard
+      </button>
       <div>
         <ul>
           {" "}
+          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr" }}>
+            <div style={{ gridColumn: "1", textDecoration: "underline" }}> Email Address: </div>
+            <div style={{ gridColumn: "2", textDecoration: "underline" }}>Join Date:</div>
+          </div>
           {list.map((user) => {
-            return <li key={user.id}>{user.email}</li>;
+            return (
+              <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", lineHeight: "28px" }}>
+                <div style={{ gridColumn: "1" }}> {user.email} </div>
+                <div style={{ gridColumn: "2" }}>{readableDate(user.createdAt)}</div>
+              </div>
+            );
           })}
         </ul>
       </div>

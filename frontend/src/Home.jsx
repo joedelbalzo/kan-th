@@ -6,16 +6,14 @@ import { motion, useAnimation } from "framer-motion";
 import { useWindowSize } from "@react-hook/window-size";
 
 //Component Imports
-import openSign from "./assets/pexels-tim-mossholder-3345876.jpg";
 import FinanceBar from "./assets/FinanceBar";
 import Seedling from "./assets/Seedling";
 import Links from "./assets/Links";
 import { FadeComponent } from "./assets/FadeComponent";
-import AboutBody from "./About-Body";
-import construction from "./assets/pexels-ivan-samkov-4491875.webp";
-import aboutTrip from "./assets/about-trip.webp";
 import PieChart from "./assets/BusinessIcons/PieChart";
-import JoinMailingList from "./JoinMailingList";
+import JoinMailingList from "./Components/JoinMailingList";
+
+import { aboutTripImg, woodworkerImg, yesWereOpenImg } from "./assets/ImageObjects";
 
 //Store Imports
 
@@ -78,7 +76,7 @@ function Home() {
           }
         });
       },
-      { threshold: 0.2, rootMargin: "0px 0px 0px 0px" }
+      { threshold: 0.1, rootMargin: "-20px 0px -20px 0px" }
     );
 
     observer.observe(ref1.current);
@@ -110,7 +108,7 @@ function Home() {
                 </motion.div>
               </div>
               <div className="home-div-image">
-                <img src={openSign} />
+                <img src={yesWereOpenImg.src} alt={yesWereOpenImg.alt} />
                 <div className="bottom-left">Get Started &rarr;</div>
               </div>
             </div>
@@ -120,7 +118,7 @@ function Home() {
 
       <div className="about-body-container">
         <div className="vali-body-about">
-          <motion.div ref={ref1} initial={{ opacity: 0, y: "50px" }} animate={controls1} transition={transition}>
+          <motion.div ref={ref1} initial={{ opacity: 0, y: "100px" }} animate={controls1} transition={transition}>
             <div id="vali-body-about-first">
               <main>
                 At Vali, we blend our expertise in finance with innovative technology to offer comprehensive valuation services that are
@@ -131,20 +129,20 @@ function Home() {
                 secure your future, leverage growth opportunities, and plan for long-term success. <br />
               </main>
               <div id="svg-picture-overlay-container">
-                <PieChart id="piechart-svg" />
-                <img src={construction} id="about-image" />
+                <PieChart alt={"Image of a pie chart graph."} />
+                <img src={woodworkerImg.src} alt={woodworkerImg.alt} id="about-image" />
               </div>
             </div>
-          </motion.div>
+            {/* </motion.div>
 
-          <motion.div ref={ref1} initial={{ opacity: 0, y: "50px" }} animate={controls1} transition={transition}>
+          <motion.div ref={ref2} initial={{ opacity: 0, y: "100px" }} animate={controls2} transition={transition}> */}
             <JoinMailingList />
           </motion.div>
 
-          <motion.div ref={ref2} initial={{ opacity: 0, y: "50px" }} animate={controls2} transition={transition}>
+          <motion.div ref={ref2} initial={{ opacity: 0, y: "100px" }} animate={controls2} transition={transition}>
             <div id="vali-body-about-second">
               <div className="vali-body-about-second-picture">
-                <img src={aboutTrip} />
+                <img src={aboutTripImg.src} alt={aboutTripImg.alt} />
               </div>
               <main className="vali-body-about-second-text">
                 We're excited to go on this journey of financial awareness and freedom with you. Here is how we get there:
@@ -174,7 +172,7 @@ function Home() {
             </div>
           </motion.div>
 
-          <motion.div ref={ref3} initial={{ opacity: 0, y: "50px" }} animate={controls3} transition={transition}>
+          <motion.div ref={ref3} initial={{ opacity: 0, y: "100px" }} animate={controls3} transition={transition}>
             <div id="vali-body-about-third">
               <main>
                 So, why choose us? Expertise, customized solutions, transparency, and a technology-driven approach. Our vision is to become
@@ -189,7 +187,7 @@ function Home() {
       <div className="home-content">
         <motion.div
           ref={ref4}
-          initial={{ opacity: 0, y: "50px" }}
+          initial={{ opacity: 0, y: "100px" }}
           animate={controls4}
           transition={transition}
           style={{
@@ -225,7 +223,7 @@ function Home() {
         {/* JOIN NOW */}
         <motion.div
           ref={ref5}
-          initial={{ opacity: 0, y: "50px" }}
+          initial={{ opacity: 0, y: "100px" }}
           animate={controls5}
           transition={transition}
           style={{

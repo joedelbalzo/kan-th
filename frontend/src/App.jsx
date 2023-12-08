@@ -8,7 +8,7 @@ import Loading from "./assets/Loading";
 import Nav from "./Nav";
 import Home from "./Home";
 import Footer from "./Footer";
-import Login from "./Login";
+import LoginPage from "./LoginPage";
 import PrivacyPolicy from "./PrivacyPolicy";
 import Contact from "./Contact";
 import About from "./About";
@@ -93,7 +93,7 @@ function App(props) {
             <Route path="/" element={<Home />} />
             <Route path="/client-route" element={<OAuthHandler />} />
 
-            <Route path="/login" element={<Login />} />
+            <Route path="/login" element={<LoginPage />} />
             <Route path="/about" element={<About />} />
             <Route path="/privacy" element={<PrivacyPolicy />} />
             <Route path="/contact" element={<Contact />} />

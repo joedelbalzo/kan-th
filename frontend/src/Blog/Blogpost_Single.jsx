@@ -8,14 +8,14 @@ import DOMPurify from "dompurify";
 
 //Component Imports
 
-import ShareButtons from "../ShareButtons";
+import ShareButtons from "../Components/ShareButtons";
 import SubNav from "./SubNav";
 import "./BlogStyles.css";
 
 //Store Imports
 
 //Function Imports
-import { readableDate, pics } from "../functions";
+import { readableDate, pics } from "../Components/functions";
 import BackButton from "../assets/BackButton";
 
 //The is my terrible blog that really needs an overhaul: https://blog.usetheo.com/. I want it to look more consumery and friendly, rounded fonts, subtle colors.
@@ -32,8 +32,6 @@ const Blogpost_Single = () => {
   }
 
   const { homePic, bannerPic, contentPic } = pics(post);
-
-  // console.log(homePic, bannerPic, contentPic);
 
   // };
   //GOTTA INSERT A WAY TO CREDIT WHOEVER TOOK THE PHOTO. This should go in the database.
@@ -99,7 +97,7 @@ const Blogpost_Single = () => {
             </h2>
             {homePic && (
               <div className="single-post-home-picture">
-                <img src={homePic.awsPicURL} />
+                <img src={homePic.awsPicURL} alt={homePic.altText} />
                 {/* <span className="caption">{homePic.picCaption}</span> */}
               </div>
             )}

@@ -9,6 +9,7 @@ const BackButton = ({ width = "20px", height = "40px", facingRight = false, stro
       xmlnsXlink="http://www.w3.org/1999/xlink"
       viewBox="0 -0.5 25 25"
       role="img"
+      aria-label="Image of a Back Button"
       xmlSpace="preserve"
       style={{
         display: "inline-block",

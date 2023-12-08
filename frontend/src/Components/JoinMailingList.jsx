@@ -9,7 +9,7 @@ import { useDispatch } from "react-redux";
 import axios from "axios";
 
 //Other Imports
-import FinanceUpArrow from "./assets/FinanceUpArrow";
+import FinanceUpArrow from "../assets/FinanceUpArrow";
 
 const JoinMailingList = () => {
   const dispatch = useDispatch();
@@ -39,6 +39,10 @@ const JoinMailingList = () => {
       const response = await axios.post(`/api/auth/mailinglist`, { email: email });
       console.log(response);
       setSuccess(true);
+      setTimeout(() => {
+        setSuccess(false);
+        setEmail("");
+      }, 3000);
     }
   };
 
