@@ -139,68 +139,6 @@ const Nav = React.memo(() => {
             )}
           </div>
         </div>
-
-        {/* 
-          <Box
-            sx={{
-              padding: "0px",
-              margin: "0px",
-              display: { xs: "flex", md: "none" },
-            }}
-          >
-            <IconButton aria-controls="menu-appbar" aria-haspopup="true" onClick={handleOpenNavMenu} color="inherit">
-              <MenuIcon />
-            </IconButton>
-            <Menu
-              id="menu-appbar"
-              anchorEl={anchorElNav}
-              anchorOrigin={{
-                vertical: "bottom",
-                horizontal: "left",
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: "top",
-                horizontal: "left",
-              }}
-              open={Boolean(anchorElNav)}
-              onClose={() => setAnchorElNav(null)}
-              slotProps={{ className: "menu-paper-root" }}
-              sx={{
-                padding: 0,
-                display: { xs: "block", md: "none" },
-                "& .MuiPaper-root": { className: "menu-paper-root" },
-              }}
-            >
-              <MenuItem key={"home"} onClick={scrollToTop}>
-                <Link offset="10" to="/" id={currPage === "" ? "activelinks" : "links"} onClick={() => setAnchorElNav(null)}>
-                  Home
-                </Link>
-              </MenuItem>
-              <MenuItem key={"join"}>
-                <Link offset="10" to="/join" id={currPage === "portfolio" ? "activelinks" : "links"} onClick={() => setAnchorElNav(null)}>
-                  Login
-                </Link>
-              </MenuItem>
-              <MenuItem key={"about"}>
-                <Link offset="10" to="/about" id={currPage === "about" ? "activelinks" : "links"} onClick={() => setAnchorElNav(null)}>
-                  About
-                </Link>
-              </MenuItem>
-              <MenuItem key={"blog"}>
-                <Link offset="10" to="/blog" id={currPage === "blog" ? "activelinks" : "links"} onClick={() => setAnchorElNav(null)}>
-                  Blog
-                </Link>
-              </MenuItem>
-
-              <MenuItem key={"login"}>
-                <Link offset="10" to="/login" id={currPage === "login" ? "activelinks" : "links"} onClick={() => setAnchorElNav(null)}>
-                  Login
-                </Link>
-              </MenuItem>
-            </Menu>
-          </Box>
-        </div> */}
       </div>
     </div>
   );

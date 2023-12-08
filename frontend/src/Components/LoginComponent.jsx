@@ -12,6 +12,9 @@ import { useDispatch, useSelector } from "react-redux";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
 import { FadeComponent } from "../assets/FadeComponent";
+import { InputAdornment, IconButton } from "@mui/material";
+import Visibility from "@mui/icons-material/Visibility";
+import VisibilityOff from "@mui/icons-material/VisibilityOff";
 
 const LoginComponent = () => {
   const auth = useSelector((state) => state.auth);
@@ -21,8 +24,16 @@ const LoginComponent = () => {
   const [credentials, setCredentials] = useState({
     username: "",
     password: "",
+    confirmPassword: "",
   });
   const [errorMessage, setErrorMessage] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+  const [loginComponentState, setLoginComponentState] = useState("login");
+  const handleClickShowPassword = () => setShowPassword(!showPassword);
+  const handleMouseDownPassword = () => setShowPassword(!showPassword);
+  const handleClickShowConfirmPassword = () => setShowConfirmPassword(!showConfirmPassword);
+  const handleMouseDownConfirmPassword = () => setShowConfirmPassword(!showConfirmPassword);
 
   const onChange = (ev) => {
     setCredentials({ ...credentials, [ev.target.name]: ev.target.value });
@@ -32,6 +43,18 @@ const LoginComponent = () => {
     ev.preventDefault();
     try {
       window.localStorage.removeItem("token");
+      await dispatch(attemptLogin(credentials));
+      //insert redirect to profile page
+    } catch (err) {
+      setErrorMessage("username or password is incorrect");
+    }
+  };
+
+  const create = async (ev) => {
+    ev.preventDefault();
+    try {
+      window.localStorage.removeItem("token");
+      console.log("add password validation");
       await dispatch(attemptLogin(credentials));
       //insert redirect to profile page
     } catch (err) {
@@ -68,13 +91,32 @@ const LoginComponent = () => {
   return (
     <FadeComponent>
       <div className="login" style={{ paddingTop: "1rem" }}>
-        <h2>Sign in to Vali</h2>
+        <div style={{ display: "flex", justifyContent: "space-around", borderBottom: "1px solid #183333", paddingBottom: "4px" }}>
+          <h2
+            onClick={() => {
+              setLoginComponentState("login");
+            }}
+            style={{ color: loginComponentState == "login" ? "#183333" : "#18333340" }}
+          >
+            Sign in to Vali
+          </h2>
+          <h2
+            onClick={() => {
+              setLoginComponentState("create");
+            }}
+            style={{ color: loginComponentState == "create" ? "#183333" : "#18333340" }}
+          >
+            Create Account
+          </h2>
+        </div>
+
         <div>
           {" "}
           <button className="login-with-google-btn" onClick={handleGoogleLogin}>
             Login with Google
           </button>
         </div>
+
         <div
           style={{
             display: "flex",
@@ -106,49 +148,128 @@ const LoginComponent = () => {
             }}
           ></div>
         </div>
-        <form onSubmit={login} style={{ display: "flex" }}>
-          <TextField label="username" value={credentials.username} name="username" onChange={onChange} />
-          <div style={{ marginBottom: 1 }} />
-          <TextField
-            id="filled-password-input"
-            label="password"
-            name="password"
-            type="password"
-            value={credentials.password}
-            onChange={onChange}
-          />
-          {auth.id != null ? (
-            // <Button type="submit" onClick={() => handleLogout()} style={{ fontSize: "1.2rem" }}>
-            <button type="submit" onClick={() => handleLogout()} className="logout-button">
-              logout
-            </button>
-          ) : (
-            <button type="submit" className="login-button">
-              Login &rarr;
-            </button>
-            // <Button type="submit" style={{ fontSize: "1.2rem" }}>
-            //   Login
-            // </Button>
-          )}
-        </form>
-        {auth.username == "admin" && (
-          <div>
-            <Link to="/admin" style={buttonStyles}>
-              Admin Tools
-            </Link>
-          </div>
+        {loginComponentState == "login" ? (
+          <>
+            <form onSubmit={login} style={{ display: "flex" }}>
+              <TextField label="email" value={credentials.username} name="username" onChange={onChange} />
+              <div style={{ marginBottom: 1 }} />
+              <TextField
+                id="filled-password-input"
+                label="password"
+                name="password"
+                type={showPassword ? "text" : "password"}
+                value={credentials.password}
+                onChange={onChange}
+                InputProps={{
+                  endAdornment: (
+                    <InputAdornment position="end">
+                      <IconButton
+                        aria-label="toggle password visibility"
+                        onClick={handleClickShowPassword}
+                        onMouseDown={handleMouseDownPassword}
+                      >
+                        {showPassword ? <Visibility /> : <VisibilityOff />}
+                      </IconButton>
+                    </InputAdornment>
+                  ),
+                }}
+              />
+              {auth.id != null ? (
+                <button type="submit" onClick={() => handleLogout()} className="logout-button">
+                  logout
+                </button>
+              ) : (
+                <button type="submit" className="login-button">
+                  Login &rarr;
+                </button>
+              )}
+            </form>
+            {auth.username == "admin" && (
+              <div>
+                <Link to="/admin" style={buttonStyles}>
+                  Admin Tools
+                </Link>
+              </div>
+            )}
+            <div
+              style={{
+                margin: "0 auto",
+                color: "darkred",
+                fontSize: "calc(10px + 0.5vw)",
+                fontStyle: "italic",
+                minHeight: "2vh",
+              }}
+            >
+              {errorMessage ? errorMessage : <div style={{ minHeight: "16px" }}></div>}
+            </div>
+          </>
+        ) : (
+          <>
+            <form onSubmit={create} style={{ display: "flex" }}>
+              <TextField label="email" value={credentials.username} name="username" onChange={onChange} />
+              <div style={{ marginBottom: 1 }} />
+              <TextField
+                id="filled-password-input"
+                label="password"
+                name="password"
+                type={showPassword ? "text" : "password"}
+                value={credentials.password}
+                onChange={onChange}
+                InputProps={{
+                  endAdornment: (
+                    <InputAdornment position="end">
+                      <IconButton
+                        aria-label="toggle password visibility"
+                        onClick={handleClickShowPassword}
+                        onMouseDown={handleMouseDownPassword}
+                      >
+                        {showPassword ? <Visibility /> : <VisibilityOff />}
+                      </IconButton>
+                    </InputAdornment>
+                  ),
+                }}
+              />
+              <TextField
+                id="filled-password-input"
+                label="confirm password"
+                name="confirmPassword"
+                type={showConfirmPassword ? "text" : "password"}
+                value={credentials.confirmPassword}
+                onChange={onChange}
+                InputProps={{
+                  endAdornment: (
+                    <InputAdornment position="end">
+                      <IconButton
+                        aria-label="toggle password visibility"
+                        onClick={handleClickShowConfirmPassword}
+                        onMouseDown={handleMouseDownConfirmPassword}
+                      >
+                        {showConfirmPassword ? <Visibility /> : <VisibilityOff />}
+                      </IconButton>
+                    </InputAdornment>
+                  ),
+                }}
+              />
+
+              <button type="submit" className="login-button">
+                Create &rarr;
+              </button>
+              <div>doesn't work yet</div>
+            </form>
+
+            <div
+              style={{
+                margin: "0 auto",
+                color: "darkred",
+                fontSize: "calc(10px + 0.5vw)",
+                fontStyle: "italic",
+                minHeight: "2vh",
+              }}
+            >
+              {errorMessage ? errorMessage : <div style={{ minHeight: "16px" }}></div>}
+            </div>
+          </>
         )}
-        <div
-          style={{
-            margin: "0 auto",
-            color: "darkred",
-            fontSize: "calc(10px + 0.5vw)",
-            fontStyle: "italic",
-            minHeight: "2vh",
-          }}
-        >
-          {errorMessage ? errorMessage : <div style={{ minHeight: "16px" }}></div>}
-        </div>
       </div>
     </FadeComponent>
   );
