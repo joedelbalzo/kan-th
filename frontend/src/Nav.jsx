@@ -29,7 +29,7 @@ const Nav = React.memo(() => {
     closeNav();
     await dispatch(logout());
     auth = null;
-    console.log(auth);
+    // console.log("trying to clear auth", auth);
     localStorage.clear();
     navigate("/");
   };

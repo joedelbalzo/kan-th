@@ -30,7 +30,7 @@ passport.use(
             adminStatus: false,
           },
         });
-        console.log("creating", user);
+        // console.log("creating", user);
         return done(null, user);
       } catch (err) {
         return done(err, null);
@@ -39,7 +39,7 @@ passport.use(
   )
 );
 passport.serializeUser(function (user, done) {
-  console.log("serialize", user);
+  // console.log("serialize", user);
   done(null, user.id);
 });
 
@@ -91,7 +91,7 @@ app.get("/mailinglist", isAdmin, isLoggedIn, async (req, res, next) => {
 
 app.post("/mailinglist", async (req, res, next) => {
   try {
-    console.log("in express", req.body);
+    // console.log("in express", req.body);
     const response = await MailingListUser.create({
       email: req.body.email,
       currentlyActive: true,
@@ -119,7 +119,7 @@ app.get("/users", isAdmin, isLoggedIn, async (req, res, next) => {
 app.get("/filteredusers", isAdmin, isLoggedIn, async (req, res, next) => {
   try {
     const { param } = req.body;
-    console.log(param);
+    // console.log(param);
     const allUsers = await User.findAll();
     res.send(allUsers);
   } catch (ex) {
@@ -156,7 +156,7 @@ app.post("/", async (req, res, next) => {
 app.put("/user", isLoggedIn, async (req, res, next) => {
   try {
     const user = req.user;
-    console.log(user, req.body);
+    // console.log(user, req.body);
     //define the properties a user can change
     await user.update(req.body);
     res.send(user);

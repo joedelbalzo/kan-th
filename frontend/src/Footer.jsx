@@ -54,7 +54,7 @@ const Footer = () => {
             </Link>
           </div>
 
-          <p onClick={() => adminTools()}>
+          <p onClick={() => adminTools()} style={{ color: "#96ccee60", margin: "auto" }}>
             &copy; Vali. Built by{" "}
             <a href="https://www.joedelbalzo.com" alt="Joe Del Balzo">
               JDB

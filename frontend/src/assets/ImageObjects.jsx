@@ -5,6 +5,7 @@ import texturedBackground from "./pexels-milo-textures.webp";
 import womanWithIpad from "./pexels-tim-douglas.webp";
 import woodworker from "./pexels-ivan-samkov.webp";
 import yesWereOpen from "./pexels-tim-mossholder.webp";
+import businessPaper from "./pexels-nappy-935979.webp";
 
 export const aboutTripImg = {
   src: aboutTrip,
@@ -33,4 +34,8 @@ export const womanWithIpadImg = {
 export const yesWereOpenImg = {
   src: yesWereOpen,
   alt: "Image of a sign that says 'Yes, We're Open' on a business door",
+};
+export const businessPaperImg = {
+  src: businessPaper,
+  alt: "Image of a man in a suit reading the business section of a newspaper",
 };

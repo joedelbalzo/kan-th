@@ -117,6 +117,8 @@ function Home() {
       </motion.div>
 
       <div className="about-body-container">
+        <JoinMailingList />
+
         <div className="vali-body-about">
           <motion.div ref={ref1} initial={{ opacity: 0, y: "100px" }} animate={controls1} transition={transition}>
             <div id="vali-body-about-first">
@@ -136,7 +138,6 @@ function Home() {
             {/* </motion.div>
 
           <motion.div ref={ref2} initial={{ opacity: 0, y: "100px" }} animate={controls2} transition={transition}> */}
-            <JoinMailingList />
           </motion.div>
 
           <motion.div ref={ref2} initial={{ opacity: 0, y: "100px" }} animate={controls2} transition={transition}>
@@ -171,6 +172,7 @@ function Home() {
               </main>
             </div>
           </motion.div>
+          <JoinMailingList />
 
           <motion.div ref={ref3} initial={{ opacity: 0, y: "100px" }} animate={controls3} transition={transition}>
             <div id="vali-body-about-third">

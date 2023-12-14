@@ -5,6 +5,7 @@ import { useNavigate, Link } from "react-router-dom";
 //Store Imports
 import { useDispatch, useSelector } from "react-redux";
 import { createUserProfile, editUserProfile } from "../store";
+import { businessPaperImg } from "../assets/ImageObjects";
 
 //Style imports
 import "./PortfolioStyles.css";
@@ -21,8 +22,22 @@ const PortfolioHome = () => {
 
   return (
     <div>
-      Hey, {auth.firstName}! You're successfully in the portfolio page. Now that you're here, let's get you on our mailing list to you can
-      see our new features as they come. Let's get you and your business the financing you've earned. you deserve.
+      <div className="portfolio-home-div">
+        <div className="portfolio-home-div-inner">Hey, {auth.firstName}. We're glad you're here.</div>
+        <div className="portfolio-grid-container">
+          <img src={businessPaperImg.src} alt={businessPaperImg.alt} className="portfolio-image" />
+          <main style={{ margin: "2rem auto", width: "80%", fontSize: "24px", textAlign: "center" }}>
+            We've added you to our mailing list! You'll be regularly informed about updates and changes, especially as new features become
+            available. We're excited to have you here.
+            <br />
+            <br />
+            Let's get you and your business the financing you've earned!
+            <Link to="/" className="portfolio-submit-button">
+              Home
+            </Link>
+          </main>
+        </div>
+      </div>
     </div>
   );
 };

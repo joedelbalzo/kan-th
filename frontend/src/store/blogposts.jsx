@@ -76,7 +76,7 @@ export const fetchDraftedBlogposts = () => {
 export const fetchBlogByID = (id) => {
   return async (dispatch) => {
     const response = await axios.get(`/api/blogposts/${id}`);
-    console.log("response DATA in store", response.data);
+    // console.log("response DATA in store", response.data);
     dispatch({ type: "REQUEST_POST", blogposts: response.data });
   };
 };
@@ -97,7 +97,6 @@ export const createBlogpost = (formData, blogData, tagData) => {
         authorization: token,
       },
     });
-    console.log("blog response in store", blogResponse.data);
 
     let imageResponse = await axios.post(`/api/images/${blogResponse.data.id}`, formData, {
       headers: {
@@ -105,13 +104,11 @@ export const createBlogpost = (formData, blogData, tagData) => {
         authorization: token,
       },
     });
-    console.log("image response", imageResponse.data);
     let tagResponse = await axios.put(`/api/tags/${blogResponse.data.id}`, tagData, {
       headers: {
         authorization: token,
       },
     });
-    console.log("tag response in store", tagResponse.data);
     dispatch({ type: "CREATE_BLOGPOST", blogpost: blogResponse.data });
     return blogResponse.data.id;
   };
@@ -149,7 +146,6 @@ export const editBlogpost = (formData, blogData, tagData, id) => {
           authorization: token,
         },
       });
-      console.log("tag response in store", tagResponse);
     }
     if (tagResponse.status === 200) {
       blogResponse = await axios.put(`/api/blogposts/${id}`, blogData, {
@@ -157,7 +153,6 @@ export const editBlogpost = (formData, blogData, tagData, id) => {
           authorization: token,
         },
       });
-      console.log("blog response in store", blogResponse);
     }
     dispatch({ type: "EDIT_BLOGPOST", blogpost: blogResponse.data });
   };
@@ -171,7 +166,6 @@ export const hideBlogpost = (blogpost) => {
         authorization: token,
       },
     });
-    console.log("blog response in store", blogResponse);
     dispatch({ type: "HIDE_BLOGPOST", blogpost: blogResponse.data });
   };
 };

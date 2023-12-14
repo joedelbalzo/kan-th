@@ -4,7 +4,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { handleGoogleOAuthResponse } from "../store";
 
 function OAuthHandler() {
-  console.log("we did it, Joe");
+  // console.log("we did it, Joe");
 
   const location = useLocation();
   const navigate = useNavigate();
@@ -15,7 +15,7 @@ function OAuthHandler() {
 
   const [isTokenHandled, setTokenHandled] = useState(false);
 
-  console.log("Token received in OAuthHandler:", token); // Check if token is received
+  // console.log("Token received in OAuthHandler:", token);
 
   useEffect(() => {
     if (token) {
@@ -25,7 +25,7 @@ function OAuthHandler() {
   }, [token]);
 
   useEffect(() => {
-    console.log("token handled");
+    // console.log("token handled");
     if (isTokenHandled) {
       navigate("/");
     }

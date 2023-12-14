@@ -27,15 +27,13 @@ const SubNav = ({ id }) => {
 
   const onTagClick = async (ev) => {
     if (ev === "1234") {
-      console.log("its working here dipshit");
+      // console.log("its working here dipshit");
       navigate(`/blog/`);
     } else {
       await dispatch(filterBlogpostsByTag(ev));
       navigate(`/blog/tags/${ev}`);
     }
   };
-
-  //needs a list of tags, so we can add "all"
 
   return (
     <div>

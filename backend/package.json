@@ -1,7 +1,7 @@
 {
-  "name": "theo",
-  "version": "0.0.1",
-  "description": "theo backend",
+  "name": "Vali",
+  "version": "1.0.0",
+  "description": "vali backend",
   "main": "index.js",
   "scripts": {
     "start": "node index.js",

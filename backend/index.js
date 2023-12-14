@@ -6,7 +6,6 @@ require("dotenv").config();
 
 const init = async () => {
   try {
-    console.log(process.env.NODE_ENV);
     if (process.env.NODE_ENV === "development") {
       console.log("in dev");
       const { syncAndSeed } = require("./db");

@@ -14,7 +14,7 @@ app.get("/", async (req, res, next) => {
 //get all posts where a single tag is.
 app.get("/:id", async (req, res, next) => {
   const tagId = req.params.id;
-  console.log("trying tags with ID:", tagId);
+  // console.log("trying tags with ID:", tagId);
   try {
     let response = await Blogpost.findAll({
       include: [

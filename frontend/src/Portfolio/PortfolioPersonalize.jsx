@@ -66,15 +66,14 @@ const PortfolioPersonalize = () => {
   };
 
   const handleSubmit = (event) => {
-    console.log("handling");
-    console.log(formData);
-    console.log(auth);
+    // console.log("handling");
     event.preventDefault();
-    if (validateForm() && auth.isNewUser) {
+    if (validateForm()) {
       async function create() {
         try {
           setLoading(true);
           const response = await dispatch(createUserProfile(formData));
+          // console.log(response);
           if (response) {
             setLoading(false);
             navigate("/portfolio/home");

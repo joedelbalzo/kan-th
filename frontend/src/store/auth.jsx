@@ -57,6 +57,7 @@ export const loginWithToken = () => {
         });
         dispatch({ type: "SET_AUTH", auth: response.data });
         dispatch({ type: "UPDATE_USERS_AND_PROFILES", data: response.data });
+        return "success";
       } catch (ex) {
         return console.log("Login Invalid");
       }
@@ -68,7 +69,8 @@ export const attemptLogin = (credentials) => {
   return async (dispatch) => {
     const response = await axios.post("/api/auth", credentials);
     window.localStorage.setItem("token", response.data.token);
-    dispatch(loginWithToken());
+    const dispatchResponse = await dispatch(loginWithToken());
+    return dispatchResponse;
   };
 };
 
@@ -164,7 +166,7 @@ export const createUserProfile = (user) => {
       },
     });
     dispatch({ type: "CREATE_USER_PROFILE", user: response.data });
-    return "success";
+    return response.data;
   };
 };
 
@@ -189,7 +191,7 @@ export const archiveUserProfile = (blogpost) => {
         authorization: token,
       },
     });
-    console.log("blog response in store", blogResponse);
+    // console.log("blog response in store", blogResponse);
     dispatch({ type: "HIDE_BLOGPOST", blogpost: blogResponse.data });
   };
 };

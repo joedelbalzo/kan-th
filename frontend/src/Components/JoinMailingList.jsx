@@ -31,13 +31,13 @@ const JoinMailingList = () => {
 
   const joinMailingList = async (ev) => {
     ev.preventDefault();
-    console.log(email);
+    // console.log(email);
     const emailError = validateEmail(email);
     if (emailError) {
       setError(true);
     } else {
       const response = await axios.post(`/api/auth/mailinglist`, { email: email });
-      console.log(response);
+      // console.log(response);
       setSuccess(true);
       setTimeout(() => {
         setSuccess(false);

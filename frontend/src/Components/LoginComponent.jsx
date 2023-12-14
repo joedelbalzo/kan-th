@@ -20,7 +20,7 @@ const LoginComponent = () => {
   const auth = useSelector((state) => state.auth);
 
   const dispatch = useDispatch();
-
+  const navigate = useNavigate();
   const [credentials, setCredentials] = useState({
     username: "",
     password: "",
@@ -43,8 +43,10 @@ const LoginComponent = () => {
     ev.preventDefault();
     try {
       window.localStorage.removeItem("token");
-      await dispatch(attemptLogin(credentials));
-      //insert redirect to profile page
+      const response = await dispatch(attemptLogin(credentials));
+      if (response == "success") {
+        navigate("/portfolio");
+      }
     } catch (err) {
       setErrorMessage("username or password is incorrect");
     }
@@ -54,8 +56,12 @@ const LoginComponent = () => {
     ev.preventDefault();
     try {
       window.localStorage.removeItem("token");
-      console.log("add password validation");
-      await dispatch(attemptLogin(credentials));
+      // console.log("add password validation");
+      const response = await dispatch(attemptLogin(credentials));
+      // console.log("response", response);
+      if (response == "success") {
+        navigate("/portfolio");
+      }
       //insert redirect to profile page
     } catch (err) {
       setErrorMessage("username or password is incorrect");
