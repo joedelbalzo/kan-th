@@ -53,7 +53,6 @@ app.put("/:id", isLoggedIn, isAdmin, async (req, res, next) => {
       return res.status(404).send("Post not found");
     }
     const { firstTag, secondTag, thirdTag } = req.body;
-    console.log(firstTag, secondTag, thirdTag);
 
     async function processTag(tag) {
       let cleanedTagName = tag.name.trim().toLowerCase();

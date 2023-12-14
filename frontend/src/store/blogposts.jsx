@@ -141,8 +141,6 @@ export const editBlogpost = (formData, blogData, tagData, id) => {
       },
     });
     if (imageResponse.status === 200) {
-      //HERE IS THE ISSUE. THE TAGS DON'T KNOW WHAT THE POST ID IS
-      console.log(tagData);
       tagResponse = await axios.put(`/api/tags/${id}`, tagData, {
         headers: {
           authorization: token,

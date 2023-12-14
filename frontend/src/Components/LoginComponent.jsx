@@ -54,11 +54,9 @@ const LoginComponent = () => {
 
   const create = async (ev) => {
     ev.preventDefault();
-    console.log("creating");
     try {
       window.localStorage.removeItem("token");
       const response = await dispatch(register(credentials));
-      console.log("response", response);
       if (response == "success") {
         navigate("/portfolio");
       }
@@ -75,7 +73,6 @@ const LoginComponent = () => {
 
   const handleGoogleLogin = () => {
     window.localStorage.removeItem("token");
-    console.log(process.env.NODE_ENV, "google login process");
     if (process.env.NODE_ENV == "development") {
       window.location.href = "http://localhost:3000/api/auth/google";
     } else {
@@ -264,7 +261,6 @@ const LoginComponent = () => {
               <button type="submit" className="login-button">
                 Create &rarr;
               </button>
-              <div>doesn't work yet</div>
             </form>
 
             <div

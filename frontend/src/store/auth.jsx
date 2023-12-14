@@ -16,7 +16,6 @@ export const loginWithGoogle = (token) => {
 
       if (token) {
         window.localStorage.setItem("token", token);
-        console.log("token exists");
         const response = await axios.get("/api/auth/me", {
           headers: {
             authorization: token,
@@ -78,8 +77,6 @@ export const attemptLogin = (credentials) => {
 export const register = (credentials) => {
   return async (dispatch) => {
     const response = await axios.post("/api/auth/register", credentials);
-    console.log(response);
-
     window.localStorage.setItem("token", response.data.token);
     dispatch(loginWithToken());
   };

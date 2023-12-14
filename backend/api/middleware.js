@@ -5,7 +5,6 @@ require("dotenv").config({ path: path.resolve(__dirname, "..", ".env") });
 
 const isLoggedIn = async (req, res, next) => {
   try {
-    console.log("token", req.headers.authorization);
     const user = await User.findByToken(req.headers.authorization, {
       include: [
         {

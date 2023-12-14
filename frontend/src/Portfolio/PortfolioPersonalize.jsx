@@ -46,7 +46,6 @@ const PortfolioPersonalize = () => {
 
   const validateForm = () => {
     const newErrors = {};
-    console.log("validating");
     // Basic validation checks
     if (!formData.firstName.trim()) {
       newErrors.firstName = "First Name is required";
@@ -67,7 +66,6 @@ const PortfolioPersonalize = () => {
   };
 
   const handleSubmit = (event) => {
-    console.log("handling");
     event.preventDefault();
     if (validateForm()) {
       async function create() {
@@ -80,7 +78,7 @@ const PortfolioPersonalize = () => {
             setTimeout(() => {
               navigate("/portfolio/home");
             }, 200);
-            console.log("Dispatch successful. Navigation completed.");
+            console.log("Dispatch successful");
           });
           if (!response) {
             setLoading(false);

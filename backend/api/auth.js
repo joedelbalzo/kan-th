@@ -138,7 +138,6 @@ app.get("/filteredusers", isAdmin, isLoggedIn, async (req, res, next) => {
 //basic user things
 app.get("/", isLoggedIn, (req, res, next) => {
   try {
-    console.log("what's going on here");
     res.send(req.user);
   } catch (ex) {
     next(ex);
@@ -162,12 +161,9 @@ app.post("/", async (req, res, next) => {
 });
 
 app.put("/user/:id", async (req, res, next) => {
-  console.log("we here");
   try {
     let userUpdates = req.body.formData;
-    console.log("user updates", userUpdates);
     let userToEdit = await User.findByPk(req.params.id);
-    console.log("user to edit", userToEdit);
     let updatedUser = await User.update(
       {
         firstName: userUpdates.firstName,
@@ -182,7 +178,6 @@ app.put("/user/:id", async (req, res, next) => {
         where: { id: userToEdit.id },
       }
     );
-    console.log("updated user info", updatedUser);
     res.send(updatedUser);
   } catch (ex) {
     next(ex);

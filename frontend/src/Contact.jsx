@@ -35,7 +35,6 @@ function Contact() {
     ev.preventDefault();
     try {
       const response = await axios.post("/api/contact", ev);
-      console.log("Response:", response.data);
     } catch (error) {
       console.error("Error:", error);
     }

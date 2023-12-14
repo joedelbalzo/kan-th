@@ -7,12 +7,12 @@ require("dotenv").config();
 const init = async () => {
   try {
     if (process.env.NODE_ENV === "development") {
-      console.log("in dev");
+      // console.log("in dev");
       const { syncAndSeed } = require("./db");
       await conn.sync({ force: true });
       await syncAndSeed();
     } else {
-      console.log("in prod");
+      // console.log("in prod");
       await conn.authenticate();
     }
 

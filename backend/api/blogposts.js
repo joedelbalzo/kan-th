@@ -109,8 +109,6 @@ app.post("/", isLoggedIn, async (req, res, next) => {
 
 app.put("/:id", isLoggedIn, async (req, res, next) => {
   try {
-    console.log("why won't this edit", req.body);
-
     let id = req.params.id;
     let request = req.body;
     const [update] = await Blogpost.update(
