@@ -28,9 +28,6 @@ const Nav = React.memo(() => {
   const handleLogout = async () => {
     closeNav();
     await dispatch(logout());
-    auth = null;
-    // console.log("trying to clear auth", auth);
-    localStorage.clear();
     navigate("/");
   };
 
@@ -69,28 +66,28 @@ const Nav = React.memo(() => {
         </Link>
 
         {auth.id && (
-          <Link to="/portfolio" className="nav-links" id="large" style={{ fontSize: "22px" }}>
+          <Link to="/portfolio" className="nav-links" id="large" style={{ fontSize: "18px" }}>
             portfolio
           </Link>
         )}
 
-        <Link to="/blog" className="nav-links" id="large" style={{ fontSize: "22px" }}>
+        <Link to="/blog" className="nav-links" id="large" style={{ fontSize: "18px" }}>
           <div>blog</div>
         </Link>
-        <Link to="/about" className="nav-links" id="large" style={{ fontSize: "22px" }}>
+        <Link to="/about" className="nav-links" id="large" style={{ fontSize: "18px" }}>
           <div>about</div>
         </Link>
         {!auth.id ? (
-          <Link to="/login" className="nav-links" id="large" style={{ fontSize: "22px" }}>
+          <Link to="/login" className="nav-links" id="large" style={{ fontSize: "18px" }}>
             <div>login</div>
           </Link>
         ) : (
-          <Link to="/" onClick={handleLogout} className="nav-links" id="large" style={{ fontSize: "22px" }}>
+          <Link to="/" onClick={handleLogout} className="nav-links" id="large" style={{ fontSize: "18px" }}>
             <div>logout</div>
           </Link>
         )}
         {auth.id && auth.adminStatus === true && (
-          <Link to="/admin" className="nav-links" id="large" style={{ fontSize: "22px" }}>
+          <Link to="/admin" className="nav-links" id="large" style={{ fontSize: "18px" }}>
             <div>admin tools</div>
           </Link>
         )}

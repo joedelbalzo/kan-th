@@ -1,11 +1,21 @@
-import React from "react";
-import { Outlet } from "react-router-dom";
+import React, { useEffect } from "react";
+import { Outlet, useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const PortfolioWrapper = () => {
+  const auth = useSelector((state) => state.auth);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (auth.isNewUser) {
+      navigate("/portfolio/edit");
+    }
+  }, [auth, navigate]);
+
   return (
-    <div>
+    <>
       <Outlet />
-    </div>
+    </>
   );
 };
 

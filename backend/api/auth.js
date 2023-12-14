@@ -76,6 +76,14 @@ app.get("/google/callback", passport.authenticate("google", { failureRedirect: "
   }
 });
 
+app.get("/me", (req, res) => {
+  if (req.isAuthenticated()) {
+    res.json(req.user);
+  } else {
+    res.status(401).json({ error: "Not authenticated" });
+  }
+});
+
 app.get("/mailinglist", isAdmin, isLoggedIn, async (req, res, next) => {
   try {
     res.send(
@@ -144,10 +152,37 @@ app.post("/register", async (req, res, next) => {
     next(ex);
   }
 });
-
 app.post("/", async (req, res, next) => {
   try {
     res.send(await User.authenticate(req.body));
+  } catch (ex) {
+    next(ex);
+  }
+});
+
+app.put("/user/:id", async (req, res, next) => {
+  console.log("we here");
+  try {
+    let userUpdates = req.body.formData;
+    console.log("user updates", userUpdates);
+    let userToEdit = await User.findByPk(req.params.id);
+    console.log("user to edit", userToEdit);
+    let updatedUser = await User.update(
+      {
+        firstName: userUpdates.firstName,
+        lastName: userUpdates.lastName,
+        businessName: userUpdates.businessName,
+        city: userUpdates.city,
+        state: userUpdates.state,
+        updates: userUpdates.updates,
+        isNewUser: false,
+      },
+      {
+        where: { id: userToEdit.id },
+      }
+    );
+    console.log("updated user info", updatedUser);
+    res.send(updatedUser);
   } catch (ex) {
     next(ex);
   }

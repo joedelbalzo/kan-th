@@ -18,7 +18,7 @@ import { readableDate, pics } from "../Components/functions";
 const Blogposts_Tags = () => {
   const blogposts = useSelector((state) => state.blogposts.filteredBlogposts);
   let { id } = useParams();
-  console.log(id);
+  // console.log(id);
 
   if (!blogposts) {
     return null;

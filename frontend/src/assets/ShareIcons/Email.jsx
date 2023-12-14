@@ -98,7 +98,7 @@ LinkedIn.defaultProps = {
 
 export const Reddit = ({ width, height, fillColor }) => {
   const fillOpposite = fillColor == "#183333" ? "whitesmoke" : "#183333";
-  console.log(width, height, fillColor);
+  // console.log(width, height, fillColor);
 
   return (
     <svg

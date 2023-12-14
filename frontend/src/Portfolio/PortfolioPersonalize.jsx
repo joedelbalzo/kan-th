@@ -22,13 +22,13 @@ const PortfolioPersonalize = () => {
   const [error, setError] = useState("");
 
   const [formData, setFormData] = useState({
-    firstName: "",
-    lastName: "",
-    businessName: "",
-    email: "",
-    city: "",
-    state: "",
-    updates: false,
+    firstName: auth ? auth.firstName : "",
+    lastName: auth ? auth.lastName : "",
+    businessName: auth ? auth.businessName : "",
+    email: auth ? auth.email : "",
+    city: auth ? auth.city : "",
+    state: auth ? auth.state : "",
+    updates: auth ? auth.updates : true,
   });
 
   const [errors, setErrors] = useState({});
@@ -45,7 +45,7 @@ const PortfolioPersonalize = () => {
 
   const validateForm = () => {
     const newErrors = {};
-
+    console.log("validating");
     // Basic validation checks
     if (!formData.firstName.trim()) {
       newErrors.firstName = "First Name is required";
@@ -66,18 +66,21 @@ const PortfolioPersonalize = () => {
   };
 
   const handleSubmit = (event) => {
-    // console.log("handling");
+    console.log("handling");
     event.preventDefault();
     if (validateForm()) {
       async function create() {
         try {
           setLoading(true);
-          const response = await dispatch(createUserProfile(formData));
-          // console.log(response);
-          if (response) {
+          const response = await dispatch(createUserProfile(formData, auth)).then(() => {
             setLoading(false);
-            navigate("/portfolio/home");
-            return;
+            setTimeout(() => {
+              navigate("/portfolio/home");
+            }, 200);
+            console.log("Dispatch successful. Navigation completed.");
+          });
+          if (!response) {
+            setLoading(false);
           }
         } catch (ex) {
           console.log(ex);
@@ -90,7 +93,11 @@ const PortfolioPersonalize = () => {
   return (
     <div>
       <div className="portfolio-personalize-home-div">
-        <div className="portfolio-personalize-home-div-inner">Welcome! Let's personalize your experience.</div>
+        {auth.isNewUser ? (
+          <div className="portfolio-personalize-home-div-inner">Welcome! Let's personalize your experience.</div>
+        ) : (
+          <div className="portfolio-personalize-home-div-inner">Edit Account Settings</div>
+        )}
       </div>
       <div className="portfolio-grid-container">
         <form className="portfolio-grid-form" onSubmit={handleSubmit}>

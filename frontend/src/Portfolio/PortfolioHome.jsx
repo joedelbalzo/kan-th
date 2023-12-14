@@ -9,6 +9,7 @@ import { businessPaperImg } from "../assets/ImageObjects";
 
 //Style imports
 import "./PortfolioStyles.css";
+import PortfolioNav from "./PortfolioNav";
 
 const PortfolioHome = () => {
   const auth = useSelector((state) => state.auth);
@@ -21,22 +22,23 @@ const PortfolioHome = () => {
   }
 
   return (
-    <div>
+    <div className="portfolio-grid">
+      <PortfolioNav />
       <div className="portfolio-home-div">
         <div className="portfolio-home-div-inner">Hey, {auth.firstName}. We're glad you're here.</div>
-        <div className="portfolio-grid-container">
-          <img src={businessPaperImg.src} alt={businessPaperImg.alt} className="portfolio-image" />
-          <main style={{ margin: "2rem auto", width: "80%", fontSize: "24px", textAlign: "center" }}>
-            We've added you to our mailing list! You'll be regularly informed about updates and changes, especially as new features become
-            available. We're excited to have you here.
-            <br />
-            <br />
-            Let's get you and your business the financing you've earned!
-            <Link to="/" className="portfolio-submit-button">
-              Home
-            </Link>
-          </main>
-        </div>
+      </div>
+      <div className="portfolio-grid-container">
+        <img src={businessPaperImg.src} alt={businessPaperImg.alt} className="portfolio-image" />
+        <main style={{ margin: "2rem auto", width: "80%", fontSize: "24px", textAlign: "center" }}>
+          We've added you to our mailing list! You'll be regularly informed about updates and changes, especially as new features become
+          available. We're excited to have you here.
+          <br />
+          <br />
+          Let's get you and your business the financing you've earned!
+          <Link to="/" className="portfolio-submit-button">
+            Home
+          </Link>
+        </main>
       </div>
     </div>
   );

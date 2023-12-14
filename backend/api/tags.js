@@ -2,6 +2,7 @@ const express = require("express");
 const app = express.Router();
 const { Tag, Blogpost, Image } = require("../db");
 const { getObjectSignedUrl } = require("../s3.js");
+const { isLoggedIn, isAdmin } = require("./middleware.js");
 
 app.get("/", async (req, res, next) => {
   try {
@@ -45,13 +46,14 @@ app.get("/:id", async (req, res, next) => {
   }
 });
 
-app.put("/:id", async (req, res, next) => {
+app.put("/:id", isLoggedIn, isAdmin, async (req, res, next) => {
   try {
     const post = await Blogpost.findByPk(req.params.id);
     if (!post) {
       return res.status(404).send("Post not found");
     }
     const { firstTag, secondTag, thirdTag } = req.body;
+    console.log(firstTag, secondTag, thirdTag);
 
     async function processTag(tag) {
       let cleanedTagName = tag.name.trim().toLowerCase();

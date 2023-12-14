@@ -1,7 +1,8 @@
 //React Imports
 import React, { useEffect, Suspense, lazy, Profiler } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { HashRouter, Route, Routes } from "react-router-dom";
+// import { HashRouter, Route, Routes } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 
 //Component Imports
 import Loading from "./assets/Loading";
@@ -24,7 +25,7 @@ const AdminPosts = lazy(() => import("./Admin/AdminPosts"));
 const AdminHelp = lazy(() => import("./Admin/AdminHelp"));
 const AdminUsers = lazy(() => import("./Admin/AdminUsers"));
 const AdminMailingList = lazy(() => import("./Admin/AdminMailingList"));
-const OAuthHandler = lazy(() => import("./assets/OauthHandler"));
+const OAuthHandler = lazy(() => import("./Components/OAuthHandler"));
 
 const PortfolioWrapper = lazy(() => import("./Portfolio/PortfolioWrapper"));
 const PortfolioHome = lazy(() => import("./Portfolio/PortfolioHome"));
@@ -91,7 +92,21 @@ function App(props) {
         <div style={{ display: "flex", flexDirection: "column", flexGrow: 1 }}>
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/client-route" element={<OAuthHandler />} />
+            <Route
+              path="/client-route"
+              element={
+                <Suspense
+                  fallback={
+                    <div style={{ margin: "4rem auto" }}>
+                      <Loading height={"100px"} width={"100px"} borderWidth={"20px"} />
+                    </div>
+                  }
+                >
+                  <OAuthHandler />{" "}
+                </Suspense>
+              }
+            />
+            {/* <Route path="/client-route" element={<PrivacyPolicy />} /> */}
 
             <Route path="/login" element={<LoginPage />} />
             <Route path="/about" element={<About />} />
@@ -131,17 +146,9 @@ function App(props) {
                   </Suspense>
                 }
               >
-                {auth.isNewUser ? (
-                  <>
-                    <Route index element={<PortfolioPersonalize />} />
-                    <Route path="home" element={<PortfolioHome />} />
-                  </>
-                ) : (
-                  <>
-                    <Route index path="home" element={<PortfolioHome />} />
-                    <Route path="edit" element={<PortfolioPersonalize />} />
-                  </>
-                )}
+                <Route index element={<PortfolioHome />} />
+                <Route path="home" element={<PortfolioHome />} />
+                <Route path="edit" element={<PortfolioPersonalize />} />
               </Route>
             )}
 

@@ -16,4 +16,8 @@ app.use("/api/images/", require("./api/images"));
 app.use("/api/tags/", require("./api/tags"));
 app.use("/api/contact/", require("./api/contact"));
 
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "../frontend/dist", "index.html"));
+});
+
 module.exports = app;

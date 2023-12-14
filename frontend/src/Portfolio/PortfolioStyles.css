@@ -2,12 +2,44 @@
 /*  */
 /*  */
 /* portfolio personalize */
+/* --primary: #183333;
+--secondary: #96ccee;
+--tertiary: #f7bf75;*/
 /*  */
 /*  */
+.portfolio-grid {
+  display: grid;
+  grid-template-columns: 75px 1fr;
+  grid-template-rows: 100px 1fr;
+  height: 100%;
+}
+
+.portfolio-nav-container {
+  grid-column: 1;
+  grid-row: 1/-1;
+  height: 100%;
+  padding: 1rem, 0;
+  background-color: #96ccee;
+  border-top: 4px solid #183333;
+}
+
+.portfolio-nav-links {
+  padding: 6px;
+  margin: 1px auto;
+}
+.portfolio-nav-links:hover {
+  text-decoration: none;
+  padding: 6px;
+  background-color: rgba(245, 245, 245, 0.3);
+  box-shadow: 2px 2px 4px rgba(200, 200, 200, 0.4);
+  border-radius: 0.5rem;
+}
+
 .portfolio-personalize-home-div {
+  grid-column: 2;
   height: 100px;
   width: 100%;
-  background: var(--bg-color-dark);
+  background: #183333;
   box-shadow: inset 2px 2px 8rem 1rem #102222;
 }
 
@@ -18,11 +50,12 @@
   justify-content: center;
   margin: 0 auto;
   height: 100px;
-  color: var(--text-color-dark);
+  color: whitesmoke;
   font-size: calc(14px + 1vw);
 }
 
 .portfolio-grid-container {
+  grid-column: 2;
   width: 90%;
   margin: 2rem auto;
   display: grid;
@@ -143,21 +176,33 @@
   box-shadow: 8px 8px 1rem rgba(100, 100, 100, 0.4);
 }
 
+/*  */
+/*  */
+/*  */
+/*  PORTFOLIO HOME */
+/*  */
+/*  */
+
 .portfolio-home-div {
+  grid-column: 2;
   height: 100px;
   width: 100%;
-  background: var(--bg-color-dark);
-  box-shadow: inset 2px 2px 8rem 1rem #102222;
+  border-top: 4px solid #183333;
+  /* border-bottom: 4px solid #183333; */
+
+  /* background: #183333; */
+  /* box-shadow: inset 2px 2px 6rem 2rem #102222; */
 }
 
 .portfolio-home-div-inner {
+  grid-column: 2;
   width: 85%;
   display: flex;
   align-items: center;
   justify-content: center;
   margin: 0 auto;
   height: 100px;
-  color: var(--text-color-dark);
+  color: #183333;
   font-size: calc(14px + 1vw);
 }
 
@@ -196,6 +241,8 @@
 
 @media screen and (max-width: 500px) {
   .portfolio-grid-container {
+    grid-column: 2;
+
     width: 90%;
     margin: 2rem auto;
     display: grid;

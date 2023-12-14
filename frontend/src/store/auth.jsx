@@ -8,14 +8,15 @@ export const auth = (state = {}, action) => {
   return state;
 };
 //auth
-export const loginWithGoogle = () => {
+export const loginWithGoogle = (token) => {
   return async (dispatch) => {
     try {
-      const urlParams = new URLSearchParams(window.location.search);
-      const token = urlParams.get("token");
+      // const urlParams = new URLSearchParams(window.location.search);
+      // const token = urlParams.get("token");
 
       if (token) {
         window.localStorage.setItem("token", token);
+        console.log("token exists");
         const response = await axios.get("/api/auth/me", {
           headers: {
             authorization: token,
@@ -41,7 +42,7 @@ export const logout = () => {
   return async (dispatch) => {
     window.localStorage.removeItem("token");
     dispatch({ type: "UPDATE_USERS_AND_PROFILES", currentUser: null });
-    return { type: "SET_AUTH", auth: {} };
+    dispatch({ type: "SET_AUTH", auth: {} });
   };
 };
 
@@ -57,7 +58,7 @@ export const loginWithToken = () => {
         });
         dispatch({ type: "SET_AUTH", auth: response.data });
         dispatch({ type: "UPDATE_USERS_AND_PROFILES", data: response.data });
-        return "success";
+        return response.data.adminStatus;
       } catch (ex) {
         return console.log("Login Invalid");
       }
@@ -157,14 +158,19 @@ export const fetchFilteredUsers = (param) => {
   };
 };
 
-export const createUserProfile = (user) => {
+export const createUserProfile = (formData, user) => {
   return async (dispatch) => {
     const token = window.localStorage.getItem("token");
-    let response = await axios.put(`/api/auth/user/`, user, {
-      headers: {
-        authorization: token,
-      },
-    });
+
+    let response = await axios.put(
+      `/api/auth/user/${user.id}`,
+      { formData, user },
+      {
+        headers: {
+          authorization: token,
+        },
+      }
+    );
     dispatch({ type: "CREATE_USER_PROFILE", user: response.data });
     return response.data;
   };

@@ -44,9 +44,9 @@ const LoginComponent = () => {
     try {
       window.localStorage.removeItem("token");
       const response = await dispatch(attemptLogin(credentials));
-      if (response == "success") {
-        navigate("/portfolio");
-      }
+      if (response == true) {
+        navigate("/admin");
+      } else navigate("/portfolio");
     } catch (err) {
       setErrorMessage("username or password is incorrect");
     }
@@ -58,7 +58,6 @@ const LoginComponent = () => {
       window.localStorage.removeItem("token");
       // console.log("add password validation");
       const response = await dispatch(attemptLogin(credentials));
-      // console.log("response", response);
       if (response == "success") {
         navigate("/portfolio");
       }
@@ -75,8 +74,12 @@ const LoginComponent = () => {
 
   const handleGoogleLogin = () => {
     window.localStorage.removeItem("token");
-    window.location.href = "http://localhost:3000/api/auth/google";
-    dispatch(loginWithGoogle());
+    console.log(process.env.NODE_ENV, "google login process");
+    if (process.env.NODE_ENV == "development") {
+      window.location.href = "http://localhost:3000/api/auth/google";
+    } else {
+      window.location.href = "http://usevali.com/api/auth/google";
+    }
   };
 
   if (errorMessage) {
