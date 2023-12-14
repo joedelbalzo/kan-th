@@ -175,8 +175,8 @@ const Blogposts = () => {
                         </Link>
                       </div>
                     </div>
-                    <div className="post-bottom-border"> </div>
                   </div>
+                  <div className="post-bottom-border"> </div>
                 </div>
               );
             })}

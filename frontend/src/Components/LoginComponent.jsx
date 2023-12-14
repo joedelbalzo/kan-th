@@ -5,7 +5,7 @@ import { Link, useNavigate } from "react-router-dom";
 //Component Imports
 
 //Store Imports
-import { attemptLogin, loginWithGoogle, logout } from "../store";
+import { attemptLogin, register, logout } from "../store";
 import { useDispatch, useSelector } from "react-redux";
 
 //Other Imports
@@ -54,10 +54,11 @@ const LoginComponent = () => {
 
   const create = async (ev) => {
     ev.preventDefault();
+    console.log("creating");
     try {
       window.localStorage.removeItem("token");
-      // console.log("add password validation");
-      const response = await dispatch(attemptLogin(credentials));
+      const response = await dispatch(register(credentials));
+      console.log("response", response);
       if (response == "success") {
         navigate("/portfolio");
       }

@@ -50,7 +50,7 @@ const Admin = () => {
         return (
           <div>
             <ul>
-              <li>{user.username}</li>
+              <li key={user.id}>Username: {user.username}</li>
             </ul>
           </div>
         );

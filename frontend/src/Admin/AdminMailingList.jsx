@@ -62,8 +62,8 @@ const AdminMailingList = () => {
       <h3 className="admin-header">List of Mailing List Emails</h3>
 
       {list && (
-        <div style={{ fontSize: "12px", width: "80%", margin: "0 auto" }}>
-          Right now, there are {list.length} emails on your list. The first one signed up on {} and the most recent one signed up on {}
+        <div style={{ fontSize: "12px", width: "80%", margin: "auto", textAlign: "center" }}>
+          Right now, there are {list.length} emails on your list.
         </div>
       )}
       <button onClick={copyEmails} className="login-button" style={{ fontSize: "14px", height: "30px", margin: "2rem" }}>

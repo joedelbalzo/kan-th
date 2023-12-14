@@ -138,6 +138,7 @@ app.get("/filteredusers", isAdmin, isLoggedIn, async (req, res, next) => {
 //basic user things
 app.get("/", isLoggedIn, (req, res, next) => {
   try {
+    console.log("what's going on here");
     res.send(req.user);
   } catch (ex) {
     next(ex);

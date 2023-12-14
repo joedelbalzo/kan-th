@@ -1,6 +1,7 @@
 //React Imports
 import React, { useState, useEffect } from "react";
 import { useNavigate, Link } from "react-router-dom";
+import axios from "axios";
 
 //Store Imports
 import { useDispatch, useSelector } from "react-redux";
@@ -72,6 +73,8 @@ const PortfolioPersonalize = () => {
       async function create() {
         try {
           setLoading(true);
+          await axios.post(`/api/auth/mailinglist`, { email: formData.email });
+          //gotta create a way for a user to get off this
           const response = await dispatch(createUserProfile(formData, auth)).then(() => {
             setLoading(false);
             setTimeout(() => {
