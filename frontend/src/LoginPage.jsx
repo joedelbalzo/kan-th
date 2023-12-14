@@ -1,6 +1,5 @@
 //React Imports
-import React, { useState, useContext } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import React from "react";
 
 //Component Imports
 import LoginComponent from "./Components/LoginComponent";
@@ -8,8 +7,6 @@ import { barberImg } from "./assets/ImageObjects";
 import { FadeComponent } from "./assets/FadeComponent";
 
 //Store Imports
-import { attemptLogin, loginWithGoogle, logout } from "./store";
-import { useDispatch, useSelector } from "react-redux";
 
 //Other Imports
 

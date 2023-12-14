@@ -6,7 +6,7 @@ const path = require("path");
 
 require("dotenv").config({ path: path.resolve(__dirname, "../..", ".env") });
 
-const JWT_SECRET = process.env.JWT || "itsa389F5C6458C764FF43152asd81DB1E3Fdevsecretbaby12302398#$";
+const JWT_SECRET = process.env.JWT || "itsa389F5C6458C7uhadsfoandix64FF43152asd81DB1E3Fdevsecretbaby12302398#$";
 
 const User = conn.define("user", {
   id: {
