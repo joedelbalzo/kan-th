@@ -192,7 +192,7 @@ const SeededPosts = [
   },
   {
     title: "The Rising Tide of Search Funds and What that Means for Owners",
-    subtitle: "Subtitle Not Null",
+    subtitle: "What Are Search Funds Anyways?",
     content: `
     <p>In today's ever-changing world of entrepreneurship and small business ownership, there's a seasoned player taking the spotlight – <strong>search funds</strong>.</p>
   

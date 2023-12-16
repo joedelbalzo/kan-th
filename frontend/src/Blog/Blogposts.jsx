@@ -41,10 +41,6 @@ const Blogposts = () => {
     return null;
   }
 
-  if (!blogposts[0]) {
-    return null;
-  }
-
   let headlinerPost = blogposts.find((post) => post.title == "What Is Your Valuation and Why Does It Matter?");
   let headlinerPic;
   if (!headlinerPost.images) {
@@ -85,103 +81,109 @@ const Blogposts = () => {
 
   return (
     <FadeComponent>
-      <div>
-        <div className="post-headliner" key={headlinerPost.id}>
-          <div className="post-container">
-            {headlinerPic != null ? (
-              <img src={headlinerPic.awsPicURL} alt={headlinerPic.altText} className="post-headline-div-picture" />
-            ) : (
-              ""
-            )}
-            <div className="post-title-div">
-              <Link to={`/blog/posts/${headlinerPost.id}`} style={{ textDecoration: "none", color: "inherit" }}>
-                <h2>{headlinerPost.title}</h2>
-              </Link>
-
-              <div className="post-body">{sampleText(headlinerPost.content, 25)} </div>
-              <Link to={`/blog/posts/${headlinerPost.id}`} id="read-more">
-                read more <BackButton facingRight={true} strokeColor="whitesmoke" />
-              </Link>
-            </div>
-          </div>
+      {blogposts.length < 1 ? (
+        <div>
+          <Loading />
         </div>
-        {/* break between headliner and other latest posts */}
-        {/* break between headliner and other latest posts */}
-        {/* break between headliner and other latest posts */}
+      ) : (
+        <div>
+          <div className="post-headliner" key={headlinerPost.id}>
+            <div className="post-container">
+              {headlinerPic != null ? (
+                <img src={headlinerPic.awsPicURL} alt={headlinerPic.altText} className="post-headline-div-picture" />
+              ) : (
+                ""
+              )}
+              <div className="post-title-div">
+                <Link to={`/blog/posts/${headlinerPost.id}`} style={{ textDecoration: "none", color: "inherit" }}>
+                  <h2>{headlinerPost.title}</h2>
+                </Link>
 
-        <div className="post-grid">
-          <div className="post-info" style={{ marginTop: "2rem" }}>
-            <JoinMailingList />
-            <div className="tag-styles-container" style={{ marginTop: "2rem", marginBottom: "0" }}>
-              sort by tags:
-              <select className="tag-styles" onChange={(event) => onTagClick(event.target.value)}>
-                {tags.map((tag) => {
-                  return (
-                    <option value={tag.id} key={tag.id}>
-                      {tag.name}
-                    </option>
-                  );
-                })}
-              </select>
+                <div className="post-body">{sampleText(headlinerPost.content, 25)} </div>
+                <Link to={`/blog/posts/${headlinerPost.id}`} id="read-more">
+                  read more <BackButton facingRight={true} strokeColor="whitesmoke" />
+                </Link>
+              </div>
             </div>
           </div>
+          {/* break between headliner and other latest posts */}
+          {/* break between headliner and other latest posts */}
+          {/* break between headliner and other latest posts */}
 
-          {filteredPosts
-            .filter((post) => post !== headlinerPost)
-            .map((blogpost) => {
-              let { homePic } = pics(blogpost);
-              return (
-                <div className="post-content" key={blogpost.id}>
-                  <div className="post-container">
-                    {homePic != null ? <img src={homePic.awsPicURL} alt={homePic.altText} className="post-div-picture" /> : ""}
-                    <div className="post-title-div">
-                      <Link to={`/blog/posts/${blogpost.id}`} style={{ textDecoration: "none", color: "inherit" }}>
-                        <h2>{blogpost.title}</h2>
-                      </Link>
+          <div className="post-grid">
+            <div className="post-info" style={{ marginTop: "2rem" }}>
+              <JoinMailingList />
+              <div className="tag-styles-container" style={{ marginTop: "2rem", marginBottom: "0" }}>
+                sort by tags:
+                <select className="tag-styles" onChange={(event) => onTagClick(event.target.value)}>
+                  {tags.map((tag) => {
+                    return (
+                      <option value={tag.id} key={tag.id}>
+                        {tag.name}
+                      </option>
+                    );
+                  })}
+                </select>
+              </div>
+            </div>
 
-                      <h3 style={{ fontWeight: 350 }}>{blogpost.subtitle}</h3>
-
-                      <div className="post-tags" style={{ marginTop: "1rem" }}>
-                        <span className="post-date">Date: {readableDate(blogpost.publishedAt)} </span>
-                        || Tags:
-                        {blogpost.tags[0] ? (
-                          <Link to={`/blog/tags/${blogpost.tags[0].id}`} key={blogpost.tags[0].id} style={{ marginLeft: 4 }}>
-                            {blogpost.tags[0].name}
-                          </Link>
-                        ) : (
-                          ""
-                        )}
-                        {blogpost.tags[1] ? (
-                          <Link to={`/blog/tags/${blogpost.tags[1].id}`} key={blogpost.tags[1].id}>
-                            , {blogpost.tags[1].name}
-                          </Link>
-                        ) : (
-                          ""
-                        )}
-                        {blogpost.tags[2] ? (
-                          <Link to={`/blog/tags/${blogpost.tags[2].id}`} key={blogpost.tags[2].id}>
-                            , {blogpost.tags[2].name}{" "}
-                          </Link>
-                        ) : (
-                          ""
-                        )}
-                      </div>
-                      {/* <ShareButtons fillColor={"#183333"} /> */}
-                      <div className="post-body">
-                        {sampleText(blogpost.content, 40)}
-                        <Link to={`./blog/posts/${blogpost.id}`}>
-                          read more
-                          <BackButton height={"16px"} facingRight={true} strokeColor="#183333" />
+            {filteredPosts
+              .filter((post) => post !== headlinerPost)
+              .map((blogpost) => {
+                let { homePic } = pics(blogpost);
+                return (
+                  <div className="post-content" key={blogpost.id}>
+                    <div className="post-container">
+                      {homePic != null ? <img src={homePic.awsPicURL} alt={homePic.altText} className="post-div-picture" /> : ""}
+                      <div className="post-title-div">
+                        <Link to={`/blog/posts/${blogpost.id}`} style={{ textDecoration: "none", color: "inherit" }}>
+                          <h2>{blogpost.title}</h2>
                         </Link>
+
+                        <h3 style={{ fontWeight: 350 }}>{blogpost.subtitle}</h3>
+
+                        <div className="post-tags" style={{ marginTop: "1rem" }}>
+                          <span className="post-date">Date: {readableDate(blogpost.publishedAt)} </span>
+                          || Tags:
+                          {blogpost.tags[0] ? (
+                            <Link to={`/blog/tags/${blogpost.tags[0].id}`} key={blogpost.tags[0].id} style={{ marginLeft: 4 }}>
+                              {blogpost.tags[0].name}
+                            </Link>
+                          ) : (
+                            ""
+                          )}
+                          {blogpost.tags[1] ? (
+                            <Link to={`/blog/tags/${blogpost.tags[1].id}`} key={blogpost.tags[1].id}>
+                              , {blogpost.tags[1].name}
+                            </Link>
+                          ) : (
+                            ""
+                          )}
+                          {blogpost.tags[2] ? (
+                            <Link to={`/blog/tags/${blogpost.tags[2].id}`} key={blogpost.tags[2].id}>
+                              , {blogpost.tags[2].name}{" "}
+                            </Link>
+                          ) : (
+                            ""
+                          )}
+                        </div>
+                        {/* <ShareButtons fillColor={"#183333"} /> */}
+                        <div className="post-body">
+                          {sampleText(blogpost.content, 40)}
+                          <Link to={`./blog/posts/${blogpost.id}`}>
+                            read more
+                            <BackButton height={"16px"} facingRight={true} strokeColor="#183333" />
+                          </Link>
+                        </div>
                       </div>
                     </div>
+                    <div className="post-bottom-border"> </div>
                   </div>
-                  <div className="post-bottom-border"> </div>
-                </div>
-              );
-            })}
+                );
+              })}
+          </div>
         </div>
-      </div>
+      )}
     </FadeComponent>
   );
 };

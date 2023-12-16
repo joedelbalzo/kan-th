@@ -88,7 +88,7 @@ export const fetchBlogByID = (id) => {
 //   };
 // };
 
-export const createBlogpost = (formData, blogData, tagData) => {
+export const createBlogpost = (formData, captions, blogData, tagData) => {
   return async (dispatch) => {
     const token = window.localStorage.getItem("token");
 
@@ -98,12 +98,16 @@ export const createBlogpost = (formData, blogData, tagData) => {
       },
     });
 
-    let imageResponse = await axios.post(`/api/images/${blogResponse.data.id}`, formData, {
-      headers: {
-        "Content-Type": "multipart/form-data",
-        authorization: token,
-      },
-    });
+    let imageResponse = await axios.post(
+      `/api/images/${blogResponse.data.id}`,
+      { formData, captions },
+      {
+        headers: {
+          "Content-Type": "multipart/form-data",
+          authorization: token,
+        },
+      }
+    );
     let tagResponse = await axios.put(`/api/tags/${blogResponse.data.id}`, tagData, {
       headers: {
         authorization: token,
@@ -129,17 +133,21 @@ export const publishBlogpost = (blogpost) => {
 
 //SO this is going to have to make two axios calls, one to blogposts and one to images. the ID needs to go with each.
 //
-export const editBlogpost = (formData, blogData, tagData, id) => {
+export const editBlogpost = (formData, captions, blogData, tagData, id) => {
   return async (dispatch) => {
     const token = window.localStorage.getItem("token");
     let blogResponse;
     let tagResponse;
-    const imageResponse = await axios.put(`/api/images/${id}`, formData, {
-      headers: {
-        "Content-Type": "multipart/form-data",
-        authorization: token,
-      },
-    });
+    const imageResponse = await axios.put(
+      `/api/images/${id}`,
+      { formData, captions },
+      {
+        headers: {
+          "Content-Type": "multipart/form-data",
+          authorization: token,
+        },
+      }
+    );
     if (imageResponse.status === 200) {
       tagResponse = await axios.put(`/api/tags/${id}`, tagData, {
         headers: {

@@ -1,12 +1,9 @@
 12/8/2023
 immediate fixes:
-oauth needs to redirect for real, not to localhost
 add kanica linkedin and email
 login on mobile is weird. check your screenshots
-portfolio submit needs to do something
 
 long term -
-seo shit, like the mobile menu close button doesn't need to be a link
 form elements need labels, like for="firstname" or aria-label="firstname
 focusable elements need unique ids, like the nav buttons
 images need height and width, https://web.dev/articles/optimize-cls
@@ -14,12 +11,10 @@ pictures are too big for mobile, and it effects performance.
 
 Small list of bugs noticed on initial deployment:
 
--I just noticed that you can't change Tags, and it also doesn't actually set the tags chosen. That's annoying. Anyways, here's the rest:
--Publish on an update doesn't actually work. That's not good. Gotta be able to update!
 -Some confirmation that you've actually selected a photo. Right now, there is no "File Chosen" and so it just looks like you're not uploading any pictures.
--Loading state on the Publish button. Right now it waits for about a second (to talk to Postgres and AWS) and then the completed acknowledgment appears.
+
 -Captions need to be saved appropriately.
--There's an issue with redirection -- if you go back to the blog after hitting publish by hitting "Vali" up above, you don't see the newest post. The only way to see the newest post is to refresh the state.
+
 -This text box grows with really long sentences. It shouldn't grow as much as it just did.
 -Text overflows the backdrop when publishing. Check out the post before that's all sorts of Lorem Ipsum. Text isn't wrapping appropriately
 -Introduce instructions for the admin. %% regex for photos is not super easy to remember!

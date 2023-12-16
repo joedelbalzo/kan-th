@@ -42,6 +42,10 @@
   padding: 1rem;
 }
 
+.admin-blogpost > ul > li {
+  font-size: 16px;
+}
+
 .admin-blogpost-options {
   padding: 0.5rem;
 }
@@ -50,7 +54,7 @@
   margin: 0;
   padding: 0;
   text-decoration: none;
-  font-size: 1rem;
+  font-size: 14px;
   padding: 0.5rem;
   margin: 0.5rem;
   outline: 1px solid gray;
@@ -176,7 +180,10 @@
 
 .help-and-documentation-div {
   width: 80%;
-  margin: auto;
+  margin: 2rem auto;
+}
+.help-and-documentation-links > ul {
+  padding: 0;
 }
 .help-and-docs-body > ul > li {
   padding: 1rem;

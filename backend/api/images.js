@@ -55,9 +55,9 @@ app.put(
     { name: "contentPicture", maxCount: 1 },
   ]),
   async (req, res, next) => {
+    const { homeCap, bannerCap, contentCap } = req.body.captions;
     try {
       const imageTypes = ["homePicture", "bannerPicture", "contentPicture"];
-
       for (const imageType of imageTypes) {
         if (req.files[imageType] && req.files[imageType][0]) {
           const image = req.files[imageType][0];
@@ -72,11 +72,22 @@ app.put(
 
           await uploadFile(processedImage, imageName, processedImage.mimetype);
 
+          let cap;
+          if (imageType == "homePicture") {
+            cap = homeCap;
+          }
+          if (imageType == "bannerPicture") {
+            cap = bannerCap;
+          }
+          if (imageType == "contentPicture") {
+            cap = contentCap;
+          }
+
           await Image.update(
             {
               awsPicID: imageName,
               picNickname: image.originalname,
-              caption: `insert ${imageType.replace("Picture", "")} pic caption here`,
+              picCaption: cap,
             },
             {
               where: {

@@ -43,16 +43,25 @@ import Box from "@mui/material/Box";
 
 //scroll
 function ScrollTop(props) {
-  const { children, window } = props;
+  const { children } = props;
+
   const trigger = useScrollTrigger({
-    target: window ? window() : undefined,
+    target: window,
     disableHysteresis: true,
     threshold: 100,
   });
 
-  const handleClick = (event) => {
-    document.body.scrollTop = 0;
-    document.documentElement.scrollTop = 0;
+  const smoothScrollToTop = (duration) => {
+    const scrollStep = -window.scrollY / (duration / 15),
+      scrollInterval = setInterval(function () {
+        if (window.scrollY != 0) {
+          window.scrollBy(0, scrollStep);
+        } else clearInterval(scrollInterval);
+      }, 15);
+  };
+
+  const handleClick = () => {
+    smoothScrollToTop(200);
   };
 
   return (

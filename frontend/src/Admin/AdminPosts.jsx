@@ -37,9 +37,13 @@ const AdminPosts = () => {
   const [homePicture, setHomePicture] = useState(homePic?.picNickname || "");
   const [contentPicture, setContentPicture] = useState(contentPic?.picNickname || "");
   const [bannerPicture, setBannerPicture] = useState(bannerPic?.picNickname || "");
+  const [homePictureCaption, setHomePictureCaption] = useState(homePic?.picCaption || "");
+  const [contentPictureCaption, setContentPictureCaption] = useState(contentPic?.picCaption || "");
+  const [bannerPictureCaption, setBannerPictureCaption] = useState(bannerPic?.picCaption || "");
   const [saveDateAndTime, setSaveDateAndTime] = useState("");
   const [published, setPublished] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [saveLoading, setSaveLoading] = useState(false);
 
   //gets tags
   const tags = useSelector((state) => state.tags);
@@ -47,68 +51,85 @@ const AdminPosts = () => {
   const [secondTag, setSecondTag] = useState(tags[1] || "Select Tag");
   const [thirdTag, setThirdTag] = useState(tags[2] || "Select Tag");
 
-  const handleSave = async (event) => {
-    event.preventDefault();
-    let saved = new Date().toString();
-    setSaveDateAndTime(saved.slice(3, 24));
+  // const handleSave = async (event) => {
+  //   event.preventDefault();
+  //   let saved = new Date().toString();
+  //   setSaveDateAndTime(saved.slice(3, 24));
+  //   console.log("saving");
 
-    const formData = new FormData();
-    formData.append("homePicture", homePicture);
-    formData.append("bannerPicture", bannerPicture);
-    formData.append("contentPicture", contentPicture);
+  //   const formData = new FormData();
+  //   formData.append("homePicture", homePicture);
+  //   formData.append("bannerPicture", bannerPicture);
+  //   formData.append("contentPicture", contentPicture);
 
-    const blogData = {
-      title: title,
-      subtitle: subtitle,
-      content: content,
-      published: false,
-      lastSaved: new Date(),
-    };
+  //   const blogData = {
+  //     title: title,
+  //     subtitle: subtitle,
+  //     content: content,
+  //     published: false,
+  //     lastSaved: new Date(),
+  //   };
 
-    const tagData = {
-      firstTag: firstTag,
-      secondTag: secondTag,
-      thirdTag: thirdTag,
-    };
+  //   const tagData = {
+  //     firstTag: firstTag,
+  //     secondTag: secondTag,
+  //     thirdTag: thirdTag,
+  //   };
 
-    if (type === "edit") {
-      dispatch(editBlogpost(formData, blogData, tagData, post.id));
-    } else if (type === "create") {
-      dispatch(createBlogpost(formData, blogData, tagData));
-    }
-  };
+  //   console.log("form data", formData);
+
+  //   if (type === "edit") {
+  //     dispatch(editBlogpost(formData, blogData, tagData, post.id));
+  //   } else if (type === "create") {
+  //     dispatch(createBlogpost(formData, blogData, tagData));
+  //   }
+  // };
 
   const handleSubmit = async (event) => {
-    setLoading(true);
     event.preventDefault();
+    if (event.nativeEvent.submitter.name === "save") {
+      setSaveLoading(true);
+    }
+    if (event.nativeEvent.submitter.name === "publish") {
+      setLoading(true);
+    }
     try {
       const formData = new FormData();
       formData.append("homePicture", homePicture);
       formData.append("bannerPicture", bannerPicture);
       formData.append("contentPicture", contentPicture);
 
+      const captions = {
+        homePictureCaption: homePictureCaption,
+        bannerPictureCaption: bannerPictureCaption,
+        contentPictureCaption: contentPictureCaption,
+      };
+
       const blogData = {
         title: title,
         subtitle: subtitle,
         content: content,
-        published: true,
         publishedAt: new Date(),
+        lastSaved: new Date(),
       };
 
       const tagData = {
-        firstTag: firstTag,
-        secondTag: secondTag,
-        thirdTag: thirdTag,
+        firstTag: firstTag || null,
+        secondTag: secondTag || null,
+        thirdTag: thirdTag || null,
       };
 
-      if (type === "edit") {
-        await dispatch(editBlogpost(formData, blogData, tagData, post.id));
-      } else if (type === "create") {
-        await dispatch(createBlogpost(formData, blogData, tagData));
+      if (event.nativeEvent.submitter.name === "save") {
+        await dispatch(editBlogpost(formData, captions, blogData, tagData, post.id));
+        setSaveLoading(false);
+        let saved = new Date().toString();
+        setSaveDateAndTime(saved.slice(3, 24));
+      } else if (event.nativeEvent.submitter.name === "publish") {
+        blogData.published = true;
+        await dispatch(createBlogpost(formData, captions, blogData, tagData));
+        setPublished(true);
+        setLoading(false);
       }
-
-      setPublished(true);
-      setLoading(false);
 
       setTimeout(() => {
         setPublished(false);
@@ -117,6 +138,7 @@ const AdminPosts = () => {
       console.log(err);
       setPublished(false);
       setLoading(false);
+      setSaveLoading(false);
     }
   };
 
@@ -168,7 +190,7 @@ const AdminPosts = () => {
                 value={firstTag}
                 options={tags}
                 getOptionLabel={(option) => (option.name ? option.name : "")}
-                sx={{ width: 150 }}
+                sx={{ width: 200 }}
                 renderInput={(params) => <TextField {...params} label="Tag 1" />}
                 onChange={(event, newValue) => {
                   setFirstTag(newValue);
@@ -183,7 +205,7 @@ const AdminPosts = () => {
                 value={secondTag}
                 options={tags}
                 getOptionLabel={(option) => (option.name ? option.name : "")}
-                sx={{ width: 150 }}
+                sx={{ width: 200 }}
                 renderInput={(params) => <TextField {...params} label="Tag 2" />}
                 onChange={(event, newValue) => {
                   setSecondTag(newValue);
@@ -198,7 +220,7 @@ const AdminPosts = () => {
                 value={thirdTag}
                 options={tags}
                 getOptionLabel={(option) => (option.name ? option.name : "")}
-                sx={{ width: 150 }}
+                sx={{ width: 200 }}
                 renderInput={(params) => <TextField {...params} label="Tag 3" />}
                 onChange={(event, newValue) => {
                   setThirdTag(newValue);
@@ -237,7 +259,7 @@ const AdminPosts = () => {
           </div>
           <div style={{ display: "flex", alignItems: "center" }}>
             <p className="image-upload-labels">Home Caption:</p>
-            <TextField variant="outlined" type="text" className="image-input" onChange={console.log("home caption")} />
+            <TextField variant="outlined" type="text" className="image-input" onChange={(e) => setHomePictureCaption(e.target.value)} />
           </div>
           <div style={{ paddingBottom: "2vh", width: "100%", display: "flex", alignItems: "center" }}>
             <label htmlFor="bannerPicture" className="image-upload-labels">
@@ -264,7 +286,7 @@ const AdminPosts = () => {
               type="text"
               // value={homeCaption}
               className="image-input"
-              onChange={console.log("banner caption")}
+              onChange={(e) => setBannerPictureCaption(e.target.value)}
             />
           </div>
 
@@ -293,17 +315,23 @@ const AdminPosts = () => {
               type="text"
               // value={homeCaption}
               className="image-input"
-              onChange={console.log("content caption")}
+              onChange={(e) => setContentPictureCaption(e.target.value)}
             />
           </div>
         </div>
         <div style={{ display: "flex", width: "200px", margin: "auto" }}>
-          <button className="save-button" type="button" onClick={handleSave}>
-            Save
-          </button>
+          {saveLoading == false ? (
+            <button className="save-button" type="submit" name="save">
+              Save
+            </button>
+          ) : (
+            <button className="save-button" disabled>
+              <Loading height={"10px"} width={"10px"} borderWidth={"3px"} />
+            </button>
+          )}
 
           {loading == false && published == false && (
-            <button type="submit" className="publish-button">
+            <button type="submit" name="publish" className="publish-button">
               Publish
             </button>
           )}
