@@ -116,6 +116,9 @@ function About() {
               <div>
                 <h1>Kanica Allagh</h1>
                 <h2>Founder</h2>
+                <span>
+                  <a href="https://www.linkedin.com/in/kanicaallagh/">LinkedIn</a>
+                </span>
               </div>
               <img src={kanicaImg.src} alt={kanicaImg.alt} className="kanica-picture" />
             </div>
