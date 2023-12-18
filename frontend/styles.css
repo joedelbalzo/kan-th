@@ -911,9 +911,7 @@ h3 {
     align-items: center;
     text-align: center;
     margin: 0rem auto;
-    /* padding: 2.5rem 0; */
     font-size: calc(20px + 3vw);
-    /* border-bottom: 6px solid #96ccee; */
   }
   .home-div-subtitle {
     grid-column: 1;

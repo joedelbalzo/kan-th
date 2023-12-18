@@ -69,10 +69,10 @@ app.get("/google/callback", passport.authenticate("google", { failureRedirect: "
   try {
     const tokenData = await req.user.generateToken();
     if (tokenData && tokenData.token && process.env.NODE_ENV == "development") {
-      res.redirect(`http://localhost:3000/client-route?token=${tokenData.token}`);
+      res.redirect(`https://localhost:3000/client-route?token=${tokenData.token}`);
     }
     if (tokenData && tokenData.token && process.env.NODE_ENV == "production") {
-      res.redirect(`http://www.usevali.com/client-route?token=${tokenData.token}`);
+      res.redirect(`https://www.usevali.com/client-route?token=${tokenData.token}`);
     }
   } catch (err) {
     console.log(err);

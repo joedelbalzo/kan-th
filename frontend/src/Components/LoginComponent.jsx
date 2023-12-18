@@ -74,9 +74,9 @@ const LoginComponent = () => {
   const handleGoogleLogin = () => {
     window.localStorage.removeItem("token");
     if (process.env.NODE_ENV == "development") {
-      window.location.href = "http://localhost:3000/api/auth/google";
+      window.location.href = "https://localhost:3000/api/auth/google";
     } else {
-      window.location.href = "http://usevali.com/api/auth/google";
+      window.location.href = "https://usevali.com/api/auth/google";
     }
   };
 
