@@ -250,7 +250,7 @@ a:hover {
   grid-template-columns: 50% 50%;
   grid-template-rows: 1fr;
   width: 85%;
-  height: 450px;
+  height: 475px;
   color: var(--text-color-dark);
   font-size: calc(12px + 1vw);
 }
@@ -382,7 +382,7 @@ a:hover {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 300px;
+  height: 250px;
   width: 100%;
   background: var(--bg-color-dark);
   box-shadow: inset 2px 2px 8rem 1rem #102222;
@@ -390,34 +390,35 @@ a:hover {
 
 .about-div-inner {
   width: 85%;
-  height: 300px;
+  height: 250px;
   color: var(--text-color-dark);
   display: grid;
   font-size: calc(12px + 1vw);
-  grid-template-columns: 1fr 1fr;
 }
 
 .about-div-text {
   display: grid;
-  grid-template-rows: 150px 150px;
+  grid-template-rows: 150px 100px;
+  grid-template-columns: 1fr 1fr;
 }
 .about-title {
   font-size: calc(24px + 5vw);
-  text-align: center;
   word-wrap: normal;
   margin: auto;
+  text-align: right;
   grid-row: 1;
-  grid-column: 1;
-  align-items: center;
+  grid-column: 2;
+  width: 100%;
+  border-bottom: 10px solid #96ccee;
 }
 .about-subtitle {
   font-size: 24px;
   word-wrap: normal;
   width: 90%;
   margin: auto;
-  text-align: left;
+  text-align: center;
   grid-row: 2;
-  grid-column: 1;
+  grid-column: 1/-1;
   align-items: center;
 }
 
@@ -891,7 +892,7 @@ h3 {
 
   .home-div-inner {
     display: grid;
-    grid-template-rows: 125px 325px;
+    grid-template-rows: 125px 350px;
     grid-template-columns: 1fr 1fr;
     width: 95%;
   }
@@ -899,7 +900,7 @@ h3 {
     display: grid;
     grid-row: 1/-1;
     grid-column: 1/-1;
-    grid-template-rows: 125px 150px 175px;
+    grid-template-rows: 140px 160px 175px;
     grid-template-columns: 1fr 1fr;
   }
   .home-div-title {
@@ -909,8 +910,10 @@ h3 {
     display: flex;
     align-items: center;
     text-align: center;
-    margin: 0 auto;
-    font-size: calc(24px + 3vw);
+    margin: 0rem auto;
+    /* padding: 2.5rem 0; */
+    font-size: calc(20px + 3vw);
+    /* border-bottom: 6px solid #96ccee; */
   }
   .home-div-subtitle {
     grid-column: 1;
@@ -934,7 +937,7 @@ h3 {
     grid-column: 2;
   }
   .home-div-image > img {
-    height: 325px;
+    height: 300px;
   }
 
   .home-content-images {

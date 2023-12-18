@@ -10,7 +10,9 @@ import FinanceBar from "./assets/FinanceBar";
 import Seedling from "./assets/Seedling";
 import Links from "./assets/Links";
 import { FadeComponent } from "./assets/FadeComponent";
-import { kanicaImg } from "./assets/ImageObjects";
+import { kanicaImg, businessPaperImg } from "./assets/ImageObjects";
+import PieChart from "./assets/BusinessIcons/PieChart";
+import Graph from "./assets/BusinessIcons/Graphj";
 
 //Store Imports
 
@@ -92,7 +94,9 @@ function About() {
               <div className="about-div-text">
                 <h1 className="about-title">Vali</h1>
                 <motion.div variants={child} className="about-subtitle">
-                  <h2>We're dedicated to empowering small and medium-sized businesses with crucial financial insights.</h2>
+                  <h2 style={{ gridColumn: "1/-1" }}>
+                    We're dedicated to empowering small and medium-sized businesses with crucial financial insights.
+                  </h2>
                 </motion.div>
               </div>
             </div>
