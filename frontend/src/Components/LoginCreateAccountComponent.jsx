@@ -48,6 +48,8 @@ const LoginComponent = () => {
     dispatch(logout());
   };
 
+  console.log("is the logincreateaccountcomponent ever used?");
+
   const handleGoogleLogin = () => {
     window.localStorage.removeItem("token");
     window.location.href = "http://localhost:3000/api/auth/google";

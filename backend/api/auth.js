@@ -14,12 +14,17 @@ let salt1 = bcrypt.genSaltSync();
 let salt2 = bcrypt.genSaltSync();
 let secret = bcrypt.hashSync(salt1 + salt2, 10);
 
+const callbackURL =
+  process.env.NODE_ENV === "development"
+    ? "http://localhost:3000/api/auth/google/callback"
+    : "https://www.usevali.com/api/auth/google/callback";
+
 passport.use(
   new GoogleStrategy(
     {
       clientID: process.env.GOOGLE_CLIENT_ID,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-      callbackURL: "/api/auth/google/callback",
+      callbackURL: callbackURL,
     },
     async function (accessToken, refreshToken, profile, done) {
       try {
@@ -30,7 +35,6 @@ passport.use(
             adminStatus: false,
           },
         });
-        // console.log("creating", user);
         return done(null, user);
       } catch (err) {
         return done(err, null);
@@ -39,7 +43,6 @@ passport.use(
   )
 );
 passport.serializeUser(function (user, done) {
-  // console.log("serialize", user);
   done(null, user.id);
 });
 
@@ -102,7 +105,6 @@ app.get("/mailinglist", isAdmin, isLoggedIn, async (req, res, next) => {
 
 app.post("/mailinglist", async (req, res, next) => {
   try {
-    // console.log("in express", req.body);
     const response = await MailingListUser.create({
       email: req.body.email,
       currentlyActive: true,
