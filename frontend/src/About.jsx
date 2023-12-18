@@ -92,7 +92,7 @@ function About() {
           <div className="about-div-container">
             <div className="about-div-inner">
               <div className="about-div-text">
-                <h1 className="about-title">Vali</h1>
+                <h1 className="about-title">Vali </h1>
                 <motion.div variants={child} className="about-subtitle">
                   <h2 style={{ gridColumn: "1/-1" }}>
                     We're dedicated to empowering small and medium-sized businesses with crucial financial insights.
@@ -111,6 +111,7 @@ function About() {
             We're a small, privately owned company, <br />
             just like yours.
           </h1>
+          <br />
           <h2>and we're ready to be your partner in this journey.</h2>
         </motion.div>
 
@@ -120,8 +121,10 @@ function About() {
               <div>
                 <h1>Kanica Allagh</h1>
                 <h2>Founder</h2>
-                <span>
+                <span style={{ marginTop: "1rem" }}>
                   <a href="https://www.linkedin.com/in/kanicaallagh/">LinkedIn</a>
+                  <br />
+                  <a href="mailto:kanica@usevali.com">kanica@usevali.com</a>
                 </span>
               </div>
               <img src={kanicaImg.src} alt={kanicaImg.alt} className="kanica-picture" />
@@ -149,18 +152,18 @@ function About() {
       <motion.div ref={ref2} initial={{ opacity: 0, y: "10px" }} animate={controls2} transition={transition}>
         <div className="home-content-images" style={{ display: "flex" }}>
           <div className="home-content-images-1">
-            <FinanceBar width={"20vw"} height={"20vh"} />
+            <FinanceBar width={"25vw"} height={"15vh"} />
             <div>We compare your data across benchmarks set by thousands of companies to see how you stack up in your industry.</div>
           </div>
           <div className="home-content-images-2">
-            <Seedling width={"20vw"} height={"20vh"} />
+            <Seedling width={"25vw"} height={"15vh"} />
             <div>
               Get access to dozens of lenders and business partners who can use your valuations to provide you with great rates and
               fundraising vehicles to grow your business.
             </div>
           </div>
           <div className="home-content-images-3">
-            <Links width={"20vw"} height={"20vh"} />
+            <Links width={"25vw"} height={"15vh"} />
             <div>
               Together, we can improve and grow your business using our tools and methodologies that will make you billionaires in minutes.
             </div>

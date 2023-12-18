@@ -18,8 +18,6 @@ import "./BlogStyles.css";
 import { readableDate, pics } from "../Components/functions";
 import BackButton from "../assets/BackButton";
 
-//The is my terrible blog that really needs an overhaul: https://blog.usetheo.com/. I want it to look more consumery and friendly, rounded fonts, subtle colors.
-
 const Blogpost_Single = () => {
   const { id } = useParams();
   const navigate = useNavigate();
@@ -66,7 +64,6 @@ const Blogpost_Single = () => {
           <div className="single-post-headliner" key={post.id}>
             <h1 className="single-post-title">{post.title}</h1>
             <h2 className="single-post-subtitle">
-              {/* {post.subtitle}{" "} */}
               <span className="single-post-date">
                 <br />
                 Date: {readableDate(post.publishedAt)}

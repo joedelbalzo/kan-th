@@ -109,7 +109,6 @@ function Home() {
               </div>
               <div className="home-div-image">
                 <img src={yesWereOpenImg.src} alt={yesWereOpenImg.alt} />
-                <div className="bottom-left">Get Started &rarr;</div>
               </div>
             </div>
           </div>
@@ -202,18 +201,18 @@ function Home() {
         >
           <div className="home-content-images" style={{ display: "flex" }}>
             <div className="home-content-images-1">
-              <FinanceBar width={"30vw"} height={"30vh"} />
+              <FinanceBar width={"30vw"} height={"20vh"} />
               <div>We compare your data across benchmarks set by thousands of companies to see how you stack up in your industry.</div>
             </div>
             <div className="home-content-images-2">
-              <Seedling width={"30vw"} height={"30vh"} />
+              <Seedling width={"30vw"} height={"20vh"} />
               <div>
                 Get access to dozens of lenders and business partners who can use your valuations to provide you with great rates and
                 fundraising vehicles to grow your business.
               </div>
             </div>
             <div className="home-content-images-3">
-              <Links width={"30vw"} height={"30vh"} />
+              <Links width={"30vw"} height={"20vh"} />
               <div>
                 Together, we can improve and grow your business using our tools and methodologies that will make you billionaires in
                 minutes.

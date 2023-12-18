@@ -33,6 +33,8 @@ const Blogposts_Tags = () => {
     return parse(content);
   };
 
+  console.log("confirm code usage in console");
+
   return (
     <div>
       <div className="post-grid">
