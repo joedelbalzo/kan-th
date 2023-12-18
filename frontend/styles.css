@@ -1376,4 +1376,12 @@ h3 {
   .share-buttons-text {
     display: none;
   }
+  /*  */
+  /*  */
+  /* mobile footer */
+  /*  */
+  /*  */
+  .footer-links {
+    margin: 8px;
+  }
 }

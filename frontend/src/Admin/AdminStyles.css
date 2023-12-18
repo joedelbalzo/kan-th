@@ -42,6 +42,9 @@
   padding: 1rem;
 }
 
+.admin-blogpost > ul {
+  padding-left: 16px;
+}
 .admin-blogpost > ul > li {
   font-size: 16px;
 }
@@ -178,6 +181,21 @@
   cursor: pointer;
 }
 
+.other-buttons {
+  text-align: center;
+  width: 150px;
+  padding: 8px;
+  margin: 2px 1rem;
+  /* outline: 1px solid gray; */
+  border: none;
+  border-radius: 4px;
+  background: none;
+  box-shadow: 1px 1px 2px 2px #183333;
+}
+.other-buttons:hover {
+  cursor: pointer;
+}
+
 .help-and-documentation-div {
   width: 80%;
   margin: 2rem auto;
@@ -188,4 +206,19 @@
 .help-and-docs-body > ul > li {
   padding: 1rem;
   /* border: 1px solid red; */
+}
+
+@media screen and (max-width: 500px) {
+  .help-and-documentation-div {
+    width: 95%;
+  }
+  .help-and-documentation-links > ul {
+    display: flex;
+    width: 100%;
+    margin: 1rem auto;
+    justify-content: space-around;
+  }
+  #copy-to-clipboard {
+    margin: 1rem auto;
+  }
 }

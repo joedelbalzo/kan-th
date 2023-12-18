@@ -41,6 +41,7 @@ const Admin = () => {
 
   return (
     <div>
+      <AdminNav />
       <Link to="/admin" className="image-upload-buttons">
         {" "}
         &larr; Back

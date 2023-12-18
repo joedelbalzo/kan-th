@@ -22,10 +22,9 @@ const AdminNav = () => {
       <nav className="admin-home-nav">
         <Link to="/admin/">Home</Link>
         <Link to="/admin/users">Users</Link>
-        <Link to="/admin/posts">Posts</Link>
         <Link to="/admin/mailinglist">Mailing List</Link>
         <Link to="/admin/posts" state={{ post: null, type: "create" }}>
-          Create New Blog
+          New Blogpost
         </Link>
         <Link to="/admin/help">Help</Link>
       </nav>

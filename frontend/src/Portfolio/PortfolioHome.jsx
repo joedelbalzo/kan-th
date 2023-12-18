@@ -38,6 +38,9 @@ const PortfolioHome = () => {
           <Link to="/" className="portfolio-submit-button">
             Home
           </Link>
+          <Link to="/" className="portfolio-submit-button" id="logout">
+            Logout
+          </Link>
         </main>
       </div>
     </div>

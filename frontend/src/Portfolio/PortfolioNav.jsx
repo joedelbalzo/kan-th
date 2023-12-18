@@ -24,7 +24,7 @@ const PortfolioNav = () => {
     <>
       <div className="portfolio-nav-container">
         <nav style={{ display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "flex-start" }}>
-          <Link to="/portfolio/dashboard" className="portfolio-nav-links">
+          <Link to="/portfolio/home" className="portfolio-nav-links">
             <Home />
           </Link>
 

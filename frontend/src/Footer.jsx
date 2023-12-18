@@ -54,25 +54,12 @@ const Footer = () => {
             </Link>
           </div>
 
-          <p onClick={() => adminTools()} style={{ color: "#96ccee60", margin: "auto" }}>
+          <p style={{ color: "#96ccee60", margin: "auto" }}>
             &copy; Vali. Built by{" "}
             <a href="https://www.joedelbalzo.com" alt="Joe Del Balzo">
               JDB
             </a>
           </p>
-          {admin >= 5 ? <LoginComponent /> : ""}
-          {auth.username == "admin" ? (
-            <div>
-              <Link to="/admin" className="theme-toggle">
-                Admin Tools
-              </Link>
-              <button onClick={() => handleLogout()} className="theme-toggle">
-                Admin Logout
-              </button>
-            </div>
-          ) : (
-            ""
-          )}
         </div>
       </div>
     </>

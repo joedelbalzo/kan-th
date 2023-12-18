@@ -98,7 +98,7 @@ function App(props) {
     <div id="background-image">
       <div style={{ display: "flex", flexDirection: "column", minHeight: "100vh" }}>
         <Nav />
-        <div style={{ display: "flex", flexDirection: "column", flexGrow: 1 }}>
+        <div style={{ display: "flex", flexDirection: "column", flexGrow: 1, margin: "0", padding: "0" }}>
           <Routes>
             <Route path="/" element={<Home />} />
             <Route

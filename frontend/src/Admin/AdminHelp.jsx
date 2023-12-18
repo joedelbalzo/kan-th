@@ -14,21 +14,21 @@ const Help = () => {
       <AdminNav />
 
       <div className="help-and-documentation-div">
-        <Link to="/admin" className="image-upload-buttons">
+        <Link to="/admin" className="back-button">
           {" "}
           &larr; Back
         </Link>
         <div className="help-and-documentation-links">
-          <ul style={{ display: "flex", width: "50%", margin: "1rem auto", justifyContent: "space-around" }}>
-            <button className="image-upload-buttons" onClick={() => scrollToSection("post101")}>
+          <ul>
+            <button className="other-buttons" onClick={() => scrollToSection("post101")}>
               Post 101
             </button>
 
-            <button className="image-upload-buttons" onClick={() => scrollToSection("creating-posts")}>
+            <button className="other-buttons" onClick={() => scrollToSection("creating-posts")}>
               Creating and Editing Posts
             </button>
 
-            <button className="image-upload-buttons" onClick={() => scrollToSection("archiving-posts")}>
+            <button className="other-buttons" onClick={() => scrollToSection("archiving-posts")}>
               Archiving Posts
             </button>
           </ul>

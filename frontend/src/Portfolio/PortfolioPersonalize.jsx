@@ -13,13 +13,18 @@ import image from "../assets/pexels-tim-douglas.webp";
 
 //Style imports
 import "./PortfolioStyles.css";
+import PortfolioNav from "./PortfolioNav";
 
-const PortfolioPersonalize = () => {
+// notes
+// needs a confirmation when everything is submitted.
+
+const PortfolioAccountInfo = () => {
   const auth = useSelector((state) => state.auth);
   // need businesses in the state to be able to pull information with the user's businessId
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [loading, setLoading] = useState(false);
+  const [success, setSuccess] = useState(false);
   const [error, setError] = useState("");
 
   const [formData, setFormData] = useState({
@@ -75,9 +80,11 @@ const PortfolioPersonalize = () => {
           //gotta create a way for a user to get off this
           const response = await dispatch(createUserProfile(formData, auth)).then(() => {
             setLoading(false);
+            setSuccess(true);
             setTimeout(() => {
               navigate("/portfolio/home");
-            }, 200);
+              setSuccess(false);
+            }, 1000);
             console.log("Dispatch successful");
           });
           if (!response) {
@@ -93,68 +100,80 @@ const PortfolioPersonalize = () => {
   };
   return (
     <div>
-      <div className="portfolio-personalize-home-div">
-        {auth.isNewUser ? (
-          <div className="portfolio-personalize-home-div-inner">Welcome! Let's personalize your experience.</div>
-        ) : (
-          <div className="portfolio-personalize-home-div-inner">Edit Account Settings</div>
-        )}
-      </div>
-      <div className="portfolio-grid-container">
-        <form className="portfolio-grid-form" onSubmit={handleSubmit}>
-          <label>First Name:</label>
-          <input
-            type="text"
-            className="portfolio-form-input-fields"
-            name="firstName"
-            value={formData.firstName}
-            onChange={handleInputChange}
-          />
-          {errors.firstName && <span className="error">{errors.firstName}</span>}
+      <div className="portfolio-grid">
+        <PortfolioNav />
+        <div className="portfolio-account-info-home-div">
+          {auth.isNewUser ? (
+            <div className="portfolio-account-info-home-div-inner">Welcome! Let's personalize your experience.</div>
+          ) : (
+            <>
+              <div className="portfolio-account-info-home-div-inner">Edit Account Settings</div>
+            </>
+          )}
+        </div>
+        <div className="portfolio-account-info">
+          <form className="portfolio-grid-form" onSubmit={handleSubmit}>
+            <label>First Name:</label>
+            <input
+              type="text"
+              className="portfolio-form-input-fields"
+              name="firstName"
+              value={formData.firstName}
+              onChange={handleInputChange}
+            />
+            {errors.firstName && <span className="error">{errors.firstName}</span>}
 
-          <label>Last Name:</label>
-          <input
-            type="text"
-            className="portfolio-form-input-fields"
-            name="lastName"
-            value={formData.lastName}
-            onChange={handleInputChange}
-          />
-          {errors.lastName && <span className="error">{errors.lastName}</span>}
+            <label>Last Name:</label>
+            <input
+              type="text"
+              className="portfolio-form-input-fields"
+              name="lastName"
+              value={formData.lastName}
+              onChange={handleInputChange}
+            />
+            {errors.lastName && <span className="error">{errors.lastName}</span>}
 
-          <label>Company:</label>
-          <input
-            type="text"
-            className="portfolio-form-input-fields"
-            name="businessName"
-            value={formData.businessName}
-            onChange={handleInputChange}
-          />
+            <label>Company:</label>
+            <input
+              type="text"
+              className="portfolio-form-input-fields"
+              name="businessName"
+              value={formData.businessName}
+              onChange={handleInputChange}
+            />
 
-          <label>Email:</label>
-          <input type="email" className="portfolio-form-input-fields" name="email" value={formData.email} onChange={handleInputChange} />
-          {errors.email && <span className="error">{errors.email}</span>}
+            <label>Email:</label>
+            <input type="email" className="portfolio-form-input-fields" name="email" value={formData.email} onChange={handleInputChange} />
+            {errors.email && <span className="error">{errors.email}</span>}
 
-          <label>City:</label>
-          <input type="text" className="portfolio-form-input-fields" name="city" value={formData.city} onChange={handleInputChange} />
+            <label>City:</label>
+            <input type="text" className="portfolio-form-input-fields" name="city" value={formData.city} onChange={handleInputChange} />
 
-          <label>State:</label>
-          <input type="text" className="portfolio-form-input-fields" name="state" value={formData.state} onChange={handleInputChange} />
+            <label>State:</label>
+            <input type="text" className="portfolio-form-input-fields" name="state" value={formData.state} onChange={handleInputChange} />
 
-          <div className="checkbox">
-            <label className="checkbox-label">Subscribe for Updates?</label>
-            <input type="checkbox" className="checkbox-input" name="updates" checked={formData.updates} onChange={handleInputChange} />
-          </div>
+            <div className="checkbox">
+              <label className="checkbox-label">Subscribe for Updates?</label>
+              <input type="checkbox" className="checkbox-input" name="updates" checked={formData.updates} onChange={handleInputChange} />
+            </div>
 
-          <button type="submit" className="portfolio-personalize-submit-button">
-            Submit
-          </button>
-          {loading && <Loading height={"10px"} width={"10px"} borderWidth={"3px"} />}
-        </form>
-        <img src={image} className="portfolio-personalize-image" />
+            {!success && (
+              <button type="submit" className="portfolio-account-info-submit-button">
+                Submit
+              </button>
+            )}
+            {loading && <Loading height={"10px"} width={"10px"} borderWidth={"3px"} />}
+            {success && (
+              <button type="submit" style={{ fontSize: "16px" }} className="portfolio-account-info-submit-button" disabled>
+                Saved! Redirecting.
+              </button>
+            )}
+          </form>
+          <img src={image} className="portfolio-account-info-image" />
+        </div>
       </div>
     </div>
   );
 };
 
-export default PortfolioPersonalize;
+export default PortfolioAccountInfo;
