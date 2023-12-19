@@ -43,9 +43,7 @@ const Footer = () => {
             <Link to="/privacy" className="footer-links">
               Privacy
             </Link>
-            <Link to="" className="footer-links">
-              Terms{" "}
-            </Link>
+
             <Link to="/" className="footer-links">
               Home
             </Link>

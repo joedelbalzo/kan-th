@@ -6,24 +6,27 @@ import parse from "html-react-parser";
 import DOMPurify from "dompurify";
 
 //Component Imports
-
 const SubNav = lazy(() => import("./SubNav"));
 const JoinMailingList = lazy(() => import("../Components/JoinMailingList"));
-
 import { FadeComponent } from "../assets/FadeComponent";
 import Loading from "../assets/Loading";
+import { useScrollToTop } from "../Components/functions";
+
+//Store Imports
+import { fetchBlogByID } from "../store";
 
 //Function Imports
 import { readableDate, pics } from "../Components/functions";
 import BackButton from "../assets/BackButton";
 import ShareButtons from "../Components/ShareButtons";
-// import { Fade } from "@mui/material";
 
 const Blogposts = () => {
+  useScrollToTop();
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [loading, setLoading] = useState(true);
   const tags = useSelector((state) => state.tags);
+  const [selectedTag, setSelectedTag] = useState(1234);
 
   let blogposts = useSelector((state) => state.blogposts.allBlogposts);
   const [filteredPosts, setFilteredPosts] = useState(blogposts);
@@ -38,6 +41,9 @@ const Blogposts = () => {
   }, [blogposts]);
 
   if (!blogposts) {
+    return null;
+  }
+  if (!blogposts[0]) {
     return null;
   }
 
@@ -73,10 +79,18 @@ const Blogposts = () => {
   const onTagClick = (ev) => {
     if (ev === "1234") {
       setFilteredPosts(blogposts);
+      setSelectedTag(1234);
     } else {
       const filtered = blogposts.filter((post) => post.tags.some((tag) => tag.id === ev));
       setFilteredPosts(filtered);
+      setSelectedTag(ev);
     }
+  };
+
+  //single blogpost click handling
+  const openSingleBlog = (ev) => {
+    console.log("attempt", ev);
+    dispatch(fetchBlogByID(ev));
   };
 
   return (
@@ -95,7 +109,11 @@ const Blogposts = () => {
                 ""
               )}
               <div className="post-title-div">
-                <Link to={`/blog/posts/${headlinerPost.id}`} style={{ textDecoration: "none", color: "inherit" }}>
+                <Link
+                  to={`/blog/posts/${headlinerPost.id}`}
+                  onClick={() => openSingleBlog(headlinerPost.id)}
+                  style={{ textDecoration: "none", color: "inherit" }}
+                >
                   <h2>{headlinerPost.title}</h2>
                 </Link>
 
@@ -115,7 +133,7 @@ const Blogposts = () => {
               <JoinMailingList />
               <div className="tag-styles-container" style={{ marginTop: "2rem", marginBottom: "0" }}>
                 sort by tags:
-                <select className="tag-styles" onChange={(event) => onTagClick(event.target.value)}>
+                <select className="tag-styles" value={selectedTag} onChange={(event) => onTagClick(event.target.value)}>
                   {tags.map((tag) => {
                     return (
                       <option value={tag.id} key={tag.id}>
@@ -136,7 +154,11 @@ const Blogposts = () => {
                     <div className="post-container">
                       {homePic != null ? <img src={homePic.awsPicURL} alt={homePic.altText} className="post-div-picture" /> : ""}
                       <div className="post-title-div">
-                        <Link to={`/blog/posts/${blogpost.id}`} style={{ textDecoration: "none", color: "inherit" }}>
+                        <Link
+                          to={`/blog/posts/${blogpost.id}`}
+                          onClick={() => openSingleBlog(blogpost.id)}
+                          style={{ textDecoration: "none", color: "inherit" }}
+                        >
                           <h2>{blogpost.title}</h2>
                         </Link>
 
@@ -146,21 +168,21 @@ const Blogposts = () => {
                           <span className="post-date">Date: {readableDate(blogpost.publishedAt)} </span>
                           || Tags:
                           {blogpost.tags[0] ? (
-                            <Link to={`/blog/tags/${blogpost.tags[0].id}`} key={blogpost.tags[0].id} style={{ marginLeft: 4 }}>
+                            <Link onClick={() => onTagClick(blogpost.tags[0].id)} key={blogpost.tags[0].id} style={{ marginLeft: 4 }}>
                               {blogpost.tags[0].name}
                             </Link>
                           ) : (
                             ""
                           )}
                           {blogpost.tags[1] ? (
-                            <Link to={`/blog/tags/${blogpost.tags[1].id}`} key={blogpost.tags[1].id}>
+                            <Link onClick={() => onTagClick(blogpost.tags[1].id)} key={blogpost.tags[1].id}>
                               , {blogpost.tags[1].name}
                             </Link>
                           ) : (
                             ""
                           )}
                           {blogpost.tags[2] ? (
-                            <Link to={`/blog/tags/${blogpost.tags[2].id}`} key={blogpost.tags[2].id}>
+                            <Link onClick={() => onTagClick(blogpost.tags[2].id)} key={blogpost.tags[2].id}>
                               , {blogpost.tags[2].name}{" "}
                             </Link>
                           ) : (

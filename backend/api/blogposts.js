@@ -86,10 +86,25 @@ app.get("/drafted", restrictAccess, async (req, res, next) => {
 // get a single blogpost
 app.get("/:id", async (req, res, next) => {
   try {
-    const blogpost = await Blogpost.findByPk(req.params.blogpostId, {});
+    const blogpost = await Blogpost.findByPk(req.params.id, {
+      include: [Image, Tag],
+    });
     if (!blogpost) {
       return res.status(404).json({ message: "Blogpost not found" });
     }
+
+    await Promise.all(
+      blogpost.images.map(async (image) => {
+        try {
+          if (image.awsPicURL === null) {
+            image.awsPicURL = await getObjectSignedUrl(image.awsPicID);
+          }
+        } catch (error) {
+          console.error("Error fetching signed URL for image:", error);
+        }
+      })
+    );
+
     res.send(blogpost);
   } catch (ex) {
     res.status(404).send({ message: "No blogpost found with the given ID." });

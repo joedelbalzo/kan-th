@@ -4,6 +4,7 @@ const initialState = {
   allBlogposts: [],
   filteredBlogposts: [],
   draftedBlogposts: [],
+  currentBlogpost: null,
 };
 
 const blogposts = (state = initialState, action) => {
@@ -18,7 +19,7 @@ const blogposts = (state = initialState, action) => {
     return { ...state, draftedBlogposts: action.blogposts };
   }
   if (action.type === "REQUEST_POST") {
-    return { ...state, allBlogposts: action.blogposts };
+    return { ...state, currentBlogpost: action.blogpost };
   }
 
   if (action.type === "CREATE_BLOGPOST") {
@@ -76,17 +77,9 @@ export const fetchDraftedBlogposts = () => {
 export const fetchBlogByID = (id) => {
   return async (dispatch) => {
     const response = await axios.get(`/api/blogposts/${id}`);
-    // console.log("response DATA in store", response.data);
-    dispatch({ type: "REQUEST_POST", blogposts: response.data });
+    dispatch({ type: "REQUEST_POST", blogpost: response.data });
   };
 };
-
-// export const fetchBlogpostsByTag = (id) => {
-//   return async (dispatch) => {
-//     const response = await axios.get(`/api/tags/${id}`);
-//     dispatch({ type: "REQUEST_BLOGPOSTS_BY_TAG", blogposts: response.data });
-//   };
-// };
 
 export const createBlogpost = (formData, captions, blogData, tagData) => {
   return async (dispatch) => {

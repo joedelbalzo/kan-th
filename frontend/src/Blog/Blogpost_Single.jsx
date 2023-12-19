@@ -11,6 +11,7 @@ import DOMPurify from "dompurify";
 import ShareButtons from "../Components/ShareButtons";
 import SubNav from "./SubNav";
 import "./BlogStyles.css";
+import { useScrollToTop } from "../Components/functions";
 
 //Store Imports
 
@@ -19,11 +20,12 @@ import { readableDate, pics } from "../Components/functions";
 import BackButton from "../assets/BackButton";
 
 const Blogpost_Single = () => {
+  useScrollToTop();
   const { id } = useParams();
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const post = useSelector((state) => state.blogposts.allBlogposts.find((post) => post.id.toString() === id));
+  const post = useSelector((state) => state.blogposts.currentBlogpost);
 
   if (!post) {
     return null;

@@ -12,12 +12,14 @@ import Links from "./assets/Links";
 import { FadeComponent } from "./assets/FadeComponent";
 import PieChart from "./assets/BusinessIcons/PieChart";
 import JoinMailingList from "./Components/JoinMailingList";
+import { useScrollToTop } from "./Components/functions";
 
 import { aboutTripImg, woodworkerImg, yesWereOpenImg } from "./assets/ImageObjects";
 
 //Store Imports
 
 function Home() {
+  useScrollToTop();
   const dispatch = useDispatch();
   const auth = useSelector((state) => state.auth);
 

@@ -13,10 +13,13 @@ import { FadeComponent } from "./assets/FadeComponent";
 import { kanicaImg, businessPaperImg } from "./assets/ImageObjects";
 import PieChart from "./assets/BusinessIcons/PieChart";
 import Graph from "./assets/BusinessIcons/Graphj";
+import { useScrollToTop } from "./Components/functions";
 
 //Store Imports
 
 function About() {
+  useScrollToTop();
+
   //text
   const container = {
     hidden: { opacity: 0 },
@@ -43,15 +46,12 @@ function About() {
   const controls1 = useAnimation();
   const controls2 = useAnimation();
   const controls3 = useAnimation();
-  // const controls4 = useAnimation();
-  // const controls5 = useAnimation();
+
   const [width] = useWindowSize();
 
   const ref1 = useRef(null);
   const ref2 = useRef(null);
   const ref3 = useRef(null);
-  // const ref4 = useRef(null);
-  // const ref5 = useRef(null);
 
   const transition = {
     type: "spring",
@@ -67,8 +67,6 @@ function About() {
             if (entry.target === ref1.current) controls1.start({ opacity: 1, y: 0 });
             if (entry.target === ref2.current) controls2.start({ opacity: 1, y: 0 });
             if (entry.target === ref3.current) controls3.start({ opacity: 1, y: 0 });
-            // if (entry.target === ref4.current) controls4.start({ opacity: 1, y: 0 });
-            // if (entry.target === ref5.current) controls5.start({ opacity: 1, y: 0 });
           }
         });
       },
