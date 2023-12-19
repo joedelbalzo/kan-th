@@ -27,14 +27,18 @@ const PortfolioAccountInfo = () => {
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState("");
 
+  if (!auth) {
+    return null;
+  }
+
   const [formData, setFormData] = useState({
-    firstName: auth ? auth.firstName : "",
-    lastName: auth ? auth.lastName : "",
-    businessName: auth ? auth.businessName : "",
-    email: auth ? auth.email : "",
-    city: auth ? auth.city : "",
-    state: auth ? auth.state : "",
-    updates: auth ? auth.updates : true,
+    firstName: auth && auth.firstName ? auth.firstName : "",
+    lastName: auth && auth.lastName ? auth.lastName : "",
+    businessName: auth && auth.businessName ? auth.businessName : "",
+    email: auth && auth.email ? auth.email : "",
+    city: auth && auth.city ? auth.city : "",
+    state: auth && auth.state ? auth.state : "",
+    updates: auth && typeof auth.updates === "boolean" ? auth.updates : true,
   });
 
   const [errors, setErrors] = useState({});
@@ -84,7 +88,7 @@ const PortfolioAccountInfo = () => {
             setTimeout(() => {
               navigate("/portfolio/home");
               setSuccess(false);
-            }, 1000);
+            }, 2000);
             console.log("Dispatch successful");
           });
           if (!response) {

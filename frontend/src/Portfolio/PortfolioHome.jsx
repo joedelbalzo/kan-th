@@ -4,7 +4,7 @@ import { useNavigate, Link } from "react-router-dom";
 
 //Store Imports
 import { useDispatch, useSelector } from "react-redux";
-import { createUserProfile, editUserProfile } from "../store";
+import { createUserProfile, editUserProfile, logout } from "../store";
 import { businessPaperImg } from "../assets/ImageObjects";
 
 //Style imports
@@ -38,7 +38,7 @@ const PortfolioHome = () => {
           <Link to="/" className="portfolio-submit-button">
             Home
           </Link>
-          <Link to="/" className="portfolio-submit-button" id="logout">
+          <Link to="/" className="portfolio-submit-button" onClick={() => dispatch(logout())} id="logout">
             Logout
           </Link>
         </main>
