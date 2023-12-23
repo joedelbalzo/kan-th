@@ -6,6 +6,7 @@ import womanWithIpad from "./pexels-tim-douglas.webp";
 import woodworker from "./pexels-ivan-samkov.webp";
 import yesWereOpen from "./pexels-tim-mossholder.webp";
 import businessPaper from "./pexels-nappy-935979.webp";
+import passItOn from "./pexels-ovan.webp";
 
 export const aboutTripImg = {
   src: aboutTrip,
@@ -38,4 +39,8 @@ export const yesWereOpenImg = {
 export const businessPaperImg = {
   src: businessPaper,
   alt: "Image of a man in a suit reading the business section of a newspaper",
+};
+export const passItOnImg = {
+  src: passItOn,
+  alt: "Image of a person sitting facing laptop computer with sketch pad.",
 };

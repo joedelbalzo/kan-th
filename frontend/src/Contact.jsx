@@ -4,14 +4,13 @@ import { useDispatch } from "react-redux";
 // import { useNavigate, Link } from "react-router-dom";
 
 //Component Imports
+import { passItOnImg } from "./assets/ImageObjects";
+import { FadeComponent } from "./assets/FadeComponent";
 
 //Store Imports
-// import { contact } from "./store";
 
 //Etc Imports
 import axios from "axios";
-
-//notes - create a thanks for your submission page for redirecting. set timeout there for 4 seconds to redirect home
 
 function Contact() {
   const dispatch = useDispatch();
@@ -33,31 +32,55 @@ function Contact() {
 
   const handleSubmit = async (ev) => {
     ev.preventDefault();
+    console.log(emailForm);
     try {
-      const response = await axios.post("/api/contact", ev);
+      const response = await axios.post("https://www.usevali.com/api/contact", emailForm);
+      console.log(response, "response");
     } catch (error) {
-      console.error("Error:", error);
+      console.error("Error:", error.response);
     }
   };
 
   return (
-    <div>
-      <div className="contact-div">
-        <div className="contact-div-inner">
-          <h2 className="contact-title">Contact Us</h2>
+    <FadeComponent>
+      <div>
+        <div className="contact-div">
+          <div className="contact-div-inner">
+            <h2 className="contact-title">Questions or Comments?</h2> <h3 className="contact-subtitle"> Feel free to connect with us.</h3>
+          </div>
+        </div>
+        <div className="contact-page">
+          <div className="contact-page-component">
+            {" "}
+            <form className="contact-main-form" onSubmit={handleSubmit}>
+              <input id="name" type="name" name="name" placeholder="Your Name" value={emailForm.name} onChange={handleChange} />
+              <input
+                id="email"
+                type="email"
+                name="email"
+                placeholder="Your Email Address"
+                value={emailForm.email}
+                onChange={handleChange}
+              />
+              <input id="subject" type="subject" name="subject" placeholder="Subject" value={emailForm.subject} onChange={handleChange} />
+              <textarea
+                id="message"
+                name="message"
+                style={{ height: "100px" }}
+                placeholder="Your message"
+                value={emailForm.message}
+                onChange={handleChange}
+              />
+              <button type="submit">SUBMIT</button>
+              {/* <h3 className="page-subheader">or email us at vali@usevali.com</h3> */}
+            </form>
+          </div>
+          <div className="contact-page-image-section">
+            <img src={passItOnImg.src} alt={passItOnImg.alt} />
+          </div>
         </div>
       </div>
-
-      <h3 className="contact-subheader">Feel free to contact me and I'll be in touch shortly!</h3>
-      <form className="contact-main-form" onSubmit={handleSubmit}>
-        <input id="name" type="name" name="name" placeholder="Your Name" value={emailForm.name} onChange={handleChange} />
-        <input id="email" type="email" name="email" placeholder="Your Email Address" value={emailForm.email} onChange={handleChange} />
-        <input id="subject" type="subject" name="subject" placeholder="Subject" value={emailForm.subject} onChange={handleChange} />
-        <textarea id="message" name="message" placeholder="Your message" value={emailForm.message} onChange={handleChange} />
-        <button type="submit">SUBMIT</button>
-        {/* <h3 className="page-subheader">or email us at vali@usevali.com</h3> */}
-      </form>
-    </div>
+    </FadeComponent>
   );
 }
 

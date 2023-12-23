@@ -93,7 +93,7 @@ function About() {
                 <h1 className="about-title">Vali </h1>
                 <motion.div variants={child} className="about-subtitle">
                   <h2 style={{ gridColumn: "1/-1" }}>
-                    We're dedicated to empowering small and medium-sized businesses with crucial financial insights.
+                    Dedicated to empowering small and medium-sized businesses with crucial financial insights.
                   </h2>
                 </motion.div>
               </div>
@@ -105,12 +105,9 @@ function About() {
       {/* ABOUT CONTENT */}
       <div className="about-body-container">
         <motion.div variants={child} className="about-body-header">
-          <h1>
-            We're a small, privately owned company, <br />
-            just like yours.
-          </h1>
+          <h1>We're a small, privately owned company, just like yours.</h1>
           <br />
-          <h2>and we're ready to be your partner in this journey.</h2>
+          <h2>We're ready to be your partner in this journey.</h2>
         </motion.div>
 
         <motion.div ref={ref1} initial={{ opacity: 0, y: "50px" }} animate={controls1} transition={transition}>
@@ -171,7 +168,7 @@ function About() {
 
       <motion.div ref={ref3} initial={{ opacity: 0, y: "50px" }} animate={controls3} transition={transition}>
         <div className="lets-go">
-          <Link to="/login">Let's go! &rarr;</Link>
+          <Link to="/login">Let's Go! &rarr;</Link>
         </div>
       </motion.div>
     </FadeComponent>

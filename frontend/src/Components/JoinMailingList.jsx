@@ -48,8 +48,8 @@ const JoinMailingList = () => {
 
   const styles = {
     div: {
-      maxWidth: "550px",
-      minWidth: "310px",
+      width: "360px",
+      // minWidth: "310px",
       margin: "0 auto",
     },
     form: {
@@ -61,7 +61,7 @@ const JoinMailingList = () => {
       width: "200px",
       padding: ".2rem",
       borderRadius: ".5rem",
-      margin: "0 auto",
+      margin: "0 5px",
     },
     button: {
       display: "flex",
@@ -71,7 +71,7 @@ const JoinMailingList = () => {
       height: "30px",
       padding: ".5rem",
       borderRadius: ".5rem",
-      margin: "0 auto",
+      margin: "0 5px",
       backgroundColor: "#183333",
       color: "whitesmoke",
       cursor: "pointer",

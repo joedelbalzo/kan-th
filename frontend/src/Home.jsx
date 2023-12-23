@@ -238,7 +238,7 @@ function Home() {
           }}
         >
           <div className="lets-go">
-            <Link to="/login">Let's go! &rarr;</Link>
+            <Link to="/login">Let's Go! &rarr;</Link>
           </div>
         </motion.div>
       </div>

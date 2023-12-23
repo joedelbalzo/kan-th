@@ -84,7 +84,9 @@ const PrivacyPolicy = () => {
       <br />
       <h2>4. Contact Us</h2>
       To request a copy for your information, unsubscribe from our email list, request for your data to be deleted, or ask a question about
-      your data privacy, please email us team@usevali.com
+      your data privacy, please email us <a href="mailto:vali@usevali.com">vali@usevali.com</a>
+      <br />
+      <br />
     </div>
   );
 };
