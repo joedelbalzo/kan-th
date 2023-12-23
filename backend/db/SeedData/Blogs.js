@@ -22,7 +22,7 @@ const SeededPosts = [
   <p>
   So, is valuation a business credit score? No, its better. Business credit scores gives the power to lenders. It is their view of your “credit-worthiness.” Valuations do the same thing, but they do more. They not only give lenders a sense of your financeability, but they also give you information about your own wealth, and how to be worth more. Its a multi-purpose metric that gives you the power over your future. </p>
   <p>
-  See how to value your business here. Questions? Shoot us an email. If you want to chat, schedule a free consulting call.</p>`,
+  See how to value your business here. Questions? Shoot us an <a href="mailto:vali@usevali.com">email</a>. If you want to chat, schedule a free consulting call.</p>`,
     published: true,
     publishedAt: "10-30-2023",
     lastSaved: "10-30-2023",
@@ -122,7 +122,7 @@ const SeededPosts = [
       <li><strong>Paying down debt:</strong> Private equity will borrow from lenders and use that debt to acquire a business.</li>
     </ul>
     <div><strong>The first step to creating a more valuable business is knowing what it is worth today. Once you find out, you’re unstoppable.</strong></div>
-    <div>See how to value your business <a href="link-to-valuation">here</a>. Questions? <a href="mailto:email@example.com">Shoot us an email</a>. If you want to chat, <a href="link-to-schedule-call">schedule a free consulting call</a>.</div>
+    <div>See how to value your business <a href="link-to-valuation">here</a>. Questions? Shoot us an <a href="mailto:vali@usevali.com">email</a>. If you want to chat, <a href="link-to-schedule-call">schedule a free consulting call</a>.</div>
   </div>`,
     published: true,
     publishedAt: "11-01-2023",
@@ -223,7 +223,7 @@ const SeededPosts = [
   
     <p>The bottom line: a bit of planning can go a long way. Setting yourself up for success means answering these questions ahead of time. It's all about being ready to seize opportunities when they come knocking at your door. Trust me; it's worth it.</p>
   
-    <p>We are here to help. Email us with questions. We can run your valuation, put you in touch with partners, and be your support.</p>
+    <p>We are here to help. <a href="mailto:vali@usevali.com">Email</a> us with questions. We can run your valuation, put you in touch with partners, and be your support.</p>
   `,
     published: true,
     publishedAt: "11-07-2023",
@@ -316,7 +316,7 @@ const SeededPosts = [
   
     <p><strong>The first step in evaluating what path is right for you is knowing your valuation.</strong> Without knowing your valuation, how do you know how much ownership you are willing to give to a partner? And what amount of cash you would expect in return? And if that is better or worse than your debt option?</p>
   
-    <p>See how to value your business <a href="link-to-valuation">here</a>. Questions? <a href="mailto:email@example.com">Shoot us an email</a>.</p>
+    <p>See how to value your business <a href="link-to-valuation">here</a>. Questions? Shoot us an <a href="mailto:vali@usevali.com">email</a>.</p>
   `,
     published: true,
     publishedAt: "11-18-2023",
@@ -362,7 +362,7 @@ const SeededPosts = [
   
     <p><strong>Knowing your SMB's valuation is essential for securing financing.</strong> It's a fundamental component of financial planning and strategy for SMBs looking to expand and thrive.</p>
   
-    <p>See how to value your business <a href="link-to-valuation">here</a>. Questions? <a href="mailto:email@example.com">Shoot us an email</a>.</p>
+    <p>See how to value your business <a href="link-to-valuation">here</a>. Questions? Shoot us an <a href="mailto:vali@usevali.com">email</a>.</p>
   
     <h2>In the News</h2>
     <ul>

@@ -104,7 +104,7 @@ const LoginComponent = () => {
             onClick={() => {
               setLoginComponentState("login");
             }}
-            style={{ color: loginComponentState == "login" ? "#183333" : "#18333340" }}
+            style={{ cursor: "pointer", color: loginComponentState == "login" ? "#183333" : "#18333340" }}
           >
             Sign in to Vali
           </h2>
@@ -112,7 +112,7 @@ const LoginComponent = () => {
             onClick={() => {
               setLoginComponentState("create");
             }}
-            style={{ color: loginComponentState == "create" ? "#183333" : "#18333340" }}
+            style={{ cursor: "pointer", color: loginComponentState == "create" ? "#183333" : "#18333340" }}
           >
             Create Account
           </h2>

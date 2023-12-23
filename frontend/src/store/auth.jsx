@@ -91,9 +91,7 @@ const initialState = {
 
 export const usersAndProfiles = (state = initialState, action) => {
   if (action.type === "FETCH_USERS") {
-    if (state.currentUser.adminStatus === true) {
-      return { allUsers: action.users };
-    }
+    return { allUsers: action.users };
   }
   if (action.type === "FETCH_ONE_USER") {
     return { filteredUsers: action.user };

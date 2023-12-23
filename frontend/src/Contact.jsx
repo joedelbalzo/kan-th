@@ -6,6 +6,7 @@ import { useDispatch } from "react-redux";
 //Component Imports
 import { passItOnImg } from "./assets/ImageObjects";
 import { FadeComponent } from "./assets/FadeComponent";
+import Loading from "./assets/Loading";
 
 //Store Imports
 
@@ -14,7 +15,8 @@ import axios from "axios";
 
 function Contact() {
   const dispatch = useDispatch();
-
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(false);
   const [emailForm, setEmailForm] = useState({
     name: "",
     email: "",
@@ -31,12 +33,19 @@ function Contact() {
   };
 
   const handleSubmit = async (ev) => {
+    setLoading(true);
     ev.preventDefault();
-    console.log(emailForm);
     try {
       const response = await axios.post("https://www.usevali.com/api/contact", emailForm);
-      console.log(response, "response");
+      if (response.status == 200) {
+        setLoading(false);
+      } else {
+        setError(true);
+        setLoading(false);
+      }
     } catch (error) {
+      setError(true);
+      setLoading(false);
       console.error("Error:", error.response);
     }
   };
@@ -66,13 +75,21 @@ function Contact() {
               <textarea
                 id="message"
                 name="message"
-                style={{ height: "100px" }}
+                style={{ height: "100px", fontFamily: "Rubik" }}
                 placeholder="Your message"
                 value={emailForm.message}
                 onChange={handleChange}
               />
-              <button type="submit">SUBMIT</button>
-              {/* <h3 className="page-subheader">or email us at vali@usevali.com</h3> */}
+              {loading ? (
+                <button type="submit" disabled>
+                  <Loading height={"10px"} width={"10px"} />
+                </button>
+              ) : (
+                <button type="submit">SUBMIT</button>
+              )}
+              {error && (
+                <div style={{ color: "red", fontSize: "14px" }}>Submission error! Please email us at vali@usevali.com. Thank you!</div>
+              )}
             </form>
           </div>
           <div className="contact-page-image-section">

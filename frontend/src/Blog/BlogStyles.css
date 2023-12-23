@@ -74,7 +74,7 @@
   height: calc(250px + 10vw);
   border-radius: 1rem;
   object-fit: cover;
-  box-shadow: 8px 8px 16px 1px #204444;
+  box-shadow: 4px 4px 8px 1px red;
 }
 .single-post-home-picture > .caption {
   margin: 1rem auto;
@@ -126,7 +126,7 @@
     border-radius: 1rem;
     /* padding: 1rem; */
     object-fit: cover;
-    box-shadow: 8px 8px 16px 1px #204444;
+    box-shadow: 4px 4px 8px 1px #20444440;
   }
 }
 
@@ -153,7 +153,7 @@
     margin: 25px auto;
     border-radius: 1rem;
     object-fit: cover;
-    box-shadow: 8px 8px 16px 1px #204444;
+    box-shadow: 4px 4px 8px 1px #20444440;
   }
   .single-post-headliner > h1 {
     grid-column: 1;
