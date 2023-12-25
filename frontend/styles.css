@@ -401,8 +401,12 @@ a:hover {
 }
 
 .about-body-container {
-  width: 80vw;
   margin: 4rem auto;
+}
+
+.vali-body-about {
+  width: 90%;
+  margin: 0 auto;
 }
 
 #vali-body-about-first {
@@ -412,6 +416,7 @@ a:hover {
   align-items: center;
   justify-content: center;
   flex-wrap: wrap;
+  line-height: 1.7rem;
 }
 #vali-body-about-first > main,
 #vali-body-about-first > #svg-picture-overlay-container {
@@ -454,6 +459,7 @@ a:hover {
   align-items: center;
   justify-content: center;
   flex-wrap: wrap-reverse;
+  line-height: 1.7rem;
 }
 #vali-body-about-second > .vali-body-about-second-picture > img,
 #vali-body-about-second > .vali-body-about-second-text {
@@ -473,6 +479,8 @@ a:hover {
 }
 
 #vali-body-about-third {
+  width: 80%;
+
   margin: 4rem auto 6rem;
   line-height: 2rem;
 }
@@ -491,24 +499,29 @@ a:hover {
   padding: 0.5rem 0 1rem 1rem;
 }
 
+.about-body-header {
+  width: 60%;
+  margin-left: 10%;
+}
 .kanica-about {
-  width: 70%;
   background-color: #96ccee;
   margin: 2rem auto;
   padding: 1rem 2rem;
-  border-radius: 4rem;
-  box-shadow: 8px 8px 1rem rgba(100, 100, 100, 0.4);
+  /* border-radius: 4rem; */
+  /* box-shadow: 8px 8px 1rem rgba(100, 100, 100, 0.4); */
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: 1fr auto;
 }
 
 .kanica-heading {
+  width: 90%;
+  margin: 0 auto;
   grid-row: 1;
   display: grid;
-  grid-template-columns: 1.5fr 1fr;
+  grid-template-columns: 1.3r 1fr;
   grid-template-rows: 1fr;
-  padding-top: 1rem;
+  padding: 1rem 1rem;
 }
 
 .kanica-heading > div {
@@ -524,15 +537,20 @@ a:hover {
 }
 .kanica-picture {
   grid-column: 2;
-  height: 90%;
-  width: 90%;
+  height: 95%;
+  max-height: 400px;
+  width: 95%;
+  max-width: 400px;
   object-fit: cover;
-  border-radius: 2rem;
+  border-radius: 1rem;
   margin: auto;
 }
 .kanica-text {
   grid-row: 2;
+  width: 80%;
   height: fit-content;
+  margin: auto;
+  line-height: 1.7rem;
 }
 
 /* MAIN BLOG PAGE STYLES */
@@ -654,7 +672,7 @@ h3 {
   object-fit: cover;
   display: flex;
   border-radius: 1rem;
-  box-shadow: 4px 4px 1rem 4px var(--box-shadow-color-light);
+  box-shadow: 4px 4px 8px 4px var(--box-shadow-color-light);
 }
 
 .picture-caption {
@@ -953,7 +971,7 @@ h3 {
   }
 
   .home-content-images {
-    width: 100%;
+    width: 90%;
     margin: auto;
     display: flex;
     justify-content: space-around;
@@ -961,7 +979,7 @@ h3 {
   }
 
   .home-content-images > * > * {
-    width: 85%;
+    width: 90%;
   }
 
   /*  */
@@ -971,7 +989,7 @@ h3 {
   /*  */
 
   .about-body-container {
-    width: 85vw;
+    /* width: 85vw; */
     margin: 3rem auto;
   }
 
@@ -991,6 +1009,8 @@ h3 {
   }
   .about-title {
     font-size: 68px;
+    margin-right: 20px;
+    padding: 0;
   }
   .about-subtitle {
     text-align: center;
@@ -1189,7 +1209,7 @@ h3 {
   }
 
   .home-content-images {
-    /* width: 95vw; */
+    width: 95%;
     margin: auto;
     display: flex;
     flex-direction: column;
@@ -1200,6 +1220,7 @@ h3 {
     display: flex;
     width: 90%;
     padding-bottom: 2rem;
+    line-height: 1.7rem;
   }
   .home-content-images > * > * {
     /* display: flex; */
@@ -1274,22 +1295,39 @@ h3 {
     grid-row: 1;
   }
 
+  .about-body-container {
+    /* width: 95vw; */
+    margin: 3rem auto;
+  }
+  .about-body-header {
+    width: 90%;
+    margin-left: 5%;
+  }
   .kanica-about {
-    width: 95%;
+    background-color: #96ccee;
     margin: 2rem auto;
-    padding: 1rem 0;
-    border-radius: 2rem;
+    padding: 1rem 2rem;
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: 1fr auto;
   }
 
   .kanica-heading {
+    width: 90%;
+    margin: 0 auto;
     grid-row: 1;
     display: grid;
-    grid-template-columns: 1.5fr 1fr;
+    grid-template-columns: 1.2fr 1fr;
     grid-template-rows: 1fr;
-    padding: 0 1rem;
+    padding: 1rem 1rem;
+  }
+
+  .kanica-about {
+    margin: 2rem auto;
+    padding: 1rem 0;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr auto;
   }
 
   .kanica-heading > div {
@@ -1298,17 +1336,18 @@ h3 {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding-bottom: 10%;
+    padding-bottom: 5%;
+    margin-left: 5%;
   }
   .kanica-heading > div > h1 {
     font-size: calc(12px + 3vw);
   }
   .kanica-picture {
     grid-column: 2;
-    height: 90%;
-    width: 90%;
+    height: 95%;
+    width: 95%;
     object-fit: cover;
-    border-radius: 1rem;
+    border-radius: 0.5rem;
     margin: auto;
   }
   .kanica-text {

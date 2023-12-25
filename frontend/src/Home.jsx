@@ -216,8 +216,8 @@ function Home() {
             <div className="home-content-images-3">
               <Links width={"30vw"} height={"20vh"} />
               <div>
-                Together, we can improve and grow your business using our tools and methodologies that will make you billionaires in
-                minutes.
+                Together, we can improve and grow your business using our tools and methodologies that will make you proud of what you've
+                built.
               </div>
             </div>
           </div>
