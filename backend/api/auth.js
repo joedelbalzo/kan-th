@@ -2,6 +2,7 @@ const express = require("express");
 const app = express.Router();
 const { User, MailingListUser } = require("../db");
 const { isLoggedIn, isAdmin } = require("./middleware");
+const { updateCSVFile } = require("../s3");
 const path = require("path");
 const bcrypt = require("bcrypt");
 
@@ -105,10 +106,17 @@ app.get("/mailinglist", isAdmin, isLoggedIn, async (req, res, next) => {
 
 app.post("/mailinglist", async (req, res, next) => {
   try {
-    const response = await MailingListUser.create({
-      email: req.body.email,
+    const newEmail = req.body.email;
+    await MailingListUser.create({
+      email: newEmail,
       currentlyActive: true,
     });
+
+    const csvFileName = "mailing-list/mailingList.csv";
+    const newLine = `${newEmail}`;
+
+    await updateCSVFile(csvFileName, newLine);
+
     res.sendStatus(201);
   } catch (ex) {
     next(ex);
