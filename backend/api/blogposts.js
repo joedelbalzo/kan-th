@@ -2,7 +2,6 @@ const express = require("express");
 const app = express.Router();
 const { Blogpost, Tag, Image } = require("../db");
 const AWS = require("aws-sdk");
-const RSS = require("rss");
 
 AWS.config.update({ region: "us-east-2" });
 
@@ -149,40 +148,40 @@ app.put("/:id", isLoggedIn, async (req, res, next) => {
 // RSS FEED GEN
 //
 //
-async function generateRSSFeed() {
-  let feed = new RSS({
-    title: "Your Blog Title",
-    description: "Blog Description",
-    feed_url: "https://usevali.com/rss",
-    site_url: "https://usevali.com",
-  });
+// async function generateRSSFeed() {
+//   let feed = new RSS({
+//     title: "Vali Blog",
+//     description: "Vali Blog -- a blog about financial strategies and guidance for small business owners.",
+//     feed_url: "https://usevali.com/rss",
+//     site_url: "https://usevali.com",
+//   });
 
-  const blogposts = await Blogpost.findAll({
-    where: { published: true },
-    order: [["publishedAt", "DESC"]],
-  });
+//   const blogposts = await Blogpost.findAll({
+//     where: { published: true },
+//     order: [["publishedAt", "DESC"]],
+//   });
 
-  blogposts.forEach((post) => {
-    feed.item({
-      title: post.title,
-      description: post.content,
-      url: `https://usevali.com/blog/${post.id}`,
-      date: post.publishedAt,
-    });
-  });
+//   blogposts.forEach((post) => {
+//     feed.item({
+//       title: post.title,
+//       description: post.content,
+//       url: `https://usevali.com/blog/${post.id}`,
+//       date: post.publishedAt,
+//     });
+//   });
 
-  return feed.xml();
-}
+//   return feed.xml();
+// }
 
-app.get("/rss", async (req, res) => {
-  try {
-    const rssFeedXml = await generateRSSFeed();
-    res.type("application/rss+xml");
-    res.send(rssFeedXml);
-  } catch (ex) {
-    res.status(500).send({ message: "Error generating RSS feed." });
-  }
-});
+// app.get("/rss", async (req, res) => {
+//   try {
+//     const rssFeedXml = await generateRSSFeed();
+//     res.type("application/rss+xml");
+//     res.send(rssFeedXml);
+//   } catch (ex) {
+//     res.status(500).send({ message: "Error generating RSS feed." });
+//   }
+// });
 
 app.put("/publish/:id", isLoggedIn, restrictAccess, async (req, res, next) => {
   try {
