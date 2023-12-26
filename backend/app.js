@@ -32,6 +32,7 @@ async function generateRSSFeed() {
       title: post.title,
       description: post.content,
       url: `https://usevali.com/blog/${post.id}`,
+      guid: post.id,
       date: post.publishedAt,
     });
   });
