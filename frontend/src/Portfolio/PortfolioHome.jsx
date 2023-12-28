@@ -26,6 +26,11 @@ const PortfolioHome = () => {
       <PortfolioNav />
       <div className="portfolio-home-div">
         <div className="portfolio-home-div-inner">Hey, {auth.firstName}. We're glad you're here.</div>
+        {auth.username == "jimbo" && auth.lastName == "Del Balzo" && (
+          <div>
+            And because you're a fake account, you can <Link to="/portfolio/dashboard">click here</Link> to see your dashboard.
+          </div>
+        )}
       </div>
       <div className="portfolio-grid-container">
         <img src={businessPaperImg.src} alt={businessPaperImg.alt} className="portfolio-image" />

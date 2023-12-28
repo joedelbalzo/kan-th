@@ -57,3 +57,11 @@ export const useScrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   }, [location]);
 };
+
+export const formatToDollar = (value) => {
+  const number = parseFloat(value);
+  if (isNaN(number)) {
+    return "Invalid number";
+  }
+  return "$" + number.toLocaleString("en-US");
+};

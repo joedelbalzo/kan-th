@@ -1,6 +1,6 @@
 const express = require("express");
 const app = express.Router();
-const { User, MailingListUser } = require("../db");
+const { User, MailingListUser, Business, FinancialInfo, decrypt } = require("../db");
 const { isLoggedIn, isAdmin } = require("./middleware");
 const { updateCSVFile } = require("../s3");
 const path = require("path");
@@ -98,9 +98,9 @@ app.get("/mailinglist", isAdmin, isLoggedIn, async (req, res, next) => {
         order: [["createdAt", "DESC"]],
       })
     );
-  } catch (ex) {
-    console.log(ex);
-    next(ex);
+  } catch (err) {
+    console.log(err);
+    next(err);
   }
 });
 
@@ -118,8 +118,8 @@ app.post("/mailinglist", async (req, res, next) => {
     await updateCSVFile(csvFileName, newLine);
 
     res.sendStatus(201);
-  } catch (ex) {
-    next(ex);
+  } catch (err) {
+    next(err);
   }
 });
 
@@ -133,27 +133,44 @@ app.get("/users", isAdmin, isLoggedIn, async (req, res, next) => {
   try {
     const allUsers = await User.findAll();
     res.send(allUsers);
-  } catch (ex) {
-    next(ex);
+  } catch (err) {
+    next(err);
   }
 });
 app.get("/filteredusers", isAdmin, isLoggedIn, async (req, res, next) => {
   try {
     const { param } = req.body;
-    // console.log(param);
     const allUsers = await User.findAll();
     res.send(allUsers);
-  } catch (ex) {
-    next(ex);
+  } catch (err) {
+    next(err);
   }
 });
 
 //basic user things
-app.get("/", isLoggedIn, (req, res, next) => {
+app.get("/", isLoggedIn, async (req, res, next) => {
   try {
-    res.send(req.user);
-  } catch (ex) {
-    next(ex);
+    const userWithDetails = await User.findByPk(req.user.id, {
+      include: [
+        {
+          model: Business,
+          include: [
+            {
+              model: FinancialInfo,
+            },
+          ],
+        },
+      ],
+    });
+
+    if (!userWithDetails) {
+      res.status(404).send("User not found");
+      return;
+    }
+
+    res.send(userWithDetails);
+  } catch (err) {
+    next(err);
   }
 });
 
@@ -161,15 +178,15 @@ app.post("/register", async (req, res, next) => {
   try {
     const user = await User.create(req.body);
     res.send(user.generateToken());
-  } catch (ex) {
-    next(ex);
+  } catch (err) {
+    next(err);
   }
 });
 app.post("/", async (req, res, next) => {
   try {
     res.send(await User.authenticate(req.body));
-  } catch (ex) {
-    next(ex);
+  } catch (err) {
+    next(err);
   }
 });
 
@@ -192,20 +209,19 @@ app.put("/user/:id", async (req, res, next) => {
       }
     );
     res.send(updatedUser);
-  } catch (ex) {
-    next(ex);
+  } catch (err) {
+    next(err);
   }
 });
 
 app.put("/user", isLoggedIn, async (req, res, next) => {
   try {
     const user = req.user;
-    // console.log(user, req.body);
     //define the properties a user can change
     await user.update(req.body);
     res.send(user);
-  } catch (ex) {
-    next(ex);
+  } catch (err) {
+    next(err);
   }
 });
 

@@ -15,9 +15,9 @@ import Contact from "./Contact";
 import About from "./About";
 
 const BlogWrapper = lazy(() => import("./Blog/BlogWrapper"));
-const Blogposts = lazy(() => import("./Blog/Blogposts"));
-const Blogposts_Tags = lazy(() => import("./Blog/Blogposts_Tags"));
-const Blogpost_Single = lazy(() => import("./Blog/Blogpost_Single"));
+const BlogpostsHome = lazy(() => import("./Blog/BlogpostsHome"));
+// const Blogposts_Tags = lazy(() => import("./Blog/Blogposts_Tags"));
+const BlogpostSingle = lazy(() => import("./Blog/BlogpostSingle"));
 
 const AdminWrapper = lazy(() => import("./Admin/AdminWrapper"));
 const AdminHome = lazy(() => import("./Admin/AdminHome"));
@@ -30,6 +30,7 @@ const OAuthHandler = lazy(() => import("./Components/OAuthHandler"));
 const PortfolioWrapper = lazy(() => import("./Portfolio/PortfolioWrapper"));
 const PortfolioHome = lazy(() => import("./Portfolio/PortfolioHome"));
 const PortfolioPersonalize = lazy(() => import("./Portfolio/PortfolioPersonalize"));
+const PortfolioDashboard = lazy(() => import("./Portfolio/PortfolioDashboard"));
 
 //Store Imports
 import { fetchPublishedBlogposts, fetchTags, fetchDraftedBlogposts } from "./store";
@@ -135,9 +136,9 @@ function App(props) {
                 </Suspense>
               }
             >
-              <Route index element={<Blogposts />} />
-              <Route path="posts/:id" element={<Blogpost_Single />} />
-              <Route path="tags/:id" element={<Blogposts_Tags />} />
+              <Route index element={<BlogpostsHome />} />
+              <Route path="posts/:id" element={<BlogpostSingle />} />
+              {/* <Route path="tags/:id" element={<Blogposts_Tags />} /> */}
             </Route>
 
             {auth.id && (
@@ -158,6 +159,7 @@ function App(props) {
                 <Route index element={<PortfolioHome />} />
                 <Route path="home" element={<PortfolioHome />} />
                 <Route path="edit" element={<PortfolioPersonalize />} />
+                <Route path="dashboard" element={<PortfolioDashboard />} />
               </Route>
             )}
 

@@ -1,5 +1,6 @@
 const conn = require("./conn");
-const { User, Blogpost, Tag, Image, Business, MailingListUser } = require("./Models");
+const { User, Blogpost, Tag, Image, Business, MailingListUser, FinancialInfo } = require("./Models");
+const { encrypt, decrypt } = require("./Models/FinancialInfo");
 const path = require("path");
 const { faker } = require("@faker-js/faker");
 require("dotenv").config({ path: path.resolve(__dirname, "..", ".env") });
@@ -20,9 +21,15 @@ const syncAndSeed = async () => {
     const notAdmin = await User.create({
       username: "jimbo",
       password: "123",
-      email: "jdelbalzo99@gmail.com",
+      email: "jdelbalzotest@gmail.com",
       adminStatus: false,
       businessId: null,
+      isNewUser: false,
+      firstName: "James",
+      lastName: "Del Balzo",
+      city: "Astoria",
+      state: "New York",
+      mailingList: true,
     });
 
     // const [samplePost1, samplePost2, samplePost3, samplePost4, samplePost5, samplePost6] = await Promise.all([
@@ -86,10 +93,6 @@ const syncAndSeed = async () => {
         Tag.create({ name: "Competitive Edge" }),
       ]);
 
-    const jimbosPizzeria = await Business.create({
-      name: "Jimbo's Pizzeria",
-    });
-
     await Promise.all([
       posts[0].addTags(growthStrategies),
       posts[0].addTags(competitiveEdge),
@@ -109,23 +112,54 @@ const syncAndSeed = async () => {
       posts[7].addTags(marketAnalysis),
     ]);
 
-    // const promises = [
-    //   post1.addTags([valuations, growthStrategies, businessPlanning]),
-    //   post2.addTags([valuations, benchmarks, marketAnalysis]),
-    // ].map((p) => p.catch((e) => ({ error: e.message })));
+    const business = await Business.create({
+      name: "Jimbo's Tech Solutions",
+      userId: notAdmin.id,
+      categoryOfBusiness: "Technology",
+      yearsOpen: 5,
+      numberOfPartners: 2,
+      numberOfLocations: 3,
+      description: "Innovative tech solutions for modern businesses.",
+      legalStructure: "LLC",
+      mainProducts: "Software Development, IT Consulting",
+      servicesOffered: "Custom Software, Tech Support, IT Strategy",
+      keyMarkets: "Small to Medium-sized Businesses",
+      majorCompetitors: "TechCorp, Innovatech, NextGen Solutions",
+    });
 
-    // await Promise.all(promises);
+    const financialRecords = [
+      {
+        businessId: business.id,
+        year: 2020,
+        revenue: 500000,
+        assets: 200000,
+        liabilities: 100000,
+        netIncome: "75000",
+        operatingExpenses: 150000,
+        cashFlow: 80000,
+        debt: "50000",
+        equity: "150000",
+      },
+      {
+        businessId: business.id,
+        year: 2021,
+        revenue: 550000,
+        assets: 250000,
+        liabilities: 120000,
+        netIncome: "85000",
+        operatingExpenses: 170000,
+        cashFlow: 90000,
+        debt: "60000",
+        equity: "160000",
+      },
+    ];
 
-    notAdmin.businessId = jimbosPizzeria.id;
-    await notAdmin.save();
+    await FinancialInfo.bulkCreate(financialRecords);
 
     return {
       users: {
         admin,
         notAdmin,
-      },
-      businesses: {
-        jimbosPizzeria,
       },
       blogposts: {
         posts,
@@ -149,10 +183,13 @@ const syncAndSeed = async () => {
 
 module.exports = {
   syncAndSeed,
+  decrypt,
   User,
   Blogpost,
   Tag,
   Image,
   conn,
   MailingListUser,
+  Business,
+  FinancialInfo,
 };

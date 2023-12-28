@@ -19,7 +19,7 @@ import { useScrollToTop } from "../Components/functions";
 import { readableDate, pics } from "../Components/functions";
 import BackButton from "../assets/BackButton";
 
-const Blogpost_Single = () => {
+const BlogpostSingle = () => {
   useScrollToTop();
   const { id } = useParams();
   const navigate = useNavigate();
@@ -121,4 +121,4 @@ const Blogpost_Single = () => {
   );
 };
 
-export default Blogpost_Single;
+export default BlogpostSingle;

@@ -31,7 +31,7 @@ async function generateRSSFeed() {
     feed.item({
       title: post.title,
       description: post.content,
-      url: `https://usevali.com/blog/${post.id}`,
+      url: `https://usevali.com/blog/posts/${post.id}`,
       guid: post.id,
       date: post.publishedAt,
     });

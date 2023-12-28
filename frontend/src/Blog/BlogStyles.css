@@ -74,7 +74,7 @@
   height: calc(250px + 10vw);
   border-radius: 1rem;
   object-fit: cover;
-  box-shadow: 4px 4px 8px 1px red;
+  box-shadow: 4px 4px 8px 1px #102222;
 }
 .single-post-home-picture > .caption {
   margin: 1rem auto;

@@ -257,6 +257,94 @@
   box-shadow: 8px 8px 1rem rgba(100, 100, 100, 0.4);
 }
 
+.portfolio-dashboard-container-grid {
+  width: 95%;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 65% 35%;
+  column-gap: 1rem;
+}
+
+.portfolio-dashboard-information {
+  grid-column: 1;
+  grid-row: 1;
+  margin: 1rem 0;
+  padding: 1rem;
+  border-radius: 1rem;
+  background-color: rgba(245, 245, 245, 0.3);
+}
+
+.portfolio-dashboard-explore-services {
+  display: flex;
+  justify-content: space-around;
+  /* align-items: center; */
+  grid-column: 1;
+  margin: 1rem 0 0;
+  border-radius: 1rem;
+  background-color: rgba(245, 245, 245, 0.3);
+  height: 170px;
+}
+.portfolio-dashboard-explore-services > div > .explore-services-heading {
+  color: #183333;
+  font-size: 14px;
+  height: 2rem;
+  margin: 0.5rem;
+}
+.portfolio-dashboard-explore-services > div > .explore-services-desc {
+  color: #183333;
+  font-size: 12px;
+  height: 70px;
+  margin: 0.5rem;
+}
+.portfolio-dashboard-explore-services > div > a {
+  font-size: 12px;
+  height: 20px;
+  width: 40px;
+  margin: 0.5rem;
+  border-radius: 4px;
+  padding: 4px 12px;
+  outline: 1px solid #183333;
+  box-shadow: 2px 2px 1px rgba(100, 100, 100, 0.4);
+}
+
+.portfolio-dashboard-learning-center {
+  grid-column: 2;
+  grid-row: 1/-1;
+  margin: 1rem 0;
+  border-radius: 1rem;
+  background-color: rgba(245, 245, 245, 0.3);
+}
+.portfolio-dashboard-learning-center-title {
+  margin: 20px;
+  color: #183333;
+  font-size: 24px;
+  text-decoration: underline;
+  text-underline-offset: 8px;
+  text-decoration-thickness: 1px;
+}
+
+.portfolio-dashboard-learning-center > * > .post-content {
+  padding: 5px 20px;
+  margin: 10px auto;
+}
+.portfolio-dashboard-learning-center > * > .post-content > .post-bottom-border {
+  display: none;
+}
+.portfolio-dashboard-learning-center > * > .post-content > * > * > * > h2 {
+  margin-top: 10px;
+  font-size: 20px;
+}
+.portfolio-dashboard-learning-center > * > .post-content > * > * > h3 {
+  margin-top: 10px;
+  font-size: 16px;
+}
+.portfolio-dashboard-learning-center > * > .post-content > * > * {
+  padding: 20px;
+  background-color: #18333320;
+  border-radius: 0.5rem;
+  box-shadow: 2px 2px 4px rgba(200, 200, 200, 0.4);
+}
+
 /*  */
 /*  */
 /*  */

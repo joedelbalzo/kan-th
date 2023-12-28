@@ -70,35 +70,6 @@ async function getObjectSignedUrl(key) {
   return url;
 }
 
-// async function createBlankCsvFile(fileName) {
-//   try {
-//     const headParams = {
-//       Bucket: bucketName,
-//       Key: fileName,
-//     };
-
-//     try {
-//       await s3Client.send(new HeadObjectCommand(headParams));
-//       console.log("File already exists. Skipping creation.");
-//     } catch (error) {
-//       if (error.name === "NotFound") {
-//         const blankContent = "";
-//         const bufferStream = new stream.PassThrough();
-//         bufferStream.end(Buffer.from(blankContent, "utf-8"));
-
-//         return uploadFile(bufferStream, fileName, "text/csv");
-//       } else {
-//         // Some other error occurred
-//         throw error;
-//       }
-//     }
-//   } catch (error) {
-//     console.error("Error in createBlankCsvFile:", error);
-//     throw error;
-//   }
-// }
-// createBlankCsvFile("mailing-list/mailingList.csv");
-
 async function updateCSVFile(key, newLine) {
   try {
     const getObjectParams = {

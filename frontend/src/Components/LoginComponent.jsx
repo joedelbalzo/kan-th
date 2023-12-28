@@ -73,7 +73,7 @@ const LoginComponent = () => {
 
   const handleGoogleLogin = () => {
     window.localStorage.removeItem("token");
-    console.log(process.env.NODE_ENV);
+    // console.log(process.env.NODE_ENV);
     if (process.env.NODE_ENV == "development") {
       window.location.href = "https://localhost:3000/api/auth/google";
     } else {

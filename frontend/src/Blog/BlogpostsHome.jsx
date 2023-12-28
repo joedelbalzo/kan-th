@@ -19,8 +19,9 @@ import { fetchBlogByID } from "../store";
 import { readableDate, pics } from "../Components/functions";
 import BackButton from "../assets/BackButton";
 import ShareButtons from "../Components/ShareButtons";
+import BlogpostsContent from "./BlogpostsContent";
 
-const Blogposts = () => {
+const BlogpostsHome = () => {
   useScrollToTop();
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -145,6 +146,13 @@ const Blogposts = () => {
               </div>
             </div>
 
+            {/* <BlogpostsContent
+              filteredPosts={filteredPosts}
+              headlinerPost={headlinerPost}
+              openSingleBlog={openSingleBlog}
+              sampleText={sampleText}
+            /> */}
+
             {filteredPosts
               .filter((post) => post !== headlinerPost)
               .map((blogpost) => {
@@ -210,4 +218,4 @@ const Blogposts = () => {
   );
 };
 
-export default Blogposts;
+export default BlogpostsHome;
