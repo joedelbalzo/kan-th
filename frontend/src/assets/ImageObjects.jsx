@@ -14,7 +14,7 @@ export const aboutTripImg = {
 };
 export const kanicaImg = {
   src: kanica,
-  alt: "Image of Vali Founder and CEO Kanica Allagh",
+  alt: "Image of Vali Founder and CEO",
 };
 export const woodworkerImg = {
   src: woodworker,

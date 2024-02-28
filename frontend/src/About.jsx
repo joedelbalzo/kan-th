@@ -114,15 +114,15 @@ function About() {
           <div className="kanica-about">
             <div className="kanica-heading">
               <div>
-                <h1>Kanica Allagh</h1>
+                <h1>Founder Name</h1>
                 <h2>Founder</h2>
                 <span style={{ marginTop: "1rem" }}>
-                  <a href="https://www.linkedin.com/in/kanicaallagh/">LinkedIn</a>
+                  <a href="https://www.linkedin.com/">LinkedIn</a>
                   <br />
-                  <a href="mailto:kanica@usevali.com">kanica@usevali.com</a>
+                  <a href="mailto:contact.us.at.vali@usevali.com">contact.us.at.vali@usevali.com</a>
                 </span>
               </div>
-              <img src={kanicaImg.src} alt={kanicaImg.alt} className="kanica-picture" />
+              {/* <img src={kanicaImg.src} alt={kanicaImg.alt} className="kanica-picture" /> */}
             </div>
             <div className="kanica-text">
               <p>
