@@ -1,6 +1,6 @@
 import aboutTrip from "./about-trip.webp";
 import barber from "./pexels-thgusstavo-santana.webp";
-import kanica from "./kanica.jpg";
+// import kanica from "./kanica.jpg";
 import texturedBackground from "./pexels-milo-textures.webp";
 import womanWithIpad from "./pexels-tim-douglas.webp";
 import woodworker from "./pexels-ivan-samkov.webp";
@@ -12,10 +12,10 @@ export const aboutTripImg = {
   src: aboutTrip,
   alt: "Three images, one of a woman holding a sign that says 'Welcome, we are open,' one of a woodworker in his shop designing and making a piece for a customer, and the last image of a barista serving a customer coffee. ",
 };
-export const kanicaImg = {
-  src: kanica,
-  alt: "Image of Vali Founder and CEO",
-};
+// export const kanicaImg = {
+//   src: kanica,
+//   alt: "Image of Vali Founder and CEO",
+// };
 export const woodworkerImg = {
   src: woodworker,
   alt: "Image of a woodworker in his small business shop",

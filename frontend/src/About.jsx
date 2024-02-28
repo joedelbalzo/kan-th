@@ -10,7 +10,7 @@ import FinanceBar from "./assets/FinanceBar";
 import Seedling from "./assets/Seedling";
 import Links from "./assets/Links";
 import { FadeComponent } from "./assets/FadeComponent";
-import { kanicaImg, businessPaperImg } from "./assets/ImageObjects";
+import { businessPaperImg } from "./assets/ImageObjects";
 import PieChart from "./assets/BusinessIcons/PieChart";
 import Graph from "./assets/BusinessIcons/Graphj";
 import { useScrollToTop } from "./Components/functions";

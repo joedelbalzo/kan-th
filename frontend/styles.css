@@ -325,6 +325,9 @@ a:hover {
   width: 70%;
 }
 
+.css-1jy569b-MuiFormLabel-root-MuiInputLabel-root.Mui-focused {
+  color: #183333 !important;
+}
 .lets-go {
   width: 190px;
   height: 65px;

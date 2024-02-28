@@ -1,7 +1,7 @@
 import React from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
-export const FadeComponent = ({ children }) => (
+export const FadeComponent = ({ children, isVisible }) => (
   <AnimatePresence mode="wait">
     <motion.div
       initial={{ opacity: 0, transition: { duration: 1 } }}
