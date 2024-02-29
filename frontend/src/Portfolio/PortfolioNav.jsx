@@ -9,6 +9,7 @@ import { useDispatch, useSelector } from "react-redux";
 import "./PortfolioStyles.css";
 import Person from "../assets/PortfolioIcons/Person";
 import Home from "../assets/PortfolioIcons/Home";
+import Dashboard from "../assets/PortfolioIcons/Dashboard";
 
 const PortfolioNav = () => {
   const auth = useSelector((state) => state.auth);
@@ -20,6 +21,8 @@ const PortfolioNav = () => {
     return null;
   }
 
+  console.log(<Dashboard />);
+
   return (
     <>
       <div className="portfolio-nav-container">
@@ -27,7 +30,9 @@ const PortfolioNav = () => {
           <Link to="/portfolio/home" className="portfolio-nav-links">
             <Home />
           </Link>
-
+          <Link to="/portfolio/dashboard" className="portfolio-nav-links">
+            <Dashboard />
+          </Link>{" "}
           <Link to="/portfolio/edit" className="portfolio-nav-links">
             <Person />
           </Link>

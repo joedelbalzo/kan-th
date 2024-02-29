@@ -122,7 +122,12 @@ function About() {
                   <a href="mailto:contact.us.at.vali@usevali.com">contact.us.at.vali@usevali.com</a>
                 </span>
               </div>
-              {/* <img src={kanicaImg.src} alt={kanicaImg.alt} className="kanica-picture" /> */}
+              <img
+                src={
+                  "https://images.unsplash.com/photo-1553484771-11998c592b9c?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                }
+                className="kanica-picture"
+              />
             </div>
             <div className="kanica-text">
               <p>

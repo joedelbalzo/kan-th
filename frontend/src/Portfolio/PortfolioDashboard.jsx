@@ -52,6 +52,7 @@ const PortfolioDashboard = () => {
           </div>
         </div>
         <ul className="portfolio-dashboard-information">
+          <li>Latest Dashboard Version. All fake data.</li>
           <li>ID: {auth.id}</li>
           <li>Username: {auth.username}</li>
           <li>Admin Status: {auth.adminStatus.toString()}</li>

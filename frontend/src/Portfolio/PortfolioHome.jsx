@@ -27,8 +27,12 @@ const PortfolioHome = () => {
       <div className="portfolio-home-div">
         <div className="portfolio-home-div-inner">Hey, {auth.firstName}. We're glad you're here.</div>
         {auth.username == "jimbo" && auth.lastName == "Del Balzo" && (
-          <div>
-            And because you're a fake account, you can <Link to="/portfolio/dashboard">click here</Link> to see your dashboard.
+          <div style={{ textAlign: "center" }}>
+            And because you're a fake account, you can{" "}
+            <Link to="/portfolio/dashboard" style={{ textDecoration: "underline" }}>
+              click here
+            </Link>{" "}
+            to see your dashboard.
           </div>
         )}
       </div>

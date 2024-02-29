@@ -103,9 +103,8 @@ function Home() {
                   <h2>Small and medium business owners deserve better.</h2>
                 </motion.div>
                 <motion.div variants={child} className="home-div-body">
-                  Vali is here to help you get competitive funding quickly and easily.{"   "}
-                  <Link to="/login" style={{ textDecoration: "underline", cursor: "pointer" }}>
-                    {"   "}Let's go!
+                  <Link to="/login" className="lets-go" style={{ cursor: "pointer", color: "white", outline: "2px solid white" }}>
+                    {"   "}Let's go.
                   </Link>
                 </motion.div>
               </div>
@@ -124,12 +123,17 @@ function Home() {
           <motion.div ref={ref1} initial={{ opacity: 0, y: "100px" }} animate={controls1} transition={transition}>
             <div id="vali-body-about-first">
               <main>
+                Vali was founded and developed in the fall of 2023, but as the co-founders began to persue other ventures, the platform was
+                moved to the back burner. I enjoyed developing this with them, and I hope you enjoy our content. <br />
+                <br />
+                If you would like to explore the administrative capabilites and backend technologies a user would have enjoyed, please
+                contact me for the proper login information.
+                <br />
+                <br />
                 At Vali, we blend our expertise in finance with innovative technology to offer comprehensive valuation services that are
                 both accessible and reliable. Our mission at Vali is to demystify the business valuation process and make it a powerful tool
                 for SMB owners. <br />
                 <br />
-                We believe that understanding the true value of your business is not just a financial exercise but a strategic move to
-                secure your future, leverage growth opportunities, and plan for long-term success. <br />
               </main>
               <div id="svg-picture-overlay-container">
                 <PieChart alt={"Image of a pie chart graph."} />
@@ -147,7 +151,8 @@ function Home() {
                 <img src={aboutTripImg.src} alt={aboutTripImg.alt} />
               </div>
               <main className="vali-body-about-second-text">
-                We're excited to go on this journey of financial awareness and freedom with you. Here is how we get there:
+                We believe that understanding the true value of your business is not just a financial exercise but a strategic move to
+                secure your future, leverage growth opportunities, and plan for long-term success: <br />{" "}
                 <ul className="vali-about-list">
                   <li>
                     <strong>Comprehensive Business Valuation</strong>: Utilizing a blend of market-based, income-based, and asset-based
