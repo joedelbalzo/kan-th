@@ -63,7 +63,6 @@ export const filterBlogpostsByTag = (tagId) => {
 
 export const fetchPublishedBlogposts = () => {
   return async (dispatch) => {
-    console.log("lets see what happens");
     const response = await axios.get(`https://joedelbalzo.com/api/vali/blogposts`);
     dispatch({ type: "REQUEST_BLOGPOSTS", blogposts: response.data });
   };

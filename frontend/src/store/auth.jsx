@@ -191,7 +191,6 @@ export const archiveUserProfile = (blogpost) => {
         authorization: token,
       },
     });
-    // console.log("blog response in store", blogResponse);
     dispatch({ type: "HIDE_BLOGPOST", blogpost: blogResponse.data });
   };
 };
