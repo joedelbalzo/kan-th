@@ -63,20 +63,21 @@ export const filterBlogpostsByTag = (tagId) => {
 
 export const fetchPublishedBlogposts = () => {
   return async (dispatch) => {
-    const response = await axios.get(`/api/blogposts`);
+    console.log("lets see what happens");
+    const response = await axios.get(`https://joedelbalzo.com/api/vali/blogposts`);
     dispatch({ type: "REQUEST_BLOGPOSTS", blogposts: response.data });
   };
 };
 export const fetchDraftedBlogposts = () => {
   return async (dispatch) => {
-    const response = await axios.get("/api/blogposts/drafted");
+    const response = await axios.get("https://joedelbalzo.com/api/vali/blogposts/drafted");
     dispatch({ type: "REQUEST_DRAFTS", blogposts: response.data });
   };
 };
 
 export const fetchBlogByID = (id) => {
   return async (dispatch) => {
-    const response = await axios.get(`/api/blogposts/${id}`);
+    const response = await axios.get(`https://joedelbalzo.com/api/vali/blogposts/${id}`);
     dispatch({ type: "REQUEST_POST", blogpost: response.data });
   };
 };
@@ -85,14 +86,14 @@ export const createBlogpost = (formData, captions, blogData, tagData) => {
   return async (dispatch) => {
     const token = window.localStorage.getItem("token");
 
-    let blogResponse = await axios.post(`/api/blogposts/`, blogData, {
+    let blogResponse = await axios.post(`https://joedelbalzo.com/api/vali/blogposts/`, blogData, {
       headers: {
         authorization: token,
       },
     });
 
     let imageResponse = await axios.post(
-      `/api/images/${blogResponse.data.id}`,
+      `https://joedelbalzo.com/api/vali/images/${blogResponse.data.id}`,
       { formData, captions },
       {
         headers: {
@@ -101,7 +102,7 @@ export const createBlogpost = (formData, captions, blogData, tagData) => {
         },
       }
     );
-    let tagResponse = await axios.put(`/api/tags/${blogResponse.data.id}`, tagData, {
+    let tagResponse = await axios.put(`https://joedelbalzo.com/api/vali/tags/${blogResponse.data.id}`, tagData, {
       headers: {
         authorization: token,
       },
@@ -115,7 +116,7 @@ export const publishBlogpost = (blogpost) => {
   return async (dispatch) => {
     const token = window.localStorage.getItem("token");
 
-    let blogResponse = await axios.put(`/api/blogposts/publish/${blogpost.id}`, blogpost.id, {
+    let blogResponse = await axios.put(`https://joedelbalzo.com/api/vali/blogposts/publish/${blogpost.id}`, blogpost.id, {
       headers: {
         authorization: token,
       },
@@ -132,7 +133,7 @@ export const editBlogpost = (formData, captions, blogData, tagData, id) => {
     let blogResponse;
     let tagResponse;
     const imageResponse = await axios.put(
-      `/api/images/${id}`,
+      `https://joedelbalzo.com/api/vali/images/${id}`,
       { formData, captions },
       {
         headers: {
@@ -142,14 +143,14 @@ export const editBlogpost = (formData, captions, blogData, tagData, id) => {
       }
     );
     if (imageResponse.status === 200) {
-      tagResponse = await axios.put(`/api/tags/${id}`, tagData, {
+      tagResponse = await axios.put(`https://joedelbalzo.com/api/vali/tags/${id}`, tagData, {
         headers: {
           authorization: token,
         },
       });
     }
     if (tagResponse.status === 200) {
-      blogResponse = await axios.put(`/api/blogposts/${id}`, blogData, {
+      blogResponse = await axios.put(`https://joedelbalzo.com/api/vali/blogposts/${id}`, blogData, {
         headers: {
           authorization: token,
         },
@@ -162,7 +163,7 @@ export const editBlogpost = (formData, captions, blogData, tagData, id) => {
 export const hideBlogpost = (blogpost) => {
   return async (dispatch) => {
     const token = window.localStorage.getItem("token");
-    const blogResponse = await axios.put(`/api/blogposts/hidden/${blogpost.id}`, blogpost, {
+    const blogResponse = await axios.put(`https://joedelbalzo.com/api/vali/blogposts/hidden/${blogpost.id}`, blogpost, {
       headers: {
         authorization: token,
       },
@@ -174,7 +175,7 @@ export const hideBlogpost = (blogpost) => {
 export const deleteBlogpost = (blogpost) => {
   return async (dispatch) => {
     const token = window.localStorage.getItem("token");
-    await axios.delete(`/api/blogposts/${blogpost.id}`, {
+    await axios.delete(`https://joedelbalzo.com/api/vali/blogposts/${blogpost.id}`, {
       headers: {
         authorization: token,
       },

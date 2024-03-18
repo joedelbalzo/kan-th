@@ -20,7 +20,7 @@ const tags = (state = [], action) => {
 
 export const fetchTags = () => {
   return async (dispatch) => {
-    const response = await axios.get("/api/tags");
+    const response = await axios.get("https://joedelbalzo.com/api/vali/tags");
     dispatch({ type: "REQUEST_TAGS", tags: response.data });
   };
 };
@@ -28,7 +28,7 @@ export const fetchTags = () => {
 export const createTag = (tag) => {
   return async (dispatch) => {
     const token = window.localStorage.getItem("token");
-    const response = await axios.post("/api/tags/", tag, {
+    const response = await axios.post("https://joedelbalzo.com/api/vali/tags/", tag, {
       headers: {
         authorization: token,
       },
@@ -40,7 +40,7 @@ export const createTag = (tag) => {
 export const deleteTag = (tag) => {
   return async (dispatch) => {
     const token = window.localStorage.getItem("token");
-    await axios.delete(`/api/tags/${tag.id}`, {
+    await axios.delete(`https://joedelbalzo.com/api/vali/tags/${tag.id}`, {
       headers: {
         authorization: token,
       },

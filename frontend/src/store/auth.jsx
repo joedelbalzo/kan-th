@@ -11,12 +11,9 @@ export const auth = (state = {}, action) => {
 export const loginWithGoogle = (token) => {
   return async (dispatch) => {
     try {
-      // const urlParams = new URLSearchParams(window.location.search);
-      // const token = urlParams.get("token");
-
       if (token) {
         window.localStorage.setItem("token", token);
-        const response = await axios.get("/api/auth/me", {
+        const response = await axios.get("https://joedelbalzo.com/api/vali/auth/me", {
           headers: {
             authorization: token,
           },
@@ -50,7 +47,7 @@ export const loginWithToken = () => {
     const token = window.localStorage.getItem("token");
     if (token) {
       try {
-        const response = await axios.get("/api/auth", {
+        const response = await axios.get("https://joedelbalzo.com/api/vali/auth", {
           headers: {
             authorization: token,
           },
@@ -67,7 +64,7 @@ export const loginWithToken = () => {
 
 export const attemptLogin = (credentials) => {
   return async (dispatch) => {
-    const response = await axios.post("/api/auth", credentials);
+    const response = await axios.post("https://joedelbalzo.com/api/vali/auth", credentials);
     window.localStorage.setItem("token", response.data.token);
     const dispatchResponse = await dispatch(loginWithToken());
     return dispatchResponse;
@@ -76,7 +73,7 @@ export const attemptLogin = (credentials) => {
 
 export const register = (credentials) => {
   return async (dispatch) => {
-    const response = await axios.post("/api/auth/register", credentials);
+    const response = await axios.post("https://joedelbalzo.com/api/vali/auth/register", credentials);
     window.localStorage.setItem("token", response.data.token);
     dispatch(loginWithToken());
   };
@@ -124,7 +121,7 @@ export const fetchUsers = () => {
   // only done by admin to get the list of all users
   return async (dispatch) => {
     const token = window.localStorage.getItem("token");
-    const response = await axios.get(`/api/auth/users`, {
+    const response = await axios.get(`https://joedelbalzo.com/api/vali/auth/users`, {
       headers: {
         authorization: token,
       },
@@ -137,7 +134,7 @@ export const fetchOneUser = (user) => {
   // done by admin or done by user themselves
   return async (dispatch) => {
     const token = window.localStorage.getItem("token");
-    const response = await axios.get(`/api/auth`, user, {
+    const response = await axios.get(`https://joedelbalzo.com/api/vali/auth`, user, {
       headers: {
         authorization: token,
       },
@@ -150,7 +147,7 @@ export const fetchOneUser = (user) => {
 export const fetchFilteredUsers = (param) => {
   //again, done only by admin
   return async (dispatch) => {
-    const response = await axios.get(`/api/auth/filteredusers`, param);
+    const response = await axios.get(`https://joedelbalzo.com/api/vali/auth/filteredusers`, param);
     dispatch({ type: "REQUEST_POST", users: response.data });
   };
 };
@@ -160,7 +157,7 @@ export const createUserProfile = (formData, user) => {
     const token = window.localStorage.getItem("token");
 
     let response = await axios.put(
-      `/api/auth/user/${user.id}`,
+      `https://joedelbalzo.com/api/vali/auth/user/${user.id}`,
       { formData, user },
       {
         headers: {
@@ -177,7 +174,7 @@ export const editUserProfile = (blogpost) => {
   return async (dispatch) => {
     const token = window.localStorage.getItem("token");
 
-    let blogResponse = await axios.put(`/api/blogposts/publish/${blogpost.id}`, blogpost.id, {
+    let blogResponse = await axios.put(`https://joedelbalzo.com/api/vali/blogposts/publish/${blogpost.id}`, blogpost.id, {
       headers: {
         authorization: token,
       },
@@ -189,7 +186,7 @@ export const editUserProfile = (blogpost) => {
 export const archiveUserProfile = (blogpost) => {
   return async (dispatch) => {
     const token = window.localStorage.getItem("token");
-    const blogResponse = await axios.put(`/api/blogposts/hidden/${blogpost.id}`, blogpost, {
+    const blogResponse = await axios.put(`https://joedelbalzo.com/api/vali/blogposts/hidden/${blogpost.id}`, blogpost, {
       headers: {
         authorization: token,
       },
@@ -215,7 +212,7 @@ export const mailingList = (state = mailingListState, action) => {
 export const fetchMailingList = () => {
   return async (dispatch) => {
     const token = window.localStorage.getItem("token");
-    const response = await axios.get(`/api/auth/mailinglist`, {
+    const response = await axios.get(`https://joedelbalzo.com/api/vali/auth/mailinglist`, {
       headers: {
         authorization: token,
       },
