@@ -92,7 +92,7 @@ function About() {
               <div className="about-div-text">
                 <h1 className="about-title">Vali </h1>
                 <motion.div variants={child} className="about-subtitle">
-                  <h2 style={{ gridColumn: "1/-1" }}>
+                  <h2 style={{ gridColumn: "1", textAlign: "left" }}>
                     Dedicated to empowering small and medium-sized businesses with crucial financial insights.
                   </h2>
                 </motion.div>
@@ -119,7 +119,7 @@ function About() {
                 <span style={{ marginTop: "1rem" }}>
                   <a href="https://www.linkedin.com/">LinkedIn</a>
                   <br />
-                  <a href="mailto:contact.us.at.vali@usevali.com">contact.us.at.vali@usevali.com</a>
+                  <a href="mailto:contact.us.at.vali@joinvali.com">contact.us.at.vali@joinvali.com</a>
                 </span>
               </div>
               <img

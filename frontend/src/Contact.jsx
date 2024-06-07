@@ -36,7 +36,7 @@ function Contact() {
     setLoading(true);
     ev.preventDefault();
     try {
-      const response = await axios.post("https://www.usevali.com/api/contact", emailForm);
+      const response = await axios.post("https://www.joinvali.com/api/contact", emailForm);
       if (response.status == 200) {
         setLoading(false);
       } else {
@@ -88,7 +88,7 @@ function Contact() {
                 <button type="submit">SUBMIT</button>
               )}
               {error && (
-                <div style={{ color: "red", fontSize: "14px" }}>Submission error! Please email us at vali@usevali.com. Thank you!</div>
+                <div style={{ color: "red", fontSize: "14px" }}>Submission error! Please email us at vali@joinvali.com. Thank you!</div>
               )}
             </form>
           </div>

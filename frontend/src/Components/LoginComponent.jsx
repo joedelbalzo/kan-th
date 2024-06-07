@@ -77,7 +77,7 @@ const LoginComponent = () => {
     if (process.env.NODE_ENV == "development") {
       window.location.href = "https://localhost:3000/api/auth/google";
     } else {
-      window.location.href = "https://usevali.com/api/auth/google";
+      window.location.href = "https://joinvali.com/api/auth/google";
     }
   };
 

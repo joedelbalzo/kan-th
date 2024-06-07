@@ -48,13 +48,13 @@ const JoinMailingList = () => {
 
   const styles = {
     div: {
-      width: "325px",
+      width: "350px",
       margin: "0 auto",
     },
     form: {
       display: "flex",
       width: "325px",
-      margin: "4px auto",
+      margin: "1rem auto",
     },
     input: {
       width: "200px",
@@ -79,7 +79,7 @@ const JoinMailingList = () => {
 
   return (
     <div className="join-mailing-list" style={styles.div}>
-      <strong>Subscribe for Updates</strong>
+      <span style={{ fontSize: "1.5rem" }}> Subscribe for Updates</span>
       <br /> <span style={{ fontSize: "13px" }}>Financing trends, valuations, and platform features.</span>
       <form onSubmit={joinMailingList} style={styles.form}>
         <input type="email" id="email" style={styles.input} onChange={(ev) => setEmail(ev.target.value)}></input>

@@ -152,8 +152,8 @@ app.put("/:id", isLoggedIn, async (req, res, next) => {
 //   let feed = new RSS({
 //     title: "Vali Blog",
 //     description: "Vali Blog -- a blog about financial strategies and guidance for small business owners.",
-//     feed_url: "https://usevali.com/rss",
-//     site_url: "https://usevali.com",
+//     feed_url: "https://joinvali.com/rss",
+//     site_url: "https://joinvali.com",
 //   });
 
 //   const blogposts = await Blogpost.findAll({
@@ -165,7 +165,7 @@ app.put("/:id", isLoggedIn, async (req, res, next) => {
 //     feed.item({
 //       title: post.title,
 //       description: post.content,
-//       url: `https://usevali.com/blog/${post.id}`,
+//       url: `https://joinvali.com/blog/${post.id}`,
 //       date: post.publishedAt,
 //     });
 //   });

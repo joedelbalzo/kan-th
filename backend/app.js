@@ -18,8 +18,8 @@ async function generateRSSFeed() {
   let feed = new RSS({
     title: "Vali Blog",
     description: "Vali Blog -- a blog about financial strategies and guidance for small business owners.",
-    feed_url: "https://usevali.com/rss",
-    site_url: "https://usevali.com",
+    feed_url: "https://joinvali.com/rss",
+    site_url: "https://joinvali.com",
   });
 
   const blogposts = await Blogpost.findAll({
@@ -31,7 +31,7 @@ async function generateRSSFeed() {
     feed.item({
       title: post.title,
       description: post.content,
-      url: `https://usevali.com/blog/posts/${post.id}`,
+      url: `https://joinvali.com/blog/posts/${post.id}`,
       guid: post.id,
       date: post.publishedAt,
     });

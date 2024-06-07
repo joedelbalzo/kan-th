@@ -51,6 +51,9 @@ function Home() {
   const controls3 = useAnimation();
   const controls4 = useAnimation();
   const controls5 = useAnimation();
+  const controls6 = useAnimation();
+  const controls7 = useAnimation();
+  const controls8 = useAnimation();
   const [width] = useWindowSize();
 
   const ref1 = useRef(null);
@@ -58,6 +61,9 @@ function Home() {
   const ref3 = useRef(null);
   const ref4 = useRef(null);
   const ref5 = useRef(null);
+  const ref6 = useRef(null);
+  const ref7 = useRef(null);
+  const ref8 = useRef(null);
 
   const transition = {
     type: "spring",
@@ -75,6 +81,9 @@ function Home() {
             if (entry.target === ref3.current) controls3.start({ opacity: 1, y: 0 });
             if (entry.target === ref4.current) controls4.start({ opacity: 1, y: 0 });
             if (entry.target === ref5.current) controls5.start({ opacity: 1, y: 0 });
+            if (entry.target === ref6.current) controls6.start({ opacity: 1, y: 0 });
+            if (entry.target === ref7.current) controls7.start({ opacity: 1, y: 0 });
+            if (entry.target === ref8.current) controls8.start({ opacity: 1, y: 0 });
           }
         });
       },
@@ -86,6 +95,9 @@ function Home() {
     observer.observe(ref3.current);
     observer.observe(ref4.current);
     observer.observe(ref5.current);
+    observer.observe(ref6.current);
+    observer.observe(ref7.current);
+    // observer.observe(ref8.current);
 
     return () => observer.disconnect();
   }, []);
@@ -140,19 +152,34 @@ function Home() {
                 <img src={woodworkerImg.src} alt={woodworkerImg.alt} id="about-image" />
               </div>
             </div>
-            {/* </motion.div>
-
-          <motion.div ref={ref2} initial={{ opacity: 0, y: "100px" }} animate={controls2} transition={transition}> */}
           </motion.div>
+        </div>
+        <motion.div ref={ref2} initial={{ opacity: 0, y: "100px" }} animate={controls2} transition={transition}>
+          <div
+            style={{
+              display: "block",
+              padding: "6rem 0",
+              textAlign: "center",
+              backgroundColor: "#86bbd8",
+              fontSize: "42px",
+              fontWeight: "350",
+              boxShadow: "0px 1rem 1rem rgba(100,100,100,.2)",
+            }}
+          >
+            <div style={{ width: "70%", margin: "0 auto" }}>
+              We believe that understanding the true value of your business is not just a financial exercise, but a strategic move to secure
+              your future, leverage growth opportunities, and plan for long-term success:
+            </div>
+          </div>
+        </motion.div>
 
-          <motion.div ref={ref2} initial={{ opacity: 0, y: "100px" }} animate={controls2} transition={transition}>
+        <div className="vali-body-about">
+          <motion.div ref={ref3} initial={{ opacity: 0, y: "100px" }} animate={controls3} transition={transition}>
             <div id="vali-body-about-second">
               <div className="vali-body-about-second-picture">
                 <img src={aboutTripImg.src} alt={aboutTripImg.alt} />
               </div>
               <main className="vali-body-about-second-text">
-                We believe that understanding the true value of your business is not just a financial exercise but a strategic move to
-                secure your future, leverage growth opportunities, and plan for long-term success: <br />{" "}
                 <ul className="vali-about-list">
                   <li>
                     <strong>Comprehensive Business Valuation</strong>: Utilizing a blend of market-based, income-based, and asset-based
@@ -178,75 +205,90 @@ function Home() {
               </main>
             </div>
           </motion.div>
-          <JoinMailingList />
+        </div>
+        <JoinMailingList />
+        <div className="home-content">
+          <motion.div
+            ref={ref4}
+            initial={{ opacity: 0, y: "100px" }}
+            animate={controls4}
+            transition={transition}
+            style={{
+              display: "flex",
+              flexDirection: "row",
+              flexWrap: "wrap",
+              justifyContent: "center",
+              overflow: "hidden",
+            }}
+          >
+            <div className="home-content-images" style={{ display: "flex" }}>
+              <div className="home-content-images-1">
+                <FinanceBar width={"30vw"} height={"20vh"} />
+                <div>We compare your data across benchmarks set by thousands of companies to see how you stack up in your industry.</div>
+              </div>
+              <div className="home-content-images-2">
+                <Seedling width={"30vw"} height={"20vh"} />
+                <div>
+                  Get access to dozens of lenders and business partners who can use your valuations to provide you with great rates and
+                  fundraising vehicles to grow your business.
+                </div>
+              </div>
+              <div className="home-content-images-3">
+                <Links width={"30vw"} height={"20vh"} />
+                <div>
+                  Together, we can improve and grow your business using our tools and methodologies that will make you proud of what you've
+                  built.
+                </div>
+              </div>
+            </div>
+          </motion.div>
 
-          <motion.div ref={ref3} initial={{ opacity: 0, y: "100px" }} animate={controls3} transition={transition}>
+          {/* JOIN NOW */}
+          <motion.div
+            ref={ref5}
+            initial={{ opacity: 0, y: "100px" }}
+            animate={controls5}
+            transition={transition}
+            style={{
+              display: "flex",
+              flexDirection: "row",
+              flexWrap: "wrap",
+              justifyContent: "center",
+              overflow: "hidden",
+            }}
+          ></motion.div>
+        </div>
+        <motion.div ref={ref6} initial={{ opacity: 0, y: "100px" }} animate={controls6} transition={transition}>
+          <div
+            style={{
+              display: "block",
+              padding: "1rem 0",
+              margin: "3rem auto",
+              textAlign: "center",
+              backgroundColor: "#86bbd8",
+              fontSize: "42px",
+              fontWeight: "350",
+              boxShadow: "0px 1rem 1rem rgba(100,100,100,.2)",
+            }}
+          >
             <div id="vali-body-about-third">
               <main>
                 So, why choose us? Expertise, customized solutions, transparency, and a technology-driven approach. Our vision is to become
-                the most trusted partner for small and medium business owners in understanding and enhancing their business value. We strive
-                to turn valuation from a mere number into a roadmap for success, and we look forward to going on this journey with you.
+                the most trusted partner for small and medium business owners in understanding and enhancing their business value.
+                <br />
+                <br />
+                We strive to turn valuation from a mere number into a roadmap for success, and we look forward to going on this journey with
+                you.
               </main>
             </div>
-          </motion.div>
+          </div>
+        </motion.div>
+      </div>
+      <motion.div ref={ref7} initial={{ opacity: 0, y: "100px" }} animate={controls7} transition={transition}>
+        <div className="lets-go">
+          <Link to="/login">Let's Go! &rarr;</Link>
         </div>
-      </div>
-
-      <div className="home-content">
-        <motion.div
-          ref={ref4}
-          initial={{ opacity: 0, y: "100px" }}
-          animate={controls4}
-          transition={transition}
-          style={{
-            display: "flex",
-            flexDirection: "row",
-            flexWrap: "wrap",
-            justifyContent: "center",
-            overflow: "hidden",
-          }}
-        >
-          <div className="home-content-images" style={{ display: "flex" }}>
-            <div className="home-content-images-1">
-              <FinanceBar width={"30vw"} height={"20vh"} />
-              <div>We compare your data across benchmarks set by thousands of companies to see how you stack up in your industry.</div>
-            </div>
-            <div className="home-content-images-2">
-              <Seedling width={"30vw"} height={"20vh"} />
-              <div>
-                Get access to dozens of lenders and business partners who can use your valuations to provide you with great rates and
-                fundraising vehicles to grow your business.
-              </div>
-            </div>
-            <div className="home-content-images-3">
-              <Links width={"30vw"} height={"20vh"} />
-              <div>
-                Together, we can improve and grow your business using our tools and methodologies that will make you proud of what you've
-                built.
-              </div>
-            </div>
-          </div>
-        </motion.div>
-
-        {/* JOIN NOW */}
-        <motion.div
-          ref={ref5}
-          initial={{ opacity: 0, y: "100px" }}
-          animate={controls5}
-          transition={transition}
-          style={{
-            display: "flex",
-            flexDirection: "row",
-            flexWrap: "wrap",
-            justifyContent: "center",
-            overflow: "hidden",
-          }}
-        >
-          <div className="lets-go">
-            <Link to="/login">Let's Go! &rarr;</Link>
-          </div>
-        </motion.div>
-      </div>
+      </motion.div>
     </FadeComponent>
   );
 }

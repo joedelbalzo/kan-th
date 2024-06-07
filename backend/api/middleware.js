@@ -37,8 +37,8 @@ const restrictAccess = (req, res, next) => {
   const origin = req.headers.origin || req.headers.referer || "localhost:3000" || "http://localhost:3000";
   if (origin) {
     if (
-      origin === "https://www.usevali.com" ||
-      origin === "https://usevali.com" ||
+      origin === "https://www.joinvali.com" ||
+      origin === "https://joinvali.com" ||
       origin.startsWith("asitenamedka") ||
       origin.startsWith(process.env.DEV_SITE) ||
       origin.startsWith("http://localhost:3000")

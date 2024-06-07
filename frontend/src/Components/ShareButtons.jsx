@@ -6,16 +6,16 @@ const ShareButtons = ({ fillColor, post, shareType = null }) => {
   if (shareType == "generic") {
     const share = (platform) => {
       if (platform === "facebook") {
-        window.open(`https://www.facebook.com/sharer/sharer.php?u=https://www.usevali.com`, "_blank");
+        window.open(`https://www.facebook.com/sharer/sharer.php?u=https://www.joinvali.com`, "_blank");
       } else if (platform === "linkedin") {
-        window.open(`https://www.linkedin.com/sharing/share-offsite/?url=https://www.usevali.com`, "_blank");
+        window.open(`https://www.linkedin.com/sharing/share-offsite/?url=https://www.joinvali.com`, "_blank");
       } else if (platform === "twitter") {
-        window.open(`https://twitter.com/intent/tweet?text=https://www.usevali.com`, "_blank");
+        window.open(`https://twitter.com/intent/tweet?text=https://www.joinvali.com`, "_blank");
       } else if (platform === "email") {
-        const emailBody = `Check out Vali: https://www.usevali.com`;
+        const emailBody = `Check out Vali: https://www.joinvali.com`;
         window.open(`mailto:?subject=Check out Vali&body=${emailBody}`, "_blank");
       } else if (platform === "reddit") {
-        window.open(`https://www.reddit.com/submit?url=https://www.usevali.com`, "_blank");
+        window.open(`https://www.reddit.com/submit?url=https://www.joinvali.com`, "_blank");
       }
     };
     return (
