@@ -26,8 +26,11 @@ jobs:
     - name: Build project
       run: npm run build  # Adjust if your build command is different
 
+    - name: Verify build output
+      run: ls -la ./build  # List contents of the build directory to verify correct files
+
     - name: Deploy to GitHub Pages
       uses: peaceiris/actions-gh-pages@v3
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: ./build  # Adjust if your output directory is different
+        publish_dir: ./build  # Ensure this matches the build output directory
