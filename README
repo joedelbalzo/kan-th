@@ -1,73 +1,27 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vali - README</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f9f9f9;
-            color: #333;
-        }
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
-            background-color: #fff;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            border-radius: 8px;
-        }
-        h1 {
-            text-align: center;
-            color: #2c3e50;
-        }
-        .section {
-            margin-bottom: 20px;
-        }
-        .section h2 {
-            margin-top: 0;
-            color: #2980b9;
-        }
-        .tech-stack {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-around;
-        }
-        .tech-stack img {
-            max-width: 100px;
-            margin: 10px;
-        }
-    </style>
-</head>
-<body>
-    <div class="container">
-        <h1>Vali</h1>
-        <div class="section">
-            <p>A startup tool aiming to provide small businesses with proper financial valuations and tools to get themselves more money.</p>
-        </div>
-        <div class="section">
-            <h2>Login Information</h2>
-            <p>The password to view the site is <strong>createdbyJDB</strong>.</p>
-            <p>Feel free to log in as <strong>jimbo</strong> with a password of <strong>123</strong> to check out the dashboard. It's really rough, as this project ended some time ago and hasn't been updated in months, but you can kind of get the idea where it's going.</p>
-        </div>
-        <div class="section">
-            <h2>Tech Stack</h2>
-            <div class="tech-stack">
-                <img src="path/to/react.png" alt="React">
-                <img src="path/to/express.png" alt="Express">
-                <img src="path/to/node.png" alt="Node">
-                <img src="path/to/postgres.png" alt="Postgres">
-                <img src="path/to/sequelize.png" alt="Sequelize">
-                <img src="path/to/html.png" alt="HTML">
-                <img src="path/to/css.png" alt="CSS">
-                <img src="path/to/aws.png" alt="AWS">
-                <img src="path/to/google-api.png" alt="Google APIs">
-                <img src="path/to/google-oauth.png" alt="Google OAuth">
-            </div>
-        </div>
-    </div>
-</body>
-</html>
+# Vali 
+
+A startup tool aiming to provide small businesses with proper financial valuations and tools to make better decisions.
+Pressing the '+' key on the calculator five times unveils a login screen to access the web application.
+</br>
+</br>
+
+### Login Information
+
+The password to view the site is createdbyJDB. </br>
+Feel free to log in as <strong>jimbo</strong> with a password of <strong>123</strong> to check out the dashboard. It's really rough, as this project ended some time ago and hasn't been updated in months, but you can kind of get the idea where it's going.
+
+
+### Technology Stack
+
+<p display='inline'>
+  <img src="https://img.shields.io/badge/JavaScript-grey?style=for-the-badge&logo=javascript" />
+  <img src="https://img.shields.io/badge/React.js-00509f?style=for-the-badge&logo=react" />
+  <img src="https://img.shields.io/badge/Redux.js-764ABC?style=for-the-badge&logo=redux" />
+  <img src="https://img.shields.io/badge/Node.js-005800?style=for-the-badge&logo=nodedotjs" />
+  <img src="https://img.shields.io/badge/Express.js-black?style=for-the-badge&logo=express" />
+  <img src="https://img.shields.io/badge/Sequelize-0081d5?style=for-the-badge&logo=sequelize" />
+  <img src="https://img.shields.io/badge/React%20Router-00509f?style=for-the-badge&logo=react" />
+  <img src="https://img.shields.io/badge/HTML-dfaa86?style=for-the-badge&logo=html5" />
+  <img src="https://img.shields.io/badge/Vanilla%20CSS-f5d301?style=for-the-badge&logo=css3" />
+  <img src="https://img.shields.io/badge/Material%20UI-e3e3e3?style=for-the-badge&logo=mui" />
+</p>
