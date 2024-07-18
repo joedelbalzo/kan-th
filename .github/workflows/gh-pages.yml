@@ -30,9 +30,12 @@ jobs:
         cd frontend
         npm run build  # Adjust if your build command is different
 
+    - name: Verify build output
+      run: ls -la ./frontend/dist  # List contents of the build directory to verify correct files
+
     - name: Deploy to GitHub Pages
       uses: peaceiris/actions-gh-pages@v3
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
         publish_branch: gh-pages  # Ensure this matches the GitHub Pages branch
-        publish_dir: frontend/dist  # Ensure this matches the build output directory
+        publish_dir: ./frontend/dist  # Ensure this matches the build output directory
