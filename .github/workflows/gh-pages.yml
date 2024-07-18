@@ -31,7 +31,9 @@ jobs:
         npm run build  # Adjust if your build command is different
 
     - name: Verify build output
-      run: ls -la ./frontend/dist  # List contents of the build directory to verify correct files
+      run: |
+        cd frontend/dist
+        ls -R  # List contents of the build directory to verify correct files recursively
 
     - name: Deploy to GitHub Pages
       uses: peaceiris/actions-gh-pages@v3
