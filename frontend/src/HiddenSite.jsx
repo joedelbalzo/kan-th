@@ -20,7 +20,8 @@ const HiddenSite = ({ onAllowAccess }) => {
 
   const password = (ev) => {
     ev.preventDefault();
-    if (pwd === import.meta.env.VITE_SITEPASSWORD) {
+    //note: if you're here, i know you don't put environmental variables in the code! githubpages forces your envs to be public, anyways. this is faster than setting up ghp envs. 
+    if (pwd === "createdbyJDB") {
       const currentTime = new Date().getTime();
       const accessData = {
         allowed: true,
