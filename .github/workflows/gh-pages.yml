@@ -3,7 +3,7 @@ name: GitHub Pages
 on:
   push:
     branches:
-      - main  # Change to your default branch if it's different
+      - main  # Adjust this if your main branch has a different name
 
 jobs:
   build:
@@ -21,16 +21,23 @@ jobs:
         node-version: '20'  # Use the latest Node.js version
 
     - name: Install dependencies
-      run: npm install
+      run: |
+        cd frontend
+        npm install
 
     - name: Build project
-      run: npm run build  # Adjust if your build command is different
+      run: |
+        cd frontend
+        npm run build  # Adjust if your build command is different
 
     - name: Verify build output
-      run: ls -la ./build  # List contents of the build directory to verify correct files
+      run: |
+        cd frontend/dist
+        ls -R  # List contents of the build directory to verify correct files recursively
 
     - name: Deploy to GitHub Pages
       uses: peaceiris/actions-gh-pages@v3
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: ./build  # Ensure this matches the build output directory
+        publish_branch: gh-pages  # Ensure this matches the GitHub Pages branch
+        publish_dir: ./frontend/dist  # Ensure this matches the build output directory

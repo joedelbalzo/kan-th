@@ -1,3 +1,4 @@
+
 # Vali 
 
 A startup tool aiming to provide small businesses with proper financial valuations and tools to make better decisions.
