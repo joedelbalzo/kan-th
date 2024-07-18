@@ -1,43 +1,73 @@
-12/8/2023
-immediate fixes:
-add linkedin and email
-login on mobile is weird. check your screenshots
-
-long term -
-form elements need labels, like for="firstname" or aria-label="firstname
-focusable elements need unique ids, like the nav buttons
-images need height and width, https://web.dev/articles/optimize-cls
-pictures are too big for mobile, and it effects performance.
-
-Small list of bugs noticed on initial deployment:
-
--Some confirmation that you've actually selected a photo. Right now, there is no "File Chosen" and so it just looks like you're not uploading any pictures.
-
--Captions need to be saved appropriately.
-
--This text box grows with really long sentences. It shouldn't grow as much as it just did.
--Text overflows the backdrop when publishing. Check out the post before that's all sorts of Lorem Ipsum. Text isn't wrapping appropriately
--Introduce instructions for the admin. %% regex for photos is not super easy to remember!
--Needs to be some sort of edited timestamp. I know that's annoying. Maybe it'll be a field to create? Like if there already is a publishedAt and we're creating a new one, create an "originallyPublishedAt?" or something. Idk.
-
-Specific content to add:
--- (done) Legal page. Privacy Policy, ToS, I'm not the bible, etc
-
--- (done) Need a way to credit photos.
-
--- (done) Add "Tags" to the database
--- (done) make them searchable and therefore list how many are under each tag.
--- (done) A user should be able to click on a tag and find all relevant posts.
--- (done) An admin should also be able to see which tags exist, while also having the ability to create new tags.
--- An admin should be able to edit a tag name and have it fix it everywhere else. There needs to be some sort of warning here too that it'll effect all other articles with this tag name.
-
--- Documentation for the admin!!
-
--- Pagination
-
--- A way to receive feedback from early users.
-
--- Footer
--- Analytics:
--- Implement Google Analytics scripts here.
--- Research more analytics. Things that can be measured can be improved.
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vali - README</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+        }
+        .section {
+            margin-bottom: 20px;
+        }
+        .section h2 {
+            margin-top: 0;
+            color: #2980b9;
+        }
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+        }
+        .tech-stack img {
+            max-width: 100px;
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Vali</h1>
+        <div class="section">
+            <p>A startup tool aiming to provide small businesses with proper financial valuations and tools to get themselves more money.</p>
+        </div>
+        <div class="section">
+            <h2>Login Information</h2>
+            <p>The password to view the site is <strong>createdbyJDB</strong>.</p>
+            <p>Feel free to log in as <strong>jimbo</strong> with a password of <strong>123</strong> to check out the dashboard. It's really rough, as this project ended some time ago and hasn't been updated in months, but you can kind of get the idea where it's going.</p>
+        </div>
+        <div class="section">
+            <h2>Tech Stack</h2>
+            <div class="tech-stack">
+                <img src="path/to/react.png" alt="React">
+                <img src="path/to/express.png" alt="Express">
+                <img src="path/to/node.png" alt="Node">
+                <img src="path/to/postgres.png" alt="Postgres">
+                <img src="path/to/sequelize.png" alt="Sequelize">
+                <img src="path/to/html.png" alt="HTML">
+                <img src="path/to/css.png" alt="CSS">
+                <img src="path/to/aws.png" alt="AWS">
+                <img src="path/to/google-api.png" alt="Google APIs">
+                <img src="path/to/google-oauth.png" alt="Google OAuth">
+            </div>
+        </div>
+    </div>
+</body>
+</html>
