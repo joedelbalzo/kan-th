@@ -14,7 +14,7 @@ import PieChart from "./assets/BusinessIcons/PieChart";
 import JoinMailingList from "./Components/JoinMailingList";
 import { useScrollToTop } from "./Components/functions";
 
-import { aboutTripImg, woodworkerImg, yesWereOpenImg } from "./assets/ImageObjects";
+import { aboutTripImg, woodworkerImg, yesWereOpenImg, texturedBackgroundImg } from "./assets/ImageObjects";
 
 //Store Imports
 
@@ -166,7 +166,7 @@ function Home() {
               boxShadow: "0px 1rem 1rem rgba(100,100,100,.2)",
             }}
           >
-            <div style={{ width: "70%", margin: "0 auto" }}>
+            <div className="blue-text-divs">
               We believe that understanding the true value of your business is not just a financial exercise, but a strategic move to secure
               your future, leverage growth opportunities, and plan for long-term success:
             </div>
@@ -271,7 +271,7 @@ function Home() {
               boxShadow: "0px 1rem 1rem rgba(100,100,100,.2)",
             }}
           >
-            <div id="vali-body-about-third">
+            <div id="vali-body-about-third" className="blue-text-divs">
               <main>
                 So, why choose us? Expertise, customized solutions, transparency, and a technology-driven approach. Our vision is to become
                 the most trusted partner for small and medium business owners in understanding and enhancing their business value.

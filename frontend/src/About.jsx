@@ -116,11 +116,11 @@ function About() {
               <div>
                 <h1>Founder Name</h1>
                 <h2>Founder</h2>
-                <span style={{ marginTop: "1rem" }}>
+                {/* <span style={{ marginTop: "1rem" }}>
                   <a href="https://www.linkedin.com/">LinkedIn</a>
                   <br />
                   <a href="mailto:contact.us.at.vali@joinvali.com">contact.us.at.vali@joinvali.com</a>
-                </span>
+                </span> */}
               </div>
               <img
                 src={

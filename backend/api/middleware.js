@@ -39,15 +39,8 @@ const restrictAccess = (req, res, next) => {
     if (
       origin === "https://www.joinvali.com" ||
       origin === "https://joinvali.com" ||
-      origin === "https://joedelbalzo.github.io" ||
-      origin === "https://joedelbalzo.github.io/" ||
-      origin === "https://joedelbalzo.github.io/kan-th" ||
-      origin === "https://joedelbalzo.github.io/kan-th/" ||
-      origin === "http://joedelbalzo.github.io" ||
-      origin === "http://joedelbalzo.github.io/" ||
-      origin === "http://joedelbalzo.github.io/kan-th" ||
-      origin === "http://joedelbalzo.github.io/kan-th/" ||
       origin.startsWith("asitenamedka") ||
+      origin.startsWith("joedelbalzo") ||
       origin.startsWith(process.env.DEV_SITE) ||
       origin.startsWith("http://localhost:3000")
     ) {
