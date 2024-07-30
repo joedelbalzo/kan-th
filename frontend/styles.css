@@ -378,7 +378,7 @@ a:hover {
 .blue-text-divs {
   background-size: cover;
   width: 100%;
-  height: 600px;
+  height: fit-content;
   color: whitesmoke;
   text-shadow: 2px 2px 2px black;
   font-size: 2rem;
@@ -396,6 +396,7 @@ a:hover {
 }
 #blue-text-div-two {
   background-image: url("./src/assets/abstract-particle-background.webp");
+  height: fit-content;
 }
 
 /*  */
