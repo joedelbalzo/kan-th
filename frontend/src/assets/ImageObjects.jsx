@@ -1,7 +1,7 @@
 import aboutTrip from "./about-trip.webp";
 import barber from "./pexels-thgusstavo-santana.webp";
 // import kanica from "./kanica.jpg";
-import texturedBackground from "./pexels-milo-textures.webp";
+import texturedBackground from "./graph-chart-with-moving-up-arrow-blue-background_56104-1814.webp";
 import womanWithIpad from "./pexels-tim-douglas.webp";
 import woodworker from "./pexels-ivan-samkov.webp";
 import yesWereOpen from "./pexels-tim-mossholder.webp";

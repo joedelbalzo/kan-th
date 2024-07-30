@@ -112,7 +112,7 @@ function Home() {
               <div className="home-div-text">
                 <h1 className="home-div-title">Financing shouldn't be a guessing game.</h1>
                 <motion.div variants={child} className="home-div-subtitle">
-                  <h2>Small and medium business owners deserve better.</h2>
+                  <h2>Your business deserves better.</h2>
                 </motion.div>
                 <motion.div variants={child} className="home-div-body">
                   <Link to="/login" className="lets-go" style={{ cursor: "pointer", color: "white", outline: "2px solid white" }}>
@@ -155,20 +155,10 @@ function Home() {
           </motion.div>
         </div>
         <motion.div ref={ref2} initial={{ opacity: 0, y: "100px" }} animate={controls2} transition={transition}>
-          <div
-            style={{
-              display: "block",
-              padding: "6rem 0",
-              textAlign: "center",
-              backgroundColor: "#86bbd8",
-              fontSize: "42px",
-              fontWeight: "350",
-              boxShadow: "0px 1rem 1rem rgba(100,100,100,.2)",
-            }}
-          >
-            <div className="blue-text-divs">
+          <div className="blue-text-divs" id="blue-text-div-one">
+            <div id="vali-body-about-third" style={{ fontSize: "3rem", lineHeight: "4rem" }}>
               We believe that understanding the true value of your business is not just a financial exercise, but a strategic move to secure
-              your future, leverage growth opportunities, and plan for long-term success:
+              your future, leverage growth opportunities, and plan for long-term success.
             </div>
           </div>
         </motion.div>
@@ -259,19 +249,8 @@ function Home() {
           ></motion.div>
         </div>
         <motion.div ref={ref6} initial={{ opacity: 0, y: "100px" }} animate={controls6} transition={transition}>
-          <div
-            style={{
-              display: "block",
-              padding: "1rem 0",
-              margin: "3rem auto",
-              textAlign: "center",
-              backgroundColor: "#86bbd8",
-              fontSize: "42px",
-              fontWeight: "350",
-              boxShadow: "0px 1rem 1rem rgba(100,100,100,.2)",
-            }}
-          >
-            <div id="vali-body-about-third" className="blue-text-divs">
+          <div className="blue-text-divs" id="blue-text-div-two">
+            <div id="vali-body-about-third">
               <main>
                 So, why choose us? Expertise, customized solutions, transparency, and a technology-driven approach. Our vision is to become
                 the most trusted partner for small and medium business owners in understanding and enhancing their business value.
