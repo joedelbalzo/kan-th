@@ -156,7 +156,7 @@ function Home() {
         </div>
         <motion.div ref={ref2} initial={{ opacity: 0, y: "100px" }} animate={controls2} transition={transition}>
           <div className="blue-text-divs" id="blue-text-div-one">
-            <div id="vali-body-about-third" style={{ fontSize: "3rem", lineHeight: "4rem" }}>
+            <div id="vali-body-about-third">
               We believe that understanding the true value of your business is not just a financial exercise, but a strategic move to secure
               your future, leverage growth opportunities, and plan for long-term success.
             </div>

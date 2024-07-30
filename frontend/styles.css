@@ -534,7 +534,8 @@ a:hover {
 #vali-body-about-third {
   width: 70%;
   margin: 4rem auto;
-  line-height: 3rem;
+  font-size: 3rem;
+  line-height: 4rem;
 }
 
 .about-container {
@@ -1093,6 +1094,11 @@ h3 {
     margin: 5rem auto;
     width: 90%;
   }
+
+  #vali-body-about-third {
+    font-size: 2rem;
+    line-height: 3rem;
+  }
   .vali-about-list {
     margin: 4px 0;
     padding: 0 0 0 20px;
@@ -1304,12 +1310,16 @@ h3 {
     /* display: flex; */
     width: 90%;
   }
-  .blue-text-divs,
+  .blue-text-divs {
+    width: 101%;
+    height: fit-content;
+  }
   #vali-body-about-third {
     width: 95%;
-    margin: 0 auto;
+    margin: 2rem auto;
     font-weight: 400;
     font-size: 2rem;
+    line-height: 2.5rem;
   }
 
   /*  */
