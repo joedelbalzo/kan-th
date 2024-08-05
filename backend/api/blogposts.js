@@ -32,17 +32,18 @@ app.get("/", async (req, res, next) => {
     });
 
     let responseData = blogposts.map((blogpost) => blogpost.get({ plain: true }));
-    await Promise.all(
-      responseData.map(async (blogpost) => {
-        await Promise.all(
-          blogpost.images.map(async (image) => {
-            if (image.awsPicURL === null) {
-              image.awsPicURL = await getObjectSignedUrl(image.awsPicID);
-            }
-          })
-        );
-      })
-    );
+    // await Promise.all(
+    //   responseData.map(async (blogpost) => {
+    //     await Promise.all(
+    //       blogpost.images.map(async (image) => {
+    //         if (image.awsPicURL === null) {
+    //           console.log("for some reason this is still null??????");
+    //           image.awsPicURL = await getObjectSignedUrl(image.awsPicID);
+    //         }
+    //       })
+    //     );
+    //   })
+    // );
 
     res.send(responseData);
   } catch (ex) {
