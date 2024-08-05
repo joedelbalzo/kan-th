@@ -12,7 +12,7 @@ import ShareButtons from "../Components/ShareButtons";
 import SubNav from "./SubNav";
 import "./BlogStyles.css";
 import { useScrollToTop } from "../Components/functions";
-
+import JoinMailingList from "../Components/JoinMailingList";
 //Store Imports
 
 //Function Imports
@@ -75,29 +75,19 @@ const BlogpostSingle = () => {
               </div>
               <div className="single-post-tags">
                 Tags:
-                {post.tags[0] && (
-                  <Link to={`/blog/tags/${post.tags[0].id}`} key={post.tags[0].id} style={{ marginLeft: 4 }}>
-                    {post.tags[0].name}
-                  </Link>
-                )}
-                ,
-                {post.tags[1] && (
-                  <Link to={`/blog/tags/${post.tags[1].id}`} key={post.tags[1].id} style={{ marginLeft: 4 }}>
-                    {post.tags[1].name}
-                  </Link>
-                )}
-                ,
-                {post.tags[2] && (
-                  <Link to={`/blog/tags/${post.tags[2].id}`} key={post.tags[2].id} style={{ marginLeft: 4 }}>
-                    {post.tags[2].name}{" "}
-                  </Link>
-                )}
+                {post.tags.map((tag, index) => (
+                  <React.Fragment key={tag.id}>
+                    {index > 0 && ", "}
+                    <Link to={`/blog/tags/${tag.id}`} style={{ marginLeft: 4 }}>
+                      {tag.name}
+                    </Link>
+                  </React.Fragment>
+                ))}
               </div>
             </h2>
             {homePic && (
               <div className="single-post-home-picture">
                 <img src={homePic.awsPicURL} alt={homePic.altText} />
-                {/* <span className="caption">{homePic.picCaption}</span> */}
               </div>
             )}
           </div>
@@ -108,14 +98,11 @@ const BlogpostSingle = () => {
           {textReplace(post.content)}
         </div>
       </div>
+      <JoinMailingList />
 
-      {/* <div className="post-info">
-          <SubNav />
-        </div> */}
       <div className="post-content">
         <br />
         <br />
-        {/* <div className="post-content">{textReplace(post.content)}</div> */}
       </div>
     </div>
   );

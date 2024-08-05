@@ -65,27 +65,14 @@ const BlogpostsContent = ({ filteredPosts, headlinerPost, showPictures = true, m
                 <div className="post-tags" style={{ marginTop: "1rem" }}>
                   <span className="post-date">Date: {readableDate(blogpost.publishedAt)} </span>
                   || Tags:
-                  {blogpost.tags[0] ? (
-                    <Link onClick={() => onTagClick(blogpost.tags[0].id)} key={blogpost.tags[0].id} style={{ marginLeft: 4 }}>
-                      {blogpost.tags[0].name}
-                    </Link>
-                  ) : (
-                    ""
-                  )}
-                  {blogpost.tags[1] ? (
-                    <Link onClick={() => onTagClick(blogpost.tags[1].id)} key={blogpost.tags[1].id}>
-                      , {blogpost.tags[1].name}
-                    </Link>
-                  ) : (
-                    ""
-                  )}
-                  {blogpost.tags[2] ? (
-                    <Link onClick={() => onTagClick(blogpost.tags[2].id)} key={blogpost.tags[2].id}>
-                      , {blogpost.tags[2].name}{" "}
-                    </Link>
-                  ) : (
-                    ""
-                  )}
+                  {blogpost.tags.map((tag, index) => (
+                    <React.Fragment key={tag.id}>
+                      {index > 0 && ", "}
+                      <Link to={`/blog/tags/${tag.id}`} style={{ marginLeft: 4 }}>
+                        {tag.name}
+                      </Link>
+                    </React.Fragment>
+                  ))}
                 </div>
                 <div className="post-body">
                   {sampleText(blogpost.content, 40)}
