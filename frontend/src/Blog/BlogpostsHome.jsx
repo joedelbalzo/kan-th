@@ -18,8 +18,7 @@ import { fetchBlogByID } from "../store";
 //Function Imports
 import { readableDate, pics } from "../Components/functions";
 import BackButton from "../assets/BackButton";
-import ShareButtons from "../Components/ShareButtons";
-import BlogpostsContent from "./BlogpostsContent";
+
 
 const BlogpostsHome = () => {
   useScrollToTop();

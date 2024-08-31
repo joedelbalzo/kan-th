@@ -79,7 +79,8 @@ function App(props) {
   const dispatch = useDispatch();
   const auth = useSelector((state) => state.auth);
 
-  const [isAllowed, setIsAllowed] = useState(false);
+  //intentionally removed password
+  const [isAllowed, setIsAllowed] = useState(true);
   const [fade, setFade] = useState(false);
 
   useEffect(() => {
