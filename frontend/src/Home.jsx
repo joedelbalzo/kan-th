@@ -129,6 +129,7 @@ function Home() {
       </motion.div>
 
       <div className="about-body-container">
+        <div style={{ padding: "3rem 0" }}></div>
         <JoinMailingList />
 
         <div className="vali-body-about">

@@ -104,12 +104,14 @@ function About() {
 
       {/* ABOUT CONTENT */}
       <div className="about-body-container">
+        <div style={{ padding: "3rem 0" }}></div>
+
         <motion.div variants={child} className="about-body-header">
           <h1>We're a small, privately owned company, just like yours.</h1>
           <br />
+          <br />
           <h2>We're ready to be your partner in this journey.</h2>
         </motion.div>
-
         <motion.div ref={ref1} initial={{ opacity: 0, y: "50px" }} animate={controls1} transition={transition}>
           <div className="kanica-about">
             <div className="kanica-heading">

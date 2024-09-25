@@ -19,7 +19,6 @@ import { fetchBlogByID } from "../store";
 import { readableDate, pics } from "../Components/functions";
 import BackButton from "../assets/BackButton";
 
-
 const BlogpostsHome = () => {
   useScrollToTop();
   const navigate = useNavigate();
@@ -100,7 +99,17 @@ const BlogpostsHome = () => {
           <Loading />
         </div>
       ) : (
-        <div>
+        <div
+          style={{
+            backgroundImage:
+              "linear-gradient(to right top, #f1f1f1, #e8ebf280 30%, #d4e3ee80 50%, #bddde5 80%, /*#a9d6d5, */ #86bbd8), url('https://images.unsplash.com/photo-1690321607902-2799a1e8eaaa?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')",
+            height: "fit-content",
+            filter: "saturate(90%) brightness(110%)",
+            backgroundSize: "130%",
+            boxShadow: "inset 0 0 0 1000px #d4e3eecc",
+            padding: "0 0 3rem 0",
+          }}
+        >
           <div className="post-headliner" key={headlinerPost.id}>
             <div className="post-container">
               {headlinerPic != null ? (
