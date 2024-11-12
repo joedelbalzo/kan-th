@@ -80,7 +80,7 @@ const PortfolioAccountInfo = () => {
       async function create() {
         try {
           setLoading(true);
-          await axios.post(`/api/auth/mailinglist`, { email: formData.email });
+          // await axios.post(`/api/auth/mailinglist`, { email: formData.email });
           //gotta create a way for a user to get off this
           const response = await dispatch(createUserProfile(formData, auth)).then(() => {
             setLoading(false);

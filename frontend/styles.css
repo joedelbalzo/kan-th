@@ -376,9 +376,10 @@ a:hover {
 }
 
 .blue-text-divs {
+  position: relative;
+  overflow: hidden;
   background-size: cover;
   width: 100%;
-  height: fit-content;
   color: whitesmoke;
   text-shadow: 2px 2px 2px black;
   font-size: 2rem;
@@ -391,11 +392,11 @@ a:hover {
 }
 
 #blue-text-div-one {
-  background-image: url("./src/assets/graph-chart-with-moving-up-arrow-blue-background_56104-1814.webp");
+  /* background-image: url("./src/assets/graph-chart-with-moving-up-arrow-blue-background_56104-1814.webp");
   filter: saturate(80%);
-  background-size: 150%;
+  background-size: 150%; */
   box-shadow: inset 0 0 0 1000px rgba(24, 51, 51, 0.7);
-  background-position: 0px -400px;
+  /* background-position: 0px -400px; */
 }
 #blue-text-div-two {
   background-image: url("./src/assets/abstract-particle-background.webp");
@@ -497,27 +498,28 @@ a:hover {
 }
 
 #svg-picture-overlay-container {
-  width: 450px;
-  height: 300px;
-  object-fit: cover;
+  width: 550px;
+  height: 350px;
+  /* object-fit: contain; */
   position: relative;
 }
 #svg-picture-overlay-container > #Capa_1 {
   position: absolute;
-  top: -20px;
+  top: -0px;
   left: 0px;
   z-index: 300;
 }
 #svg-picture-overlay-container > #about-image {
   position: absolute;
-  top: 50px;
-  left: 50px;
-  width: 80%;
-  height: 80%;
+  top: 20px;
+  left: 60px;
+  width: 100%;
+  height: 100%;
   margin: 0 auto;
   z-index: 1;
   border-radius: 1rem;
   box-shadow: 0px 1rem 1rem rgba(100, 100, 100, 0.2);
+  object-fit: cover;
 }
 
 #vali-body-about-second {
@@ -547,10 +549,31 @@ a:hover {
 }
 
 #vali-body-about-third {
+  position: relative;
+  width: 100%;
+  padding: 1rem;
+  font-size: 2rem;
+  line-height: 4rem;
+}
+.parallax-background {
+  position: absolute;
+  bottom: -100px;
+  left: 0;
+  width: 100%;
+  height: 600px;
+  overflow: hidden;
+}
+.parallax-background svg {
+  width: 100%;
+  /* height: 00px; */
+  display: block;
+}
+
+.parallax-content {
   width: 70%;
   margin: 4rem auto;
-  font-size: 3rem;
-  line-height: 4rem;
+  position: relative;
+  z-index: 1;
 }
 
 .about-container {
