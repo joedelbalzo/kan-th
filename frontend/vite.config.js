@@ -15,7 +15,7 @@ export default defineConfig({
     sourcemap: false,
     outDir: "dist",
     rollupOptions: {
-      external: ["react-scroll-parallax"],
+      external: [],
     },
   },
   server: {
