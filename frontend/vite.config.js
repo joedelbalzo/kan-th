@@ -8,9 +8,15 @@ export default defineConfig({
       babel: { babelrc: true },
     }),
   ],
+  optimizeDeps: {
+    include: ["react-scroll-parallax"],
+  },
   build: {
     sourcemap: false,
     outDir: "dist",
+    rollupOptions: {
+      external: ["react-scroll-parallax"],
+    },
   },
   server: {
     port: 3000,
