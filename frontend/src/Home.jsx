@@ -115,13 +115,16 @@ function Home() {
               </div>
             </div>
           </div>
-
+        </div>
+        <div className="about-body-container">
           <div className="vali-body-about">
-            <AnimatedSection>
-              <div id="vali-body-about-second">
+            <div id="vali-body-about-second">
+              <AnimatedSection>
                 <div className="vali-body-about-second-picture">
                   <img src={aboutTripImg.src} alt={aboutTripImg.alt} />
                 </div>
+              </AnimatedSection>
+              <AnimatedSection delay={0.5}>
                 <main className="vali-body-about-second-text">
                   <ul className="vali-about-list">
                     <li>
@@ -146,32 +149,40 @@ function Home() {
                     </li>
                   </ul>
                 </main>
-              </div>
-            </AnimatedSection>
+              </AnimatedSection>
+            </div>
           </div>
 
           <JoinMailingList />
           <div className="home-content">
             <AnimatedSection>
               <div className="home-content-images" style={{ display: "flex" }}>
-                <div className="home-content-images-1">
-                  <FinanceBar width={"30vw"} height={"20vh"} />
-                  <div>We compare your data across benchmarks set by thousands of companies to see how you stack up in your industry.</div>
-                </div>
-                <div className="home-content-images-2">
-                  <Seedling width={"30vw"} height={"20vh"} />
-                  <div>
-                    Get access to dozens of lenders and business partners who can use your valuations to provide you with great rates and
-                    fundraising vehicles to grow your business.
+                <AnimatedSection delay={0}>
+                  <div className="home-content-images-1">
+                    <FinanceBar width={"30vw"} height={"20vh"} />
+                    <div>
+                      We compare your data across benchmarks set by thousands of companies to see how you stack up in your industry.
+                    </div>
                   </div>
-                </div>
-                <div className="home-content-images-3">
-                  <Links width={"30vw"} height={"20vh"} />
-                  <div>
-                    Together, we can improve and grow your business using our tools and methodologies that will make you proud of what
-                    you've built.
+                </AnimatedSection>
+                <AnimatedSection delay={0.5}>
+                  <div className="home-content-images-2">
+                    <Seedling width={"30vw"} height={"20vh"} />
+                    <div>
+                      Get access to dozens of lenders and business partners who can use your valuations to provide you with great rates and
+                      fundraising vehicles to grow your business.
+                    </div>
                   </div>
-                </div>
+                </AnimatedSection>
+                <AnimatedSection delay={1}>
+                  <div className="home-content-images-3">
+                    <Links width={"30vw"} height={"20vh"} />
+                    <div>
+                      Together, we can improve and grow your business using our tools and methodologies that will make you proud of what
+                      you've built.
+                    </div>
+                  </div>
+                </AnimatedSection>
               </div>
             </AnimatedSection>
           </div>

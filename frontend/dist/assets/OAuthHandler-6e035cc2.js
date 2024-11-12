@@ -1,1 +1,0 @@
-import{V as r,a as c,b as i,r as t,a0 as u,j as l}from"./index-71b05d37.js";import"react-scroll-parallax";function g(){const s=r(),a=c(),o=i(),e=new URLSearchParams(s.search).get("token"),[f,n]=t.useState(!1);return t.useEffect(()=>{e&&o(u(e)).then(()=>{n(!0),a("/portfolio")})},[e]),l.jsx("div",{children:"Success"})}export{g as default};

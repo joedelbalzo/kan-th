@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import { motion, useAnimation, useInView } from "framer-motion";
 
-const AnimatedSection = ({ children, ...props }) => {
+const AnimatedSection = ({ children, delay = 0, ...props }) => {
   const ref = useRef(null);
   const inView = useInView(ref, { threshold: 0.1 });
   const controls = useAnimation();
@@ -17,7 +17,7 @@ const AnimatedSection = ({ children, ...props }) => {
     visible: {
       opacity: 1,
       y: 0,
-      transition: { type: "spring", damping: 10, stiffness: 50 },
+      transition: { type: "spring", damping: 10, stiffness: 50, delay: delay },
     },
   };
 
